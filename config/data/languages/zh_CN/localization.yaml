@@ -1,0 +1,22 @@
+localization:
+    css:
+        category: 分类
+    cart:
+      lineitem:
+        availability:
+            instock:
+                message: 有库存
+            outofstock:
+                message: not available
+                
+    account:
+        paymentcard:
+            link:
+                aria-label: 添加新付款
+        addressbookcard:
+            link:
+                aria-label: 添加新地址
+        passwordcard:
+            link:
+                aria-label: 更改密码
+                

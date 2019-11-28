@@ -1,0 +1,11 @@
+# this is for the English sites because they are setup as fallback to English
+localization:
+    css:
+        category: category
+    cart:
+      lineitem:
+        availability:
+            instock:
+                message: In Stock
+            outofstock:
+                message: not available

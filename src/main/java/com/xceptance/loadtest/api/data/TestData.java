@@ -1,0 +1,184 @@
+package com.xceptance.loadtest.api.data;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
+import org.junit.Assert;
+
+import com.xceptance.loadtest.api.configuration.Configuration;
+import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.xlt.api.engine.Session;
+
+
+/**
+ * Common data collector for all data needed for a test during execution, kind of a global state.
+ *
+ * @author rschwietzke
+ */
+public class TestData
+{
+    // The account used in this TestCase.
+    private Optional<Account> account = Optional.empty();
+
+    // simple key-value store
+    public Map<String, String> store = new HashMap<>(41);
+
+    // Is test case expected to run with a customer that needs an existing account?
+    public boolean requiresRegisteredAccount;
+
+    // Add2cart count, number of add2cart operations for action naming
+    public int totalAddToCartCount = 0;
+
+    // Stores the current cart line item count of this very session
+    public int cartLineItemCount;
+
+    // Stores the current quantity count of the cart
+    public int cartQuantityCount;
+
+    // The site we are living in
+    public Site site;
+
+    /** String that represents the JavaScript snippet that contains the app.URLs */
+    public String appResources;
+
+    /**
+     * Hash code of page where the current {@link #appResources} were looked up from. This is used
+     * to determine if {@link #appResources} needs to be updated.
+     */
+    public int appResourcesPageHashCode = 0;
+
+    /**
+     * If set to {@code true} this session had at least one request with long runtimes.
+     *
+     * @see {@link Configuration#longRunningRequestThresholdForSessionMarking}
+     */
+    public boolean isSessionWithLongRunningRequest = false;
+
+    /**
+     * Return the attached account as optional, so it cannot be empty aka null. Helps to be more
+     * careful when programming
+     *
+     * @return the current account or an optional stating we don't have one
+     */
+    public Optional<Account> getAccount()
+    {
+        return account;
+    }
+
+    /**
+     * Attach a customer account to our session/context. If we already got one, we will complain to
+     * make sure we keep the right order of things.
+     *
+     * @return customer account
+     * @throws AssertionError
+     *             when an account was already attached
+     */
+    public Optional<Account> attachAccount()
+    {
+        if (!account.isPresent())
+        {
+            setAccount(AccountManager.aquireAccount());
+        }
+        else
+        {
+            // an account was already attached before
+            Assert.fail("An account was already attached");
+        }
+
+        return account;
+    }
+    
+    /**
+     * Attach a customer account to our session/context. If we already got one, we will complain to
+     * make sure we keep the right order of things.
+     *
+     * @return customer account
+     * @throws AssertionError
+     *             when an account was already attached
+     */
+    public Optional<Account> attachAccountFromFile(boolean exclusive)
+    {
+        if (!account.isPresent())
+        {
+            setAccount(AccountManager.aquireAccountFromFile(exclusive));
+        }
+        else
+        {
+            // an account was already attached before
+            Assert.fail("An account was already attached");
+        }
+
+        return account;
+    }
+
+    /**
+     * Sets the account to use for this test.
+     *
+     * @param account
+     *            the account to use. If set to <code>null</code> a newly generated account will
+     *            assigned.
+     */
+    public void setAccount(final Optional<Account> account)
+    {
+        // Assign the account.
+        this.account = account;
+    }
+
+    /**
+     * Releases the used account and put it back to the pool for re-usage if possible.
+     * @throws Exception 
+     */
+    public void releaseAccount() throws Exception
+    {
+        // Get the current context and account.
+        final Optional<Account> account = getAccount();
+
+        // Release the user's exclusively used account if it is a registered account. Guest user
+        // account will be simply dropped.
+        if (account.isPresent())
+        {
+            // put account into value log
+            final String siteId = Context.getSite().getId();
+
+            final Map<String, Object> log = Session.getCurrent().getValueLog();
+            log.put("account." + siteId + ".email", account.get().email);
+            log.put("account." + siteId + ".password", account.get().password);
+            log.put("account." + siteId + ".isRegistered", account.get().isRegistered);
+            log.put("account.origin", account.get().origin);
+
+            if (account.get().isRegistered && Session.getCurrent().hasFailed() == false)
+            {
+                AccountManager.returnAccount(account);
+            }
+        }
+
+        // Release reference
+        this.account = Optional.empty();
+    }
+
+    /**
+     * Set the site we are moving it
+     *
+     * @param newSite
+     *            the new site
+     * @return the old site if set, otherwise null
+     */
+    public Site setSite(final Site newSite)
+    {
+        final Site oldSite = this.site;
+        this.site = newSite;
+
+        return oldSite;
+    }
+
+    /**
+     * Return the current site
+     *
+     * @return the current site
+     */
+    public Site getSite()
+    {
+        return site;
+    }
+}

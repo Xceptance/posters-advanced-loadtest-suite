@@ -1,0 +1,6 @@
+# I don't define anything useful, I am just the fallback for all other sites as long as nothing has 
+# been defined there.
+flash:
+    product:
+        urls:
+            - nothing defined for me

@@ -1,0 +1,14 @@
+/results/
+/classes/
+/target/
+bin/
+
+.idea/
+
+.classpath
+.project
+.settings/
+
+config/git.properties
+config/browser.properties
+config/data/sites/private-data.yaml

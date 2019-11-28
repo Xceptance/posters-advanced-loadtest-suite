@@ -1,0 +1,7 @@
+filter:
+    product: 
+        url:
+            - # this is a list of regular expressions (simple phrases, complete URL, URL snippet, ..)
+    category:
+        url:
+            - # this is a list of regular expressions (simple phrases, complete URL, URL snippet, ..)

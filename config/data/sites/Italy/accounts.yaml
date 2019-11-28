@@ -1,0 +1,35 @@
+addresses:
+    - &address01 
+      id: default
+      addressLine1:  VIALE EUROPA 22
+      addressLine2: 
+      city: Roma
+      zip: "00144" # Important.... if this is a number but you need that as string, quote it!
+      state: Sicilia
+      stateCode: SC 
+      countryCode: IT
+      country: Italy
+      phone: 0364-630305
+    - &address02 
+      id: Felix
+      addressLine1: UFFICIO ROMA TRULLO
+      addressLine2: CASELLA POSTALE 1234
+      city: Roma
+      zip: "00149"
+      state: Veneto
+      stateCode: VN 
+      countryCode: IT
+      country: Italy
+      phone: 0364-630305
+
+account:
+    - email: 
+      firstname:
+      lastname:
+      # login: accounts knows to fall back to email 
+      password: ${account.defaults.password}
+      billingAddress: *address01
+      shippingAddress: *address01
+      alternativeAddress: *address02
+      # creditCards: 
+        # we get us global cards, local cards would have to be in this file and likely referenced here

@@ -1,0 +1,16 @@
+# I don't define anything useful, I am just the fallback for all other sites as long as nothing has 
+# been defined there.
+# I am holding the flash definition
+flash:
+    # in seconds
+    refreshTime: 10
+    # from beginning until we want to start the flash, in min
+    startTime: 0
+    # OCPI use not this url but a direct product id
+    product:
+        urls:
+            - ${general.baseUrl}/s/product.html
+    # This need to be changed here, always as string to avoid side effects 
+    ocapi_product:
+        id:
+            - "Number"

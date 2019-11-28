@@ -1,0 +1,22 @@
+# this is for the English sites because they are setup as fallback to English
+localization:
+    css:
+        category: categoria
+    cart:
+      lineitem:
+        availability:
+            instock:
+                message: In stock
+            outofstock:
+                message: not available
+                
+    account:
+        paymentcard:
+            link:
+                aria-label: Aggiungi nuovo pagamento
+        addressbookcard:
+            link:
+                aria-label: Aggiungi nuovo indirizzo
+        passwordcard:
+            link:
+                aria-label: Modifica password                
