@@ -11,4 +11,3 @@ bin/
 
 config/git.properties
 config/browser.properties
-config/data/sites/private-data.yaml

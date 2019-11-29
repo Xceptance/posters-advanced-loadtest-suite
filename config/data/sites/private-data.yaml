@@ -1,0 +1,19 @@
+# This is all the private data that should not not leak into the standard repo
+# We set .gitignore for that aka private-data.yaml is ignored, but this template
+# is commited BUT not included into the project loading of data.
+
+# Always copy this template locally for standard development into private-data.yaml
+# and set the data that shoud not leak. You might have to extend this definition
+# to site. Really depends on the setup.
+
+# When you work on a real customer project, you can remove the .gitignore on 
+# private-data.yaml and commit it, BUT NEVER FOR THE TEMPLATE.
+
+general:
+    host: 35.184.136.113:8443
+    baseUrl: "https://${general.host}"
+    credentials:
+        username: 
+        password: 
+    ocapi: 
+        clientId:
