@@ -10,7 +10,7 @@ public enum SiteSearch implements Component
     @Override
     public LookUpResult locate()
     {
-        return Header.instance.locate().byCss(".search");
+        return Header.instance.locate().byCss("#header-menu-search");
     }
 
     @Override

@@ -52,7 +52,7 @@ public class PageTest
 
         Context.setCurrentPage(TestUtils.getFakePage());
         Context.get().configuration.properties.addProperties(Optional.of(XltProperties.getInstance().getProperties()));
-        Context.get().configuration.consentAsk = false;
+//        Context.get().configuration.consentAsk = false;
     }
 
     /**

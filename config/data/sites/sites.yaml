@@ -66,7 +66,7 @@ sites:
 site:
     US:
         general:
-          url: "${general.baseUrl}/s/RefArch/home?lang=en_US"
+          url: "${general.baseUrl}/posters/"
         account:
             pool:
                 separator: US

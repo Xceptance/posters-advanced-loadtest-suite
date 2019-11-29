@@ -10,7 +10,7 @@ public enum User implements Component
     @Override
     public LookUpResult locate()
     {
-        return Header.instance.locate().byCss(".user");
+        return Header.instance.locate().byCss("#showUserMenu");
     }
 
     @Override

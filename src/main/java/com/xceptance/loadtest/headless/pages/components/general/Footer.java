@@ -14,7 +14,7 @@ public class Footer implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byCss("html > body > div.page > footer");
+        return Page.find().byCss("html > body > footer");
     }
 
     /**

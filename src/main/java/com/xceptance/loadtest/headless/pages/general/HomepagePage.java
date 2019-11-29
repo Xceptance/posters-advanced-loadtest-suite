@@ -8,19 +8,18 @@ public class HomepagePage extends GeneralPages
     public static final HomepagePage instance = new HomepagePage();
 
     public final PromotedProducts promotedProducts = PromotedProducts.instance;
-    public final PromotedCategories pormotedCategories = PromotedCategories.instance;
 
     @Override
     public void validate()
     {
         super.validate();
 
-        validate(has(pormotedCategories, promotedProducts));
+        validate(has(promotedProducts));
     }
 
     @Override
     public boolean is()
     {
-        return super.is() && matches(has(pormotedCategories, promotedProducts));
+        return super.is() && matches(has(promotedProducts));
     }
 }

@@ -15,7 +15,7 @@ public class Navigation implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byCss("#sg-navbar-collapse");
+        return Header.instance.locate().byCss("#categoryMenu");
     }
 
     /**

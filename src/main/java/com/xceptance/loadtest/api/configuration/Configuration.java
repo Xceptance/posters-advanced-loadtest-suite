@@ -58,13 +58,13 @@ public class Configuration
     @Property(key = "general.load.ltkTracking", fallback = "false")
     public boolean loadLtkTracking;
 
-    // Consent: Do we want to check consent?
-    @Property(key = "general.consent.ask")
-    public boolean consentAsk;
+//    // Consent: Do we want to check consent?
+//    @Property(key = "general.consent.ask")
+//    public boolean consentAsk;
 
-    // Consent: What do we ansswer?
-    @Property(key = "general.consent.confirm")
-    public boolean consentConfirm;
+//    // Consent: What do we ansswer?
+//    @Property(key = "general.consent.confirm")
+//    public boolean consentConfirm;
 
     // URL: To start with the direct order scenario
     @Property(key = "general.direct.order.url")
@@ -342,25 +342,25 @@ public class Configuration
     // ===========================================================
     // OCAPI
     //
-    @Property(key = "general.ocapi.contentType")
-    public String ocapiContentType;
+//    @Property(key = "general.ocapi.contentType")
+//    public String ocapiContentType;
 
-    @Property(key = "general.ocapi.charset")
-    public String ocapiCharset;
+//    @Property(key = "general.ocapi.charset")
+//    public String ocapiCharset;
 
     // OCAPI Shop API
+//
+//    @Property(key = "general.ocapi.url")
+//    public String ocapiUrl;
 
-    @Property(key = "general.ocapi.url")
-    public String ocapiUrl;
-
-    @Property(key = "general.ocapi.clientId")
-    public String ocapiClientId;
-
-    @Property(key = "general.ocapi.eTagHandling")
-    public boolean ocapiEtagHandling;
-
-    @Property(key = "general.ocapi.resourceStateHandling")
-    public boolean ocapiResourceStateHandling;
+//    @Property(key = "general.ocapi.clientId")
+//    public String ocapiClientId;
+//
+//    @Property(key = "general.ocapi.eTagHandling")
+//    public boolean ocapiEtagHandling;
+//
+//    @Property(key = "general.ocapi.resourceStateHandling")
+//    public boolean ocapiResourceStateHandling;
 
     // ===========================================================
     // CPT
