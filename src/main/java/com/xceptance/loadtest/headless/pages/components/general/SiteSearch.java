@@ -36,6 +36,6 @@ public enum SiteSearch implements Component
      */
     public LookUpResult locateInputfield()
     {
-        return locate().byCss("input[name='q']");
+        return locate().byCss("#searchForm input#s");
     }
 }

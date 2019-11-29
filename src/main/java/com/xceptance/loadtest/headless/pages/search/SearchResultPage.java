@@ -18,12 +18,12 @@ public class SearchResultPage extends GeneralPages
     {
         super.validate();
 
-        validate(has(productSearchResult, productSearchResultCount));
+        validate(has(productSearchResult, productSearchResultCount, productGrid));
     }
 
     @Override
     public boolean is()
     {
-        return matches(has(productSearchResult, productSearchResultCount));
+        return matches(has(productSearchResult, productSearchResultCount, productGrid));
     }
 }

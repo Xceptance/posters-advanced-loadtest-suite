@@ -27,14 +27,14 @@ public class ProductListingPage extends GeneralPages
         if (matches("Make sure we don't have an empty category page", hasNot(searchResult)))
         {
             // Add grid sort if availability should be enforced
-            validate(this.has(searchResult, refinementBar, productGrid, itemCount/*, gridSort */));
+            validate(this.has(productGrid, itemCount/*, gridSort */));
         }
     }
 
     @Override
     public boolean is()
     {
-        return super.is() && matches(has(searchResult, refinementBar, productGrid, itemCount/*, gridSort */));
+        return super.is() && matches(has(productGrid, itemCount/*, gridSort */));
     }
 
     /**

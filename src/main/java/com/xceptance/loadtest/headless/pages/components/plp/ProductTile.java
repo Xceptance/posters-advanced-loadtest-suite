@@ -12,7 +12,7 @@ public class ProductTile implements Component
     @Override
     public LookUpResult locate()
     {
-        return ProductGrid.instance.locate().byCss(".product-tile");
+        return ProductGrid.instance.locate().byCss(".thumbnails div.thumbnail");
     }
 
     @Override
@@ -54,7 +54,7 @@ public class ProductTile implements Component
      */
     public static LookUpResult getPDPLinks(final LookUpResult result)
     {
-        return result.byCss(".tile-body .pdp-link a.link");
+        return result.byCss("a[href]");
     }
 
     public static LookUpResult getPDPLink(final HtmlElement in)

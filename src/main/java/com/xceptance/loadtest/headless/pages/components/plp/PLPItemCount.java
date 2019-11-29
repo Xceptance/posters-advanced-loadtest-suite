@@ -4,6 +4,7 @@ import java.util.regex.Pattern;
 
 import com.xceptance.common.util.RegExUtils;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
+import com.xceptance.loadtest.api.pages.Page;
 import com.xceptance.loadtest.api.pages.components.Component;
 import com.xceptance.loadtest.api.util.DataUtils;
 
@@ -16,7 +17,7 @@ public enum PLPItemCount implements Component
     @Override
     public LookUpResult locate()
     {
-        return ProductSearchResult.instance.locate().byCss(".grid-header .result-count");
+        return Page.find().byCss("#totalProductCount");
     }
 
     @Override
@@ -32,8 +33,8 @@ public enum PLPItemCount implements Component
             final String content = locate().first().getTextContent();
             if (content != null)
             {
-                final String s = RegExUtils.getFirstMatch(content, pattern, 1);
-                return DataUtils.toInt(s);
+//                final String s = RegExUtils.getFirstMatch(content, pattern, 1);
+                return DataUtils.toInt(content);
             }
         }
 

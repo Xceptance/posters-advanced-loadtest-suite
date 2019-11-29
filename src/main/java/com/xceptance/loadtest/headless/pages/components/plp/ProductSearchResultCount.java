@@ -1,6 +1,7 @@
 package com.xceptance.loadtest.headless.pages.components.plp;
 
 import com.xceptance.loadtest.api.hpu.LookUpResult;
+import com.xceptance.loadtest.api.pages.Page;
 import com.xceptance.loadtest.api.pages.components.Component;
 
 public enum ProductSearchResultCount implements Component
@@ -10,7 +11,7 @@ public enum ProductSearchResultCount implements Component
     @Override
     public LookUpResult locate()
     {
-        return ProductSearchResult.instance.locate().byCss(".result-count");
+        return Page.find().byCss("#totalProductCount");
     }
 
     @Override

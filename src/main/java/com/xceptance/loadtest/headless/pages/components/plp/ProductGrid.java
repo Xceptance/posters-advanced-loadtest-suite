@@ -1,6 +1,7 @@
 package com.xceptance.loadtest.headless.pages.components.plp;
 
 import com.xceptance.loadtest.api.hpu.LookUpResult;
+import com.xceptance.loadtest.api.pages.Page;
 import com.xceptance.loadtest.api.pages.components.Component;
 
 public class ProductGrid implements Component
@@ -12,7 +13,7 @@ public class ProductGrid implements Component
     @Override
     public LookUpResult locate()
     {
-        return ProductSearchResult.instance.locate().byCss(".product-grid");
+        return Page.find().byId("main").byCss("#productOverview");
     }
 
     @Override

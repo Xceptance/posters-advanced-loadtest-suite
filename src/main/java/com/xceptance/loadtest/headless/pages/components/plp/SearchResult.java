@@ -11,7 +11,7 @@ public enum SearchResult implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byCss(".page > .search-results");
+        return Page.find().byCss("#productOverview");
     }
 
     @Override

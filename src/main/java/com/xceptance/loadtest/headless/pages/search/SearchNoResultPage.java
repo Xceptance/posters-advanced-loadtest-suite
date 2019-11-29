@@ -14,12 +14,12 @@ public class SearchNoResultPage extends GeneralPages
     {
         super.validate();
 
-        validate(has(ProductSearchResult.instance), hasAnyOf(has(BlacklistedProductGrid.instance), hasNot(ProductGrid.instance)));
+        validate(hasAnyOf(has(BlacklistedProductGrid.instance), hasNot(ProductGrid.instance)));
     }
 
     @Override
     public boolean is()
     {
-        return super.is() && (matches(has(ProductSearchResult.instance), hasNot(ProductGrid.instance)) || matches(has(BlacklistedProductGrid.instance)));
+        return super.is() && (matches(hasNot(ProductGrid.instance)) || matches(has(BlacklistedProductGrid.instance)));
     }
 }

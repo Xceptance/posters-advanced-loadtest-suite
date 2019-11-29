@@ -15,7 +15,7 @@ public class CartBanner implements Component
     public LookUpResult locate()
     {
         // this CSS path is bad, because the html is bad
-        return Page.find().byCss(".page > .container > h1.page-title");
+        return Page.find().byCss("#titleCart");
     }
 
     /**
