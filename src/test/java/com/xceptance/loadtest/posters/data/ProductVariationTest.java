@@ -15,10 +15,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.xceptance.loadtest.api.hpu.HPU;
 import com.xceptance.loadtest.api.render.Templates;
+import com.xceptance.loadtest.posters.jsondata.ProductJSON;
 import com.xceptance.xlt.api.util.XltProperties;
 import com.xceptance.xlt.engine.XltWebClient;
-
-import posters.jsondata.ProductJSON;
 
 public class ProductVariationTest
 {
