@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import com.xceptance.loadtest.api.configuration.YamlPropertiesBuilder;
 import com.xceptance.loadtest.api.util.Context;
-import com.xceptance.loadtest.headless.util.PageTest;
+import com.xceptance.loadtest.posters.util.PageTest;
 import com.xceptance.xlt.api.data.DataPool;
 import com.xceptance.xlt.api.util.XltProperties;
 import com.xceptance.xlt.common.XltConstants;

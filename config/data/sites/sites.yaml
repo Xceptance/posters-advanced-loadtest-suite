@@ -4,9 +4,6 @@
 
 general:
     # please refer to private-data.yaml for more details
-    # private-data should only be commited for projects, never
-    # for the template, hence we use the concept of a .gitignore'd
-    # file to take care of that
      
 data:
     file:
@@ -16,7 +13,7 @@ data:
 account:
     source: properties # properties, random, file, exclusivefile
     defaults:
-        password: XC99-xc99
+        password: XC42-xc42
 
 search:
     hitTermsFile: searchterms.txt # the search terms to read    
@@ -31,32 +28,7 @@ sites:
         active: true # in case you want to exclude it from a run 
         locale: en_US # this is the language to be used
         region: NorthAmerica # this is something like country or market, depends what you might need in the test cases to differentiate
-        marketshare: 10
-    -   id: UK
-        active: false
-        locale: en_UK
-        region: Europe
-        marketshare: 10
-    -   id: China
-        active: false
-        locale: zh_CN
-        region: APAC
-        marketshare: 10
-    -   id: Japan
-        active: false 
-        locale: ja_JP
-        region: APAC
-        marketshare: 10
-    -   id: Italy
-        active: false 
-        locale: it_IT
-        region: Europe
-        marketshare: 10
-    -   id: France
-        active: false 
-        locale: fr_FR
-        region: Europe
-        marketshare: 10
+        marketshare: 100
 
 # The properties per site. This is automatically handled by
 # the suite and transferred into the property without site.US for 
@@ -70,34 +42,5 @@ site:
         account:
             pool:
                 separator: US
-    UK:
-        general:
-          url: "${general.baseUrl}/s/RefArchGlobal/home?lang=en_UK"
-        account:
-            pool:
-                separator: UK
-    China:
-        general:
-          url: "${general.baseUrl}/s/RefArchGlobal/home?lang=zh_CN"
-        account:
-            pool:
-                separator: CN
-    Japan:
-        general:
-          url: "${general.baseUrl}/s/RefArchGlobal/home?lang=ja_JP"
-        account:
-            pool:
-                separator: JP
-    Italy:
-        general:
-          url: "${general.baseUrl}/s/RefArchGlobal/home?lang=it_IT"
-        account:
-            pool:
-                separator: IT
-    France:
-        general:
-          url: "${general.baseUrl}/s/RefArchGlobal/home?lang=fr_FR"
-        account:
-            pool:
-                separator: FR
-# end of file      
+
+# end of file
