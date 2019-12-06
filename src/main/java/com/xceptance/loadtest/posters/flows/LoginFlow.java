@@ -9,7 +9,6 @@ import com.xceptance.loadtest.posters.actions.account.Login;
  * Create a new account
  *
  * @author rschwietzke
- *
  */
 public class LoginFlow extends Flow
 {
@@ -19,10 +18,10 @@ public class LoginFlow extends Flow
     @Override
     public boolean execute() throws Throwable
     {
-        // goto sign up
+        // Go to login page
         new GoToLogin().run();
 
-        // fill form and submit new account
+        // Fill form and login
         new Login(Context.get().data.getAccount().get()).run();
 
         return true;

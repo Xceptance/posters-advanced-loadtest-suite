@@ -1,27 +1,25 @@
 package com.xceptance.loadtest.posters.pages.account;
 
-import com.xceptance.loadtest.posters.pages.components.account.CheckOrderCard;
-import com.xceptance.loadtest.posters.pages.components.account.LoginAndCreateAccountCard;
+import com.xceptance.loadtest.posters.pages.components.account.LoginCard;
 import com.xceptance.loadtest.posters.pages.general.GeneralPages;
 
 public class LoginPage extends GeneralPages
 {
     public static final LoginPage instance = new LoginPage();
 
-    public final CheckOrderCard checkOrderCard = CheckOrderCard.instance;
-    public final LoginAndCreateAccountCard loginAndCreateAccountCard = LoginAndCreateAccountCard.instance;
+    public final LoginCard loginCard = LoginCard.instance;
 
     @Override
     public void validate()
     {
         super.validate();
 
-        validate(has(checkOrderCard, loginAndCreateAccountCard));
+        validate(has(loginCard));
     }
 
     @Override
     public boolean is()
     {
-        return matches(has(checkOrderCard, loginAndCreateAccountCard));
+        return matches(has(loginCard));
     }
 }

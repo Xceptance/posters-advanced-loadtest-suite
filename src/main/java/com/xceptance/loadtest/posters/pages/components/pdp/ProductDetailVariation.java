@@ -24,12 +24,12 @@ public class ProductDetailVariation extends ProductDetail
     @Override
     public LookUpResult locate(final HtmlElement in)
     {
-        // exclude sets, that has to be done because variations are not correctly marked
-        final LookUpResult main = HPU.find().in(in).byCss(ProductDetail.TYPE_LOCATOR + "[data-pid]"
+        // Exclude sets
+        final LookUpResult main = HPU.find().in(in).byCss(ProductDetail.TYPE_LOCATOR
                                                             + ":not(" + ProductDetailSet.TYPE_LOCATOR + "):not(" + ProductDetailSet.ITEM_LOCATOR + ")"
                                                             + ":not(" + ProductDetailBundle.ITEM_LOCATOR + ")").hasNotCss(ProductDetailBundle.TYPE_LOCATOR);
 
-        if (main.byCss(".attribute").exists())
+        if (main.byCss("[id^='select']").exists())
         {
             return main;
         }

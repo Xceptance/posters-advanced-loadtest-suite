@@ -8,21 +8,12 @@ public class ProfileCard implements Component
 {
     public final static ProfileCard instance = new ProfileCard();
 
-    /**
-     * Lookup the footer.
-     */
     @Override
     public LookUpResult locate()
     {
-        // this CSS path is bad, because the html is bad
-        return Page.find().byCss(".card").hasCss("a[href *= 'profile']");
+        return Page.find().byId("linkPersonalData");
     }
 
-    /**
-     * Indicates if this component exists
-     *
-     * @return
-     */
     @Override
     public boolean exists()
     {

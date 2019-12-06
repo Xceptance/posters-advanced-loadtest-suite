@@ -57,6 +57,6 @@ public class Homepage extends PageAction<Homepage>
 
         // make sure cart is empty and user logged off
         Assert.assertTrue("Cart not empty", HomepagePage.instance.miniCart.isEmpty());
-        Assert.assertTrue("User is logged on", HomepagePage.instance.user.isNotLoggedOn());
+        Assert.assertTrue("User is logged on", HomepagePage.instance.user.isNotLoggedIn());
     }
 }

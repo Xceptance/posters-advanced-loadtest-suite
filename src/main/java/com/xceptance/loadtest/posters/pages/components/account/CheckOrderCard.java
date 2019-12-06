@@ -8,21 +8,12 @@ public class CheckOrderCard implements Component
 {
     public final static CheckOrderCard instance = new CheckOrderCard();
 
-    /**
-     * Lookup the footer.
-     */
     @Override
     public LookUpResult locate()
     {
-        // this CSS path is bad, because the html is bad
-        return Page.find().byCss(".login-page .card").hasCss(".track-order-header");
+        return Page.find().byId("linkOrderOverview");
     }
 
-    /**
-     * Indicates if this component exists
-     *
-     * @return
-     */
     @Override
     public boolean exists()
     {

@@ -2,14 +2,14 @@ package com.xceptance.loadtest.posters.tests;
 
 import com.xceptance.loadtest.api.tests.LoadTestCase;
 import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.posters.actions.account.GoToMyAccount;
+import com.xceptance.loadtest.posters.actions.account.Login;
 import com.xceptance.loadtest.posters.actions.account.Logout;
 import com.xceptance.loadtest.posters.flows.CreateAccountFlow;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
 
 /**
- * Open landing page and navigate to the registration form. Register a new customer and log out afterwards.
- *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * Visits the homepage, opens the account creation page and creates an account, logs in with the newly created account, opens the MyAccount page and logs out.
  */
 public class TAccountCreation extends LoadTestCase
 {
@@ -22,17 +22,19 @@ public class TAccountCreation extends LoadTestCase
         // Start at the landing page.
         new VisitFlow().run();
 
-        // we have not touched any account yet
-        // attach it to the context, this method will complain if we
-        // set one up already
-        // the idea is that we explicitly create accounts and not magically
-        // have one
+        // Attach an account to the current context
         Context.get().data.attachAccount();
 
         // Register user
         new CreateAccountFlow().run();
+        
+        // Fill form and login
+        new Login(Context.get().data.getAccount().get()).run();
+        
+        // Open account page
+        new GoToMyAccount().run();        
 
-        // Logout from freshly created account
+        // Log out
         new Logout().run();
     }
 }

@@ -3,14 +3,14 @@ package com.xceptance.loadtest.posters.pages.components.general;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.pages.components.Component;
 
-public enum User implements Component
+public enum UserMenu implements Component
 {
     instance;
 
     @Override
     public LookUpResult locate()
     {
-        return Header.instance.locate().byCss("#showUserMenu");
+        return Header.instance.locate().byCss("#userMenu");
     }
 
     @Override
@@ -19,25 +19,33 @@ public enum User implements Component
         return locate().exists();
     }
 
-    public boolean isNotLoggedOn()
-    {
-        // horrible CSS code right now!!!
-        return !locate().byCss(".popover").exists();
-    }
-
     public LookUpResult getLoginLink()
     {
-        return locate().byCss("a");
+        return locate().byCss("a.goToLogin");
+    }
+    
+    public LookUpResult getCreateAccountLink()
+    {
+    	return locate().byCss("a.goToRegistration");
     }
 
     public LookUpResult getMyAccountLink()
     {
-        return locate().byCss(".popover a:nth-child(1)");
+        return locate().byCss("a.goToAccountOverview");
     }
 
     public LookUpResult getLogoutLink()
     {
-        // the horrible design of SFRA...
-        return locate().byCss(".popover a:last-child");
+        return locate().byCss("a.goToLogout");
+    }
+    
+    public boolean isLoggedIn()
+    {
+        return getLogoutLink().exists();
+    }
+
+    public boolean isNotLoggedIn()
+    {
+        return !isLoggedIn();
     }
 }

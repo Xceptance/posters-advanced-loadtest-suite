@@ -13,7 +13,7 @@ import com.xceptance.loadtest.api.util.DataUtils;
 
 public abstract class ProductDetail implements Component, SubComponent
 {
-    public static final String TYPE_LOCATOR = ".product-detail";
+    public static final String TYPE_LOCATOR = "#addToCartForm";
 
     public abstract HtmlElement render(final String response, final HtmlElement productDetail);
 

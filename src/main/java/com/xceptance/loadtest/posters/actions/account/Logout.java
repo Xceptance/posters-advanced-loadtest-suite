@@ -21,6 +21,6 @@ public class Logout extends PageAction<Logout>
 
         HomepagePage.instance.validate();
         HomepagePage.instance.miniCart.isEmpty();
-        HomepagePage.instance.user.isNotLoggedOn();
+        HomepagePage.instance.user.isNotLoggedIn();
     }
 }

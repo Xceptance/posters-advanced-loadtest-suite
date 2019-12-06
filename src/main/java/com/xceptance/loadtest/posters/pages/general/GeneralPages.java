@@ -6,7 +6,7 @@ import com.xceptance.loadtest.posters.pages.components.general.Header;
 import com.xceptance.loadtest.posters.pages.components.general.MiniCart;
 import com.xceptance.loadtest.posters.pages.components.general.Navigation;
 import com.xceptance.loadtest.posters.pages.components.general.SiteSearch;
-import com.xceptance.loadtest.posters.pages.components.general.User;
+import com.xceptance.loadtest.posters.pages.components.general.UserMenu;
 
 public class GeneralPages extends Page
 {
@@ -16,7 +16,7 @@ public class GeneralPages extends Page
      * This block indicates all elements accessible for easier direct use
      */
     public Header header = Header.instance;
-    public User user = User.instance;
+    public UserMenu user = UserMenu.instance;
     public MiniCart miniCart = MiniCart.instance;
     public SiteSearch siteSearch = SiteSearch.instance;
     public Footer footer = Footer.instance;
