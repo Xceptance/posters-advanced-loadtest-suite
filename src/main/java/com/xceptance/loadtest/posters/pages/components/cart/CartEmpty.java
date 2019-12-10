@@ -17,8 +17,8 @@ public class CartEmpty implements Component
     @Override
     public LookUpResult locate()
     {
-        // this CSS path is bad, because the html is bad
-        return Page.find().byCss(".page > .container.cart-empty");
+    	// Detect 'cart empty' error
+    	return Page.find().byId("errorCartMessage");
     }
 
     @Override

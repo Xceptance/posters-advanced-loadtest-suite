@@ -25,7 +25,7 @@ public class CartTable implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byCss(".cart.container");
+        return Page.find().byId("cartOverviewTable");
     }
 
     /**
@@ -44,7 +44,7 @@ public class CartTable implements Component
      */
     public LookUpResult getLineItems()
     {
-        return locate().byCss(".card.product-info");
+        return locate().byCss(".cartOverviewProduct");
     }
 
     /**

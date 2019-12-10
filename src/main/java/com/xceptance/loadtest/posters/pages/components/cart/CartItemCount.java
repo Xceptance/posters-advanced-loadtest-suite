@@ -15,7 +15,8 @@ public class CartItemCount implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byCss(".cart-header .number-of-items");
+    	// This is actually part of the mini-cart icon
+        return Page.find().byCss("#headerCartOverview .headerCartProductCount");
     }
 
     /**
