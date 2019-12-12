@@ -5,7 +5,6 @@ import com.xceptance.loadtest.api.tests.LoadTestCase;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.posters.actions.account.Logout;
 import com.xceptance.loadtest.posters.actions.cart.AddToCart;
-import com.xceptance.loadtest.posters.actions.cart.ShowMiniCart;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
 import com.xceptance.loadtest.posters.actions.checkout.Checkout;
 import com.xceptance.loadtest.posters.actions.checkout.CheckoutGuest;
@@ -33,8 +32,6 @@ public class TDebugGuestCheckout extends LoadTestCase
         new DebugUrl("/s/MobileFirst/womens/clothing/outfits/mix-and-match.html?cgid=womens-outfits&lang=en_US").run();
         new ConfigureProductFlow().run();
         new AddToCart().run();
-
-        new ShowMiniCart().run();
 
         // Set variations and standard product
         new DebugUrl("/s/MobileFirst/womens/clothing/outfits/random.html?cgid=womens-outfits&lang=en_US").run();
@@ -65,8 +62,6 @@ public class TDebugGuestCheckout extends LoadTestCase
         new DebugUrl("/s/MobileFirst/electronics/gaming/lucasarts-star-wars-the-force-unleashed-psp.html?cgid=electronics-gaming&lang=en_US").run();
         new ConfigureProductFlow().run();
         new AddToCart().run();
-
-        new ShowMiniCart().run();
 
         new ViewCart().run();
 

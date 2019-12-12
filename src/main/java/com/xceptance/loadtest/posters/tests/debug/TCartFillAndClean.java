@@ -5,7 +5,6 @@ import org.junit.Assert;
 import com.xceptance.loadtest.api.actions.debug.DebugUrl;
 import com.xceptance.loadtest.api.tests.LoadTestCase;
 import com.xceptance.loadtest.posters.actions.cart.AddToCart;
-import com.xceptance.loadtest.posters.actions.cart.ShowMiniCart;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
 import com.xceptance.loadtest.posters.flows.CartCleanUpFlow;
 import com.xceptance.loadtest.posters.flows.CartRemoveAllItemsFlow;
@@ -35,49 +34,36 @@ public class TCartFillAndClean extends LoadTestCase
         new ConfigureProductFlow().run();
         new AddToCart().run();
 
-        new ShowMiniCart().run();
-
         // Set only variations
         new DebugUrl("/s/RefArch/womens/clothing/outfits/Spring-look-2M.html?lang=en_US").run();
         new ConfigureProductFlow().run();
         new AddToCart().run();
-
-        new ShowMiniCart().run();
 
         // Bundle
         new DebugUrl("/s/RefArch/electronics/gaming/game consoles/sony-ps3-bundleM.html?lang=en_US").run();
         new ConfigureProductFlow().run();
         new AddToCart().run();
 
-        new ShowMiniCart().run();
-
         // Variation many attr
         new DebugUrl("/s/RefArch/roll-up-cargo-pant/25564782M.html?lang=en_US").run();
         new ConfigureProductFlow().run();
         new AddToCart().run();
-
-        new ShowMiniCart().run();
 
         // Variation one attr
         new DebugUrl("/s/RefArch/checked-silk-tie/25752235M.html?lang=en_US").run();
         new ConfigureProductFlow().run();
         new AddToCart().run();
 
-        new ShowMiniCart().run();
-
         // Option
         new DebugUrl("/s/RefArch/electronics/televisions/projection/samsung-hl61a650M.html?lang=en_US").run();
         new ConfigureProductFlow().run();
         new AddToCart().run();
-
-        new ShowMiniCart().run();
 
         // standard product
         new DebugUrl("/s/RefArch/electronics/gaming/games/namco-we-ski-wiiM.html?lang=en_US").run();
         new ConfigureProductFlow().run();
         new AddToCart().run();
 
-        new ShowMiniCart().run();
         new ViewCart().run();
 
         // anything to remove

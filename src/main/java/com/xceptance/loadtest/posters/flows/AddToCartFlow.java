@@ -4,14 +4,12 @@ import com.xceptance.loadtest.api.flows.Flow;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.SafetyBreak;
 import com.xceptance.loadtest.posters.actions.cart.AddToCart;
-import com.xceptance.loadtest.posters.actions.cart.ShowMiniCart;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
 
 /**
- * Browses the catalog, adds a number of products (respectively variations of products) to the cart and opens the cart
- * page finally.
- *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * Add products to the cart via navigating the catalog by browsing or searching and handling the resulting product listing and product pages.
+ * 
+ * Optionally visits the cart page.
  */
 public class AddToCartFlow extends Flow
 {
@@ -42,31 +40,23 @@ public class AddToCartFlow extends Flow
     @Override
     public boolean execute() throws Throwable
     {
-        // Add another item to cart if we are under target and if we have not tried twice the amount
-        // already
+        // Add another item to cart if we are under target and if we have not tried twice the amount already
         while (Context.get().data.cartLineItemCount < targetItemCount && Context.get().data.totalAddToCartCount < targetItemCount * 2)
         {
             // Check if the maximum number of attempts is reached.Flow
             addToCartSafetyBreak.check("Unable to add the desired number of products to the cart.");
 
-            // take us to a product
+            // Apply searching or browsing activities to navigate to product details
             searchOrBrowse();
 
-            // do we have to configure
-            final boolean configureProductFlow = new ConfigureProductFlow().run();
-            if (configureProductFlow)
+            // Configure if required
+            //if (new ConfigureProductFlow().run())
             {
-                // could we configure, if so reset safety break
+                // Add the configured product to the cart 
                 new AddToCart().runIfPossible().ifPresent(e -> addToCartSafetyBreak.reset());
             }
 
-            // view the mini cart of desired
-            if (Context.configuration().viewMiniCartProbability.random())
-            {
-                new ShowMiniCart().runIfPossible();
-            }
-
-            // view the cart if desired
+            // View the cart if desired
             if (Context.configuration().viewCartProbability.random())
             {
                 new ViewCart().runIfPossible();
@@ -78,19 +68,18 @@ public class AddToCartFlow extends Flow
 
     private void searchOrBrowse() throws Throwable
     {
-        // Decide if a search is desired or the main navigation should be
-        // used.
+        // Either search or use category navigation to navigate the site
         if (Context.configuration().searchOnAddToCartProbability.random())
         {
             new SearchFlow().run();
         }
         else
         {
-            // get us a category context
-            new CategoryFlow().run();
+            // Navigate the categories
+            new NavigateCategoriesFlow().run();
 
-            // work on it
-            new RefineByFlow().run();
+            // Work the 
+            new NavigateToProductPageFlow().run();
         }
     }
 }

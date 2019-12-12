@@ -2,8 +2,8 @@ package com.xceptance.loadtest.posters.tests;
 
 import com.xceptance.loadtest.api.tests.LoadTestCase;
 import com.xceptance.loadtest.api.util.Context;
-import com.xceptance.loadtest.posters.flows.CategoryFlow;
-import com.xceptance.loadtest.posters.flows.RefineByFlow;
+import com.xceptance.loadtest.posters.flows.NavigateCategoriesFlow;
+import com.xceptance.loadtest.posters.flows.NavigateToProductPageFlow;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
 
 /**
@@ -33,7 +33,7 @@ public class TBrowse extends LoadTestCase
             for (int j = 0; j < categoryRounds; j++)
             {
                 // work on categories
-                new CategoryFlow().run();
+                new NavigateCategoriesFlow().run();
             }
 
             final int refineRounds = Context.configuration().browseRefineFlow.value;
@@ -42,7 +42,7 @@ public class TBrowse extends LoadTestCase
             {
                 // Browse the results, open product details, and configure product
                 // if possible
-                new RefineByFlow().run();
+                new NavigateToProductPageFlow().run();
             }
         }
     }

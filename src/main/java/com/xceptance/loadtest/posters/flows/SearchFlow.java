@@ -32,7 +32,7 @@ public class SearchFlow
 
         // Browse the results, open product details, and configure product
         // if possible
-        new RefineByFlow().run();
+        new NavigateToProductPageFlow().run();
 
         return true;
     }

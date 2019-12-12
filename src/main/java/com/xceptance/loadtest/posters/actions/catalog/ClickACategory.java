@@ -6,10 +6,7 @@ import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.pages.general.GeneralPages;
 
 /**
- * Selects a category from the top navigation menu.
- *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
- *
+ * Select a category from the navigation menu.
  */
 public class ClickACategory extends PageAction<ClickACategory>
 {
@@ -17,7 +14,7 @@ public class ClickACategory extends PageAction<ClickACategory>
 
     public ClickACategory()
     {
-        // empty intentional
+        // Intentionally empty
     }
 
     public ClickACategory(final HtmlElement link)
@@ -33,11 +30,10 @@ public class ClickACategory extends PageAction<ClickACategory>
     {
         if (categoryLink == null)
         {
-            // Get the link and click it
             categoryLink = GeneralPages.instance.navigation.getCategories().asserted("No categories found").random();
         }
 
-        loadDebugUrlOrElse("/s/SiteGenesis/womens/clothing/tops/?lang=en_US").loadPageByClick(categoryLink);
+        loadPageByClick(categoryLink);
     }
 
     /**
@@ -46,7 +42,6 @@ public class ClickACategory extends PageAction<ClickACategory>
     @Override
     protected void postValidate() throws Exception
     {
-        // this was a page load, so validate what is important
         Validator.validatePageSource();
 
         GeneralPages.instance.validate();

@@ -11,9 +11,7 @@ import com.xceptance.loadtest.posters.jsondata.SortOptionsJSON;
 import com.xceptance.loadtest.posters.pages.catalog.ProductListingPage;
 
 /**
- * Asks to view more items on a grid page.
- *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * Views more items, either via paging or some load more (infinite scroll) operation.
  */
 public class DisplayMore extends AjaxAction<DisplayMore>
 {

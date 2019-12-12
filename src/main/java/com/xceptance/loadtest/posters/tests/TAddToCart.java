@@ -21,7 +21,7 @@ public class TAddToCart extends LoadTestCase
     public void test() throws Throwable
     {
         // Start at the landing page.
-        new VisitFlow().run();//
+        new VisitFlow().run();
 
         // Fill cart
         new AddToCartFlow(Context.configuration().addToCartCount.value).run();

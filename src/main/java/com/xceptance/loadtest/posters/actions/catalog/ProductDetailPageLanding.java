@@ -3,28 +3,25 @@ package com.xceptance.loadtest.posters.actions.catalog;
 import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.validators.Validator;
-import com.xceptance.loadtest.posters.pages.catalog.ProductDetailPage;
 
 /**
- * Opens a product detail page directly without need for browsing the catalog or
- * searching.
- *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
- *
+ * Opens a product detail page directly via the provided link without need for browsing the catalog or searching.
  */
 public class ProductDetailPageLanding extends PageAction<ProductDetailPageLanding>
 {
-    private final String urlString;
+    protected final String urlString;
 
     /**
-     * Constructor. Used if product details page is called directly per URL.
+     * Constructor.
+     * 
+     * Used if product details page is called directly per URL.
      *
-     * @param urlString
-     *            the URL which should be loaded.
+     * @param urlString The URL which should be loaded.
      */
     public ProductDetailPageLanding(final String urlString)
     {
         super();
+        
         this.urlString = urlString;
     }
 
@@ -34,17 +31,16 @@ public class ProductDetailPageLanding extends PageAction<ProductDetailPageLandin
     @Override
     public void doExecute() throws Exception
     {
-        // Set the Basic Authentication header if necessary.
         Context.setBasicAuthenticationHeader();
 
-        loadPage(this.urlString);
+        loadPage(urlString);
     }
 
     @Override
     protected void postValidate() throws Exception
     {
         Validator.validatePageSource();
-
-        ProductDetailPage.identify();
+        
+        // TODO validate PDP
     }
 }
