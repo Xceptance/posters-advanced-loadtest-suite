@@ -1,33 +1,27 @@
 package com.xceptance.loadtest.posters.actions.catalog;
 
-import java.util.List;
-
-import com.gargoylesoftware.htmlunit.WebResponse;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.xceptance.loadtest.posters.pages.catalog.ProductDetailPage;
-import com.xceptance.loadtest.posters.pages.components.pdp.ProductDetail;
-import com.xceptance.loadtest.posters.pages.components.pdp.ProductDetailVariation;
-import com.xceptance.xlt.api.util.XltRandom;
 
 /**
  * Chooses a random product configuration.
- *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
  */
 public class ConfigureProductVariation extends AbstractConfigureProduct<ConfigureProductVariation>
 {
     /**
-     * The attribute to work on
+     * The current product detail page. 
+     */
+    private final ProductDetailPage page;
+
+    /**
+     * The variation attribute to configure. 
      */
     private HtmlElement variationAttribute;
 
     /**
-     * The name of the attribute
+     * The name of the variation attribute.
      */
     private final String variationAttributeName;
-
-    private final ProductDetailPage<? extends ProductDetail> page;
-    private final ProductDetailVariation productDetail;
 
     /**
      * Constructor
@@ -35,20 +29,18 @@ public class ConfigureProductVariation extends AbstractConfigureProduct<Configur
      * @param quantity
      *            the quantity to select later if needed
      */
-    public ConfigureProductVariation(final ProductDetailPage<? extends ProductDetail> page,
-                    final ProductDetailVariation productDetail,
-                    final HtmlElement item, final String variationAttributeName)
+    public ConfigureProductVariation(final ProductDetailPage page, final HtmlElement item, final String variationAttributeName)
     {
         super(item);
 
         this.variationAttributeName = variationAttributeName;
         this.page = page;
-        this.productDetail = productDetail;
     }
 
     @Override
     public void precheck()
     {
+    	/*
         variationAttribute = productDetail.getVariationAttributeByName(item, variationAttributeName).asserted().single();
 
         // check that there is stuff to do
@@ -57,6 +49,7 @@ public class ConfigureProductVariation extends AbstractConfigureProduct<Configur
                                         "No unselected attributes found for '" + variationAttributeName
                                                         + "', maybe just one there that is already selected or the structure is different")
                         .all();
+    	 */
     }
 
     /**
@@ -65,6 +58,7 @@ public class ConfigureProductVariation extends AbstractConfigureProduct<Configur
     @Override
     protected void doExecute() throws Exception
     {
+    	/*
         final List<HtmlElement> unSelectedElements = productDetail.getSelectableButUnselectedVariationAttributes(variationAttribute).all();
 
         // ok, take one from our list and select it
@@ -77,6 +71,7 @@ public class ConfigureProductVariation extends AbstractConfigureProduct<Configur
 
         // update item in case we replaced it
         item = productDetail.render(response.getContentAsString(), item);
+        */
     }
 
     /**

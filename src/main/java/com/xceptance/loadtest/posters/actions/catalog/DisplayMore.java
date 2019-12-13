@@ -4,10 +4,7 @@ import org.junit.Assert;
 
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.xceptance.loadtest.api.actions.AjaxAction;
-import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.HttpRequest;
-import com.xceptance.loadtest.posters.jsondata.SortOptionJSON;
-import com.xceptance.loadtest.posters.jsondata.SortOptionsJSON;
 import com.xceptance.loadtest.posters.pages.catalog.ProductListingPage;
 
 /**
@@ -33,6 +30,7 @@ public class DisplayMore extends AjaxAction<DisplayMore>
 
         // Store the current product count for validation purposes
         productCount = ProductListingPage.instance.productGrid.getDisplayedProductCount();
+        
         // If the displayed item count is not helpful, use our item count.
         // productCount = ProductListingPage.instance.itemCount.getItemCount();
     }
@@ -55,26 +53,6 @@ public class DisplayMore extends AjaxAction<DisplayMore>
 
         // Remove old footer, otherwise we would have two
         oldFooter.remove();
-
-        // Update sort options from new footer
-        updateSortingOptions();
-    }
-
-    /**
-     * Updates the existing sorting options in the page with the newly provided sort options from
-     * the grid footer JSON.
-     */
-    public void updateSortingOptions()
-    {
-        final HtmlElement footer = ProductListingPage.instance.productGrid.getFooter().asserted("Failed to find grid footer element").single();
-        if (footer.hasAttribute("data-sort-options"))
-        {
-            final SortOptionsJSON sortOptions = Context.getGson().fromJson(footer.getAttribute("data-sort-options"), SortOptionsJSON.class);
-            for (final SortOptionJSON sortOption : sortOptions.options)
-            {
-                ProductListingPage.instance.gridSort.updateOption(sortOption.id, sortOption.url);
-            }
-        }
     }
 
     /**

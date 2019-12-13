@@ -11,6 +11,9 @@ import com.xceptance.loadtest.posters.pages.catalog.ProductListingPage;
  */
 public class NavigateCategoriesFlow extends Flow
 {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean execute() throws Throwable
     {

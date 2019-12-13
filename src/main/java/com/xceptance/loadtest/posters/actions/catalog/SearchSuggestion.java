@@ -9,7 +9,6 @@ import com.xceptance.loadtest.api.actions.NonPageView;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.DOMUtils;
 import com.xceptance.loadtest.api.util.HttpRequest;
-import com.xceptance.loadtest.posters.pages.catalog.QuickviewPage;
 import com.xceptance.loadtest.posters.pages.general.GeneralPages;
 import com.xceptance.xlt.api.util.XltRandom;
 
@@ -53,9 +52,6 @@ public class SearchSuggestion extends AjaxAction<SearchSuggestion> implements No
         // url = AjaxUtils.getAppResourceValue("searchsuggest");
         searchSuggestionContainer = GeneralPages.instance.siteSearch.locateSuggestionContainer().asserted("No single suggestions wrapper found.").single();
         url = searchSuggestionContainer.getAttribute("data-url");
-
-        // close existing quick view, this is safe
-        QuickviewPage.instance.quickview.closeQuickview();
     }
 
     /**

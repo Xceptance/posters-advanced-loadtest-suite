@@ -14,7 +14,6 @@ import com.xceptance.loadtest.posters.flows.VisitFlow;
 import com.xceptance.loadtest.posters.pages.catalog.CategoryLandingPage;
 import com.xceptance.loadtest.posters.pages.catalog.ProductDetailPage;
 import com.xceptance.loadtest.posters.pages.catalog.ProductListingPage;
-import com.xceptance.loadtest.posters.pages.catalog.QuickviewPage;
 import com.xceptance.loadtest.posters.pages.general.GeneralPages;
 import com.xceptance.loadtest.posters.pages.search.SearchNoResultPage;
 
@@ -83,7 +82,7 @@ public class TVisitAllCategoryLinks extends LoadTestCase
                 {
                     // all good
                 }
-                else if (ProductDetailPage.instance.is() || QuickviewPage.instance.is())
+                else if (ProductDetailPage.instance.is())
                 {
                     // even better
                 }
