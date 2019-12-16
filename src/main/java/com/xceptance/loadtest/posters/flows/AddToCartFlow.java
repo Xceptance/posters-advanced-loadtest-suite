@@ -50,7 +50,7 @@ public class AddToCartFlow extends Flow
             searchOrBrowse();
 
             // Configure if required
-            //if (new ConfigureProductFlow().run())
+            if (new ConfigureProductFlow().run())
             {
                 // Add the configured product to the cart 
                 new AddToCart().runIfPossible().ifPresent(e -> addToCartSafetyBreak.reset());

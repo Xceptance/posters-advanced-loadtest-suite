@@ -15,7 +15,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.xceptance.common.util.RegExUtils;
 import com.xceptance.loadtest.api.data.SearchOption;
 import com.xceptance.loadtest.api.tests.LoadTestCase;
-import com.xceptance.loadtest.posters.actions.catalog.DisplayMore;
+import com.xceptance.loadtest.posters.actions.catalog.Paging;
 import com.xceptance.loadtest.posters.actions.catalog.Search;
 import com.xceptance.loadtest.posters.actions.crawler.CrawlerURL;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
@@ -244,23 +244,15 @@ public class SearchPhraseCrawler extends LoadTestCase
     private void addProductGridFindingsToList(final Set<String> possibleSearchPhrases, final HtmlAnchor anchor)
                     throws MalformedURLException, Throwable
     {
-        // Follow category link.
+        // Follow category link
         new CrawlerURL(anchor.getHrefAttribute()) //
                         .assertBasics() //
-                        .assertWebResponse("Expected resonse code 200.", r -> r.getStatusCode() == 200) //
+                        .assertWebResponse("Expected resonse code 200.", r -> r.getStatusCode() == 200)
                         .run();
 
-        // If we have infinite scroll just scroll and load more products.
-        while (new DisplayMore().runIfPossible().isPresent())
+        // If paging is possible do it once (since we choose random paging link and don't know how long to loop)
+        if (new Paging().runIfPossible().isPresent())
         {
-            // scroll as long as possible
-        }
-
-        // If paging is possible do it once (since we choose random paging link
-        // and don't know how long to loop)
-        if (new DisplayMore().runIfPossible().isPresent())
-        {
-            // perform as many paging actions as possible
         }
 
         // Extract search phrases.

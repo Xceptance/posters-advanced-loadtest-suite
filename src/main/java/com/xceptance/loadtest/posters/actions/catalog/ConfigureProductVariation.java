@@ -1,55 +1,83 @@
 package com.xceptance.loadtest.posters.actions.catalog;
 
+import java.util.Hashtable;
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+import org.json.JSONObject;
+import org.junit.Assert;
+
+import com.gargoylesoftware.htmlunit.WebResponse;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
+import com.gargoylesoftware.htmlunit.html.HtmlOption;
+import com.gargoylesoftware.htmlunit.html.HtmlRadioButtonInput;
+import com.xceptance.common.util.RegExUtils;
+import com.xceptance.loadtest.api.actions.AjaxAction;
+import com.xceptance.loadtest.api.hpu.HPU;
+import com.xceptance.loadtest.api.pages.Page;
+import com.xceptance.loadtest.api.util.FormUtils;
+import com.xceptance.loadtest.api.util.HttpRequest;
 import com.xceptance.loadtest.posters.pages.catalog.ProductDetailPage;
+import com.xceptance.xlt.api.util.XltRandom;
 
 /**
  * Chooses a random product configuration.
  */
-public class ConfigureProductVariation extends AbstractConfigureProduct<ConfigureProductVariation>
+public class ConfigureProductVariation extends AjaxAction<ConfigureProductVariation>
 {
-    /**
-     * The current product detail page. 
-     */
-    private final ProductDetailPage page;
-
-    /**
-     * The variation attribute to configure. 
-     */
-    private HtmlElement variationAttribute;
-
-    /**
-     * The name of the variation attribute.
-     */
-    private final String variationAttributeName;
-
-    /**
-     * Constructor
-     *
-     * @param quantity
-     *            the quantity to select later if needed
-     */
-    public ConfigureProductVariation(final ProductDetailPage page, final HtmlElement item, final String variationAttributeName)
+	private HtmlElement productItem;
+	
+	private Hashtable<HtmlElement, List<HtmlElement>> selectVariationAttributes = new Hashtable<>();
+	
+	private Hashtable<HtmlElement, List<HtmlElement>> inputVariationAttributes = new Hashtable<>();
+	
+    public ConfigureProductVariation(HtmlElement productItem)
     {
-        super(item);
-
-        this.variationAttributeName = variationAttributeName;
-        this.page = page;
+        this.productItem = productItem;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void precheck()
     {
-    	/*
-        variationAttribute = productDetail.getVariationAttributeByName(item, variationAttributeName).asserted().single();
+    	// Get all variation attributes
+    	List<HtmlElement> variationAttributes = ProductDetailPage.instance.getVariationAttributes(productItem);
+    	Assert.assertTrue("Expected at least one variation attribute", variationAttributes.size() > 0);
+    	
+    	// Retrieve select variation attributes that are not yet configured
+    	extractUnconfiguredSelectVariationAttributes(variationAttributes);
 
-        // check that there is stuff to do
-        productDetail.getSelectableButUnselectedVariationAttributes(variationAttribute)
-                        .asserted(
-                                        "No unselected attributes found for '" + variationAttributeName
-                                                        + "', maybe just one there that is already selected or the structure is different")
-                        .all();
-    	 */
+    	// Retrieve input variation attributes that are not yet configured    	
+    	extractUnconfiguredInputVariationAttributes(variationAttributes);
+    	
+    	// Sanity check that we have at least a single configurable variation attribute
+    	Assert.assertFalse("Expected at least one configurable variation attribute", selectVariationAttributes.isEmpty() && inputVariationAttributes.isEmpty());
+    }
+    
+    private void extractUnconfiguredSelectVariationAttributes(List<HtmlElement> variationAttributes)
+    {
+    	for(HtmlElement attribute : variationAttributes)
+    	{
+    		List<HtmlElement> options = HPU.find().in(attribute).byCss("select > option[title]:not([selected])").all();
+    		if(!options.isEmpty())
+    		{
+    			selectVariationAttributes.put(attribute, options);
+    		}
+    	}
+    }
+
+    private void extractUnconfiguredInputVariationAttributes(List<HtmlElement> variationAttributes)
+    {
+    	for(HtmlElement attribute : variationAttributes)
+    	{
+    		List<HtmlElement> inputs = HPU.find().in(attribute).byCss("input:not(.selected):not(.checked)").all();
+    		if(!inputs.isEmpty())
+    		{
+    			inputVariationAttributes.put(attribute, inputs);
+    		}
+    	}
     }
 
     /**
@@ -58,20 +86,61 @@ public class ConfigureProductVariation extends AbstractConfigureProduct<Configur
     @Override
     protected void doExecute() throws Exception
     {
-    	/*
-        final List<HtmlElement> unSelectedElements = productDetail.getSelectableButUnselectedVariationAttributes(variationAttribute).all();
+    	// Handle all configurations with select attribute
+    	configureSelectVariationAttributes();
 
-        // ok, take one from our list and select it
-        final HtmlElement newlySelectedElement = unSelectedElements.get(XltRandom.nextInt(unSelectedElements.size()));
+    	// Handle all configurations with input elements
+    	configureInputVariationAttributes();
+    }
+    
+    private void configureSelectVariationAttributes() throws Exception
+    {
+    	for(HtmlElement attribute : selectVariationAttributes.keySet())
+    	{
+    		List<HtmlElement> options = selectVariationAttributes.get(attribute);
 
-        final String url = productDetail.getVariationUpdateUrl(newlySelectedElement);
+    		// Randomly select an option
+    		HtmlOption selectedOption = (HtmlOption)options.get(XltRandom.nextInt(options.size()));
+    		FormUtils.selectOption(selectedOption);
+    		
+    		// Send product update request for the selected option
+    		executeProductPriceUpdate(selectedOption);
+    	}
+    }
+    
+    private void executeProductPriceUpdate(HtmlElement optionElement) throws Exception
+    {
+    	String onChange = ((HtmlElement)optionElement.getParentNode()).getAttribute("onchange");
+    	
+    	// Extract PID from 'onchange' attribute
+    	String pid = RegExUtils.getFirstMatch(onChange, "updatePrice\\(this,\\s*(\\d+)\\)", 1);
+    	Assert.assertTrue("Expected PID to be contained in onchange attribute", !StringUtils.isBlank(pid));
+    	
+    	// Get size of selected option
+    	String selectedSize = optionElement.getAttribute("title");
+    	Assert.assertTrue("Expected title attribute containing size", !StringUtils.isBlank(selectedSize));
+    	
+    	// Request the updated price
+    	WebResponse response = new HttpRequest()
+    							.XHR()
+    							.POST()
+    							.url("/posters/updatePrice")
+    							.param("size", selectedSize)
+    							.param("productId", pid)
+    							.assertJSONObject("Expected price update in response'", true, json -> json.has("newPrice")) 
+    							.fire();
+    	
+    	// Update returned price information in page
+    	Page.find().byId("prodPrice").asserted().single().setTextContent(new JSONObject(response.getContentAsString()).getString("newPrice"));
+    }
 
-        // get the data
-        final WebResponse response = call(url);
-
-        // update item in case we replaced it
-        item = productDetail.render(response.getContentAsString(), item);
-        */
+    private void configureInputVariationAttributes()
+    {
+    	for(HtmlElement attribute : inputVariationAttributes.keySet())
+    	{
+    		List<HtmlElement> inputs = inputVariationAttributes.get(attribute);
+    		FormUtils.checkRadioButton((HtmlRadioButtonInput)inputs.get(XltRandom.nextInt(inputs.size())));
+    	}
     }
 
     /**
@@ -80,6 +149,6 @@ public class ConfigureProductVariation extends AbstractConfigureProduct<Configur
     @Override
     protected void postValidate() throws Exception
     {
-        page.validate();
+    	// Nothing to validate
     }
 }

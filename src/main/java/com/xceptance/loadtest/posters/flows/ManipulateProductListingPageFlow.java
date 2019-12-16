@@ -6,7 +6,7 @@ import java.util.List;
 import com.xceptance.loadtest.api.flows.Flow;
 import com.xceptance.loadtest.api.flows.FlowCode;
 import com.xceptance.loadtest.api.util.Context;
-import com.xceptance.loadtest.posters.actions.catalog.DisplayMore;
+import com.xceptance.loadtest.posters.actions.catalog.Paging;
 
 /**
  * Manipulates the product listing page by executing the available product listing page actions.
@@ -18,14 +18,14 @@ public class ManipulateProductListingPageFlow extends Flow
     private static final List<FlowCode> flows = Arrays.asList(
                     () ->
                     {
-                        displayMore();
+                        page();
                         // TODO add more/different product listing page actions
 
                         return true;
                     },
                     () ->
                     {
-                        displayMore();
+                        page();
                         // TODO add more/different product listing page actions
                         
                         return true;
@@ -41,13 +41,13 @@ public class ManipulateProductListingPageFlow extends Flow
     }
 
     /**
-     * Performs paging or load more (infinite scroll).
+     * Performs paging.
      */
-    private static void displayMore() throws Throwable
+    private static void page() throws Throwable
     {
         if (Context.configuration().displayMoreProbability.random())
         {
-            if (!new DisplayMore().runIfPossible().isPresent())
+            if (!new Paging().runIfPossible().isPresent())
             {
                 // Context.logForDebug("No paging/infinite scroll available.");
             }

@@ -6,7 +6,7 @@ import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.pages.general.GeneralPages;
 
 /**
- * Selects a category from the top navigation menu.
+ * Selects a top category from the navigation menu.
  */
 public class ClickATopCategory extends PageAction<ClickATopCategory>
 {

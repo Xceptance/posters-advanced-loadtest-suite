@@ -5,24 +5,19 @@ import com.xceptance.loadtest.api.pages.Page;
 import com.xceptance.loadtest.api.pages.components.Component;
 import com.xceptance.loadtest.api.util.Context;
 
+/**
+ * Navigation component.
+ */
 public class Navigation implements Component
 {
     public final static Navigation instance = new Navigation();
 
-    /**
-     * Lookup the navigation.
-     */
     @Override
     public LookUpResult locate()
     {
         return Header.instance.locate().byCss("#categoryMenu");
     }
 
-    /**
-     * Indicates if this component exists
-     *
-     * @return
-     */
     @Override
     public boolean exists()
     {

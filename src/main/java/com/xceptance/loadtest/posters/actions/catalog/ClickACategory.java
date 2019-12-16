@@ -6,7 +6,7 @@ import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.pages.general.GeneralPages;
 
 /**
- * Select a category from the navigation menu.
+ * Selects a category from the navigation menu.
  */
 public class ClickACategory extends PageAction<ClickACategory>
 {
