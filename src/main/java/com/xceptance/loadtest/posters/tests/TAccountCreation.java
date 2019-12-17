@@ -9,7 +9,7 @@ import com.xceptance.loadtest.posters.flows.CreateAccountFlow;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
 
 /**
- * Visits the homepage, opens the account creation page and creates an account, logs in with the newly created account, opens the MyAccount page and logs out.
+ * Visits the home page, opens the account creation page and creates an account, logs in with the newly created account, opens the MyAccount page and logs out.
  */
 public class TAccountCreation extends LoadTestCase
 {
@@ -19,7 +19,7 @@ public class TAccountCreation extends LoadTestCase
     @Override
     protected void test() throws Throwable
     {
-        // Start at the landing page.
+        // Start at the landing page
         new VisitFlow().run();
 
         // Attach an account to the current context

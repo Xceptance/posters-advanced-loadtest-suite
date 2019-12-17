@@ -4,7 +4,6 @@ import com.xceptance.loadtest.api.data.SearchOption;
 import com.xceptance.loadtest.api.data.SearchTermSupplier;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.posters.actions.catalog.Search;
-import com.xceptance.loadtest.posters.actions.catalog.SearchSuggestion;
 
 public class SearchFlow
 {
@@ -18,21 +17,8 @@ public class SearchFlow
         // get a term
         final String searchPhrase = option == SearchOption.HITS ? SearchTermSupplier.getTermWithHit() : SearchTermSupplier.getTermWithoutHits();
 
-        // shall we do suggestions? Don't rely on the prevalidate exception, be
-        // more efficient
-        if (Context.configuration().searchSuggestionsEnabled)
-        {
-            // Do the search suggestions requests.
-            new SearchSuggestion(searchPhrase).runIfPossible();
-        }
-
-        // Run the search with an appropriate search phrase according to the
-        // search option.
+        // Run the search with an appropriate search phrase according to the search option.
         new Search(searchPhrase, option).run();
-
-        // Browse the results, open product details, and configure product
-        // if possible
-        new NavigateToProductPageFlow().run();
 
         return true;
     }

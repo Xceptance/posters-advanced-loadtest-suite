@@ -14,20 +14,19 @@ import com.xceptance.loadtest.posters.actions.cart.ViewCart;
 public class AddToCartFlow extends Flow
 {
     /**
-     * Maximum number of attempts to add the desired number of products to the cart.
+     * Maximum number of attempts to add the desired number of products to the cart
      */
     private final SafetyBreak addToCartSafetyBreak = new SafetyBreak(5);
 
     /**
-     * What our item count should be at the end
+     * Item count that is expected after the add to cart flow has finished
      */
     private final int targetItemCount;
 
     /**
-     * Force the cart to be updated by setting another cart size target number
+     * Creates and add to cart flow with given override for the cart item target  
      *
-     * @param addToCartOverride
-     *            custom target size of the cart
+     * @param addToCartOverride Custom target size of the cart
      */
     public AddToCartFlow(final int targetItemCount)
     {
@@ -68,18 +67,18 @@ public class AddToCartFlow extends Flow
 
     private void searchOrBrowse() throws Throwable
     {
-        // Either search or use category navigation to navigate the site
         if (Context.configuration().searchOnAddToCartProbability.random())
         {
+        	// Search
             new SearchFlow().run();
         }
         else
         {
             // Navigate the categories
             new NavigateCategoriesFlow().run();
-
-            // Work the 
-            new NavigateToProductPageFlow().run();
         }
+        
+        // Handle resulting page, most likely product listing page
+        new NavigateToProductPageFlow().run();
     }
 }

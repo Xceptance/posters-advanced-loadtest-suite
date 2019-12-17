@@ -8,9 +8,7 @@ import com.xceptance.loadtest.posters.flows.VisitFlow;
 import com.xceptance.loadtest.posters.pages.cart.CartPage;
 
 /**
- * Open the landing page and browse the catalog to a random product. Configure this product and add it to the cart.
- *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * Starts visit at landing page, browses categories or searches, executes product listing page actions, visits product pages, configures products, adds to cart and views the cart page. 
  */
 public class TAddToCart extends LoadTestCase
 {
@@ -20,13 +18,13 @@ public class TAddToCart extends LoadTestCase
     @Override
     public void test() throws Throwable
     {
-        // Start at the landing page.
+        // Start at the landing page
         new VisitFlow().run();
 
-        // Fill cart
+        // Add items to the cart via browsing and searching the catalog
         new AddToCartFlow(Context.configuration().addToCartCount.value).run();
 
-        // View the cart if not just done
+        // View the cart if not yet done
         if (!CartPage.instance.is())
         {
             new ViewCart().run();

@@ -120,6 +120,9 @@ public class ConfigureProductVariation extends AjaxAction<ConfigureProductVariat
     	String selectedSize = optionElement.getAttribute("title");
     	Assert.assertTrue("Expected title attribute containing size", !StringUtils.isBlank(selectedSize));
     	
+    	// Set the selected option text as value of the select element
+    	((HtmlElement)optionElement.getParentNode()).setAttribute("value", selectedSize);
+    	
     	// Request the updated price
     	WebResponse response = new HttpRequest()
     							.XHR()

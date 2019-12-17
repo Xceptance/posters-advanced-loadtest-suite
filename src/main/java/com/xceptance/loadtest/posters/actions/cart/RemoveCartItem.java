@@ -48,7 +48,9 @@ public class RemoveCartItem extends AjaxAction<RemoveCartItem>
 
         // update the mini cart
         final CartJSON json = renderer.getJson(CartJSON.class, "data");
-        MiniCart.instance.updateQuantity(json.basket.numItems, json.basket.items.size());
+        
+        // TODO
+        //MiniCart.instance.updateQuantity(json.basket.numItems, json.basket.items.size());
     }
 
     @Override

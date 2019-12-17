@@ -1,22 +1,16 @@
 package com.xceptance.loadtest.posters.jsondata;
 
-import com.xceptance.loadtest.posters.jsondata.cart.Cart;
+import com.google.gson.annotations.SerializedName;
+import com.xceptance.loadtest.posters.jsondata.cart.Product;
 
-/**
- * It would have been too nice if the cart json would be standardized.
- * 
- * @author rschwietzke
- *
- */
 public class AddToCartJSON
 {
-    public String action;
-    public String queryString;
-    public String locale;
-    public int quantityTotal;
-    public String message;
-
-    public Cart cart;
-
+	public Product product;
+	
+	@SerializedName("headerCartOverview")
+	public int itemsInCart;
+	
     public boolean error;
+    
+    public String message;
 }

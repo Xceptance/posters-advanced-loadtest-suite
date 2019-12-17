@@ -70,8 +70,11 @@ public class Paging extends AjaxAction<Paging>
     		return;
     	}
     	
+    	// Make sure there is more than one page
+    	Assert.assertTrue("Expected more than one page to execute paging", totalPages > 1);
+    	
     	// Randomly select the new page number ignoring current page number
-    	int newPageNumber = XltRandom.nextInt(totalPages);
+    	int newPageNumber = XltRandom.nextInt(1, totalPages - 1);
     	newPage = String.format("%d", newPageNumber >= currentPage ? newPageNumber + 1 : newPageNumber);
     }
 
@@ -95,7 +98,7 @@ public class Paging extends AjaxAction<Paging>
     		.assertJSONObject("Expected non-empty product information to be contained in paging response", true, json -> json.getJSONArray("products").length() > 0)
     		.fire();
     	
-    	// TODO Render or otherwise update the PLP with products from paging response
+    	// TODO Render OR otherwise update the PLP with products from paging response
     }
 
     /**

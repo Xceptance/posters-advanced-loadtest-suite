@@ -43,7 +43,9 @@ public class ChangeLineItemQuantity extends AjaxAction<ChangeLineItemQuantity>
 
         // update the mini cart
         final CartUpdateJSON json = renderer.getJson(CartUpdateJSON.class, "data");
-        MiniCart.instance.updateQuantity(json.numItems, json.items.size());
+        
+        // TODO
+        //MiniCart.instance.updateQuantity(json.numItems, json.items.size());
     }
 
     @Override

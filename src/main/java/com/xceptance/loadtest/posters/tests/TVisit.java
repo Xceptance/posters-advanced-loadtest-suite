@@ -4,10 +4,7 @@ import com.xceptance.loadtest.api.tests.LoadTestCase;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
 
 /**
- * Single click visitor. The visitor opens the landing page and will not do any interaction.
- *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
- *
+ * Visits the landing page.
  */
 public class TVisit extends LoadTestCase
 {
@@ -17,7 +14,7 @@ public class TVisit extends LoadTestCase
     @Override
     public void test() throws Throwable
     {
-        // Start at the landing page and leave immediately.
+        // Visits the landing page and leave immediately
         new VisitFlow().run();
     }
 }

@@ -98,20 +98,7 @@ public abstract class Flow
      */
     public static boolean createAndRun(final String name, final List<FlowCode> codes) throws Throwable
     {
-        final int r;
-
-        final int plpFlowSelector = Context.configuration().plpFlowSelector;
-
-        if (!Context.isLoadTest && plpFlowSelector >= 0)
-        {
-            // select the given number for the switch for the PLP flow
-            r = plpFlowSelector;
-        }
-        else
-        {
-            r = XltRandom.nextInt(codes.size());
-        }
-
+        final int r = XltRandom.nextInt(codes.size());
         return new AdhocFlow(name + ":" + r, codes.get(r)).run();
     }
 

@@ -2,15 +2,12 @@ package com.xceptance.loadtest.posters.tests;
 
 import com.xceptance.loadtest.api.tests.LoadTestCase;
 import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.posters.flows.NavigateToProductPageFlow;
 import com.xceptance.loadtest.posters.flows.SearchFlow;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
 
 /**
- * Open the landing page and search for predefined key words as well as for
- * random string. If there are search results open a random product's quick or
- * detail view.
- *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * Starts visit at landing page, searches, executes product listing page actions and visits product pages.
  */
 public class TSearch extends LoadTestCase
 {
@@ -20,16 +17,22 @@ public class TSearch extends LoadTestCase
     @Override
     public void test() throws Throwable
     {
-        // Start at the landing page.
+        // Start at the landing page
         new VisitFlow().run();
 
-        // Get the number of searches determined from the configured min and max
-        // products.
+        // Determine the number of times to execute a search operation
         final int searches = Context.configuration().searchesCount.value;
         for (int i = 0; i < searches; i++)
         {
-            // Perform a search.
+            // Perform a search operation
             new SearchFlow().run();
+            
+            final int productPageRounds = Context.configuration().browseRefineFlow.value;
+            for (int j = 0; j < productPageRounds; j++)
+            {
+                // Browse the resulting pages and open product detail pages
+                new NavigateToProductPageFlow().run();
+            }
         }
     }
 }

@@ -80,20 +80,11 @@ public class DebugAction extends PageAction<DebugAction>
     /**
      * Executes a debug action if permitted aka only during development, never during load testing
      *
-     * @param name
-     *            the action name
+     * @param name The action name
      * @throws Throwable
      */
     public static void log(final Supplier<String> name) throws Throwable
     {
-        // rl.add(XltRandom.nextInt());
-        //
-        // System.out.println("==== " + Context.get().configuration.useDebugActions + " ======");
-        // for (int i = 0; i < rl.size(); i++)
-        // {
-        // System.out.println("Random " + i + ": " + rl.get(i));
-        // }
-
         if (Context.isLoadTest == false && Context.configuration().useDebugActions)
         {
             new DebugAction(name.get()).run();
