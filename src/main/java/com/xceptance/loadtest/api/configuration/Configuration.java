@@ -12,9 +12,7 @@ import com.xceptance.loadtest.api.data.CreditCard;
 import com.xceptance.loadtest.api.data.PaymentLimitations;
 
 /**
- * Configuration for the Test
- *
- * @author Rene Schwietzke (Xceptance Software Technologies GmbH)
+ * Test suite configuration
  */
 public class Configuration
 {
@@ -24,8 +22,7 @@ public class Configuration
     public LTProperties properties;
 
     // ===============================================================
-    // Common / General
-    //
+    // General
 
     @Property(key = "general.url")
     public String siteUrlHomepage;
@@ -58,19 +55,13 @@ public class Configuration
     @Property(key = "general.load.ltkTracking", fallback = "false")
     public boolean loadLtkTracking;
 
-//    // Consent: Do we want to check consent?
-//    @Property(key = "general.consent.ask")
-//    public boolean consentAsk;
-
-//    // Consent: What do we ansswer?
-//    @Property(key = "general.consent.confirm")
-//    public boolean consentConfirm;
-
     // URL: To start with the direct order scenario
     @Property(key = "general.direct.order.url")
     public String directOrderUrl;
 
-    // ================ Email
+    // ================================================================
+    // Email
+    
     // Email domain
     @Property(key = "general.email.domain")
     public String emailDomain;
@@ -81,15 +72,15 @@ public class Configuration
     @Property(key = "general.email.localpart.length")
     public int emailLocalPartLength;
 
-    // request gzipped resources?
+    // Request gzipped resources
     @Property(key = "com.xceptance.xlt.http.gzip")
     public boolean applyHeaderGzip;
 
-    // dump long running request sessions
+    // Dump long running request sessions
     @Property(key = "com.xceptance.xlt.output2disk.onResponseTime.largerThan", required = false, fallback = "0")
     public int dumpResponseTimesWhenLargerThan;
 
-    /** in milliseconds */
+    // Long running request sessions threshold in milliseconds 
     @Property(key = "general.request.longrunning.sessionFlag.threshold", required = false, fallback = "0")
     public int longRunningRequestThresholdForSessionMarking;
 
@@ -97,26 +88,23 @@ public class Configuration
     // TODO naming
     @Property(key = "general.execute.ontimeout.retry.max")
     public int onTimeoutRetryCount;
+    
+    // Puts additional actions into the result browser
+    // Changes the random stream, hence for reproducing production seeds, this has to be disabled
+    @Property(key = "general.debug.actions")
+    public boolean useDebugActions;
 
     // Allow the use of debug urls while developing
     @Property(key = "general.debug.urls")
     public boolean useDebugUrls;
 
-    // Puts additional actions into the result browser
-    // changes the random stream, hence for reproducing production
-    // seeds, this has to be disabled
-    @Property(key = "general.debug.actions")
-    public boolean useDebugActions;
-
-    // generate totally random emails by using the UUID generator
-    // or when set to true, use the XltRandom generator to
-    // create a reproducible stream of emails
+    // Generate totally random emails by using the UUID generator or use the XltRandom generator to create a reproducible stream of emails
     @Property(key = "general.email.stronglyRandom")
     public boolean stronglyRandomEmails;
 
     // ================================================================
-    // Filter
-    //
+    // URL Filter
+
     @EnumProperty(key = "filter.product.url", clazz = String.class, from = 0, to = 100, stopOnGap = false, required = false)
     public EnumConfigList<String> filterProductUrls;
 
@@ -124,37 +112,15 @@ public class Configuration
     public EnumConfigList<String> filterCategoryUrls;
 
     // ================================================================
-    // Flash
-    //
-    @EnumProperty(key = "flash.product.urls", clazz = String.class, from = 0, to = 100, stopOnGap = false, required = true)
-    public EnumConfigList<String> flashUrls;
-
-    // refresh timer
-    @Property(key = "flash.refreshTime")
-    public int flashRefreshTime;
-
-    // Flash start time
-    @Property(key = "flash.startTime")
-    public int flashStartTime;
-
-    // list of OCAPI product ID's
-    @EnumProperty(key = "flash.ocapi_product.id", clazz = String.class, from = 0, to = 100, stopOnGap = false, required = true)
-    public EnumConfigList<String> flashIDs;
-
-    // ================================================================
     // Search
-    //
-    // range of product searches
+
+    // Range of product searches
     @Property(key = "search.count", immutable = false)
     public ConfigRange searchesCount;
 
-    // Whether or not to load search suggestions
+    // File with search terms
     @Property(key = "search.hitTermsFile")
     public String searchHitTermsFile;
-
-    // Whether or not to load search suggestions
-    @Property(key = "search.loadSuggestions")
-    public boolean searchSuggestionsEnabled;
 
     // Probability to execute a 'no-hits' search
     @Property(key = "search.noHits", immutable = false)
@@ -178,24 +144,12 @@ public class Configuration
 
     // ==========================================================
     // Browsing
-    //
-
-    // What is the regular size of PLPs aka amount of tiles. Helps to select
-    // PDPs from tile pages better. Not mandatory to be accurate.
-    @Property(key = "browsing.plp.tiles.count", immutable = true)
-    public int numberOfPLPTiles;
-
-    // Select which switch statement should be used in the product listing pages flow
-    @Property(key = "browsing.plp.flow.selector", required = false, fallback = "-1")
-    public int plpFlowSelector;
-
+    
     // How often do we want to walk the catalog path from the top
-    // including refinemnets
     @Property(key = "browsing.flow")
     public ConfigRange fullBrowseFlow;
 
-    // How often do we need the categories touched per browsing flow
-    // before refining
+    // How often do we need the categories touched per browsing flow before refining
     @Property(key = "browsing.flow.categories.flow")
     public ConfigRange browseCategoriesFlow;
 
@@ -203,50 +157,20 @@ public class Configuration
     @Property(key = "browsing.flow.refine.flow")
     public ConfigRange browseRefineFlow;
 
-    // refine only when enough products are shown, so avoid refining against
-    // single results and such things
-    @Property(key = "browsing.refine.products.minimumCountShown")
-    public ConfigRange refinementMinimumProductCount;
-
     // Top category browsing probability
     @Property(key = "browsing.category.top", immutable = false)
     public ConfigProbability topCategoryBrowsing;
-
-    // Probability for attribute refinements
-    @Property(key = "browsing.refine", immutable = false)
-    public ConfigProbability refinementProbability;
-
-    // Probability for category refinements
-    @Property(key = "browsing.refine.category", immutable = false)
-    public ConfigProbability categoryRefinementProbability;
-
-    // Probability for sorting
-    @Property(key = "browsing.sorting", immutable = false)
-    public ConfigProbability sortingProbability;
 
     // Probability for display more
     @Property(key = "browsing.displaymore", immutable = false)
     public ConfigProbability displayMoreProbability;
 
-    // shall we do infinite scrolling?
-    @Property(key = "browsing.infinitescroll")
-    public boolean useInfiniteScroll;
-
     // Minimum number of products to view when viewing product details
     @Property(key = "browsing.product.view.count", immutable = false)
     public ConfigRange productViewCount;
 
-    // Probability for accessing a product via quick view
-    @Property(key = "browsing.product.quickview.view", immutable = false)
-    public ConfigProbability quickViewProbability;
-
-    // When we do quick views, how often shall we do them
-    @Property(key = "browsing.product.quickview.view.count", immutable = false)
-    public ConfigRange quickViewCount;
-
     // ===========================================================
     // Cart
-    //
 
     // Probability to execute a 'search' instead of using the navigation menu.
     @Property(key = "cart.search", immutable = false)
@@ -260,10 +184,6 @@ public class Configuration
     @Property(key = "cart.view", immutable = false)
     public ConfigProbability viewCartProbability;
 
-    // How often should the cart be shown after an add to cart
-    @Property(key = "cart.minicart.view", immutable = false)
-    public ConfigProbability viewMiniCartProbability;
-
     // Do we need a counter for add2cart and view cart, mainly for performance
     // debugging
     @Property(key = "cart.report.bySize")
@@ -275,7 +195,6 @@ public class Configuration
 
     // =========================================================
     // Account
-    //
 
     // where should we take it from
     @Property(key = "account.source", required = true)
@@ -292,8 +211,8 @@ public class Configuration
     @Property(key = "account.predefined.file", required = false)
     public String predefinedAccountsFile;
 
+    // ================================================================
     // Account Pool
-    //
 
     // Whether or not to separate account pools
     @Property(key = "account.pool.separator")
@@ -310,64 +229,25 @@ public class Configuration
 
     // ===========================================================
     // Payment
-    //
 
+    // Credit card definitions
     @EnumProperty(key = "creditcards", clazz = CreditCard.class, from = 0, to = 100, stopOnGap = true)
     public EnumConfigList<CreditCard> creditcards;
 
+    // Payment limitations
     @EnumProperty(key = "paymentlimitations", clazz = PaymentLimitations.class, from = 0, to = 10, stopOnGap = true)
     public EnumConfigList<PaymentLimitations> paymentLimitations;
 
     // ===========================================================
-    // Store
-    //
-    @Property(key = "store.search.count", immutable = false)
-    public ConfigDistribution storeSearches;
-
-    // ===========================================================
-    // Special Scenarios
-    //
-    @Property(key = "extra.revisitWaitingTime", immutable = false)
-    public ConfigRange revisitWaitingTime;
-
-    // ===========================================================
     // All data files to be used... this is all for sites aka with hierarchy lookup
-    //
+    
+    // Data file first names
     @Property(key = "data.file.firstNames")
     public String dataFileFirstNames;
 
+    // Data file last names
     @Property(key = "data.file.lastNames")
     public String dataFileLastNames;
-
-    // ===========================================================
-    // OCAPI
-    //
-//    @Property(key = "general.ocapi.contentType")
-//    public String ocapiContentType;
-
-//    @Property(key = "general.ocapi.charset")
-//    public String ocapiCharset;
-
-    // OCAPI Shop API
-//
-//    @Property(key = "general.ocapi.url")
-//    public String ocapiUrl;
-
-//    @Property(key = "general.ocapi.clientId")
-//    public String ocapiClientId;
-//
-//    @Property(key = "general.ocapi.eTagHandling")
-//    public boolean ocapiEtagHandling;
-//
-//    @Property(key = "general.ocapi.resourceStateHandling")
-//    public boolean ocapiResourceStateHandling;
-
-    // ===========================================================
-    // CPT
-
-    // Number of URLs called on execution of CPT test case TVisitRandom
-    @Property(key = "cpt.urls.count", immutable = false)
-    public ConfigRange urlCount;
 
     /**
      * Return text from the localization section, fails if the text is not available
