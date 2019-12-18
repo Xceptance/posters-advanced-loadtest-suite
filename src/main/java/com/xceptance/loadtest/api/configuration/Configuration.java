@@ -90,7 +90,6 @@ public class Configuration
     public int onTimeoutRetryCount;
     
     // Puts additional actions into the result browser
-    // Changes the random stream, hence for reproducing production seeds, this has to be disabled
     @Property(key = "general.debug.actions")
     public boolean useDebugActions;
 
