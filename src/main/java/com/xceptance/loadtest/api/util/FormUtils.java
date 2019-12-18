@@ -19,7 +19,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlTextArea;
 import com.xceptance.common.util.ParameterCheckUtils;
 import com.xceptance.loadtest.api.hpu.HPU;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.pages.Page;
+import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.xlt.api.actions.AbstractHtmlPageAction;
 import com.xceptance.xlt.api.util.BasicPageUtils;
 import com.xceptance.xlt.api.util.LightweightHtmlPageUtils;

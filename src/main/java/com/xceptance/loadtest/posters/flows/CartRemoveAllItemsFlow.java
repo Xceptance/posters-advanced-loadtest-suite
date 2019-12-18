@@ -5,8 +5,8 @@ import java.util.List;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.xceptance.loadtest.api.flows.Flow;
 import com.xceptance.loadtest.posters.actions.cart.RemoveCartItem;
-import com.xceptance.loadtest.posters.pages.cart.CartPage;
-import com.xceptance.loadtest.posters.pages.components.cart.CartTable;
+import com.xceptance.loadtest.posters.models.components.cart.CartTable;
+import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
 
 /**
  * Remove stale items from the cart

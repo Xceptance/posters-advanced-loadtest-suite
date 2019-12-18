@@ -2,8 +2,8 @@ package com.xceptance.loadtest.posters.actions.checkout;
 
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.xceptance.loadtest.api.validators.Validator;
-import com.xceptance.loadtest.posters.pages.cart.CartPage;
-import com.xceptance.loadtest.posters.pages.checkout.CheckoutEntryPage;
+import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
+import com.xceptance.loadtest.posters.models.pages.checkout.CheckoutEntryPage;
 
 public class Checkout extends AbstractCheckout<Checkout>
 {

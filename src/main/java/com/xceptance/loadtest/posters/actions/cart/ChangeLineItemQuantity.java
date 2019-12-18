@@ -2,13 +2,13 @@ package com.xceptance.loadtest.posters.actions.cart;
 
 import com.gargoylesoftware.htmlunit.WebResponse;
 import com.xceptance.loadtest.api.actions.AjaxAction;
-import com.xceptance.loadtest.api.pages.Page;
+import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.render.HtmlRenderer;
 import com.xceptance.loadtest.api.util.HttpRequest;
 import com.xceptance.loadtest.posters.jsondata.CartUpdateJSON;
-import com.xceptance.loadtest.posters.pages.cart.CartPage;
-import com.xceptance.loadtest.posters.pages.components.cart.CartTable.ItemInformation;
-import com.xceptance.loadtest.posters.pages.components.general.MiniCart;
+import com.xceptance.loadtest.posters.models.components.cart.CartTable.ItemInformation;
+import com.xceptance.loadtest.posters.models.components.general.MiniCart;
+import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
 
 public class ChangeLineItemQuantity extends AjaxAction<ChangeLineItemQuantity>
 {

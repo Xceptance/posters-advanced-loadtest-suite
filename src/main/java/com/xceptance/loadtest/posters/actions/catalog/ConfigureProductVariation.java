@@ -14,10 +14,10 @@ import com.gargoylesoftware.htmlunit.html.HtmlRadioButtonInput;
 import com.xceptance.common.util.RegExUtils;
 import com.xceptance.loadtest.api.actions.AjaxAction;
 import com.xceptance.loadtest.api.hpu.HPU;
-import com.xceptance.loadtest.api.pages.Page;
+import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.FormUtils;
 import com.xceptance.loadtest.api.util.HttpRequest;
-import com.xceptance.loadtest.posters.pages.catalog.ProductDetailPage;
+import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
 import com.xceptance.xlt.api.util.XltRandom;
 
 /**

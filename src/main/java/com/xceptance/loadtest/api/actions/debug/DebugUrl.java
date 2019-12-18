@@ -1,7 +1,7 @@
 package com.xceptance.loadtest.api.actions.debug;
 
 import com.xceptance.loadtest.api.actions.PageAction;
-import com.xceptance.loadtest.api.pages.Page;
+import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.Context;
 
 /**

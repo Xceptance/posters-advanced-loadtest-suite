@@ -12,7 +12,7 @@ import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.DomNode;
 import com.gargoylesoftware.htmlunit.html.HTMLParser;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
-import com.xceptance.loadtest.api.pages.Page;
+import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.xlt.api.util.HtmlPageUtils;
 
 /**

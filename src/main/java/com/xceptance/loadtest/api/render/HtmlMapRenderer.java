@@ -9,7 +9,7 @@ import java.util.UUID;
 import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.xceptance.loadtest.api.hpu.HPU;
-import com.xceptance.loadtest.api.pages.Page;
+import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.DOMUtils;
 
 import freemarker.template.Template;

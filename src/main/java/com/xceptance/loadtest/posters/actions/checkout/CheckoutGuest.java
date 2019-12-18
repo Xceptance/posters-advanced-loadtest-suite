@@ -1,8 +1,8 @@
 package com.xceptance.loadtest.posters.actions.checkout;
 
 import com.xceptance.loadtest.api.validators.Validator;
-import com.xceptance.loadtest.posters.pages.checkout.CheckoutEntryPage;
-import com.xceptance.loadtest.posters.pages.checkout.CheckoutPage;
+import com.xceptance.loadtest.posters.models.pages.checkout.CheckoutEntryPage;
+import com.xceptance.loadtest.posters.models.pages.checkout.CheckoutPage;
 
 public class CheckoutGuest extends AbstractCheckout<CheckoutGuest>
 {

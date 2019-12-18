@@ -12,7 +12,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.xceptance.loadtest.api.events.EventLogger;
-import com.xceptance.loadtest.api.pages.Page;
+import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.Log;
 import com.xceptance.loadtest.api.util.PageViewCounter;

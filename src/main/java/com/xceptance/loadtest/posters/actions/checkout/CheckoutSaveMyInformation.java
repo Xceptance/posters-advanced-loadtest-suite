@@ -1,7 +1,7 @@
 package com.xceptance.loadtest.posters.actions.checkout;
 
 import com.xceptance.loadtest.api.util.Context;
-import com.xceptance.loadtest.posters.pages.checkout.OrderConfirmationPage;
+import com.xceptance.loadtest.posters.models.pages.checkout.OrderConfirmationPage;
 
 public class CheckoutSaveMyInformation extends AbstractCheckout<CheckoutSaveMyInformation>
 {

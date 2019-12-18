@@ -7,10 +7,10 @@ import com.xceptance.loadtest.api.flows.Flow;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.SafetyBreak;
 import com.xceptance.loadtest.posters.actions.catalog.ClickProductDetails;
-import com.xceptance.loadtest.posters.pages.catalog.CategoryLandingPage;
-import com.xceptance.loadtest.posters.pages.catalog.ProductDetailPage;
-import com.xceptance.loadtest.posters.pages.catalog.ProductListingPage;
-import com.xceptance.loadtest.posters.pages.search.SearchNoResultPage;
+import com.xceptance.loadtest.posters.models.pages.catalog.CategoryLandingPage;
+import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
+import com.xceptance.loadtest.posters.models.pages.catalog.ProductListingPage;
+import com.xceptance.loadtest.posters.models.pages.search.SearchNoResultPage;
 
 /**
  * Navigates product listing page(s) to arrive at a product page.

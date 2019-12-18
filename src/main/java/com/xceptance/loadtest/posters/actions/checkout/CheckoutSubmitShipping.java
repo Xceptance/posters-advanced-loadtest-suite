@@ -1,6 +1,6 @@
 package com.xceptance.loadtest.posters.actions.checkout;
 
-import com.xceptance.loadtest.posters.pages.checkout.CheckoutPage;
+import com.xceptance.loadtest.posters.models.pages.checkout.CheckoutPage;
 
 public class CheckoutSubmitShipping extends CheckoutAjaxAction<CheckoutSubmitShipping>
 {

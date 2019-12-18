@@ -4,7 +4,7 @@ import com.xceptance.loadtest.api.flows.Flow;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.posters.actions.catalog.ClickACategory;
 import com.xceptance.loadtest.posters.actions.catalog.ClickATopCategory;
-import com.xceptance.loadtest.posters.pages.catalog.ProductListingPage;
+import com.xceptance.loadtest.posters.models.pages.catalog.ProductListingPage;
 
 /**
  * Browse a (top) category.

@@ -6,7 +6,7 @@ import org.junit.Assert;
 
 import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.validators.Validator;
-import com.xceptance.loadtest.posters.pages.general.HomepagePage;
+import com.xceptance.loadtest.posters.models.pages.general.HomepagePage;
 
 /**
  * Opens the start page.

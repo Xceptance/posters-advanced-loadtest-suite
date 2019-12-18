@@ -5,8 +5,8 @@ import org.junit.Assert;
 import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.data.Account;
 import com.xceptance.loadtest.api.validators.Validator;
-import com.xceptance.loadtest.posters.pages.account.CreateAccountPage;
-import com.xceptance.loadtest.posters.pages.account.LoginPage;
+import com.xceptance.loadtest.posters.models.pages.account.CreateAccountPage;
+import com.xceptance.loadtest.posters.models.pages.account.LoginPage;
 
 public class CreateAccount extends PageAction<CreateAccount>
 {

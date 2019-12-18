@@ -8,7 +8,7 @@ import org.junit.Assert;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.xceptance.common.util.RegExUtils;
 import com.xceptance.loadtest.api.actions.SimpleURL;
-import com.xceptance.loadtest.api.pages.Page;
+import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.validators.Validator;
 
 /**

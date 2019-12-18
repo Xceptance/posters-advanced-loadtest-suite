@@ -3,7 +3,7 @@ package com.xceptance.loadtest.posters.actions.checkout;
 import com.xceptance.loadtest.api.data.Account;
 import com.xceptance.loadtest.api.data.CreditCard;
 import com.xceptance.loadtest.api.util.Context;
-import com.xceptance.loadtest.posters.pages.checkout.CheckoutPage;
+import com.xceptance.loadtest.posters.models.pages.checkout.CheckoutPage;
 
 public class CheckoutSubmitBilling extends CheckoutAjaxAction<CheckoutSubmitBilling>
 {

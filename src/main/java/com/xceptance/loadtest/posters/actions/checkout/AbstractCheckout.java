@@ -10,7 +10,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.util.NameValuePair;
 import com.google.gson.Gson;
 import com.xceptance.loadtest.api.actions.PageAction;
-import com.xceptance.loadtest.api.pages.Page;
+import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.render.HtmlRenderer;
 import com.xceptance.loadtest.api.util.AjaxUtils;
 import com.xceptance.loadtest.api.util.Context;
@@ -19,8 +19,8 @@ import com.xceptance.loadtest.posters.jsondata.CheckoutJSON;
 import com.xceptance.loadtest.posters.jsondata.CheckoutJSON_StringValued;
 import com.xceptance.loadtest.posters.jsondata.OrderJSON;
 import com.xceptance.loadtest.posters.jsondata.SaveMyInformationJSON;
-import com.xceptance.loadtest.posters.pages.checkout.CheckoutPage;
-import com.xceptance.loadtest.posters.pages.checkout.OrderConfirmationPage;
+import com.xceptance.loadtest.posters.models.pages.checkout.CheckoutPage;
+import com.xceptance.loadtest.posters.models.pages.checkout.OrderConfirmationPage;
 
 public abstract class AbstractCheckout<T> extends PageAction<T>
 {

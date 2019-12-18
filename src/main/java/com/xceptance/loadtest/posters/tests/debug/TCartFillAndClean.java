@@ -10,7 +10,7 @@ import com.xceptance.loadtest.posters.flows.CartCleanUpFlow;
 import com.xceptance.loadtest.posters.flows.CartRemoveAllItemsFlow;
 import com.xceptance.loadtest.posters.flows.ConfigureProductFlow;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
-import com.xceptance.loadtest.posters.pages.cart.CartPage;
+import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
 
 
 /**

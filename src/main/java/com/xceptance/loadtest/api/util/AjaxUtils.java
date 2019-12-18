@@ -29,7 +29,7 @@ import com.xceptance.common.util.RegExUtils;
 import com.xceptance.loadtest.api.events.EventLogger;
 import com.xceptance.loadtest.api.hpu.HPU;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.pages.Page;
+import com.xceptance.loadtest.api.models.pages.Page;
 
 /**
  * Ajax utility class.

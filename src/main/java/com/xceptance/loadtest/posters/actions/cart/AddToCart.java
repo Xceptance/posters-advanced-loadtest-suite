@@ -6,12 +6,12 @@ import org.junit.Assert;
 import com.gargoylesoftware.htmlunit.WebResponse;
 import com.xceptance.common.util.RegExUtils;
 import com.xceptance.loadtest.api.actions.AjaxAction;
-import com.xceptance.loadtest.api.pages.Page;
+import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.Format;
 import com.xceptance.loadtest.api.util.HttpRequest;
 import com.xceptance.loadtest.posters.jsondata.AddToCartJSON;
-import com.xceptance.loadtest.posters.pages.general.GeneralPages;
+import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
 /**
  * Adds the product items of the current product page to the cart

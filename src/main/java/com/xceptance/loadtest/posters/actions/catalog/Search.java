@@ -11,10 +11,10 @@ import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.FormUtils;
 import com.xceptance.loadtest.api.validators.Validator;
-import com.xceptance.loadtest.posters.pages.catalog.ProductDetailPage;
-import com.xceptance.loadtest.posters.pages.general.GeneralPages;
-import com.xceptance.loadtest.posters.pages.search.SearchNoResultPage;
-import com.xceptance.loadtest.posters.pages.search.SearchResultPage;
+import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
+import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
+import com.xceptance.loadtest.posters.models.pages.search.SearchNoResultPage;
+import com.xceptance.loadtest.posters.models.pages.search.SearchResultPage;
 import com.xceptance.xlt.api.util.XltRandom;
 
 /**

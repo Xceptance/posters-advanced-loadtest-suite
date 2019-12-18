@@ -6,7 +6,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.xceptance.loadtest.api.flows.Flow;
 import com.xceptance.loadtest.api.util.SafetyBreak;
 import com.xceptance.loadtest.posters.actions.catalog.ConfigureProductVariation;
-import com.xceptance.loadtest.posters.pages.catalog.ProductDetailPage;
+import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
 
 /**
  * Configures all product items randomly according to the contained attributes and quantities.

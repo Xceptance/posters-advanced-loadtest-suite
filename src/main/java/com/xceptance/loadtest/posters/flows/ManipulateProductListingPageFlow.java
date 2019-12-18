@@ -26,6 +26,8 @@ public class ManipulateProductListingPageFlow extends Flow
                     () ->
                     {
                         page();
+                        page();
+                        page();
                         // TODO add more/different product listing page actions
                         
                         return true;

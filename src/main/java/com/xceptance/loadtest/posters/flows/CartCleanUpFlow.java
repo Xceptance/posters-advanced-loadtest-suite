@@ -14,11 +14,11 @@ import com.xceptance.loadtest.api.util.SafetyBreak;
 import com.xceptance.loadtest.posters.actions.cart.ChangeLineItemQuantity;
 import com.xceptance.loadtest.posters.actions.cart.RemoveCartItem;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
-import com.xceptance.loadtest.posters.pages.cart.CartPage;
-import com.xceptance.loadtest.posters.pages.components.cart.CartEmpty;
-import com.xceptance.loadtest.posters.pages.components.cart.CartPrices;
-import com.xceptance.loadtest.posters.pages.components.cart.CartTable;
-import com.xceptance.loadtest.posters.pages.components.cart.CartTable.ItemInformation;
+import com.xceptance.loadtest.posters.models.components.cart.CartEmpty;
+import com.xceptance.loadtest.posters.models.components.cart.CartPrices;
+import com.xceptance.loadtest.posters.models.components.cart.CartTable;
+import com.xceptance.loadtest.posters.models.components.cart.CartTable.ItemInformation;
+import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
 import com.xceptance.xlt.api.engine.Session;
 
 

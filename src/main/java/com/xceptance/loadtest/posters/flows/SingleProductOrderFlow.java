@@ -12,9 +12,9 @@ import com.xceptance.loadtest.posters.actions.checkout.CheckoutSelectShipping;
 import com.xceptance.loadtest.posters.actions.checkout.CheckoutShippingAddress;
 import com.xceptance.loadtest.posters.actions.checkout.CheckoutSubmitBilling;
 import com.xceptance.loadtest.posters.actions.checkout.CheckoutSubmitShipping;
-import com.xceptance.loadtest.posters.pages.cart.CartPage;
-import com.xceptance.loadtest.posters.pages.catalog.ProductDetailPage;
-import com.xceptance.loadtest.posters.pages.general.GeneralPages;
+import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
+import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
+import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
 /**
  * Order a single configured product.

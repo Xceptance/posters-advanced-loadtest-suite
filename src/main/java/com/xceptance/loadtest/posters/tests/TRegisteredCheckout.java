@@ -15,8 +15,8 @@ import com.xceptance.loadtest.posters.flows.AddToCartFlow;
 import com.xceptance.loadtest.posters.flows.CartCleanUpFlow;
 import com.xceptance.loadtest.posters.flows.CreateAccountFlow;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
-import com.xceptance.loadtest.posters.pages.cart.CartPage;
-import com.xceptance.loadtest.posters.pages.general.GeneralPages;
+import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
+import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
 /**
  * Open the landing page, register account if necessary and browse the catalog to a random product. Configure this

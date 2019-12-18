@@ -1,7 +1,0 @@
-filter:
-    product:
-        url: 
-            - # this is a list of phrases
-    category:
-        url:
-            - # this is a list of phrases, snippets and entire url will work   

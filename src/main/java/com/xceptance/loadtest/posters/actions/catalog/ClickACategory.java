@@ -3,7 +3,7 @@ package com.xceptance.loadtest.posters.actions.catalog;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.validators.Validator;
-import com.xceptance.loadtest.posters.pages.general.GeneralPages;
+import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
 /**
  * Selects a category from the navigation menu.

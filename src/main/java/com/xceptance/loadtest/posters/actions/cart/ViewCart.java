@@ -5,8 +5,8 @@ import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.Format;
 import com.xceptance.loadtest.api.validators.Validator;
-import com.xceptance.loadtest.posters.pages.cart.CartPage;
-import com.xceptance.loadtest.posters.pages.general.GeneralPages;
+import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
+import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
 /**
  * Access the cart page.

@@ -6,14 +6,14 @@ import com.gargoylesoftware.htmlunit.WebResponse;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.google.gson.Gson;
 import com.xceptance.loadtest.api.data.Account;
-import com.xceptance.loadtest.api.pages.Page;
+import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.AjaxUtils;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.HttpRequest;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.jsondata.account.LoginJSON;
-import com.xceptance.loadtest.posters.pages.checkout.CheckoutEntryPage;
-import com.xceptance.loadtest.posters.pages.checkout.CheckoutPage;
+import com.xceptance.loadtest.posters.models.pages.checkout.CheckoutEntryPage;
+import com.xceptance.loadtest.posters.models.pages.checkout.CheckoutPage;
 
 public class CheckoutLogin extends AbstractCheckout<CheckoutLogin>
 {

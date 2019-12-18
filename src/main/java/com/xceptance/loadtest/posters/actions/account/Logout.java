@@ -2,8 +2,8 @@ package com.xceptance.loadtest.posters.actions.account;
 
 import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.validators.Validator;
-import com.xceptance.loadtest.posters.pages.general.GeneralPages;
-import com.xceptance.loadtest.posters.pages.general.HomepagePage;
+import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
+import com.xceptance.loadtest.posters.models.pages.general.HomepagePage;
 
 public class Logout extends PageAction<Logout>
 {

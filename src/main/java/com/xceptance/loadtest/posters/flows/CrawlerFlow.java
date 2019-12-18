@@ -16,7 +16,7 @@ import com.xceptance.loadtest.api.actions.SimpleURL;
 import com.xceptance.loadtest.api.events.EventLogger;
 import com.xceptance.loadtest.api.flows.Flow;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.pages.Page;
+import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.crawler.CrawlerConfig;
 import com.xceptance.loadtest.api.util.crawler.DropSession;
