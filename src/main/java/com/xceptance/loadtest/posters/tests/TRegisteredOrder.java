@@ -5,13 +5,6 @@ import com.xceptance.loadtest.api.tests.LoadTestCase;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.posters.actions.account.Logout;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
-import com.xceptance.loadtest.posters.actions.checkout.Checkout;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutLogin;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutPlaceOrder;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutSelectShipping;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutShippingAddress;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutSubmitBilling;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutSubmitShipping;
 import com.xceptance.loadtest.posters.flows.AddToCartFlow;
 import com.xceptance.loadtest.posters.flows.CartCleanUpFlow;
 import com.xceptance.loadtest.posters.flows.CreateAccountFlow;
@@ -64,21 +57,22 @@ public class TRegisteredOrder extends LoadTestCase
         // we can only checkout if we still got a cart
         if (GeneralPages.instance.miniCart.isEmpty() == false)
         {
-            new Checkout().run();
-
-            // use the attached account to avoid that we get a new one, either we have one or we
-            // don't, hence prefer to fail
-            new CheckoutLogin(Context.get().data.getAccount().get()).run();
-
-            new CheckoutShippingAddress().run();
-            new CheckoutSelectShipping().run();
-            new CheckoutSubmitShipping().run();
-
-            new CheckoutSubmitBilling().run();
-
-            new CheckoutPlaceOrder().run();
-
-            new Logout().run();
+// TODO
+//            new Checkout().run();
+//
+//            // use the attached account to avoid that we get a new one, either we have one or we
+//            // don't, hence prefer to fail
+//            new CheckoutLogin(Context.get().data.getAccount().get()).run();
+//
+//            new CheckoutShippingAddress().run();
+//            new CheckoutSelectShipping().run();
+//            new CheckoutSubmitShipping().run();
+//
+//            new CheckoutSubmitBilling().run();
+//
+//            new CheckoutPlaceOrder().run();
+//
+//            new Logout().run();
         }
         else
         {

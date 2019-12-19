@@ -1,15 +1,14 @@
 package com.xceptance.loadtest.posters.flows;
 
-import java.util.List;
-
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.xceptance.loadtest.api.flows.Flow;
 import com.xceptance.loadtest.api.util.SafetyBreak;
 import com.xceptance.loadtest.posters.actions.catalog.ConfigureProductVariation;
 import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
 
 /**
- * Configures all product items randomly according to the contained attributes and quantities.
+ * Configures the product randomly until the page shows the product as in stock/available.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class ConfigureProductFlow extends Flow
 {
@@ -19,19 +18,12 @@ public class ConfigureProductFlow extends Flow
     @Override
     protected boolean execute() throws Throwable
     {
-        // Get all product items of the current product detail page
-        final List<HtmlElement> productItems = ProductDetailPage.instance.getProductItems();
-        for (HtmlElement productItem : productItems)
+        final SafetyBreak safetyBreak = new SafetyBreak(5);
+        do
         {
-            final SafetyBreak safetyBreak = new SafetyBreak(5);
-            while (!safetyBreak.reached() && true /* TODO check for product availability */)
-            {
-            	if(new ConfigureProductVariation(productItem).runIfPossible().isPresent())
-            	{
-            		break;
-            	}
-            }
+        	new ConfigureProductVariation().runIfPossible();
         }
+        while(!safetyBreak.reached() && !ProductDetailPage.instance.isAvailable());
 
         return true;
     }

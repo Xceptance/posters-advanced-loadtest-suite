@@ -8,6 +8,11 @@ import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.account.CreateAccountPage;
 import com.xceptance.loadtest.posters.models.pages.account.LoginPage;
 
+/**
+ * Creates a new account.
+ * 
+ * @author Xceptance Software Technologies
+ */
 public class CreateAccount extends PageAction<CreateAccount>
 {
     private final Account account;

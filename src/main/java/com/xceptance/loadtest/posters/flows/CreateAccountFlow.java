@@ -6,9 +6,7 @@ import com.xceptance.loadtest.posters.actions.account.CreateAccount;
 import com.xceptance.loadtest.posters.actions.account.GoToCreateAccount;
 
 /**
- * Create a new account
- *
- * @author rschwietzke
+ * Opens the account creation page and create a new account.
  */
 public class CreateAccountFlow extends Flow
 {

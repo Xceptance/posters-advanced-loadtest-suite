@@ -10,6 +10,8 @@ import com.xceptance.loadtest.posters.actions.cart.ViewCart;
  * Add products to the cart via navigating the catalog by browsing or searching and handling the resulting product listing and product pages.
  * 
  * Optionally visits the cart page.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class AddToCartFlow extends Flow
 {

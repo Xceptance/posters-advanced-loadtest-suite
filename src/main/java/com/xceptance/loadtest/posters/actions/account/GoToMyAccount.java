@@ -5,6 +5,11 @@ import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.account.AccountDashboardPage;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
+/**
+ * Opens the account page.
+ *
+ * @author Xceptance Software Technologies
+ */
 public class GoToMyAccount extends PageAction<GoToMyAccount>
 {
     @Override

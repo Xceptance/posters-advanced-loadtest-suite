@@ -17,6 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Assert;
 
+import com.gargoylesoftware.htmlunit.WebResponse;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlInput;
@@ -354,6 +355,38 @@ public final class AjaxUtils
         return scriptLocator.asserted("Script not found for search phrase: '" + searchPhrase + "'").first().getTextContent();
     }
 
+    /**
+     * Converts the given WebResponse to a JSONObject.
+     * 
+     * @param webResponse The WebResponse that should be converted to a JSONObject.
+     * @return The resulting JSONObject.
+     */
+	public static JSONObject convertToJson(WebResponse webResponse)
+	{
+		return convertToJson(webResponse.getContentAsString());
+	}
+
+	/**
+     * Converts the given response string to a JSONObject.
+     * 
+     * Will break on JSON parse error.
+     * 
+     * @param responseString The response string that should be converted to a JSONObject.
+     * @return The resulting JSONObject.
+     */
+	public static JSONObject convertToJson(String responseString)
+	{
+		try
+		{
+			return new JSONObject(responseString);
+		}
+		catch(Exception e)
+		{
+			Assert.fail("Failed to convert response to JSON");
+			return null;
+		}
+	}
+	
     /**
      * Checks if a given JSONArray is empty.
      */

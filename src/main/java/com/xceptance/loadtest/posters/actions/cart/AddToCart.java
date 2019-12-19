@@ -1,25 +1,24 @@
 package com.xceptance.loadtest.posters.actions.cart;
 
-import org.apache.commons.lang3.StringUtils;
+import org.json.JSONObject;
 import org.junit.Assert;
 
 import com.gargoylesoftware.htmlunit.WebResponse;
-import com.xceptance.common.util.RegExUtils;
 import com.xceptance.loadtest.api.actions.AjaxAction;
-import com.xceptance.loadtest.api.models.pages.Page;
+import com.xceptance.loadtest.api.util.AjaxUtils;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.Format;
 import com.xceptance.loadtest.api.util.HttpRequest;
-import com.xceptance.loadtest.posters.jsondata.AddToCartJSON;
+import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
 /**
- * Adds the product items of the current product page to the cart
+ * Adds the product items of the current product page to the cart.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class AddToCart extends AjaxAction<AddToCart>
 {
-    private AddToCartJSON cart;
-
     private int previousCartQuantity;
     
     private String productId;
@@ -49,17 +48,13 @@ public class AddToCart extends AjaxAction<AddToCart>
         previousCartQuantity = GeneralPages.instance.miniCart.getQuantity();
 
         // Retrieve PID
-        productId = Page.find().byId("btnAddToCart").asserted("Expected add to cart button").single().getAttribute("onclick");
-        productId = RegExUtils.getFirstMatch(productId, "addToCart\\((\\d+)\\,", 1);
-        Assert.assertTrue("Expected valid productId", !StringUtils.isBlank(productId));
+        productId = ProductDetailPage.instance.getProductId();
         
         // Retrieve selected size
-        size = Page.find().byId("selectSize").asserted("Expected size attribute").single().getAttribute("value");
-        Assert.assertTrue("Expected valid size attribute", !StringUtils.isBlank(size));
+        size = ProductDetailPage.instance.getSelectedSize();
         
         // Retrieve selected finish
-        finish = Page.find().byCss("#addToCartForm input[name=finish]:checked").asserted("Expected selected finish attribute").single().getAttribute("value");
-        Assert.assertTrue("Expected valid finish attribute", !StringUtils.isBlank(finish));
+        finish = ProductDetailPage.instance.getSelectedFinish();
     }
 
     /**
@@ -76,20 +71,23 @@ public class AddToCart extends AjaxAction<AddToCart>
     		.param("productId", productId)
     		.param("finish", finish)
     		.param("size", size)
-    		.assertJSONObject("Expected product to be contained in add to cart response", true, json -> json.has("product"))
+    		.assertJSONObject("Expected product information to be contained in add to cart response", true, json -> json.has("product"))
     		.fire();
     	
-    	// Create the add to cart JSON object from the response
-    	cart = Context.getGson().fromJson(response.getContentAsString(), AddToCartJSON.class);
+    	// Safely convert the response to JSON
+    	JSONObject addToCartJson = AjaxUtils.convertToJson(response.getContentAsString());
+
+        // Handle error in add to cart response
+    	if(addToCartJson.has("error"))
+    	{
+    		Assert.fail("Add to cart failed with message: " + addToCartJson.getString("message"));
+    	}
+
+        // Validate the item count in the add to cart response (headerCartOverview = itemsInMiniCart)
+        Assert.assertTrue("Cart quantity did not change", addToCartJson.has("headerCartOverview") && (addToCartJson.getInt("headerCartOverview") > previousCartQuantity));
     	
-        // Error in add to cart response
-        Assert.assertFalse("Add to cart failed with message: " + cart.message, cart.error);
-
-        // Validate the item count in the add to cart response
-        Assert.assertTrue("Cart quantity did not change", cart.itemsInCart > previousCartQuantity);
-
         // Update the mini cart item count
-    	GeneralPages.instance.miniCart.updateQuantity(cart.itemsInCart);
+    	GeneralPages.instance.miniCart.updateQuantity(addToCartJson.getInt("headerCartOverview"));
 
     	// Increase total add to cart count if successful
         Context.get().data.totalAddToCartCount++;

@@ -7,6 +7,8 @@ import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
 /**
  * Selects a category from the navigation menu.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class ClickACategory extends PageAction<ClickACategory>
 {

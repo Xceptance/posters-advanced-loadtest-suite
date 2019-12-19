@@ -8,6 +8,11 @@ import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.account.LoginPage;
 import com.xceptance.loadtest.posters.models.pages.general.HomepagePage;
 
+/**
+ * Logs in with the given account.
+ * 
+ * @author Xceptance Software Technologies
+ */
 public class Login extends PageAction<Login>
 {
     private final Account account;

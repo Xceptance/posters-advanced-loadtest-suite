@@ -7,6 +7,8 @@ import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
 /**
  * Selects a top category from the navigation menu.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class ClickATopCategory extends PageAction<ClickATopCategory>
 {

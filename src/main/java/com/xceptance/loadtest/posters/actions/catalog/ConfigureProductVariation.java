@@ -22,20 +22,15 @@ import com.xceptance.xlt.api.util.XltRandom;
 
 /**
  * Chooses a random product configuration.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class ConfigureProductVariation extends AjaxAction<ConfigureProductVariation>
 {
-	private HtmlElement productItem;
-	
 	private Hashtable<HtmlElement, List<HtmlElement>> selectVariationAttributes = new Hashtable<>();
 	
 	private Hashtable<HtmlElement, List<HtmlElement>> inputVariationAttributes = new Hashtable<>();
 	
-    public ConfigureProductVariation(HtmlElement productItem)
-    {
-        this.productItem = productItem;
-    }
-
     /**
      * {@inheritDoc}
      */
@@ -43,7 +38,7 @@ public class ConfigureProductVariation extends AjaxAction<ConfigureProductVariat
     public void precheck()
     {
     	// Get all variation attributes
-    	List<HtmlElement> variationAttributes = ProductDetailPage.instance.getVariationAttributes(productItem);
+    	List<HtmlElement> variationAttributes = ProductDetailPage.instance.getVariationAttributes();
     	Assert.assertTrue("Expected at least one variation attribute", variationAttributes.size() > 0);
     	
     	// Retrieve select variation attributes that are not yet configured

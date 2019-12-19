@@ -4,12 +4,16 @@ import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.DataUtils;
+import com.xceptance.loadtest.posters.util.PageState;
 
+/**
+ * Product listing page item count.
+ * 
+ * @author Xceptance Software Technologies
+ */
 public enum PLPItemCount implements Component
 {
     instance;
-
-    //private final Pattern pattern = Pattern.compile("([0-9,.]+)\\s*\\w+");
 
     @Override
     public LookUpResult locate()
@@ -25,17 +29,19 @@ public enum PLPItemCount implements Component
 
     public int getItemCount()
     {
-        if (exists())
+    	if(PageState.hasProducts())
+    	{
+    		return PageState.getProductCount();
+    	}
+    	else if (exists())
         {
             final String content = locate().first().getTextContent();
             if (content != null)
             {
-//                final String s = RegExUtils.getFirstMatch(content, pattern, 1);
                 return DataUtils.toInt(content);
             }
         }
-
-        // nothing found or invalid
+        
         return 0;
     }
 }

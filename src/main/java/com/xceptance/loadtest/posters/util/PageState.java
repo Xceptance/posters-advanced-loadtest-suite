@@ -1,33 +1,20 @@
 package com.xceptance.loadtest.posters.util;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
-import org.junit.Assert;
 
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.pages.Page;
+import com.xceptance.loadtest.api.util.AjaxUtils;
 
 public class PageState
 {
 	private static String EMBEDDED_PRODUCTS_ID = "embedded-product-listing-page-state";
 	
-	private static JSONObject convertToJson(String response)
-	{
-		// Try to convert given string to JSON and break in cast conversion fails
-		try
-		{
-			return new JSONObject(response);
-		}
-		catch(Exception e)
-		{
-			Assert.fail("Failed to convert response to JSON");
-			return null;
-		}
-	}
-	
 	private static void embed(String id, String jsonString)
 	{
-		embed(id, convertToJson(jsonString));
+		embed(id, AjaxUtils.convertToJson(jsonString));
 	}
 
 	private static void embed(String id, JSONObject json)
@@ -42,7 +29,7 @@ public class PageState
 		LookUpResult products = Page.find().byId(id);
 		if(products.exists())
 		{
-			return convertToJson(products.single().getTextContent());
+			return AjaxUtils.convertToJson(products.single().getTextContent());
 		}
 		
 		return null;
@@ -66,6 +53,17 @@ public class PageState
 	public static JSONObject retrieveProducts()
 	{
 		return retrieve(EMBEDDED_PRODUCTS_ID);
+	}
+	
+	public static Integer getProductCount()
+	{
+		JSONArray products = retrieveProducts().optJSONArray("products");
+		if(products != null)
+		{
+			return products.length();
+		}
+		
+		return 0;
 	}
 	
 	public static boolean hasProducts()

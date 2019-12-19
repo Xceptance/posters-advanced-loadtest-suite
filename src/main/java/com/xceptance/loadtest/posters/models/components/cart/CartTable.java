@@ -10,10 +10,7 @@ import com.xceptance.loadtest.api.hpu.HPU;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.models.pages.Page;
-import com.xceptance.loadtest.api.render.HtmlRenderer;
 import com.xceptance.loadtest.api.util.Context;
-import com.xceptance.loadtest.posters.jsondata.CartJSON;
-import com.xceptance.loadtest.posters.jsondata.CartUpdateJSON;
 
 public class CartTable implements Component
 {
@@ -151,55 +148,6 @@ public class CartTable implements Component
         // no idea, hence not available
         return false;
     }
-
-    /**
-     * Render the cart site after removing an item from the cart table.
-     */
-    public void renderAndUpdate(final HtmlRenderer renderer)
-    {
-        final String csrfLocator = ".totals form.promo-code-form input[name='csrf_token']";
-        final String token = locate().byCss(csrfLocator).asserted().single().getAttribute("value");
-
-        final String checkOutLocator = ".checkout-continue a.checkout-btn";
-        final String checkoutUrl = locate().byCss(checkOutLocator).asserted().single().getAttribute("href");
-
-        // items
-        renderer.template("/templates/cart/cart-table.ftlh").replace(locate().asserted().single());
-
-        // rescue the csrf token but only if we still have a cart
-        // rescue the checkout url, because it is not part of the json returned
-        if (renderer.getJson(CartJSON.class, "data").basket.numItems > 0)
-        {
-            locate().byCss(csrfLocator).asserted().single().setAttribute("value", token);
-            locate().byCss(checkOutLocator).asserted().single().setAttribute("href", checkoutUrl);
-        }
-    }
-
-    /**
-     * Render the cart site after adjusting the quantity of an cart table item.
-     */
-    public void renderAndUpdateCleanUp(final HtmlRenderer renderer)
-    {
-        final String csrfLocator = ".totals form.promo-code-form input[name='csrf_token']";
-        final String token = locate().byCss(csrfLocator).asserted().single().getAttribute("value");
-
-        final String checkOutLocator = ".checkout-continue a.checkout-btn";
-        final String checkoutUrl = locate().byCss(checkOutLocator).asserted().single().getAttribute("href");
-
-        // items
-        renderer.template("/templates/cart/cart-table-update.ftlh");
-
-        Page.mapHtml().html(renderer).byCSS(".cart.container").byCSS(".number-of-items").map();
-
-        // rescue the csrf token but only if we still have a cart
-        // rescue the checkout url, because it is not part of the json returned
-        if (renderer.getJson(CartUpdateJSON.class, "data").numItems > 0)
-        {
-            locate().byCss(csrfLocator).asserted().single().setAttribute("value", token);
-            locate().byCss(checkOutLocator).asserted().single().setAttribute("href", checkoutUrl);
-        }
-    }
-
     /**
      * Determine the information for a cart item. Breaks if not such information exists.
      *

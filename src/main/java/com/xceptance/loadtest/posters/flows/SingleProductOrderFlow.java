@@ -5,13 +5,6 @@ import com.xceptance.loadtest.api.flows.Flow;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.posters.actions.cart.AddToCart;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
-import com.xceptance.loadtest.posters.actions.checkout.Checkout;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutGuest;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutPlaceOrder;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutSelectShipping;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutShippingAddress;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutSubmitBilling;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutSubmitShipping;
 import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
 import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
@@ -50,17 +43,18 @@ public class SingleProductOrderFlow extends Flow
         // final we can final only checkout if final we still got final a cart
          if (GeneralPages.instance.miniCart.isEmpty() == false)
          {
-         new Checkout().run();
-
-         new CheckoutGuest().run();
-
-         new CheckoutShippingAddress().run();
-         new CheckoutSelectShipping().run();
-         new CheckoutSubmitShipping().run();
-
-         new CheckoutSubmitBilling().run();
-
-         new CheckoutPlaceOrder().run();
+// TODO        	 
+//	         new Checkout().run();
+//	
+//	         new CheckoutGuest().run();
+//	
+//	         new CheckoutShippingAddress().run();
+//	         new CheckoutSelectShipping().run();
+//	         new CheckoutSubmitShipping().run();
+//	
+//	         new CheckoutSubmitBilling().run();
+//	
+//	         new CheckoutPlaceOrder().run();
          }
          else
          {

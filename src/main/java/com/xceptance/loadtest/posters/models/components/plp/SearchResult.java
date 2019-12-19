@@ -4,6 +4,11 @@ import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.models.pages.Page;
 
+/**
+ * SearchResult component.
+ * 
+ * @author Xceptance Software Technologies
+ */
 public enum SearchResult implements Component
 {
     instance;
@@ -17,6 +22,6 @@ public enum SearchResult implements Component
     @Override
     public boolean exists()
     {
-        return locate().exists();
+        return locate().exists() && Page.find().byId("titleSearchText").exists();
     }
 }

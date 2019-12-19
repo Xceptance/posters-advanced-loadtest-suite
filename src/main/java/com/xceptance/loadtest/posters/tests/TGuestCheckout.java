@@ -4,12 +4,6 @@ import com.xceptance.loadtest.api.events.EventLogger;
 import com.xceptance.loadtest.api.tests.LoadTestCase;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
-import com.xceptance.loadtest.posters.actions.checkout.Checkout;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutGuest;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutSelectShipping;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutShippingAddress;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutSubmitBilling;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutSubmitShipping;
 import com.xceptance.loadtest.posters.flows.AddToCartFlow;
 import com.xceptance.loadtest.posters.flows.CartCleanUpFlow;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
@@ -56,15 +50,16 @@ public class TGuestCheckout extends LoadTestCase
         // we can only checkout if we still got a cart
         if (GeneralPages.instance.miniCart.isEmpty() == false)
         {
-            new Checkout().run();
-
-            new CheckoutGuest().run();
-
-            new CheckoutShippingAddress().run();
-            new CheckoutSelectShipping().run();
-            new CheckoutSubmitShipping().run();
-
-            new CheckoutSubmitBilling().run();
+// TODO
+//            new Checkout().run();
+//
+//            new CheckoutGuest().run();
+//
+//            new CheckoutShippingAddress().run();
+//            new CheckoutSelectShipping().run();
+//            new CheckoutSubmitShipping().run();
+//
+//            new CheckoutSubmitBilling().run();
         }
         else
         {

@@ -1,14 +1,7 @@
 package com.xceptance.loadtest.posters.actions.cart;
 
-import com.gargoylesoftware.htmlunit.WebResponse;
 import com.xceptance.loadtest.api.actions.AjaxAction;
-import com.xceptance.loadtest.api.models.pages.Page;
-import com.xceptance.loadtest.api.render.HtmlRenderer;
-import com.xceptance.loadtest.api.util.HttpRequest;
-import com.xceptance.loadtest.posters.jsondata.CartUpdateJSON;
 import com.xceptance.loadtest.posters.models.components.cart.CartTable.ItemInformation;
-import com.xceptance.loadtest.posters.models.components.general.MiniCart;
-import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
 
 public class ChangeLineItemQuantity extends AjaxAction<ChangeLineItemQuantity>
 {
@@ -28,23 +21,10 @@ public class ChangeLineItemQuantity extends AjaxAction<ChangeLineItemQuantity>
     @Override
     protected void doExecute() throws Exception
     {
-        // fire
-        final WebResponse response = new HttpRequest().XHR().url(info.updateUrl).param("pid", info.pid).param("uuid", info.uuid).param("quantity", String.valueOf(newQuantity))
-                        .assertStatusCode(200).GET().fire();
-
-        // we got a full cart json back
-        final HtmlRenderer renderer = Page.renderHtml().json(response.getContentAsString(), CartUpdateJSON.class, "data");
-
-        // update item count
-        // CartPage.instance.cartItemCount.renderAndUpdate(renderer);
-
-        // update item list and update information cart
-        CartPage.instance.cartTable.renderAndUpdateCleanUp(renderer);
-
-        // update the mini cart
-        final CartUpdateJSON json = renderer.getJson(CartUpdateJSON.class, "data");
-        
         // TODO
+    	
+        //final WebResponse response = new HttpRequest().XHR().url(info.updateUrl).param("pid", info.pid).param("uuid", info.uuid).param("quantity", String.valueOf(newQuantity)).assertStatusCode(200).GET().fire();
+
         //MiniCart.instance.updateQuantity(json.numItems, json.items.size());
     }
 

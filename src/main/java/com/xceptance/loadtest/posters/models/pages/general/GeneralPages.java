@@ -10,16 +10,23 @@ import com.xceptance.loadtest.posters.models.components.general.UserMenu;
 
 /**
  * Represents a general page with standard components.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class GeneralPages extends Page
 {
     public static final GeneralPages instance = new GeneralPages();
 
     public Header header = Header.instance;
+    
     public UserMenu user = UserMenu.instance;
+    
     public MiniCart miniCart = MiniCart.instance;
+    
     public SiteSearch siteSearch = SiteSearch.instance;
+    
     public Navigation navigation = Navigation.instance;
+    
     public Footer footer = Footer.instance;
 
     /**

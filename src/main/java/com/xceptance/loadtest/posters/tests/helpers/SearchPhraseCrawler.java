@@ -2,7 +2,9 @@ package com.xceptance.loadtest.posters.tests.helpers;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
+import java.net.URLDecoder;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,9 +13,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 
 import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.xceptance.common.util.RegExUtils;
 import com.xceptance.loadtest.api.data.SearchOption;
+import com.xceptance.loadtest.api.events.EventLogger;
 import com.xceptance.loadtest.api.tests.LoadTestCase;
 import com.xceptance.loadtest.posters.actions.catalog.Paging;
 import com.xceptance.loadtest.posters.actions.catalog.Search;
@@ -56,7 +58,7 @@ public class SearchPhraseCrawler extends LoadTestCase
      * true: only (top)category names are used (faster but less results) </br>
      * false: also product names are used (slower but more results)
      */
-    private static final boolean CATEGORIES_ONLY = true;
+    private static final boolean CATEGORIES_ONLY = false;
 
     /**
      * Stop searching after the list has reached MAX_PHRASES valid search terms.
@@ -222,9 +224,7 @@ public class SearchPhraseCrawler extends LoadTestCase
                 }
             }
 
-            // If we search for category phrases we can stop here. Otherwise we
-            // browse the category and try to extract
-            // product names as well.
+            // If we search for category phrases we can stop here. Otherwise we browse the category and try to extract product names as well.
             if (!CATEGORIES_ONLY)
             {
                 // Browse the category to extract product names.
@@ -241,45 +241,51 @@ public class SearchPhraseCrawler extends LoadTestCase
      * @param anchor
      *            category link
      */
-    private void addProductGridFindingsToList(final Set<String> possibleSearchPhrases, final HtmlAnchor anchor)
-                    throws MalformedURLException, Throwable
+    private void addProductGridFindingsToList(final Set<String> possibleSearchPhrases, final HtmlAnchor anchor) throws MalformedURLException, Throwable
     {
         // Follow category link
-        new CrawlerURL(anchor.getHrefAttribute()) //
-                        .assertBasics() //
+        new CrawlerURL(anchor.getHrefAttribute())
+                        .assertBasics()
                         .assertWebResponse("Expected resonse code 200.", r -> r.getStatusCode() == 200)
                         .run();
 
         // If paging is possible do it once (since we choose random paging link and don't know how long to loop)
-        if (new Paging().runIfPossible().isPresent())
-        {
-        }
+        new Paging().runIfPossible();
 
-        // Extract search phrases.
-        selectSearchPhrasesAction(possibleSearchPhrases);
+        // Extract search phrase names from product URLs
+        extractNamesFromProductUrlsAndAddToSearchPhrases(possibleSearchPhrases);
     }
 
-    private void selectSearchPhrasesAction(final Set<String> list)
+    private void extractNamesFromProductUrlsAndAddToSearchPhrases(final Set<String> list)
     {
-        final List<HtmlElement> all = getProductNames();
-        for (final HtmlElement htmlElement : all)
+    	// Retrieve all product URLs from the current page
+        final List<String> urls = ProductListingPage.instance.productGrid.getFilteredProductUrls();
+        for(String url : urls)
         {
-            final String[] split = htmlElement.getTextContent().trim().split(" ");
-            for (final String string : split)
-            {
-                final String possiblePhrase = string.trim();
-                if (!StringUtils.isEmpty(possiblePhrase)
-                                && RegExUtils.isMatching(possiblePhrase, VALID_PHRASES_REGEXP))
-                {
-                    // Add trimmed.
-                    list.add(possiblePhrase.toLowerCase());
-                }
-            }
+        	// Extract product name from the URL
+        	String productName = RegExUtils.getFirstMatch(url, "productDetail/([^?]+)", 1);
+        	if(productName != null)
+        	{
+        		try
+        		{
+        			productName = URLDecoder.decode(productName, "UTF-8");
+        		}
+        		catch(UnsupportedEncodingException uee)
+        		{
+        			EventLogger.BROWSE.error("Failed to decode product name", productName);
+        			continue;
+        		}
+        		
+        		// Split product names which consist of individual words (split at anything that is not a letter or number, e.g. spaces)
+        		String[] splittedProductName = productName.split("[^a-zA-Z0-9]");
+        		for(String s : splittedProductName)
+        		{
+	        		if(!StringUtils.isEmpty(s) && RegExUtils.isMatching(s, VALID_PHRASES_REGEXP))
+	        		{
+	        			list.add(s.toLowerCase());
+	        		}
+        		}
+        	}
         }
-    }
-
-    private static List<HtmlElement> getProductNames()
-    {
-        return ProductListingPage.instance.productGrid.getProducts().all();
     }
 }

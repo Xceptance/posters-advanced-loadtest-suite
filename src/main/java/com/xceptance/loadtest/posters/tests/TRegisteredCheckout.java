@@ -5,12 +5,6 @@ import com.xceptance.loadtest.api.tests.LoadTestCase;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.posters.actions.account.Logout;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
-import com.xceptance.loadtest.posters.actions.checkout.Checkout;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutLogin;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutSelectShipping;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutShippingAddress;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutSubmitBilling;
-import com.xceptance.loadtest.posters.actions.checkout.CheckoutSubmitShipping;
 import com.xceptance.loadtest.posters.flows.AddToCartFlow;
 import com.xceptance.loadtest.posters.flows.CartCleanUpFlow;
 import com.xceptance.loadtest.posters.flows.CreateAccountFlow;
@@ -65,19 +59,20 @@ public class TRegisteredCheckout extends LoadTestCase
         // we can only checkout if we still got a cart
         if (GeneralPages.instance.miniCart.isEmpty() == false)
         {
-            new Checkout().run();
-
-            // make sure we use the account we already got before using getattachedaccount
-            new CheckoutLogin(Context.get().data.getAccount().get()).run();
-
-            new CheckoutShippingAddress().run();
-            new CheckoutSelectShipping().run();
-            new CheckoutSubmitShipping().run();
-
-            new CheckoutSubmitBilling().run();
-
-            // no place order
-            // we cannot log out from this page
+// TODO
+//            new Checkout().run();
+//
+//            // make sure we use the account we already got before using getattachedaccount
+//            new CheckoutLogin(Context.get().data.getAccount().get()).run();
+//
+//            new CheckoutShippingAddress().run();
+//            new CheckoutSelectShipping().run();
+//            new CheckoutSubmitShipping().run();
+//
+//            new CheckoutSubmitBilling().run();
+//
+//            // no place order
+//            // we cannot log out from this page
         }
         else
         {

@@ -5,12 +5,16 @@ import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 import com.xceptance.loadtest.posters.models.pages.general.HomepagePage;
 
+/**
+ * Logs out.
+ * 
+ * @author Xceptance Software Technologies
+ */
 public class Logout extends PageAction<Logout>
 {
     @Override
     protected void doExecute() throws Exception
     {
-        // click on checkout button
         loadPageByClick(GeneralPages.instance.user.getLogoutLink().asserted().first());
     }
 
