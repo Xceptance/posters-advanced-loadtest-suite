@@ -30,7 +30,7 @@ import com.xceptance.loadtest.posters.models.pages.search.SearchResultPage;
  *
  * @author Bernd Weigel (Xceptance Software Technologies GmbH)
  */
-public class SearchPhraseCrawler extends LoadTestCase
+public class TSearchPhraseCrawler extends LoadTestCase
 {
     /**
      * Regexpt to filter unwanted searchphrases. Currently only words with at
@@ -111,7 +111,7 @@ public class SearchPhraseCrawler extends LoadTestCase
                 }
                 catch (final AssertionError e)
                 {
-                    if (!SearchResultPage.instance.productSearchResult.exists())
+                    if (!SearchResultPage.instance.productGrid.exists())
                     {
                         // We are on some error page (e.g. server transmission error) so simply visit home page again
                         try
@@ -120,7 +120,7 @@ public class SearchPhraseCrawler extends LoadTestCase
                             new VisitFlow().run();
 
                             // Verify that we are able to search
-                            Assert.assertTrue("Failed to find search field on homepage.", SearchResultPage.instance.productSearchResult.exists());
+                            Assert.assertTrue("Failed to find search field on homepage.", SearchResultPage.instance.productGrid.exists());
                         }
                         catch (final AssertionError ae)
                         {

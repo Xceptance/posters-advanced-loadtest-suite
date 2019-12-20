@@ -1,29 +1,32 @@
 package com.xceptance.loadtest.posters.models.pages.search;
 
-import com.xceptance.loadtest.posters.models.components.plp.ProductGrid;
-import com.xceptance.loadtest.posters.models.components.plp.ProductSearchResult;
-import com.xceptance.loadtest.posters.models.components.plp.ProductSearchResultCount;
-import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
+import com.xceptance.loadtest.posters.models.components.plp.SearchQuery;
+import com.xceptance.loadtest.posters.models.pages.catalog.ProductListingPage;
 
-public class SearchResultPage extends GeneralPages
+/**
+ * Represent a search result page.
+ * 
+ * Next to PLP components this page also has a search query component.
+ * 
+ * @author Xceptance Software Technologies
+ */
+public class SearchResultPage extends ProductListingPage
 {
     public static final SearchResultPage instance = new SearchResultPage();
-
-    public ProductSearchResult productSearchResult = ProductSearchResult.instance;
-    public ProductSearchResultCount productSearchResultCount = ProductSearchResultCount.instance;
-    public ProductGrid productGrid = ProductGrid.instance;
+    
+    public final SearchQuery searchQuery = SearchQuery.instance;
 
     @Override
     public void validate()
     {
         super.validate();
 
-        validate(has(productSearchResult, productSearchResultCount, productGrid));
+        validate(has(searchQuery));
     }
 
     @Override
     public boolean is()
     {
-        return matches(has(productSearchResult, productSearchResultCount, productGrid));
+        return matches(has(searchQuery));
     }
 }

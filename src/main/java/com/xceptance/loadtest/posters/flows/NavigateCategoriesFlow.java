@@ -7,7 +7,9 @@ import com.xceptance.loadtest.posters.actions.catalog.ClickATopCategory;
 import com.xceptance.loadtest.posters.models.pages.catalog.ProductListingPage;
 
 /**
- * Browse a (top) category.
+ * Opens a (top) category.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class NavigateCategoriesFlow extends Flow
 {
@@ -21,7 +23,7 @@ public class NavigateCategoriesFlow extends Flow
         {
             new ClickATopCategory().run();
 
-            // In case this is not really ending up anywhere useful, give us another direct category
+            // In case this is does not really end up somewhere useful, open a category
             if (ProductListingPage.instance.is() == false)
             {
                 new ClickACategory().run();

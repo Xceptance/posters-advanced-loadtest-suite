@@ -5,7 +5,7 @@ import com.xceptance.loadtest.posters.models.components.general.Footer;
 import com.xceptance.loadtest.posters.models.components.general.Header;
 import com.xceptance.loadtest.posters.models.components.general.MiniCart;
 import com.xceptance.loadtest.posters.models.components.general.Navigation;
-import com.xceptance.loadtest.posters.models.components.general.SiteSearch;
+import com.xceptance.loadtest.posters.models.components.general.Search;
 import com.xceptance.loadtest.posters.models.components.general.UserMenu;
 
 /**
@@ -23,27 +23,21 @@ public class GeneralPages extends Page
     
     public MiniCart miniCart = MiniCart.instance;
     
-    public SiteSearch siteSearch = SiteSearch.instance;
+    public Search search = Search.instance;
     
     public Navigation navigation = Navigation.instance;
     
     public Footer footer = Footer.instance;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void validate()
     {
-        validate(has(header, user, miniCart, siteSearch, navigation, footer));
+        validate(has(header, user, miniCart, search, navigation, footer));
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean is()
     {
-        return matches(has(header, miniCart, siteSearch, navigation, footer));
+        return matches(has(header, miniCart, search, navigation, footer));
     }
 }

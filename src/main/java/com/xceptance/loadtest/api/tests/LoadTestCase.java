@@ -13,9 +13,9 @@ import com.xceptance.xlt.api.engine.Session;
 import com.xceptance.xlt.api.util.XltProperties;
 
 /**
- * Base class of all tests.
+ * Test case base class
  *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * @author Xceptance Software Technologies
  */
 public abstract class LoadTestCase extends com.xceptance.xlt.api.tests.AbstractTestCase implements SiteByMarketShare
 {
@@ -58,7 +58,6 @@ public abstract class LoadTestCase extends com.xceptance.xlt.api.tests.AbstractT
         return site == null ? site = supplySite() : site;
     }
 
-
     /**
      * Test preparation. Nothing to do here by default. Feel free to override.
      *
@@ -68,6 +67,7 @@ public abstract class LoadTestCase extends com.xceptance.xlt.api.tests.AbstractT
     @Before
     public void init() throws Throwable
     {
+    	// Empty
     }
 
     /**

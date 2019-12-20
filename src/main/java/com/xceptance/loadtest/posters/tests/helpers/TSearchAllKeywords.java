@@ -65,7 +65,7 @@ public class TSearchAllKeywords extends LoadTestCase
             // This is necessary as some sites result in a broken page for some
             // search phrases and all following searches would break immediately
             // because of the missing field.
-            if (!SearchResultPage.instance.siteSearch.exists())
+            if (!SearchResultPage.instance.search.exists())
             {
                 // if the search phrase broke the page layout, add it to a
                 // special list
@@ -75,7 +75,7 @@ public class TSearchAllKeywords extends LoadTestCase
                 new VisitFlow().run();
 
                 // check the desired result
-                SearchResultPage.instance.siteSearch.locate().asserted("No search field on homepage.").exists();
+                SearchResultPage.instance.search.locate().asserted("No search field on homepage.").exists();
             }
         }
 

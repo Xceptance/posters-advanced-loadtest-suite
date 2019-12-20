@@ -8,6 +8,17 @@ import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.AjaxUtils;
 
+/**
+ * Page state helper.
+ * 
+ * Utilities to access JSON data embedded in the current page. A page might store multiple elements associated with a
+ * certain state, e.g. '#products-state' will contain the JSON for all products currently available at the page. Upon
+ * page load the state data is lost. General access via embed*(), retrieve*(), has*() but also more specific access
+ * (e.g. accessing certain child elements of a given JSON) is possible. Actions will typically create (embed) the state
+ * data and components will consume/update it.      
+ * 
+ * @author Xceptance Software Technologies
+ */
 public class PageState
 {
 	private static String EMBEDDED_PRODUCTS_ID = "embedded-product-listing-page-state";
@@ -17,28 +28,70 @@ public class PageState
 		embed(id, AjaxUtils.convertToJson(jsonString));
 	}
 
+	/**
+	 * Embeds JSON data in the current page at the given identifier.
+	 * 
+	 * @param id The identifier where the data will be embedded.
+	 * @param json The JSON data to embed.
+	 */
 	private static void embed(String id, JSONObject json)
 	{
-		// Embed response JSON in the page
 		HtmlElement embeddedStateElement = Page.getOrCreateByID(id, Page.find().byCss("body").asserted("Expected body element in page").single());
 		embeddedStateElement.setTextContent(json.toString(4));
 	}
 
+	/**
+	 * Retrieves the JSON data embedded at the given identifier.
+	 * 
+	 * @param id The identifier where the embedded JSON data is retrieved.
+	 * @return The retrieved JSON data.
+	 */
 	private static JSONObject retrieve(String id)
 	{
-		LookUpResult products = Page.find().byId(id);
-		if(products.exists())
+		LookUpResult embeddedStateElement = Page.find().byId(id);
+		if(embeddedStateElement.exists())
 		{
-			return AjaxUtils.convertToJson(products.single().getTextContent());
+			return AjaxUtils.convertToJson(embeddedStateElement.single().getTextContent());
 		}
 		
 		return null;
 	}
 	
+	/**
+	 * Removes the element and its embedded data.
+	 * 
+	 * @param id The identifier of the embedded data element.
+	 */
+//	private static void remove(String id)
+//	{
+//		LookUpResult embeddedStateElement = Page.find().byId(id);
+//		if(embeddedStateElement.exists())
+//		{
+//			embeddedStateElement.asserted("Expected single embedded state element").single().remove();
+//		}
+//	}
+	
+	/**
+	 * Checks if a certain identifier is contained in the page (and supposedly contains embedded state data).
+	 * 
+	 * @param id The identifier to check.
+	 * @return true if the identifier exists, false otherwise.
+	 */
 	private static boolean has(String id)
 	{
 		return Page.find().byId(id).exists();
 	}
+
+	/**
+	 * Checks if a certain identifier is contained in the page and if it has data embedded.
+	 * 
+	 * @param id The identifier to check.
+	 * @return true if the identifier exists and data is embedded, false otherwise.
+	 */
+//	private static boolean hasData(String id)
+//	{
+//		return Page.find().byId(id).exists() && Page.find().byId(id).asserted("Expected single embedded state element").single().getTextContent().isBlank();
+//	}
 
 	public static void embedProducts(String productsJsonString)
 	{

@@ -6,7 +6,6 @@ import com.xceptance.loadtest.api.hpu.HPU;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.models.pages.Page;
-import com.xceptance.loadtest.api.render.HtmlRenderer;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.FormUtils;
 
@@ -105,15 +104,6 @@ public class ShippingAddressCard implements Component
     public String getSubmitShippingUrl()
     {
         return getShippingAddressForm().getActionAttribute();
-    }
-
-    /**
-     * Renders a new shipping method list and puts it into place
-     * @param response
-     */
-    public void renderShippingMethodList(final HtmlRenderer renderer)
-    {
-        renderer.template("/templates/checkout/shipping-method-list.ftlh").replaceContentOf(getShippingMethodList().asserted().single());
     }
 
     /**

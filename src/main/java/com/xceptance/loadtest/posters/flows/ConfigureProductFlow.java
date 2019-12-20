@@ -23,7 +23,7 @@ public class ConfigureProductFlow extends Flow
         {
         	new ConfigureProductVariation().runIfPossible();
         }
-        while(!safetyBreak.reached() && !ProductDetailPage.instance.isAvailable());
+        while(!safetyBreak.reached() && !ProductDetailPage.instance.isProductAvailable());
 
         return true;
     }

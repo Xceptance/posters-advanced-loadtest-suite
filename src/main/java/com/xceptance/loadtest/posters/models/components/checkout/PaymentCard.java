@@ -7,7 +7,6 @@ import com.xceptance.loadtest.api.hpu.HPU;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.models.pages.Page;
-import com.xceptance.loadtest.api.render.HtmlRenderer;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.FormUtils;
 
@@ -104,27 +103,5 @@ public class PaymentCard implements Component
     public String getSubmitPaymentUrl()
     {
         return getBillingForm().getAttribute("action");
-    }
-
-    /**
-     * Get the submitted addresses displayed
-     *
-     * @param renderer
-     */
-    public void render(final HtmlRenderer renderer)
-    {
-        renderer.template("/templates/checkout/payment-card.ftlh")
-                        .replaceContentOf(locate().byCss(".addressSelector").asserted().single());
-    }
-
-    public void renderSummary(final HtmlRenderer renderer)
-    {
-        // render
-        renderer.template("/templates/checkout/payment-summary-card.ftlh")
-                        .replace(Page.find().byCss(".payment-summary .card-body").asserted().single());
-
-        // make visible or hide
-        Page.find().byCss(".payment-summary").asserted().single().setAttribute("style", "display: block;");
-        Page.find().byCss(".payment-form").asserted().single().setAttribute("style", "display: none;");
     }
 }

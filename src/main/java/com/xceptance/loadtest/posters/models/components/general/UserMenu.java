@@ -3,9 +3,14 @@ package com.xceptance.loadtest.posters.models.components.general;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
 
-public enum UserMenu implements Component
+/**
+ * User menu component.
+ * 
+ * @author Xceptance Software Technologies
+ */
+public class UserMenu implements Component
 {
-    instance;
+	public static final UserMenu instance = new UserMenu();
 
     @Override
     public LookUpResult locate()

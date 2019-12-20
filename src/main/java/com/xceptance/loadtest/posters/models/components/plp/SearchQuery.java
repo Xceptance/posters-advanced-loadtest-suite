@@ -5,23 +5,28 @@ import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.models.pages.Page;
 
 /**
- * SearchResult component.
+ * Search query component.
  * 
  * @author Xceptance Software Technologies
  */
-public enum SearchResult implements Component
+public class SearchQuery implements Component
 {
-    instance;
+	public static final SearchQuery instance = new SearchQuery();
 
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byCss("#productOverview");
+        return Page.find().byId("searchTextValue");
     }
 
     @Override
     public boolean exists()
     {
-        return locate().exists() && Page.find().byId("titleSearchText").exists();
+        return locate().exists();
+    }
+
+    public String getQuery()
+    {
+    	return locate().asserted("Expected existing search query element").single().getTextContent();
     }
 }

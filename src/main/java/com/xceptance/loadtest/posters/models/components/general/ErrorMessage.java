@@ -5,23 +5,28 @@ import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.models.pages.Page;
 
 /**
- * Header component
+ * Error message component.
  * 
  * @author Xceptance Software Technologies
  */
-public class Header implements Component
+public class ErrorMessage implements Component
 {
-	public static final Header instance = new Header();
+	public static final ErrorMessage instance = new ErrorMessage();
 
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byCss("header");
+        return Page.find().byId("errorMessage");
     }
 
     @Override
     public boolean exists()
     {
         return locate().exists();
+    }
+    
+    public String getMessage()
+    {
+    	return locate().byCss("strong").asserted("Expected error message to be available").single().getTextContent();
     }
 }

@@ -3,7 +3,6 @@ package com.xceptance.loadtest.posters.models.components.checkout;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.models.pages.Page;
-import com.xceptance.loadtest.api.render.HtmlRenderer;
 
 public class OrderSummaryCard implements Component
 {
@@ -28,15 +27,5 @@ public class OrderSummaryCard implements Component
     public boolean exists()
     {
         return locate().exists();
-    }
-
-    /**
-     * Renders the oder summary display
-     *
-     * @param response
-     */
-    public void render(final HtmlRenderer renderer)
-    {
-        renderer.template("/templates/checkout/order-summary-card.ftlh").replace(locate().asserted().single());
     }
 }

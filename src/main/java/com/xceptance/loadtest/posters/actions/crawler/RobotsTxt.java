@@ -12,10 +12,9 @@ import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.crawler.Robots;
 
 /**
- * Loads robots.txt
+ * Loads the robots.txt
  *
- * @author Rene Schwietzke
- * @version
+ * @author Xceptance Software Technologies
  */
 public class RobotsTxt extends PageAction<RobotsTxt>
 {
@@ -26,11 +25,11 @@ public class RobotsTxt extends PageAction<RobotsTxt>
     {
         Context.setBasicAuthenticationHeader();
 
-        // build URL
-        final URL robotsUrl = new URIBuilder(Context.configuration().siteUrlHomepage) //
-                .setPath("/robots.txt") //
-                .removeQuery() //
-                .setFragment(null) //
+        // Build URL
+        final URL robotsUrl = new URIBuilder(Context.configuration().siteUrlHomepage)
+                .setPath("/robots.txt")
+                .removeQuery()
+                .setFragment(null)
                 .build().toURL();
 
         final WebRequest request = new WebRequest(robotsUrl, HttpMethod.GET);
@@ -40,7 +39,7 @@ public class RobotsTxt extends PageAction<RobotsTxt>
     @Override
     protected void postExecute() throws Exception
     {
-        // nothing
+        // Empty
     }
 
     @Override

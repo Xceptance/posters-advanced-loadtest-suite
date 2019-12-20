@@ -36,7 +36,7 @@ public class ProductDetailPage extends GeneralPages
     			Page.find().byId("titleProductName").exists(); 
     }
     
-    public boolean isAvailable()
+    public boolean isProductAvailable()
     {
     	// NOTE
     	// This is not implemented for the posters demo shop. At the moment all products are always in stock.

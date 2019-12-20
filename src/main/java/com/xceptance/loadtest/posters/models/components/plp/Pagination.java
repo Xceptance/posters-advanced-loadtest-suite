@@ -17,9 +17,9 @@ import com.xceptance.xlt.api.util.XltRandom;
  * 
  * @author Xceptance Software Technologies
  */
-public enum Pagination implements Component
+public class Pagination implements Component
 {
-    instance;
+	public static final Pagination instance = new Pagination();
 
     @Override
     public LookUpResult locate()

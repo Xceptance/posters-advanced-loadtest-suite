@@ -1,25 +1,30 @@
 package com.xceptance.loadtest.posters.models.pages.account;
 
-import com.xceptance.loadtest.posters.models.components.account.LoginCard;
+import com.xceptance.loadtest.posters.models.components.account.LoginForm;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
+/**
+ * Represents the login page.
+ * 
+ * @author Xceptance Software Technologies
+ */
 public class LoginPage extends GeneralPages
 {
     public static final LoginPage instance = new LoginPage();
 
-    public final LoginCard loginCard = LoginCard.instance;
+    public final LoginForm loginForm = LoginForm.instance;
 
     @Override
     public void validate()
     {
         super.validate();
 
-        validate(has(loginCard));
+        validate(has(loginForm));
     }
 
     @Override
     public boolean is()
     {
-        return matches(has(loginCard));
+        return matches(has(loginForm));
     }
 }

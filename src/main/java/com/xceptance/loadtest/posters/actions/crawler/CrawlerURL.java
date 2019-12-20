@@ -15,10 +15,9 @@ import com.xceptance.xlt.api.validators.HtmlEndTagValidator;
 import com.xceptance.xlt.api.validators.XHTMLValidator;
 
 /**
- * This is a simple test class for pulling urls.
+ * Opens a given URL with some Crawler specific validations. 
  *
- * @author Matthias Ullrich
- * @version
+ * @author Xceptance Software Technologies
  */
 public class CrawlerURL extends SimpleURL
 {
@@ -29,10 +28,8 @@ public class CrawlerURL extends SimpleURL
     /**
      * Instantiates the class.
      *
-     * @param url
-     *            the URL which is being loaded
-     * @param statusCodePattern
-     *            the expected status code pattern
+     * @param url The URL which is being loaded
+     * @param statusCodePattern The expected status code pattern
      */
     public CrawlerURL(final String url, final String statusCodePattern)
     {
@@ -44,8 +41,7 @@ public class CrawlerURL extends SimpleURL
     /**
      * Instantiates the class.
      *
-     * @param url
-     *            the URL which is being loaded
+     * @param url The URL which is being loaded
      */
     public CrawlerURL(final String url)
     {
@@ -54,7 +50,8 @@ public class CrawlerURL extends SimpleURL
 
     /**
      * Configure the action to validate content length, HTML end tag, and  XHTML structure.
-     * @return configured instance
+     * 
+     * @return Configured instance
      * @see {@link ContentLengthValidator}
      * @see {@link HtmlEndTagValidator}
      * @see {@link XHTMLValidator}
@@ -68,11 +65,9 @@ public class CrawlerURL extends SimpleURL
     /**
      * Add an assertion on the WebResponse.
      *
-     * @param failMessage
-     *            message in case of assertion fails
-     * @param webResponseAssertion
-     *            the assertion, given as Java function
-     * @return configured instance
+     * @param failMessage The message in case of assertion fails
+     * @param webResponseAssertion The assertion, given as Java function
+     * @return Configured instance
      */
     public CrawlerURL assertWebResponse(final String failMessage, final Predicate<WebResponse> webResponseAssertion)
     {

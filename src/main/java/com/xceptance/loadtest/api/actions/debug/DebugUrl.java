@@ -5,20 +5,18 @@ import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.Context;
 
 /**
- * This is a simple test class for pulling urls.
+ * Loads the provided (debug) URL.
  *
- * @author Rene Schwietzke
- * @version
+ * @author Xceptance Software Technologies
  */
 public class DebugUrl extends PageAction<DebugUrl>
 {
     private final String urlString;
 
     /**
-     * Creates an SimpleUrl object.
+     * Creates the action and sets the URL to load.
      *
-     * @param urlString
-     *            the URL which is being loaded
+     * @param urlString The URL to load.
      */
     public DebugUrl(final String urlString)
     {
@@ -42,6 +40,6 @@ public class DebugUrl extends PageAction<DebugUrl>
     @Override
     protected void postValidate() throws Exception
     {
-        // simply nothing .. really .. nothing .. no the faintest check
+        // Do nothing
     }
 }

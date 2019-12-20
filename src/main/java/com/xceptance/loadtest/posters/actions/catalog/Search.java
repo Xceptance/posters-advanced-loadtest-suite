@@ -18,21 +18,19 @@ import com.xceptance.loadtest.posters.models.pages.search.SearchResultPage;
 import com.xceptance.xlt.api.util.XltRandom;
 
 /**
- * Enter a given search phrase in the site's search bar and submit.
+ * Searches for a given search phrase and expects a given search result.
  *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * @author Xceptance Software Technologies
  */
 public class Search extends PageAction<Search>
 {
     /**
-     * The constant random stuff that makes the cacheBuster longer
+     * The fixed part of the cache buster which is added to a search phrase.
      */
     public final static String CACHEBUSTERFIXEDPART = " -9823754123321";
 
-    /** Search phrase. */
     private final String phrase;
 
-    /** Search option ({@link SearchOption#HITS} or {@link SearchOption#MISS} ). */
     private final SearchOption searchOption;
 
     private long searchTime;
@@ -50,7 +48,7 @@ public class Search extends PageAction<Search>
         this.searchOption = searchOption;
         this.phrase = phrase;
 
-        // set timer name
+        // Set timer name
         if (searchOption == SearchOption.MISS)
         {
             this.setTimerName(this.getTimerName() + "NoHits");
@@ -73,11 +71,11 @@ public class Search extends PageAction<Search>
             cacheBuster = "";
         }
 
-        // we do not change the url any longer, we enter a search phrase that
+        // We do not change the URL any longer, we enter a search phrase that
         // excludes some data that is always not in, hence we also avoid the hit
         // in the search cache partially not only in the page cache
         // avoid that the cache buster part is
-        final LookUpResult inputField = GeneralPages.instance.siteSearch.locateInputfield();
+        final LookUpResult inputField = GeneralPages.instance.search.getSearchField();
         FormUtils.setInputValue(inputField, phrase + cacheBuster);
 
         // Fill the search form with the given phrase and add a hidden field
@@ -90,7 +88,7 @@ public class Search extends PageAction<Search>
         // Submit the search.
         loadPageByFormSubmit(searchForm);
 
-        // stop timer
+        // Stop timer
         searchTime = time.stopAndGet();
     }
 
@@ -100,18 +98,19 @@ public class Search extends PageAction<Search>
     @Override
     protected void postValidate() throws Exception
     {
-        // this was a page load, so validate what is important
+    	// Validate the page load
         Validator.validatePageSource();
 
         // Have we expected hits?
         final boolean hitsExpected = SearchOption.HITS.equals(searchOption);
 
-        // the name to log
+        // The name to log
         String name = "Search - N/A";
-        // the status to log
+        
+        // The status to log
         boolean failed = false;
 
-        // Did we result in a no-hits page?
+        // Did we result in a no hits page?
         try
         {
             if (SearchNoResultPage.instance.is())
@@ -124,7 +123,7 @@ public class Search extends PageAction<Search>
                     EventLogger.BROWSE.warn("Unexpected Search Miss", phrase);
                 }
 
-                // validate completely
+                // Validate resulting page
                 SearchNoResultPage.instance.validate();
             }
             // Did we land on a Search result?
@@ -138,7 +137,7 @@ public class Search extends PageAction<Search>
                     EventLogger.BROWSE.warn("Unexpected Search Hits", phrase);
                 }
 
-                // validate completely
+                // Validate resulting page
                 SearchResultPage.instance.validate();
             }
             else if (ProductDetailPage.instance.is())
@@ -152,7 +151,7 @@ public class Search extends PageAction<Search>
                     EventLogger.BROWSE.warn("Unexpected Search Hits", phrase);
                 }
 
-                // validate completely
+                // Validate resulting page
                 ProductDetailPage.instance.validate();
             }
             else
@@ -164,7 +163,7 @@ public class Search extends PageAction<Search>
         }
         finally
         {
-            // log timer record
+            // Log timer record
             CustomDataLogger.log(name, searchTime, failed);
         }
     }

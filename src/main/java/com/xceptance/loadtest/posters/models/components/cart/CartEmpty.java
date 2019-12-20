@@ -5,19 +5,17 @@ import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.models.pages.Page;
 
 /**
- * Indicator of an empty cart
- *
- * @author rschwietzke
- *
+ * Cart empty indicator component.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class CartEmpty implements Component
 {
-    public final static CartEmpty instance = new CartEmpty();
+	public static final CartEmpty instance = new CartEmpty();
 
     @Override
     public LookUpResult locate()
     {
-    	// Detect 'cart empty' error
     	return Page.find().byId("errorCartMessage");
     }
 

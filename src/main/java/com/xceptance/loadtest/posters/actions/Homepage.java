@@ -6,12 +6,12 @@ import org.junit.Assert;
 
 import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.validators.Validator;
-import com.xceptance.loadtest.posters.models.pages.general.HomepagePage;
+import com.xceptance.loadtest.posters.models.pages.general.HomePage;
 
 /**
- * Opens the start page.
+ * Opens the start (home) page.
  *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * @author Xceptance Software Technologies
  */
 public class Homepage extends PageAction<Homepage>
 {
@@ -21,10 +21,9 @@ public class Homepage extends PageAction<Homepage>
     private final String urlString;
 
     /**
-     * Constructor.
+     * Creates the action.
      *
-     * @param urlString
-     *            start page URL as string
+     * @param urlString The start page URL as string
      */
     public Homepage(final String urlString)
     {
@@ -37,10 +36,8 @@ public class Homepage extends PageAction<Homepage>
     @Override
     protected void doExecute() throws Exception
     {
-        final URL url = new URL(urlString);
-
-        // Open the start page.
-        loadPage(url);
+        // Load the page
+        loadPage(new URL(urlString));
     }
 
     /**
@@ -49,14 +46,14 @@ public class Homepage extends PageAction<Homepage>
     @Override
     protected void postValidate() throws Exception
     {
-        // this was a page load, so validate what is important
+        // Validate the page load
         Validator.validatePageSource();
 
-        // basic checks for the homepage
-        HomepagePage.instance.validate();
+        // Home page validation
+        HomePage.instance.validate();
 
-        // make sure cart is empty and user logged off
-        Assert.assertTrue("Cart not empty", HomepagePage.instance.miniCart.isEmpty());
-        Assert.assertTrue("User is logged on", HomepagePage.instance.user.isNotLoggedIn());
+        // Validate that cart is empty and no user is logged in
+        Assert.assertTrue("Cart not empty", HomePage.instance.miniCart.isEmpty());
+        Assert.assertTrue("User is logged on", HomePage.instance.user.isNotLoggedIn());
     }
 }

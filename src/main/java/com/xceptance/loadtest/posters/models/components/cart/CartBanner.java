@@ -4,25 +4,21 @@ import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.models.pages.Page;
 
+/**
+ * Cart banner (title) component.
+ * 
+ * @author Xceptance Software Technologies
+ */
 public class CartBanner implements Component
 {
-    public final static CartBanner instance = new CartBanner();
+	public static final CartBanner instance = new CartBanner();
 
-    /**
-     * Lookup the footer.
-     */
     @Override
     public LookUpResult locate()
     {
-        // this CSS path is bad, because the html is bad
-        return Page.find().byCss("#titleCart");
+        return Page.find().byId("titleCart");
     }
 
-    /**
-     * Indicates if this component exists
-     *
-     * @return
-     */
     @Override
     public boolean exists()
     {

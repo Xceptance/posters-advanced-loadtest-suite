@@ -9,9 +9,14 @@ import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.FormUtils;
 
-public class LoginCard implements Component
+/**
+ * LoginForm component.
+ * 
+ * @author Xceptance Software Technologies
+ */
+public class LoginForm implements Component
 {
-    public final static LoginCard instance = new LoginCard();
+	public static final LoginForm instance = new LoginForm();
 
     @Override
     public LookUpResult locate()

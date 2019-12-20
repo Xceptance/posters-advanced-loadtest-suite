@@ -1,6 +1,5 @@
 package com.xceptance.loadtest.posters.actions.cart;
 
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.Format;
@@ -9,9 +8,9 @@ import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
 /**
- * Access the cart page.
+ * Opens the cart page.
  *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * @author Xceptance Software Technologies
  */
 public class ViewCart extends PageAction<ViewCart>
 {
@@ -19,7 +18,7 @@ public class ViewCart extends PageAction<ViewCart>
     {
         super();
 
-        // set the timername to include the amount of product roughly
+        // Set the timername to include the amount of product roughly
         if (Context.configuration().reportCartBySize)
         {
             setTimerName(Format.timerName(getTimerName(), GeneralPages.instance.miniCart.getQuantity()));
@@ -32,11 +31,7 @@ public class ViewCart extends PageAction<ViewCart>
     @Override
     protected void doExecute() throws Exception
     {
-        // Get mini cart link.
-        final HtmlElement cartLink = GeneralPages.instance.miniCart.getViewCartLink().asserted().single();
-
-        // Click it.
-        loadPageByClick(cartLink);
+        loadPageByClick(GeneralPages.instance.miniCart.getViewCartLink().asserted().single());
     }
 
     /**
@@ -45,10 +40,9 @@ public class ViewCart extends PageAction<ViewCart>
     @Override
     protected void postValidate() throws Exception
     {
-        // this was a page load, so validate what is important
         Validator.validatePageSource();
 
-        // basic checks for the cart
+        // Validate the cart page
         CartPage.instance.validate();
     }
 }

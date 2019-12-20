@@ -3,10 +3,9 @@ package com.xceptance.loadtest.api.actions;
 import com.xceptance.loadtest.api.util.Context;
 
 /**
- * This is a simple test class for pulling urls.
+ * Opens a given URL.
  *
- * @author Rene Schwietzke
- * @version
+ * @author Xceptance Software Technologies
  */
 public class SimpleURL extends PageAction<SimpleURL>
 {
@@ -15,8 +14,7 @@ public class SimpleURL extends PageAction<SimpleURL>
     /**
      * Creates an SimpleUrl object.
      *
-     * @param url
-     *            the URL which is beeing loaded
+     * @param url The URL which is being loaded
      */
     public SimpleURL(final String url)
     {
@@ -26,14 +24,13 @@ public class SimpleURL extends PageAction<SimpleURL>
     /**
      * Creates an SimpleUrlObject.
      *
-     * @param action
-     *            the previous action
-     * @param url
-     *            the URL which is being loaded
+     * @param action The previous action
+     * @param url The URL which is being loaded
      */
     public SimpleURL(final com.xceptance.xlt.api.actions.AbstractHtmlPageAction action, final String url)
     {
         super(action);
+        
         setTimerName("SimpleURL.Followup");
 
         this.url = url;
@@ -56,6 +53,6 @@ public class SimpleURL extends PageAction<SimpleURL>
     @Override
     protected void postValidate() throws Exception
     {
-        // simply nothing .. really .. nothing .. no the faintest check
+    	// Nothing to validate
     }
 }

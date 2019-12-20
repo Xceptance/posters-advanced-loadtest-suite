@@ -3,7 +3,7 @@ package com.xceptance.loadtest.posters.actions.account;
 import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
-import com.xceptance.loadtest.posters.models.pages.general.HomepagePage;
+import com.xceptance.loadtest.posters.models.pages.general.HomePage;
 
 /**
  * Logs out.
@@ -23,8 +23,8 @@ public class Logout extends PageAction<Logout>
     {
         Validator.validatePageSource();
 
-        HomepagePage.instance.validate();
-        HomepagePage.instance.miniCart.isEmpty();
-        HomepagePage.instance.user.isNotLoggedIn();
+        HomePage.instance.validate();
+        HomePage.instance.miniCart.isEmpty();
+        HomePage.instance.user.isNotLoggedIn();
     }
 }

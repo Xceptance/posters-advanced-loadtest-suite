@@ -8,6 +8,8 @@ import com.xceptance.loadtest.posters.flows.VisitFlow;
 
 /**
  * Starts visit at landing page, browses categories or searches, executes product listing page actions and visits product pages.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class TBrowse extends LoadTestCase
 {

@@ -5,61 +5,46 @@ import com.xceptance.loadtest.api.flows.Flow;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.posters.actions.cart.AddToCart;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
-import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
 import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
 /**
- * Order a single configured product.
+ * Configures and orders a single product.
  *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * @author Xceptance Software Technologies
  */
 public class SingleProductOrderFlow extends Flow
 {
     @Override
     public boolean execute() throws Throwable
     {
-        // Configure product.
+        // Configure product
         if (ProductDetailPage.instance.is())
         {
             new ConfigureProductFlow().run();
         }
 
-        // how often do we want to do an add 2 cart?
-        final int add2Cart = Context.configuration().cartProductQuantity.value;
-        // Add product variation to cart.
-        for (int i = 0; i < add2Cart; i++)
+        // Add the product to the cart for the given number of times
+        final int addToCartCount = Context.configuration().cartProductQuantity.value;
+        for (int i = 0; i < addToCartCount; i++)
         {
             new AddToCart().run();
         }
 
         new ViewCart().runIfPossible();
 
-         if (CartPage.instance.isOrderable() == false)
-         {
-         new CartCleanUpFlow().run();
-         }
+        // TODO Cart clean up flow
 
-        // final we can final only checkout if final we still got final a cart
-         if (GeneralPages.instance.miniCart.isEmpty() == false)
-         {
-// TODO        	 
-//	         new Checkout().run();
-//	
-//	         new CheckoutGuest().run();
-//	
-//	         new CheckoutShippingAddress().run();
-//	         new CheckoutSelectShipping().run();
-//	         new CheckoutSubmitShipping().run();
-//	
-//	         new CheckoutSubmitBilling().run();
-//	
-//	         new CheckoutPlaceOrder().run();
-         }
-         else
-         {
-            EventLogger.CHECKOUT.warn("Empty Cart", "Cart was empty before checkout was started");
-         }
+        // Execute checkout steps
+		if (GeneralPages.instance.miniCart.isEmpty() == false)
+		{
+			// TODO Checkout/order
+		}
+		else
+		{
+			EventLogger.CHECKOUT.warn("Empty Cart", "Could not checkout because cart was empty");
+		}
+
         return false;
     }
 }

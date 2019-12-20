@@ -20,13 +20,13 @@ import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.posters.util.PageState;
 
 /**
- * ProductGrid component.
+ * Product grid component.
  *
  * @author Xceptance Software Technologies
  */
 public class ProductGrid implements Component
 {
-    public static final ProductGrid instance = new ProductGrid();
+	public static final ProductGrid instance = new ProductGrid();
 
     @Override
     public LookUpResult locate()

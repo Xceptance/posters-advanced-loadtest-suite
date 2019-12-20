@@ -12,10 +12,9 @@ import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.validators.Validator;
 
 /**
- * This is a simple test class for pulling urls.
+ * Loads a given URL and applies provided validations.
  *
- * @author Rene Schwietzke
- * @version
+ * @author Xceptance Software Technologies
  */
 public class SimpleURL_XPathAsserted extends SimpleURL
 {
@@ -26,12 +25,9 @@ public class SimpleURL_XPathAsserted extends SimpleURL
     /**
      * Creates an SimpleUrlObject.
      *
-     * @param url
-     *            the URL which is beeing loaded
-     * @param xpath
-     *            an xpath wich will be evaluated after the page was loaded
-     * @param text
-     *            the expected text content of the element represented by xpath
+     * @param url The URL to load.
+     * @param xpath An XPath which will be evaluated after the page was loaded.
+     * @param text The expected text content of the element represented by XPath.
      */
     public SimpleURL_XPathAsserted(final String url, final String xpath, final String text)
     {
@@ -44,14 +40,10 @@ public class SimpleURL_XPathAsserted extends SimpleURL
     /**
      * Creates an SimpleUrlObject.
      *
-     * @param action
-     *            the previous action
-     * @param url
-     *            the URL which is beeing loaded
-     * @param xpath
-     *            an xpath wich will be evaluated after the page was loaded
-     * @param text
-     *            the expected text content of the element represented by xpath
+     * @param action The previous action.
+     * @param url The URL to load.
+     * @param xpath An XPath which will be evaluated after the page was loaded.
+     * @param text The expected text content of the element represented by XPath.
      */
     public SimpleURL_XPathAsserted(final com.xceptance.xlt.api.actions.AbstractHtmlPageAction action, final String url, final String xpath,
         final String text)
@@ -64,19 +56,20 @@ public class SimpleURL_XPathAsserted extends SimpleURL
     @Override
     protected void postValidate() throws Exception
     {
-        // validate response code
+        // Validate the page load.
         Validator.validatePageSource();
 
-        // check the special path
+        // Make sure the given XPath validation or text are not empty
         if (StringUtils.isBlank(xpath) || text == null)
         {
             return;
         }
 
-        // ok, do it
+        // Validate the given XPath
         final List<HtmlElement> elements = Page.find().byXPath(xpath).all();
         Assert.assertFalse("xpath not found '" + xpath + "'", elements.isEmpty());
-
+        
+        // Validate the given text
         Assert.assertTrue("Text does not match", RegExUtils.isMatching(elements.get(0).asText().trim(), text.trim()));
     }
 }

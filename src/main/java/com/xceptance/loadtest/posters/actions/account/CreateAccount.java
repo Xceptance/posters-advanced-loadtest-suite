@@ -25,9 +25,9 @@ public class CreateAccount extends PageAction<CreateAccount>
     @Override
     protected void doExecute() throws Exception
     {
-        CreateAccountPage.instance.createAccountCard.fillCreateAccountForm(account);
+        CreateAccountPage.instance.createAccountForm.fillCreateAccountForm(account);
        
-        loadPageByClick(CreateAccountPage.instance.createAccountCard.getCreateAccountButton());
+        loadPageByClick(CreateAccountPage.instance.createAccountForm.getCreateAccountButton());
     }
 
     @Override
@@ -35,7 +35,7 @@ public class CreateAccount extends PageAction<CreateAccount>
     {
         Validator.validatePageSource();
 
-        Assert.assertTrue("Failed to register. Expected login form.", LoginPage.instance.loginCard.exists());        
+        Assert.assertTrue("Failed to register. Expected login form.", LoginPage.instance.loginForm.exists());        
 
         account.isRegistered = true;
     }

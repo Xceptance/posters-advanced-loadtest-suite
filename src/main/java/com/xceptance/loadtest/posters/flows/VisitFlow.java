@@ -4,6 +4,11 @@ import com.xceptance.loadtest.api.flows.Flow;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.posters.actions.Homepage;
 
+/**
+ * Visits the given (home)page.
+ * 
+ * @author Xceptance Software Technologies
+ */
 public class VisitFlow extends Flow
 {
     /**
@@ -12,7 +17,6 @@ public class VisitFlow extends Flow
     @Override
     public boolean execute() throws Throwable
     {
-        // Open the start URL
         new Homepage(Context.configuration().siteUrlHomepage).run();
 
         return true;

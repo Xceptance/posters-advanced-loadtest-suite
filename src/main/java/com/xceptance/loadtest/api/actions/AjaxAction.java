@@ -6,7 +6,7 @@ import com.xceptance.xlt.engine.XltWebClient;
 /**
  * Base class of all AJAX-only actions.
  *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * @author Xceptance Software technologies
  */
 public abstract class AjaxAction<T> extends PageAction<T>
 {
@@ -16,8 +16,7 @@ public abstract class AjaxAction<T> extends PageAction<T>
     @Override
     protected void postExecute() throws Exception
     {
-        // try to load stuff during debug that has been added for easier viewing in the
-        // result browser
+        // Load additional information when in debug mode to improve result browser output
         if (Context.isLoadTest == false)
         {
             final boolean state = ((XltWebClient) getWebClient()).getOptions().isJavaScriptEnabled();

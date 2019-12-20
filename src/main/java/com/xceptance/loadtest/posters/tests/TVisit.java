@@ -5,6 +5,8 @@ import com.xceptance.loadtest.posters.flows.VisitFlow;
 
 /**
  * Visits the landing page.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class TVisit extends LoadTestCase
 {

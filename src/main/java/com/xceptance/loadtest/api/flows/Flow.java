@@ -8,9 +8,9 @@ import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.xlt.api.util.XltRandom;
 
 /**
- * Provide a unique interface for flow execution.
+ * Interface for flows.
  *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * @author Xceptance Software Technologies
  */
 public abstract class Flow
 {
@@ -103,9 +103,9 @@ public abstract class Flow
     }
 
     /**
-     * Just to run any code as flow if needed
+     * Adhoc execution of flow code.
      *
-     * @author rschwietzke
+     * @author Xceptance Software Technologies
      */
     static class AdhocFlow extends Flow
     {

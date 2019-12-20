@@ -11,14 +11,14 @@ import com.xceptance.loadtest.posters.util.PageState;
  * 
  * @author Xceptance Software Technologies
  */
-public enum PLPItemCount implements Component
+public class ItemCount implements Component
 {
-    instance;
+	public static final ItemCount instance = new ItemCount();
 
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byCss("#totalProductCount");
+        return Page.find().byId("totalProductCount");
     }
 
     @Override

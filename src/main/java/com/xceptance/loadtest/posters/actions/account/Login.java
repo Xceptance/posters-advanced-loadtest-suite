@@ -6,7 +6,7 @@ import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.data.Account;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.account.LoginPage;
-import com.xceptance.loadtest.posters.models.pages.general.HomepagePage;
+import com.xceptance.loadtest.posters.models.pages.general.HomePage;
 
 /**
  * Logs in with the given account.
@@ -25,9 +25,9 @@ public class Login extends PageAction<Login>
     @Override
     protected void doExecute() throws Exception
     {
-        LoginPage.instance.loginCard.fillLoginForm(account);
+        LoginPage.instance.loginForm.fillLoginForm(account);
         
-        loadPageByClick(LoginPage.instance.loginCard.getSignInButton());
+        loadPageByClick(LoginPage.instance.loginForm.getSignInButton());
     }
 
     @Override
@@ -35,6 +35,6 @@ public class Login extends PageAction<Login>
     {
         Validator.validatePageSource();
         
-        Assert.assertTrue("User is not logged in", HomepagePage.instance.user.isLoggedIn());
+        Assert.assertTrue("User is not logged in", HomePage.instance.user.isLoggedIn());
     }
 }

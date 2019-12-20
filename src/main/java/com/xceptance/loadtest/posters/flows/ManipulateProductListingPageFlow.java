@@ -12,6 +12,8 @@ import com.xceptance.loadtest.posters.actions.catalog.Paging;
  * Manipulates the product listing page by executing the available product listing page actions.
  * 
  * Available actions will be executed in a random fashion.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class ManipulateProductListingPageFlow extends Flow
 {

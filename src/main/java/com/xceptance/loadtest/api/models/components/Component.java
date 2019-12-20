@@ -4,29 +4,32 @@ import org.junit.Assert;
 
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 
+/**
+ * Component interface.
+ * 
+ * @author Xceptance Software Technologies.
+ */
 public interface Component
 {
     /**
-     * Find this component on the page
+     * Find the component on the current page.
      *
-     * @return a lookup result
+     * @return A lookup result.
      */
     public LookUpResult locate();
 
     /**
-     * Check if this component exists on the page
+     * Checks if the component exists on the current page.
      *
-     * @return true if this component exists
+     * @return true if this component exists, false otherwise.
      */
     public boolean exists();
 
     /**
-     * Methods to make stacktraces containing the failing component
+     * Enables stack traces to contain the failing component.
      *
-     * @param message
-     *            message to print
-     * @param value
-     *            value to check
+     * @param message The message to print
+     * @param value The value to check
      */
     default void assertTrue(final String message, final boolean value)
     {
@@ -34,12 +37,10 @@ public interface Component
     }
 
     /**
-     * Methods to make stacktraces containing the failing component
+     * Enables stack traces to contain the failing component.
      *
-     * @param message
-     *            message to print
-     * @param value
-     *            value to check
+     * @param message The message to print
+     * @param value The value to check
      */
     default void assertFalse(final String message, final boolean value)
     {

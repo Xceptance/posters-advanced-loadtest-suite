@@ -2,7 +2,7 @@ package com.xceptance.loadtest.posters.actions.account;
 
 import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.validators.Validator;
-import com.xceptance.loadtest.posters.models.pages.account.AccountDashboardPage;
+import com.xceptance.loadtest.posters.models.pages.account.MyAccountPage;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
 /**
@@ -23,6 +23,6 @@ public class GoToMyAccount extends PageAction<GoToMyAccount>
     {
         Validator.validatePageSource();
 
-        AccountDashboardPage.instance.validate();
+        MyAccountPage.instance.validate();
     }
 }

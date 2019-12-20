@@ -6,9 +6,14 @@ import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.DataUtils;
 
+/**
+ * Mini cart component.
+ * 
+ * @author Xceptance Software Technologies
+ */
 public class MiniCart implements Component
 {
-    public final static MiniCart instance = new MiniCart();
+	public static final MiniCart instance = new MiniCart();
 
     @Override
     public LookUpResult locate()
@@ -27,6 +32,11 @@ public class MiniCart implements Component
         return getQuantity() == 0;
     }
 
+    public int getLineItemCount()
+    {
+        return Context.get().data.cartLineItemCount;
+    }
+
     public LookUpResult getQuantityElement()
     {
         return locate().byCss(".cartMiniProductCounter > .value");
@@ -34,9 +44,7 @@ public class MiniCart implements Component
 
     public int getQuantity()
     {
-        final HtmlElement qty = getQuantityElement().asserted().first();
-        
-        return DataUtils.toInt(qty.asText());
+        return DataUtils.toInt(getQuantityElement().asserted().first().asText());
     }
 
     public void updateQuantity(final int newCartQuantity)
@@ -45,28 +53,6 @@ public class MiniCart implements Component
         qty.setTextContent(String.valueOf(newCartQuantity));
 
         Context.get().data.cartQuantityCount = newCartQuantity;
-    }
-
-
-    public int getLineItemCount()
-    {
-        return Context.get().data.cartLineItemCount;
-    }
-
-    public String getShowUrl()
-    {
-        final HtmlElement element = locate().first();
-        return element.getAttribute("data-action-url");
-    }
-
-    public LookUpResult getPopover()
-    {
-        return locate().byCss(".popover");
-    }
-
-    public LookUpResult getPopoverCart()
-    {
-        return locate().byCss(".popover .container.cart");
     }
 
     public LookUpResult getViewCartLink()

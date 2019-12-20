@@ -11,7 +11,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.xceptance.loadtest.api.tests.LoadTestCase;
 import com.xceptance.loadtest.posters.actions.catalog.ClickACategory;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
-import com.xceptance.loadtest.posters.models.pages.catalog.CategoryLandingPage;
+import com.xceptance.loadtest.posters.models.pages.catalog.LandingPage;
 import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
 import com.xceptance.loadtest.posters.models.pages.catalog.ProductListingPage;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
@@ -86,7 +86,7 @@ public class TVisitAllCategoryLinks extends LoadTestCase
                 {
                     // even better
                 }
-                else if (CategoryLandingPage.instance.is())
+                else if (LandingPage.instance.is())
                 {
                     // Nothing to do here, landing page
                 }

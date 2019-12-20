@@ -6,7 +6,6 @@ import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.posters.actions.account.Logout;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
 import com.xceptance.loadtest.posters.flows.AddToCartFlow;
-import com.xceptance.loadtest.posters.flows.CartCleanUpFlow;
 import com.xceptance.loadtest.posters.flows.CreateAccountFlow;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
 import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
@@ -49,10 +48,11 @@ public class TRegisteredOrder extends LoadTestCase
             new ViewCart().runIfPossible();
         }
 
-        if (CartPage.instance.isOrderable() == false)
-        {
-            new CartCleanUpFlow().run();
-        }
+// TODO
+//        if (CartPage.instance.isOrderable() == false)
+//        {
+//            new CartCleanUpFlow().run();
+//        }
 
         // we can only checkout if we still got a cart
         if (GeneralPages.instance.miniCart.isEmpty() == false)

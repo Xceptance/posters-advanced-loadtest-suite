@@ -1,5 +1,10 @@
 package com.xceptance.loadtest.api.flows;
 
+/**
+ * Interface for flow code.
+ * 
+ * @author Xceptance Software technologies
+ */
 @FunctionalInterface
 public interface FlowCode
 {

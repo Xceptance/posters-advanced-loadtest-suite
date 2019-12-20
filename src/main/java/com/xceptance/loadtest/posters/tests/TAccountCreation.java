@@ -10,6 +10,8 @@ import com.xceptance.loadtest.posters.flows.VisitFlow;
 
 /**
  * Visits the home page, opens the account creation page and creates an account, logs in with the newly created account, opens the MyAccount page and logs out.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class TAccountCreation extends LoadTestCase
 {

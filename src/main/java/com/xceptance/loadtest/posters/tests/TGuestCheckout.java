@@ -5,7 +5,6 @@ import com.xceptance.loadtest.api.tests.LoadTestCase;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
 import com.xceptance.loadtest.posters.flows.AddToCartFlow;
-import com.xceptance.loadtest.posters.flows.CartCleanUpFlow;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
 import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
@@ -37,10 +36,11 @@ public class TGuestCheckout extends LoadTestCase
             new ViewCart().runIfPossible();
         }
 
-        if (CartPage.instance.isOrderable() == false)
-        {
-            new CartCleanUpFlow().run();
-        }
+// TODO
+//        if (CartPage.instance.isOrderable() == false)
+//        {
+//            new CartCleanUpFlow().run();
+//        }
 
         // we have not touched any account yet
         // attach it to the context, this method will complain if we

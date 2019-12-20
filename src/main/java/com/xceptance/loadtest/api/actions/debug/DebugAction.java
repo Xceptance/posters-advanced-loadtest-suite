@@ -7,34 +7,30 @@ import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.xlt.engine.SessionImpl;
 
 /**
- * This does not do anything and will break when used in performance mode.
+ * Logs an action name without doing anything else.
+ * 
+ * Used only for debug purposes.
  *
- * @author Rene Schwietzke
- * @version
+ * @author Xceptance Software Technologies
  */
 public class DebugAction extends PageAction<DebugAction>
 {
-    // public static final AtomicInteger ai = new AtomicInteger(0);
-    // public static final List<Integer> rl = new ArrayList<>();
-
     /**
-     * Just create an action and log the name
+     * Creates the action and sets the action name.
      *
-     * @param name
-     *            the action name
+     * @param name The action name
      */
     private DebugAction(final String name)
     {
         super();
 
-        // that is all we want!
         this.setTimerName(name);
     }
 
     @Override
     protected void doExecute() throws Exception
     {
-        // nothing
+        // Do nothing
     }
 
     /*
@@ -45,29 +41,28 @@ public class DebugAction extends PageAction<DebugAction>
     @Override
     protected void postExecute() throws Exception
     {
-        // nothing to do
+        // Do nothing
     }
 
     @Override
     protected void postValidate() throws Exception
     {
-        // do nothing
+        // Do nothing
     }
 
     @Override
     public void run() throws Throwable
     {
-        // help to keep the random stream correct
+        // Help to keep the random stream correct
         final SessionImpl sessionImpl = SessionImpl.getCurrent();
 
         final boolean isFirstActionInTestCase = (sessionImpl.isExecuteThinkTime() == false);
 
-        // do the regular stuff even though we don't need it
         super.run();
 
         if (isFirstActionInTestCase)
         {
-            // make the following action think it was the first in the test case
+            // Make the following action think it was the first in the test case
             sessionImpl.setExecuteThinkTime(false);
         }
     }
@@ -75,10 +70,11 @@ public class DebugAction extends PageAction<DebugAction>
     @Override
     protected void executeThinkTime()
     {
+        // Do nothing
     }
 
     /**
-     * Executes a debug action if permitted aka only during development, never during load testing
+     * Executes a debug action if permitted (only during development, never during load testing).
      *
      * @param name The action name
      * @throws Throwable

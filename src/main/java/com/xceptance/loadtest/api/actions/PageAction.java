@@ -26,9 +26,9 @@ import com.xceptance.xlt.api.util.ResponseProcessor;
 import com.xceptance.xlt.api.util.XltLogger;
 
 /**
- * Base class for all actions that perform a page call.
+ * Base class for all actions that perform a page load call.
  *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * @author Xceptance Software Technologies
  */
 public abstract class PageAction<T> extends com.xceptance.xlt.api.actions.AbstractHtmlPageAction
 {

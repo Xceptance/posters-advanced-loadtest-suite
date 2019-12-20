@@ -4,24 +4,21 @@ import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.models.pages.Page;
 
+/**
+ * Footer component.
+ * 
+ * @author Xceptance Software Technologies
+ */
 public class Footer implements Component
 {
-    public final static Footer instance = new Footer();
+	public static final Footer instance = new Footer();
 
-    /**
-     * Lookup the footer.
-     */
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byCss("html > body > footer");
+        return Page.find().byId("footer");
     }
 
-    /**
-     * Indicates if this component exists
-     *
-     * @return
-     */
     @Override
     public boolean exists()
     {

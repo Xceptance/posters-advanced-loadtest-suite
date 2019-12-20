@@ -7,10 +7,12 @@ import com.xceptance.loadtest.api.util.Context;
 
 /**
  * Navigation component.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class Navigation implements Component
 {
-    public final static Navigation instance = new Navigation();
+	public static final Navigation instance = new Navigation();
 
     @Override
     public LookUpResult locate()

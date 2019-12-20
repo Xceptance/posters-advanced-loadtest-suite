@@ -1,5 +1,10 @@
 package com.xceptance.loadtest.api.models.pages;
 
+/**
+ * Page interface.
+ * 
+ * @author Xceptance Software Technologies
+ */
 public interface PageInterface
 {
 	/**

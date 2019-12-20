@@ -13,16 +13,17 @@ import com.xceptance.loadtest.api.hpu.By;
 import com.xceptance.loadtest.api.hpu.HPU;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
-import com.xceptance.loadtest.api.render.HtmlMapRenderer;
-import com.xceptance.loadtest.api.render.HtmlMapper;
-import com.xceptance.loadtest.api.render.HtmlRenderer;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.DOMUtils;
 import com.xceptance.loadtest.api.util.Log;
 import com.xceptance.xlt.api.util.HtmlPageUtils;
 
 /**
- * Base class for our page concept
+ * Abstract page.
+ * 
+ * Base class of all pages.
+ * 
+ * @author Xceptance Software Technologies
  */
 public abstract class Page implements PageInterface
 {
@@ -460,36 +461,6 @@ public abstract class Page implements PageInterface
         {
             throw new RuntimeException(e);
         }
-    }
-
-    /**
-     * Return a renderer with Page context
-     *
-     * @return renderer with Page context of the current page
-     */
-    public static HtmlRenderer renderHtml()
-    {
-        return HtmlRenderer.page();
-    }
-
-    /**
-     * Return a renderer with Page context
-     *
-     * @return renderer with Page context of the current page
-     */
-    public static HtmlMapRenderer renderHtmlAndMap()
-    {
-        return HtmlMapRenderer.page();
-    }
-
-    /**
-     * Return a renderer with Page context
-     *
-     * @return renderer with Page context of the current page
-     */
-    public static HtmlMapper mapHtml()
-    {
-        return HtmlMapper.page(Context.getPage());
     }
 
     /**

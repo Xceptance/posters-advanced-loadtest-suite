@@ -9,9 +9,14 @@ import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.FormUtils;
 
-public class CreateAccountCard implements Component
+/**
+ * Create account form component.
+ * 
+ * @author Xceptance Software Technologies
+ */
+public class CreateAccountForm implements Component
 {
-    public final static CreateAccountCard instance = new CreateAccountCard();
+	public static final CreateAccountForm instance = new CreateAccountForm();
 
     @Override
     public LookUpResult locate()
