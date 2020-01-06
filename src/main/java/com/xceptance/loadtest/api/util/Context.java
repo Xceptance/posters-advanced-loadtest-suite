@@ -447,24 +447,30 @@ public class Context
         return context.gson;
     }
 
-
     /////////////////////////////////////////////////////////////////
     // Load Default Configuration
     /////////////////////////////////////////////////////////////////
 
-    /**
-     * A default context that is not test case of user dependent and won't be initialized for each
-     * run again.
-     */
-    public static DefaultConfiguration defaultConfiguration()
+    public static ThreadLocal<DefaultConfiguration> defaultConfiguration = new ThreadLocal<DefaultConfiguration>()    
     {
-        return DefaultConfigurationLazyHolder.INSTANCE;
-    }
+    	private DefaultConfiguration defaultConfiguration;
+    	
+    	@Override
+        public DefaultConfiguration get()
+        {
+            if (defaultConfiguration == null)
+            {
+                defaultConfiguration = Context.loadDefaultConfiguration();
+            }
+            return defaultConfiguration;
+        }
 
-    private static class DefaultConfigurationLazyHolder
-    {
-        static final DefaultConfiguration INSTANCE = Context.loadDefaultConfiguration();
-    }
+        @Override
+        public void remove()
+        {
+            defaultConfiguration = null;
+        }
+    };
 
     /**
      * Loads the default non test case dependent configuration. Usually very short. Helps to do
@@ -474,6 +480,9 @@ public class Context
      */
     private static DefaultConfiguration loadDefaultConfiguration()
     {
+    	// save random seed
+        final long savedSeed = XltRandom.getSeed();
+    	
         // where we get the props from later in this code
         final LTProperties totalProperties = new LTProperties("", "", "");
 
@@ -507,7 +516,11 @@ public class Context
             // properties
             defaultConfiguaration = new ConfigurationBuilder(totalProperties).build(DefaultConfiguration.class);
         }
+        
         cdl.stopAndLog();
+        
+        // restore seed for proper reproducibility
+        XltRandom.setSeed(savedSeed);
 
         // keep them for later
         return defaultConfiguaration;

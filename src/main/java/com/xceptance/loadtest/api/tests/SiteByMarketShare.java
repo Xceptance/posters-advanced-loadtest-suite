@@ -12,6 +12,6 @@ public interface SiteByMarketShare
 {
     default Site supplySite()
     {
-        return SiteSupplier.randomSite().get();
+        return SiteSupplier.getRandomSite().get();
     }
 }

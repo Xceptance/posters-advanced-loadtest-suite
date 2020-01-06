@@ -8,46 +8,43 @@ import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.xlt.api.util.XltRandom;
 
 /**
- * Will return either a random site based on the random distribution or a fixed one if you ask it by
- * id
- *
- * @author rschwietzke
+ * Supplies a site either randomly via the given distribution (market share) or a fixed one when requesting via ID.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class SiteSupplier
 {
-    private final List<Site> sites = new ArrayList<>(100);
-
-    private static class SiteSupplierHolder
+    private static List<Site> getSitesAndMarketShare()
     {
-        static final SiteSupplier instance = new SiteSupplier();
-    }
-
-    private SiteSupplier()
-    {
-        // ok, setup the sites
-        for (final Site site : Context.defaultConfiguration().sites.unweightedList())
+    	final List<Site> sites = new ArrayList<>(100);
+    	
+        // Setup all sites, distributed by their given market share
+        for (final Site site : Context.defaultConfiguration.get().sites.unweightedList())
         {
-            // if the site is not active, ignore it
+            // If the site is not active, ignore it
             if (site.active == false)
             {
                 continue;
             }
 
-            // add the site as often as the market share indicates
+            // Add the current site as often as the market share indicates
             for (int i = 0; i < site.marketshare; i++)
             {
                 sites.add(site);
             }
         }
+        
+        return sites;
     }
 
     /**
-     * Instance based random site calculation
-     *
-     * @return a random site by initial weight chosen
+     * Return a random site based on the active sites and their market share.
+     * 
+     * @return A randomly chosen site.
      */
-    private Optional<Site> getRandomSite()
+    public static Optional<Site> getRandomSite()
     {
+    	final List<Site> sites = getSitesAndMarketShare();
         if (sites.isEmpty())
         {
             return Optional.empty();
@@ -56,28 +53,16 @@ public class SiteSupplier
         {
             return Optional.of(sites.get(XltRandom.nextInt(sites.size())));
         }
-
     }
 
     /**
-     * Return a random site based on the active sites and their marketshare
+     * Returns a site by id or any empty optional.
      *
-     * @return a random site
-     */
-    public static Optional<Site> randomSite()
-    {
-        return SiteSupplierHolder.instance.getRandomSite();
-    }
-
-    /**
-     * Returns a site by id or any empty optional
-     *
-     * @param id
-     *            the site id
-     * @return the site with this id or an empty optional
+     * @param id The site id.
+     * @return The site with this id or an empty optional.
      */
     public static Optional<Site> siteById(final String id)
     {
-        return Context.defaultConfiguration().sites.getById(id);
+        return Context.defaultConfiguration.get().sites.getById(id);
     }
 }
