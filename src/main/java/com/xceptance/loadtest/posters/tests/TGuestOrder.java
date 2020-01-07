@@ -4,6 +4,8 @@ import com.xceptance.loadtest.api.events.EventLogger;
 import com.xceptance.loadtest.api.tests.LoadTestCase;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
+import com.xceptance.loadtest.posters.actions.checkout.Checkout;
+import com.xceptance.loadtest.posters.actions.checkout.CheckoutShippingAddress;
 import com.xceptance.loadtest.posters.flows.AddToCartFlow;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
 import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
@@ -42,16 +44,15 @@ public class TGuestOrder extends LoadTestCase
 //            new CartCleanUpFlow().run();
 //        }
 
-        // we have not touched any account yet
-        // attach it to the context, this method will complain if we
-        // set one up already
+        // Attach an account to the Context, so it can be used in the following actions
         Context.get().data.attachAccount();
 
         // we can only checkout if we still got a cart
         if (GeneralPages.instance.miniCart.isEmpty() == false)
         {
-// TODO       	
-//            new Checkout().run();
+        	new Checkout().run();
+        	new CheckoutShippingAddress(Context.get().data.getAccount().get()).run();
+        	
 //
 //            new CheckoutGuest().run();
 //

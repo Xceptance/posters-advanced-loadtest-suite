@@ -1,10 +1,9 @@
 package com.xceptance.loadtest.posters.models.pages.cart;
 
-import com.xceptance.loadtest.api.hpu.HPU;
-import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.posters.models.components.cart.CartBanner;
 import com.xceptance.loadtest.posters.models.components.cart.CartEmpty;
 import com.xceptance.loadtest.posters.models.components.cart.CartTable;
+import com.xceptance.loadtest.posters.models.components.cart.CheckoutButton;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
 /**
@@ -22,6 +21,8 @@ public class CartPage extends GeneralPages
     
     public final CartTable cartTable = CartTable.instance;
     
+    public final CheckoutButton checkoutButton = CheckoutButton.instance;
+    
     @Override
     public void validate()
     {
@@ -34,10 +35,5 @@ public class CartPage extends GeneralPages
     public boolean is()
     {
         return super.is() && matches(has(cartBanner), hasOneOf(cartEmpty, cartTable));
-    }
-
-    public LookUpResult getCheckoutButton()
-    {
-        return HPU.find().in(cartTable.locate().first()).byId("btnStartCheckout");
     }
 }
