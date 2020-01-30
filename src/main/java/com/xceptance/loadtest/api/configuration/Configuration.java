@@ -191,7 +191,7 @@ public class Configuration
     // how many product do we want per add to cart?
     @Property(key = "cart.product.quantity", immutable = false)
     public ConfigRange cartProductQuantity;
-
+    
     // =========================================================
     // Account
 
