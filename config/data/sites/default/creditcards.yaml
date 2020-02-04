@@ -1,24 +1,9 @@
-# This is just a selection of the numbers we have in our
-# old payment file. Feel free to transfer them all.
+# Selection of credit card details.
 creditcards:
-    - id: Mastercard
-      type: Master Card
-      number: 5555 5555 5555 4444
-      expiration:
-        month: "1"
-        year: "2020"
-      cvc: 123
     - id: Visa
       type: Visa
-      number: 4111 1111 1111 1111
+      number: 4111111111111111
       expiration:
         month: "11"
         year: "2021"
       cvc: 111
-    - id: Amex
-      type: Amex #American Express
-      number: 3714 4963 5398 431
-      expiration:
-        month: "10"
-        year: "2022"
-      cvc: 2112 
