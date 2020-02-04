@@ -39,9 +39,6 @@ public class TRegisteredOrder extends LoadTestCase
             
             // Fill form and login
             new Login(Context.get().data.getAccount().get()).run();
-
-            // Logout from freshly created account, but login later during checkout again
-            new Logout().run();
         }
 
         // Add items to the cart via browsing and searching the catalog
@@ -58,5 +55,8 @@ public class TRegisteredOrder extends LoadTestCase
 
         // Follow checkout steps
         new CheckoutFlow(true).run();
+        
+        // Logout from freshly created account, but login later during checkout again
+        new Logout().run();
     }
 }

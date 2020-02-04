@@ -14,7 +14,7 @@ public class ShippingAddressPage extends CheckoutPage
     public static final ShippingAddressPage instance = new ShippingAddressPage();
     
     public static ShippingAddressForm shippingAddressForm = new ShippingAddressForm();
-       
+
     @Override
     public void validate()
     {

@@ -32,8 +32,9 @@ public class CheckoutShippingAddress extends PageAction<CheckoutShippingAddress>
 	public void precheck()
 	{
 		super.precheck();
-		
-		Assert.assertTrue("Expected shipping address form", ShippingAddressPage.shippingAddressForm.exists());		
+
+		// Validate that we have the shipping address form
+		Assert.assertTrue("Expected shipping address form", ShippingAddressPage.shippingAddressForm.exists());
 	}
 	
 	@Override

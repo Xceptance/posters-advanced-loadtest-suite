@@ -15,10 +15,10 @@ public class TDirectProductOrder extends LoadTestCase
     @Override
     public void test() throws Throwable
     {
-        Context.get().data.attachAccount();
-
+        // Directly open the given product detail page
         new ProductDetailPageLanding(Context.configuration().directOrderUrl).run();
 
+        // Configure, add to cart and order the product
         new SingleProductOrderFlow().run();
     }
 }
