@@ -148,18 +148,15 @@ public class Account implements Initable
         return Optional.ofNullable(f.apply(this));
     }
 
-    /**
-     * TODO
-     */
     @Override
-    public String toString()
-    {
-    	// TODO
-    	
-    	return "";
-    }
+	public String toString() {
+		return "Account [email=" + email + ", login=" + login + ", firstname=" + firstname + ", lastname=" + lastname
+				+ ", password=" + password + ", shippingAddress=" + shippingAddress + ", billingAddress="
+				+ billingAddress + ", alternativeAddress=" + alternativeAddress + ", orderID=" + orderID
+				+ ", creditCards=" + creditCards + ", isRegistered=" + isRegistered + ", origin=" + origin + "]";
+	}
 
-    /**
+	/**
      * Returns a random credit card from the list of available credit cards based on a previously
      * calculated index. The index won't change.
      */

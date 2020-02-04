@@ -115,14 +115,10 @@ public class CreditCard implements Initable
         return owner == null ? defaultOwner : owner;
     }
 
-    /**
-     * TODO
-     */
-    @Override
-    public String toString()
-    {
-    	// TODO
-    	
-    	return "";
-    }
+	@Override
+	public String toString() {
+		return "CreditCard [cvc=" + cvc + ", owner=" + owner + ", number=" + number + ", unformattedNumber="
+				+ unformattedNumber + ", expirationMonth=" + expirationMonth + ", expirationYear=" + expirationYear
+				+ ", issueNumber=" + issueNumber + ", type=" + type + "]";
+	}
 }

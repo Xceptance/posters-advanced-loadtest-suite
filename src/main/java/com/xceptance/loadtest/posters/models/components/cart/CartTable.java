@@ -25,5 +25,5 @@ public class CartTable implements Component
         return locate().exists();
     }
 
-    // TODO Add line item access to work the cart (e.g. remove items / cart clean up)
+    // Add line item access to work the cart (e.g. remove items / cart clean up)
 }

@@ -2,6 +2,7 @@ package com.xceptance.loadtest.posters.tests;
 
 import com.xceptance.loadtest.api.tests.LoadTestCase;
 import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.posters.actions.account.Login;
 import com.xceptance.loadtest.posters.actions.account.Logout;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
 import com.xceptance.loadtest.posters.flows.AddToCartFlow;
@@ -35,6 +36,9 @@ public class TRegisteredOrder extends LoadTestCase
         {
             // Register user
             new CreateAccountFlow().run();
+            
+            // Fill form and login
+            new Login(Context.get().data.getAccount().get()).run();
 
             // Logout from freshly created account, but login later during checkout again
             new Logout().run();

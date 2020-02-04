@@ -21,7 +21,7 @@ public class ManipulateProductListingPageFlow extends Flow
                     () ->
                     {
                         page();
-                        // TODO add more/different product listing page actions
+                        // If the page would support further listing page actions (refinements, sorting etc.) we would put them here
 
                         return true;
                     },
@@ -30,7 +30,7 @@ public class ManipulateProductListingPageFlow extends Flow
                         page();
                         page();
                         page();
-                        // TODO add more/different product listing page actions
+                        // If the page would support further listing page actions (refinements, sorting etc.) we would put them here
                         
                         return true;
                     });

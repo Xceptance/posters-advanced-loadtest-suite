@@ -256,8 +256,6 @@ public class DOMUtils
 
         // we cannot be sure if this is not a substring and not a reall full class, hence we have
         // to split it up first
-        // TODO Split up cache, because it is almost the same all the time, we could even cache
-        // the result and avoid that as well.
         for (final String classToTest : classNames)
         {
             if (!currentClasses.contains(classToTest))

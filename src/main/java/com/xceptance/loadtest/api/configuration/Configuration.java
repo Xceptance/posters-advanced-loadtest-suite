@@ -84,7 +84,6 @@ public class Configuration
     public int longRunningRequestThresholdForSessionMarking;
 
     // Optional additional debug UUID in user agent
-    // TODO naming
     @Property(key = "general.execute.ontimeout.retry.max")
     public int onTimeoutRetryCount;
     
