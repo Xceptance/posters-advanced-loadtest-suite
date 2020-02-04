@@ -7,7 +7,8 @@ import com.xceptance.loadtest.posters.flows.SearchFlow;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
 
 /**
- * Starts visit at landing page, searches, executes product listing page actions and visits product pages.
+ * Starts visit at landing page, searches, executes product listing page actions and
+ * visits product pages.
  * 
  * @author Xceptance Software Technologies
  */

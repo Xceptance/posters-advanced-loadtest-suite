@@ -1,4 +1,4 @@
-package com.xceptance.loadtest.posters.util;
+package com.xceptance.loadtest.posters.utils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

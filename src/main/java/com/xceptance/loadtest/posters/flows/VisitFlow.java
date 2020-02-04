@@ -5,7 +5,7 @@ import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.posters.actions.Homepage;
 
 /**
- * Visits the given (home)page.
+ * Visits the given (home) page.
  * 
  * @author Xceptance Software Technologies
  */

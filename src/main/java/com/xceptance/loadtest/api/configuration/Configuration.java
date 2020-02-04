@@ -9,7 +9,6 @@ import com.xceptance.loadtest.api.configuration.annotations.Property;
 import com.xceptance.loadtest.api.data.Account;
 import com.xceptance.loadtest.api.data.Address;
 import com.xceptance.loadtest.api.data.CreditCard;
-import com.xceptance.loadtest.api.data.PaymentLimitations;
 
 /**
  * Test suite configuration
@@ -232,10 +231,6 @@ public class Configuration
     // Credit card definitions
     @EnumProperty(key = "creditcards", clazz = CreditCard.class, from = 0, to = 100, stopOnGap = true)
     public EnumConfigList<CreditCard> creditcards;
-
-    // Payment limitations
-    @EnumProperty(key = "paymentlimitations", clazz = PaymentLimitations.class, from = 0, to = 10, stopOnGap = true)
-    public EnumConfigList<PaymentLimitations> paymentLimitations;
 
     // ===========================================================
     // All data files to be used... this is all for sites aka with hierarchy lookup

@@ -7,8 +7,6 @@ import java.util.function.Supplier;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.xceptance.common.util.RegExUtils;
 import com.xceptance.loadtest.api.configuration.annotations.Property;
 import com.xceptance.loadtest.api.configuration.interfaces.Initable;
@@ -118,14 +116,13 @@ public class CreditCard implements Initable
     }
 
     /**
-     * Convert credit card object to json formated string.
-     *
-     * @return json format string of credit card.
+     * TODO
      */
     @Override
     public String toString()
     {
-        final Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(this);
+    	// TODO
+    	
+    	return "";
     }
 }

@@ -13,7 +13,7 @@ import com.xceptance.xlt.api.engine.Session;
 import com.xceptance.xlt.api.util.XltProperties;
 
 /**
- * Test case base class
+ * Base class for all tests.
  *
  * @author Xceptance Software Technologies
  */

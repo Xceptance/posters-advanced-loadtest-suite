@@ -32,7 +32,7 @@ public class ShippingAddressForm implements Component
     
     public void fillForm(final Account account)
     {
-        final HtmlForm form = locate().asserted("Expected shipping address form").single();
+        final HtmlForm form = locate().asserted("Expected single shipping address form").single();
 
         FormUtils.setInputValue(HPU.find().in(form).byCss("#fullName"), account.firstname + "" + account.lastname);
         FormUtils.setInputValue(HPU.find().in(form).byCss("#addressLine"), account.shippingAddress.addressLine1);

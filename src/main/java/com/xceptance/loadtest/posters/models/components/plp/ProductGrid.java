@@ -17,7 +17,7 @@ import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.Context;
-import com.xceptance.loadtest.posters.util.PageState;
+import com.xceptance.loadtest.posters.utils.PageState;
 
 /**
  * Product grid component.

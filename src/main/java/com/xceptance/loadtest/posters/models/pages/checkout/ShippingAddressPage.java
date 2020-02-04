@@ -5,7 +5,7 @@ import org.junit.Assert;
 import com.xceptance.loadtest.posters.models.components.checkout.ShippingAddressForm;
 
 /**
- * Represents a shipping address page.
+ * Represents the shipping address page.
  * 
  * @author Xceptance Software Technologies
  */

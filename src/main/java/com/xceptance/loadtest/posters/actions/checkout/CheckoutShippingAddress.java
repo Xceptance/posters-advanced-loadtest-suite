@@ -4,17 +4,24 @@ import org.junit.Assert;
 
 import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.data.Account;
+import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.validators.Validator;
+import com.xceptance.loadtest.posters.models.pages.checkout.PaymentPage;
 import com.xceptance.loadtest.posters.models.pages.checkout.ShippingAddressPage;
 
 /**
- * Enters the checkout.
+ * Handles the shipping address page.
  * 
  * @author Xceptance Software Technologies
  */
 public class CheckoutShippingAddress extends PageAction<CheckoutShippingAddress>
 {
 	private Account account;
+	
+	public CheckoutShippingAddress()
+	{
+		this(Context.get().data.getAccount().get());
+	}
 	
 	public CheckoutShippingAddress(Account account)
 	{
@@ -44,6 +51,7 @@ public class CheckoutShippingAddress extends PageAction<CheckoutShippingAddress>
 	{
         Validator.validatePageSource();
 
-        // TODO Validate the billing page
+        // Validate that it is the payment page
+        PaymentPage.instance.validate();
 	}
 }

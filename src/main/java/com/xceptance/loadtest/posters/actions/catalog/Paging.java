@@ -6,7 +6,7 @@ import com.gargoylesoftware.htmlunit.WebResponse;
 import com.xceptance.loadtest.api.actions.AjaxAction;
 import com.xceptance.loadtest.api.util.HttpRequest;
 import com.xceptance.loadtest.posters.models.pages.catalog.ProductListingPage;
-import com.xceptance.loadtest.posters.util.PageState;
+import com.xceptance.loadtest.posters.utils.PageState;
 
 /**
  * Executes a paging operation.

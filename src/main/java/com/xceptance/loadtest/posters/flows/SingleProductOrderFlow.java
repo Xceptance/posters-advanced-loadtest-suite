@@ -1,15 +1,14 @@
 package com.xceptance.loadtest.posters.flows;
 
-import com.xceptance.loadtest.api.events.EventLogger;
 import com.xceptance.loadtest.api.flows.Flow;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.posters.actions.cart.AddToCart;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
+import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
 import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
-import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
 /**
- * Configures and orders a single product.
+ * Opens, configures and orders a single product.
  *
  * @author Xceptance Software Technologies
  */
@@ -31,20 +30,19 @@ public class SingleProductOrderFlow extends Flow
             new AddToCart().run();
         }
 
-        new ViewCart().runIfPossible();
+        // Open the cart page
+        new ViewCart().run();
 
-        // TODO Cart clean up flow
+        // Validate that the cart is not empty
+        CartPage.instance.validateIsNotEmpty();
 
-        // Execute checkout steps
-		if (GeneralPages.instance.miniCart.isEmpty() == false)
-		{
-			// TODO Checkout/order
-		}
-		else
-		{
-			EventLogger.CHECKOUT.warn("Empty Cart", "Could not checkout because cart was empty");
-		}
+        // Attach an account to the Context, so it can be used in the following actions
+        Context.get().data.attachAccount();
 
-        return false;
+        // Follow checkout steps
+        new CheckoutFlow(true).run();        
+
+        // Mark successful execution of flow
+        return true;
     }
 }

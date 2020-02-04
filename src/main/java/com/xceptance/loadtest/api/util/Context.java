@@ -10,8 +10,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.configuration.Configuration;
 import com.xceptance.loadtest.api.configuration.ConfigurationBuilder;
@@ -65,9 +63,6 @@ public class Context
      * Holds debug data for development
      */
     public final DebugData debugData = DebugData.getInstance();
-
-    // Our cached GSON parser and builder
-    private Gson gson;
 
     // Keep a quickly accessible info that we are a load test run
     public static final boolean isLoadTest = Session.getCurrent().isLoadTest();
@@ -429,22 +424,6 @@ public class Context
 
             getCurrentAction().getWebClient().addRequestHeader("Authorization", "Basic " + userPassBase64);
         }
-    }
-
-    /**
-     * Get a per user Gson instance back and reuse it. Lazy because not every user needs that.
-     *
-     * @return Gson instance
-     */
-    public static Gson getGson()
-    {
-        final Context context = get();
-        if (context.gson == null)
-        {
-            context.gson = new GsonBuilder().create();
-        }
-
-        return context.gson;
     }
 
     /////////////////////////////////////////////////////////////////

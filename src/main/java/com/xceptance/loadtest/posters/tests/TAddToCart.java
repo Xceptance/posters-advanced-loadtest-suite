@@ -8,7 +8,8 @@ import com.xceptance.loadtest.posters.flows.VisitFlow;
 import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
 
 /**
- * Starts visit at landing page, browses categories or searches, executes product listing page actions, visits product pages, configures products, adds to cart and views the cart page.
+ * Starts visit at landing page, browses categories or searches, executes product listing page actions,
+ * visits product pages, configures products, adds to cart and views the cart page.
  * 
  * @author Xceptance Software Technologies
  */
@@ -31,5 +32,8 @@ public class TAddToCart extends LoadTestCase
         {
             new ViewCart().run();
         }
+        
+        // Validate that the cart is not empty
+        CartPage.instance.validateIsNotEmpty();
     }
 }

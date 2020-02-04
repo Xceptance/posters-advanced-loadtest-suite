@@ -6,8 +6,6 @@ import java.util.function.UnaryOperator;
 
 import org.junit.Assert;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.xceptance.loadtest.api.configuration.EnumConfigList;
 import com.xceptance.loadtest.api.configuration.annotations.EnumProperty;
 import com.xceptance.loadtest.api.configuration.annotations.Property;
@@ -151,15 +149,14 @@ public class Account implements Initable
     }
 
     /**
-     * Convert account object to json formated string.
-     *
-     * @return json format string of account.
+     * TODO
      */
     @Override
     public String toString()
     {
-        final Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(this);
+    	// TODO
+    	
+    	return "";
     }
 
     /**
@@ -188,5 +185,15 @@ public class Account implements Initable
         }
 
         return creditCards.get(secondaryCreditCardIndex);
+    }
+    
+    /**
+     * Provides the full name (firstname + lastname).
+     * 
+     * @return The full name.
+     */
+    public String getFullName()
+    {
+    	return firstname + " " + lastname;
     }
 }

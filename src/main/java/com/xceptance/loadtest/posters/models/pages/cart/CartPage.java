@@ -36,4 +36,14 @@ public class CartPage extends GeneralPages
     {
         return super.is() && matches(has(cartBanner), hasOneOf(cartEmpty, cartTable));
     }
+    
+    public void validateIsNotEmpty()
+    {
+    	validate(hasNot(cartEmpty));
+    }
+
+    public void validateIsEmpty()
+    {
+    	validate(has(cartEmpty));
+    }
 }
