@@ -28,9 +28,9 @@ import com.xceptance.xlt.api.util.XltRandom;
 import com.xceptance.xlt.common.XltConstants;
 
 /**
- * Central component for configuration, current page, last action and all test related data.
+ * Context centralizing configuration, current page, last action and test related data.
  *
- * @author Bernd Weigel (Xceptance Software Technologies GmbH)
+ * @author Xceptance Software Technologies
  */
 public class Context
 {

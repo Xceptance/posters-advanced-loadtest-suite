@@ -23,6 +23,11 @@ import com.xceptance.xlt.api.validators.XHTMLValidator;
 import com.xceptance.xlt.common.XltConstants;
 import com.xceptance.xlt.engine.SessionImpl;
 
+/**
+ * Request level and standard content validation methods.
+ * 
+ * @author Xceptance Software Technologies
+ */
 public class Validator
 {
     /**
