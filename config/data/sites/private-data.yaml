@@ -1,6 +1,4 @@
-# This is all the private data that should not not leak into the standard repo
-# We set .gitignore for that aka private-data.yaml is ignored.
-
+# General information on how to access the site under test
 general:
     host: 35.184.136.113:8443
     baseUrl: "https://${general.host}"

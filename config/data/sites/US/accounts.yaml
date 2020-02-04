@@ -1,5 +1,5 @@
 addresses:
-    - &address01 
+    - &address01
       id: default
       # lastName: Smith # auto setup based on random data
       # firstName: Peter
@@ -12,7 +12,7 @@ addresses:
       countryCode: US
       country: United States
       phone: 3333333333
-    - &address02 
+    - &address02
       id: alternative
       # lastName: Smith # auto setup based on random data
       # firstName: Peter
