@@ -5,9 +5,11 @@ import java.text.MessageFormat;
 import com.xceptance.xlt.api.util.XltLogger;
 
 /**
- * Helpers around logging to simplify logging if load test is enabled
+ * Logging helper.
+ * 
+ * Simplify logging if load test is enabled.
  *
- * @author rschwietzke
+ * @autor Xceptance Software Technologies
  */
 public class Log
 {

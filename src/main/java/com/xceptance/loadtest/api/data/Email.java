@@ -6,10 +6,9 @@ import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.xlt.api.util.XltRandom;
 
 /**
- * List of useful random utilities
+ * Email utilities.
  *
- * @author rschwietzke
- *
+ * @author Xceptance Software Technologies
  */
 public class Email
 {

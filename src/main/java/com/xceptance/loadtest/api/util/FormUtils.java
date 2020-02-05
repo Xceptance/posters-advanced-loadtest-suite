@@ -12,7 +12,6 @@ import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlInput;
 import com.gargoylesoftware.htmlunit.html.HtmlOption;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlRadioButtonInput;
 import com.gargoylesoftware.htmlunit.html.HtmlSelect;
 import com.gargoylesoftware.htmlunit.html.HtmlTextArea;
@@ -20,18 +19,13 @@ import com.xceptance.common.util.ParameterCheckUtils;
 import com.xceptance.loadtest.api.hpu.HPU;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.pages.Page;
-import com.xceptance.xlt.api.actions.AbstractHtmlPageAction;
 import com.xceptance.xlt.api.util.BasicPageUtils;
-import com.xceptance.xlt.api.util.LightweightHtmlPageUtils;
 import com.xceptance.xlt.api.util.XltLogger;
 
 /**
- * The {@link FormUtils} class provides some useful helper methods to make dealing with {@link HtmlPage} objects easier.
- * When using the plain HtmlUnit API, similar pieces of code have to be written again and again. Using this class, test
- * case actions are often shorter and easier to understand.
- *
- * @see AbstractHtmlPageAction
- * @see LightweightHtmlPageUtils
+ * Utility for better HTML form handling of a HTML page.
+ * 
+ * @autor Xceptance Software Technologies
  */
 public class FormUtils extends BasicPageUtils
 {

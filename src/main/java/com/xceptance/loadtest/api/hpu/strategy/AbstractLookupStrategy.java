@@ -10,6 +10,8 @@ import com.xceptance.loadtest.api.hpu.Strategy;
 
 /**
  * Common lookup strategy methods.
+ * 
+ * @author Xceptance Software Technologies
  */
 public abstract class AbstractLookupStrategy implements Strategy
 {

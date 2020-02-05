@@ -19,10 +19,11 @@ import com.xceptance.loadtest.api.configuration.interfaces.Initable;
 import com.xceptance.xlt.api.util.XltProperties;
 
 /**
- * Process a class with configuration annotation and return a fresh instance of
- * it.
+ * Builds the configuration from the given properties.
+ * 
+ * Processes a class with configuration annotations and returns an actual configuration instance.
  *
- * @author Rene
+ * @author Xceptance Software Technologies
  */
 public class ConfigurationBuilder
 {

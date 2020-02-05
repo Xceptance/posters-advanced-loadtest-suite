@@ -10,6 +10,12 @@ import org.apache.http.util.Args;
 
 import com.xceptance.xlt.api.util.XltRandom;
 
+/**
+ * Weighted list.
+ * 
+ * @author Xceptance Software Technologies
+ * @param <T>
+ */
 public class WeightedList<T>
 {
     /**

@@ -1,25 +1,23 @@
 package com.xceptance.loadtest.api.data;
 
 /**
- * Where did we get the account from.
+ * Captures the origin of an account.
  *
- * @author rschwietzke
- *
+ * @author Xceptance Software Technologies
  */
 public enum AccountOrigin
 {
     RANDOM("RANDOM"), POOL("POOL"), FILE("FILE"), PROPERTIES("PROPERTIES"), OVERRIDE("OVERRIDE"), EXCLUSIVE("EXCLUSIVE");
 
     /**
-     * plain text for debugging
+     * Plain text account origin.
      */
     private final String origin;
 
     /**
-     * Constructor, just for a nice to string
+     * Constructor
      *
-     * @param origin
-     *            the verbal source for later toString
+     * @param origin The verbal source for later toString
      */
     private AccountOrigin(final String origin)
     {

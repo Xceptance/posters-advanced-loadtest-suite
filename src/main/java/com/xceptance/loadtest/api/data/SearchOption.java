@@ -1,10 +1,9 @@
 package com.xceptance.loadtest.api.data;
 
 /**
- * Search option.
+ * Represents a search option.
  * 
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
- * 
+ * @author Xceptance Software Technologies
  */
 public enum SearchOption
 {

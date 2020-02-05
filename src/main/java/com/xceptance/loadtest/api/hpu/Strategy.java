@@ -3,7 +3,9 @@ package com.xceptance.loadtest.api.hpu;
 import java.util.List;
 
 /**
- * Lookup strategy
+ * Lookup strategy.
+ * 
+ * @autor Xceptance Software Technologies
  */
 public interface Strategy
 {

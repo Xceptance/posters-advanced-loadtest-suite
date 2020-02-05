@@ -16,13 +16,10 @@ import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.xlt.api.data.ExclusiveDataProvider;
 import com.xceptance.xlt.api.util.XltRandom;
 
-
 /**
- * A new search data provider that is able to come up with alternative search phrases based on
- * search phrases given. This alternatives should yield the same results as the original one because
- * we try to obey the features SFCC delivers, such as spaces and casing.
+ * Supplier for different data items.
  *
- * @author rschwietzke
+ * @author Xceptance Software Technologies
  */
 public class DataSupplier
 {

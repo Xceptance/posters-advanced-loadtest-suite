@@ -10,18 +10,19 @@ import com.xceptance.loadtest.api.configuration.Configuration;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.xlt.api.engine.Session;
 
-
 /**
- * Common data collector for all data needed for a test during execution, kind of a global state.
+ * Common data collector for all data required during execution of a test scenario.
+ * 
+ * A global state supporting scenario execution.
  *
- * @author rschwietzke
+ * @author Xceptance Software Technologies
  */
 public class TestData
 {
     // The account used in this TestCase.
     private Optional<Account> account = Optional.empty();
 
-    // simple key-value store
+    // Simple key-value store
     public Map<String, String> store = new HashMap<>(41);
 
     // Is test case expected to run with a customer that needs an existing account?

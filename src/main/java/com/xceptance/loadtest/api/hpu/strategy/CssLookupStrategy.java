@@ -6,7 +6,9 @@ import com.gargoylesoftware.htmlunit.html.DomNode;
 import com.xceptance.loadtest.api.hpu.Strategy;
 
 /**
- * CSS lookup strategy
+ * CSS lookup strategy.
+ * 
+ * @autor Xceptance Software Technologies
  */
 public class CssLookupStrategy extends AbstractLookupStrategy
 {

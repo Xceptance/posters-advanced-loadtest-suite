@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.xceptance.loadtest.api.configuration.annotations;
 
 import java.lang.annotation.Documented;
@@ -12,8 +9,9 @@ import java.lang.annotation.Target;
 import com.xceptance.loadtest.api.configuration.ConfigConstants;
 
 /**
- * This annoation defines what the source of a property is.
- * @author Rene Schwietzke
+ * Annoation defining a property's source.
+ * 
+ * @author Xceptance Software Technologies
  */
 @Documented
 @Target({ElementType.FIELD})

@@ -11,14 +11,16 @@ import com.xceptance.common.util.ParseUtils;
 import com.xceptance.xlt.api.util.XltRandom;
 
 /**
- * A range of times. See {@link ParseUtils.TimeFormat} for supported time
- * units.<br>
+ * Configuration time ranges.
+ * 
+ * See {@link ParseUtils.TimeFormat} for supported time units.
+ * 
  * Example: 5m - 10m<br>
  * Example: 5m -<br>
  * Example: - 10m<br>
  * Example: 5m<br>
  *
- * @author Matthias Ullrich
+ * @author Xceptance Software Technologies
  */
 public class ConfigTimeRange
 {

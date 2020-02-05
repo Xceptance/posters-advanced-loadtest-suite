@@ -3,15 +3,16 @@ package com.xceptance.loadtest.api.data;
 import com.xceptance.loadtest.api.configuration.annotations.Property;
 
 /**
- * Default implementation of {@link Address}.
+ * Representation of an address.
  *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * @author Xceptance Software Technologies
  */
 public class Address
 {
     /**
-     * Address id aka identifier when more than one address is in use (account
-     * area)
+     * Address id.
+     * 
+     * Required in case multiple addresses are in use.
      */
     @Property(key = "id")
     public String id;
@@ -52,9 +53,6 @@ public class Address
     @Property(key = "country")
     public String country;
 
-    /**
-     * Default constructor to keep the configuration handling happy
-     */
     private Address()
     {
     }

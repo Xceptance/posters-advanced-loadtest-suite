@@ -14,9 +14,9 @@ import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.xlt.api.data.ExclusiveDataProvider.Parser;
 
 /**
- * Manager to provider accounts in the typical styles random, properties, file or exclusivefile
+ * Manages providing accounts (account sources).
  *
- * @author rschwietzke
+ * @author Xceptance Software Technologies
  */
 public class AccountSupplierManager
 {

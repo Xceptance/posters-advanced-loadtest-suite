@@ -9,11 +9,12 @@ import com.xceptance.xlt.api.util.XltProperties;
 import com.xceptance.xlt.common.XltConstants;
 
 /**
- * Manages the hierarchical access to our data files based on site, region, and language. This works
- * for any kind of file that is within our data hierarchy.
+ * DataFileProvider.
  *
- * @author rschwietzke
+ * Manages the hierarchical access to test suite data files based on site, region, and language. This works
+ * for any kind of file that is within the data hierarchy (config/data/).
  *
+ * @author Xceptance Software Technologies
  */
 public class DataFileProvider
 {

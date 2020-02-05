@@ -9,9 +9,9 @@ import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.xlt.api.data.DataPool;
 
 /**
- * Account manager that provides accounts.
+ * Account manager. 
  *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * @author Xceptance Software Technologies
  */
 public class AccountManager
 {

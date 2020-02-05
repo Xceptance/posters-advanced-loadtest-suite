@@ -5,7 +5,7 @@ import org.junit.Assert;
 import com.xceptance.loadtest.api.events.EventLogger;
 
 /**
- * Helper for a more centralized approach to build certain often needed data.
+ * Utilities for building and handling data types.
  *
  * @author Xceptance Software Technologies
  */

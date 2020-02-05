@@ -3,9 +3,14 @@ package com.xceptance.loadtest.api.data;
 import com.xceptance.xlt.api.engine.CustomData;
 import com.xceptance.xlt.api.engine.Session;
 
+/**
+ * Logger for custom data.
+ * 
+ * @author Xceptance Software Technologies
+ */
 public class CustomDataLogger
 {
-    // the instance that has a running timer attached
+    // The instance that has a running timer attached
     private final CustomData customData;
 
     /**

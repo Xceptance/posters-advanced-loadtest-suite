@@ -7,9 +7,11 @@ import com.gargoylesoftware.htmlunit.html.DomNode;
 import com.xceptance.loadtest.api.hpu.Strategy;
 
 /**
- * Empty strategy to be able to have an always false return result
+ * Empty strategy.
+ * 
+ * Enables a lookup to always have a false return result.
  *
- * @author rschwietzke
+ * @autor Xceptance Software Technologies
  */
 public class EmptyLookupStrategy extends AbstractLookupStrategy
 {

@@ -33,9 +33,9 @@ import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.pages.Page;
 
 /**
- * Ajax utility class.
+ * AJAX utility class.
  *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * @author Xceptance Software Technologies
  */
 public final class AjaxUtils
 {
@@ -44,7 +44,7 @@ public final class AjaxUtils
      */
     private AjaxUtils()
     {
-        // Nothing to do
+        // Do not call
     }
 
     /**

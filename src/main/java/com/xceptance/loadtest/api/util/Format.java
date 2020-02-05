@@ -3,9 +3,9 @@ package com.xceptance.loadtest.api.util;
 import com.google.common.base.Strings;
 
 /**
- * Just a class with utility formatters for easier reuse
+ * Formatting utility.
  *
- * @author rschwietzke
+ * @autor Xceptance Software Technologies
  */
 public class Format
 {

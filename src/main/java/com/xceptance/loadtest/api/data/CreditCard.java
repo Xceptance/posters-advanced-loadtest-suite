@@ -13,9 +13,9 @@ import com.xceptance.loadtest.api.configuration.interfaces.Initable;
 import com.xceptance.xlt.api.util.XltRandom;
 
 /**
- * Credit Card
+ * Representation of a credit card.
  *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * @author Xceptance Software Technologies
  */
 public class CreditCard implements Initable
 {
@@ -31,7 +31,7 @@ public class CreditCard implements Initable
     @Property(key = "number", required = true)
     public String number;
 
-    /** Same as above but striclty unformatted aka no spaces **/
+    /** Same as above but strictly unformatted (no spaces) **/
     public String unformattedNumber;
 
     /** Month of credit card expiration. */
@@ -60,7 +60,7 @@ public class CreditCard implements Initable
         unformattedNumber = RegExUtils.removeAll(number, "\\s");
 
         // CVN. If no CVN is configured, generate a random 3 digit number.
-        // But that should not be random but repeatable, same creditcard, same number
+        // But that should not be random but repeatable, same credit card, same number
         if (StringUtils.isBlank(cvc))
         {
             // make sure it is 100 till 999, so that we do not have a padding problems with 7

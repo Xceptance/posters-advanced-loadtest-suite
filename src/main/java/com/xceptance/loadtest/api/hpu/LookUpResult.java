@@ -18,9 +18,10 @@ import com.xceptance.loadtest.api.hpu.strategy.EmptyLookupStrategy;
 import com.xceptance.loadtest.api.util.ConcurrentLRUCache;
 import com.xceptance.xlt.api.util.XltRandom;
 
-
 /**
- * Result set.
+ * Look up result set.
+ * 
+ * @autor Xceptance Software Technologies
  */
 public class LookUpResult
 {

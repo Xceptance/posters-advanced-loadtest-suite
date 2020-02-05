@@ -10,9 +10,9 @@ import org.apache.commons.lang3.tuple.Pair;
 import com.xceptance.loadtest.api.configuration.interfaces.ById;
 
 /**
- * A list of objects that are also build up via properties
+ * List of objects created via configuration properties.
  *
- * @author Rene Schwietzke
+ * @author Xceptance Software Technologies
  */
 public class EnumConfigList<T>
 {
@@ -157,7 +157,7 @@ public class EnumConfigList<T>
     /**
      * To get a new random value at every access
      *
-     * @return true or false depending on the int value initially defined
+     * @return true or false depending on the integer value initially defined
      */
     public T random()
     {

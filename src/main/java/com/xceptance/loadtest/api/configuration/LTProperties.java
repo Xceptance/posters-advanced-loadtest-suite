@@ -10,11 +10,17 @@ import org.apache.commons.lang3.ClassUtils;
 
 import com.xceptance.common.util.PropertiesUtils;
 
+/**
+ * Load test properties.
+ * 
+ * @author Xceptance Software Technologies
+ */
 public class LTProperties
 {
     /**
-     * List of properties to run through, first hit will stop it, this is used backwards aka the
-     * newest will checked first
+     * List of properties to go through.
+     * 
+     * Stop on first hit. Newest entry will be checked first (iterate in reverse).
      */
     public final Properties properties = new Properties();
 
@@ -331,7 +337,7 @@ public class LTProperties
     }
 
     /**
-     * Just for debugging
+     * For debugging purposes.
      */
     @Override
     public String toString()

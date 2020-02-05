@@ -17,11 +17,10 @@ import java.util.concurrent.ConcurrentHashMap;
  * replacement.
  * </p>
  *
- * @param <K>
- *            type of cache keys
- * @param <V>
- *            type of cache values
- * @author Rene Schwietzke (Xceptance Software Technologies GmbH)
+ * @param <K> type of cache keys
+ * @param <V> type of cache values
+ *            
+ * @author Xceptance Software Technologies
  */
 public class ConcurrentLRUCache<K, V>
 {

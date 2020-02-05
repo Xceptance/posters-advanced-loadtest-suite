@@ -10,7 +10,9 @@ import com.xceptance.xlt.api.engine.CustomValue;
 import com.xceptance.xlt.api.engine.Session;
 
 /**
- * Utility to count a user's page views.
+ * Helper to count the page views of a user.
+ * 
+ * @autor Xceptance Software Technologies
  */
 public class PageViewCounter
 {

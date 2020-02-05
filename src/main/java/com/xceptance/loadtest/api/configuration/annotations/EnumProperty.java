@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.xceptance.loadtest.api.configuration.annotations;
 
 import java.lang.annotation.Documented;
@@ -10,9 +7,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * This annotation is for a list of similar properties defined as enumeration.
+ * Annotation for lists of similar properties defined as enumeration.
  *
- * @author Rene Schwietzke
+ * @author Xceptance Software Technologies
  */
 @Documented
 @Target({ElementType.FIELD})
@@ -73,7 +70,7 @@ public @interface EnumProperty
 
     /**
      * The key to the property. Is is mandatory to be specified. Keep in mind it
-     * will be (if not turned off) autocompleted to match the type of the field.
+     * will be (if not turned off) auto completed to match the type of the field.
      *
      * @return the key name of the property.
      */

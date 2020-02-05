@@ -4,6 +4,11 @@ import com.xceptance.loadtest.api.configuration.LTProperties;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.xlt.api.engine.Session;
 
+/**
+ * Represents a (logging) event.
+ * 
+ * @author Xceptance Software Technologies
+ */
 public class Event
 {
     static Event init(final String propertyName)

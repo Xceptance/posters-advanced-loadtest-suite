@@ -1,5 +1,10 @@
 package com.xceptance.loadtest.api.events;
 
+/**
+ * Event logger interface structuring different types of logging events.  
+ * 
+ * @author Xceptance Software Technologies
+ */
 public abstract class EventLogger
 {
     public static Event DEFAULT = Event.init("default");

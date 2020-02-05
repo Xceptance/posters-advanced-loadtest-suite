@@ -1,5 +1,10 @@
 package com.xceptance.loadtest.api.util;
 
+/**
+ * Round robin index counter.
+ * 
+ * @autor Xceptance Software Technologies
+ */
 public class RoundRobin
 {
     /**

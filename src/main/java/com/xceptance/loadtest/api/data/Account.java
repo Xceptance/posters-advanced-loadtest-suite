@@ -14,9 +14,9 @@ import com.xceptance.loadtest.api.util.RoundRobin;
 import com.xceptance.xlt.api.util.XltRandom;
 
 /**
- * Default implementation of {@link Account}.
+ * Default implementation of an account.
  *
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * @author Xceptance Software Technologies
  */
 public class Account implements Initable
 {

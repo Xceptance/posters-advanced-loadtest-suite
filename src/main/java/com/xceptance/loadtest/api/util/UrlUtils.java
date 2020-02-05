@@ -2,6 +2,11 @@ package com.xceptance.loadtest.api.util;
 
 import com.xceptance.common.util.RegExUtils;
 
+/**
+ * URL helper utilities.
+ * 
+ * @autor Xceptance Software Technologies
+ */
 public class UrlUtils
 {
     /**

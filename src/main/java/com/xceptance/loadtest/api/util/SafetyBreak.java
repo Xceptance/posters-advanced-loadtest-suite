@@ -1,9 +1,9 @@
 package com.xceptance.loadtest.api.util;
 
 /**
- * Handling class for safety break checks
+ * Safety break, a check breaking once a defined limit of iterations is exceeded.
  *
- * @author Bernd Weigel (Xceptance Software Technologies GmbH)
+ * @autor Xceptance Software Technologies
  */
 public class SafetyBreak
 {

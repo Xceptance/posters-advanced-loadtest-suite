@@ -17,6 +17,13 @@ import org.yaml.snakeyaml.Yaml;
 
 import com.xceptance.xlt.api.util.XltLogger;
 
+/**
+ * Conversion from YAML properties to java properties.
+ * 
+ * Some properties are defined in YAML files. Final representation of all properties will be java style properties.
+ * 
+ * @author Xceptance Software Technologies
+ */
 public class YamlProperties
 {
     /**

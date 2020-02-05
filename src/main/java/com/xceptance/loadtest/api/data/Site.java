@@ -6,7 +6,11 @@ import com.xceptance.loadtest.api.configuration.annotations.Property;
 import com.xceptance.loadtest.api.configuration.interfaces.ById;
 
 /**
- * This represents a site. We always have at least one site.
+ * Representation of a site.
+ * 
+ * There will be at least one site.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class Site implements ById
 {

@@ -1,17 +1,14 @@
 package com.xceptance.loadtest.api.configuration.interfaces;
 
 /**
- * Your objects should implement this interface if you want to do certain stuff after the initial
- * setup from the properties.
+ * Objects implementing this interface are able to execute code after the initial setup of the properties.
  *
- * @author rschwietzke
- *
+ * @author Xceptance Software Technologies
  */
 public interface Initable
 {
     /**
-     * Any kind of setup code that finishes the initialization of the just built object. Calculate
-     * missing data, sort things... up to you.
+     * Any kind of setup code that finishes the initialization of the just built object, e.g. calculate missing data, sort things etc.
      */
     public void init();
 }

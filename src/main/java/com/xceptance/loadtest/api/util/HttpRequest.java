@@ -59,6 +59,8 @@ import com.xceptance.loadtest.api.validators.Validator;
  * <td>200</td>
  * </tr>
  * </table>
+ * 
+ * @autor Xceptance Software Technologies
  */
 public class HttpRequest
 {

@@ -8,9 +8,11 @@ import java.util.StringTokenizer;
 import com.xceptance.xlt.api.util.XltRandom;
 
 /**
- * A list of values taken from the properties. Auto split and easily accessible.
+ * Configuration values in list form taken from the properties.
+ * 
+ * Auto split and easily accessible.
  *
- * @author Rene Schwietzke
+ * @author Xceptance Software Technologies
  */
 public class ConfigList
 {

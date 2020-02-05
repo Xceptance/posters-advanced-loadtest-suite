@@ -5,10 +5,9 @@ import java.util.List;
 import com.xceptance.xlt.api.util.XltRandom;
 
 /**
- * List of useful random utilities
+ * Utilities for randomness.
  *
- * @author rschwietzke
- *
+ * @autor Xceptance Software Technologies
  */
 public class RandomUtils
 {

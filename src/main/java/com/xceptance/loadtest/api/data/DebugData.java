@@ -7,9 +7,9 @@ import java.util.function.Supplier;
 import com.xceptance.loadtest.api.util.Context;
 
 /**
- * Keeps track of debug information for development purposes.
+ * Debug information tracking (required for development purposes).
  *
- * @author rschwietzke
+ * @author Xceptance Software Technologies
  */
 public class DebugData
 {
@@ -85,11 +85,13 @@ public class DebugData
 }
 
 /**
- * This is the instance that holds the real logic, hence if we forget to implement it the load test
+ * Debug information tracking.
+ * 
+ * This is the instance that holds the actual logic, hence if we forget to implement it the load test
  * will work fine because the compile will force us to make sure that DebugData has the right
  * methods.
  *
- * @author rschwietzke
+ * @author Xceptance Software Technologies
  */
 class DevelopmentDebugData extends DebugData
 {

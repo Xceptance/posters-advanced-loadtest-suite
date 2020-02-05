@@ -15,15 +15,15 @@ import com.xceptance.loadtest.api.util.Log;
 import com.xceptance.xlt.api.util.XltLogger;
 
 /**
- * Takes care of building and caching of YamlProperties, tries to avoid expensive reloading and
- * reparsing.
- *
- * @author rschwietzke
- *
+ * Building and caching of YamlProperties.
+ * 
+ * Tries to avoid expensive reloading and re-parsing.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class YamlPropertiesBuilder
 {
-    // our global cache
+    // Global cache
     private final static ConcurrentHashMap<String, Optional<Properties>> propertiesCache = new ConcurrentHashMap<>();
 
     /**

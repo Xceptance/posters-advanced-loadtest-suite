@@ -8,7 +8,9 @@ import com.gargoylesoftware.htmlunit.html.DomNode;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 /**
- * ID lookup strategy
+ * ID lookup strategy.
+ * 
+ * @autor Xceptance Software Technologies
  */
 public class IdLookupStrategy extends AbstractLookupStrategy
 {

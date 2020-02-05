@@ -8,9 +8,9 @@ import java.util.StringTokenizer;
 import com.xceptance.xlt.api.util.XltRandom;
 
 /**
- * A value that is based on a distribution or 0 if nothing is set
+ * Distribution based configuration value or 0 if not set.
  *
- * @author Rene Schwietzke
+ * @author Xceptance Software Technologies
  */
 public class ConfigDistribution
 {

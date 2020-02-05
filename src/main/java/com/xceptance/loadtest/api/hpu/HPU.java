@@ -1,7 +1,9 @@
 package com.xceptance.loadtest.api.hpu;
 
 /**
- * HPU is just an abbreviation for HtmlPageUtils.
+ * Html page utils.
+ * 
+ * @autor Xceptance Software Technologies
  */
 public class HPU
 {
@@ -16,7 +18,7 @@ public class HPU
     /**
      * Initializes finder.
      * 
-     * @return lookup base setter
+     * @return Lookup base setter
      */
     public static In find()
     {

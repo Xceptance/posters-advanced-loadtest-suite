@@ -7,9 +7,9 @@ import java.util.regex.Pattern;
 import com.xceptance.xlt.api.util.XltRandom;
 
 /**
- * A range of integers.
+ * Configuration range of integers.
  *
- * @author Rene Schwietzke
+ * @author Xceptance Software Technologies
  */
 public class ConfigRange
 {
@@ -290,7 +290,7 @@ public class ConfigRange
                 }
             }
 
-            // well, fail to parse all
+            // Failed to parse all
             return null;
         }
     }

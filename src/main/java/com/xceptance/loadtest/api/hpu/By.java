@@ -13,7 +13,9 @@ import com.xceptance.loadtest.api.hpu.strategy.XPathLookupStrategy;
 import com.xceptance.xlt.api.engine.Session;
 
 /**
- * Lookup strategy
+ * Lookup strategy.
+ * 
+ * @autor Xceptance Software Technologies
  */
 public class By
 {

@@ -16,10 +16,9 @@ import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.xlt.api.util.HtmlPageUtils;
 
 /**
- * Utils for DOM manipulation
+ * Utilities for DOM manipulation
  *
- * @author rschwietzke
- *
+ * @author Xceptance Software Technologies
  */
 public class DOMUtils
 {

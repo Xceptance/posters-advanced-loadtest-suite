@@ -1,10 +1,11 @@
 package com.xceptance.loadtest.api.util;
 
 /**
- * Generic exception thrown if a flow is stopped unexpectedly. This usually does not rise an error situation during a
- * load test.
+ * Generic exception thrown if a (test) flow is stopped unexpectedly.
  * 
- * @author Matthias Ullrich (Xceptance Software Technologies GmbH)
+ * This usually does not rise an error situation during a load test.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class FlowStoppedException extends Exception
 {

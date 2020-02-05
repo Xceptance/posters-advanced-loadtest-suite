@@ -11,7 +11,9 @@ import com.xceptance.loadtest.api.data.Address;
 import com.xceptance.loadtest.api.data.CreditCard;
 
 /**
- * Test suite configuration
+ * Represents the test suite configuration.
+ * 
+ * @author Xceptance Software Technologies
  */
 public class Configuration
 {

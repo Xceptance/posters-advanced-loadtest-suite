@@ -6,10 +6,11 @@ import java.util.function.Supplier;
 import com.xceptance.xlt.api.util.XltRandom;
 
 /**
- * Probably derived from a 0 to 100 int value.
+ * Configuration probability derived from integer value (0..100).
  *
  * @see com.xceptance.xlt.api.util.XltRandom#nextBoolean(int)
- * @author Rene Schwietzke
+ * 
+ * @author Xceptance Software Technologies
  */
 public class ConfigProbability
 {

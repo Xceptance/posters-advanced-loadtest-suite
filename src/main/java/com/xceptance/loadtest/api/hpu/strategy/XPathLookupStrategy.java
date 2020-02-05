@@ -6,7 +6,9 @@ import com.gargoylesoftware.htmlunit.html.DomNode;
 import com.xceptance.loadtest.api.hpu.Strategy;
 
 /**
- * XPath lookup strategy
+ * XPath lookup strategy.
+ * 
+ * @autor Xceptance Software Technologies
  */
 public class XPathLookupStrategy extends AbstractLookupStrategy
 {

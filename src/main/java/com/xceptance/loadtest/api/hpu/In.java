@@ -6,7 +6,9 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.xceptance.common.util.ParameterCheckUtils;
 
 /**
- * Base element
+ * Lookup base element.
+ * 
+ * @autor Xceptance Software Technologies
  */
 public class In
 {
