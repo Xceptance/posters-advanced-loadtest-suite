@@ -1,8 +1,6 @@
 package com.xceptance.loadtest.posters.actions.cart;
 
 import com.xceptance.loadtest.api.actions.PageAction;
-import com.xceptance.loadtest.api.util.Context;
-import com.xceptance.loadtest.api.util.Format;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
@@ -14,17 +12,6 @@ import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
  */
 public class ViewCart extends PageAction<ViewCart>
 {
-    public ViewCart()
-    {
-        super();
-
-        // Set the timername to include the amount of product roughly
-        if (Context.configuration().reportCartBySize)
-        {
-            setTimerName(Format.timerName(getTimerName(), GeneralPages.instance.miniCart.getQuantity()));
-        }
-    }
-
     /**
      * {@inheritDoc}
      */

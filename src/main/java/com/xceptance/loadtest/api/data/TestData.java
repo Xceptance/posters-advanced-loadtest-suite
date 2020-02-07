@@ -6,7 +6,6 @@ import java.util.Optional;
 
 import org.junit.Assert;
 
-import com.xceptance.loadtest.api.configuration.Configuration;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.xlt.api.engine.Session;
 
@@ -19,7 +18,7 @@ import com.xceptance.xlt.api.engine.Session;
  */
 public class TestData
 {
-    // The account used in this TestCase.
+    // The account used in this test case.
     private Optional<Account> account = Optional.empty();
 
     // Simple key-value store
@@ -37,30 +36,13 @@ public class TestData
     // Stores the current quantity count of the cart
     public int cartQuantityCount;
 
-    // The site we are living in
+    // Identifies the site the test is targeting 
     public Site site;
 
-    /** String that represents the JavaScript snippet that contains the app.URLs */
-    public String appResources;
-
     /**
-     * Hash code of page where the current {@link #appResources} were looked up from. This is used
-     * to determine if {@link #appResources} needs to be updated.
-     */
-    public int appResourcesPageHashCode = 0;
-
-    /**
-     * If set to {@code true} this session had at least one request with long runtimes.
+     * Returns the attached account as optional, so it cannot be empty/null.
      *
-     * @see {@link Configuration#longRunningRequestThresholdForSessionMarking}
-     */
-    public boolean isSessionWithLongRunningRequest = false;
-
-    /**
-     * Return the attached account as optional, so it cannot be empty aka null. Helps to be more
-     * careful when programming
-     *
-     * @return the current account or an optional stating we don't have one
+     * @return The current account or an optional stating we don't have one
      */
     public Optional<Account> getAccount()
     {
@@ -68,12 +50,12 @@ public class TestData
     }
 
     /**
-     * Attach a customer account to our session/context. If we already got one, we will complain to
-     * make sure we keep the right order of things.
+     * Attaches a customer account to our session/context.
+     * 
+     * If there is already an account attached, it will fail.
      *
-     * @return customer account
-     * @throws AssertionError
-     *             when an account was already attached
+     * @return Customer account
+     * @throws AssertionError When an account was already attached
      */
     public Optional<Account> attachAccount()
     {
@@ -83,7 +65,7 @@ public class TestData
         }
         else
         {
-            // an account was already attached before
+            // An account was already attached before
             Assert.fail("An account was already attached");
         }
 
@@ -91,12 +73,12 @@ public class TestData
     }
     
     /**
-     * Attach a customer account to our session/context. If we already got one, we will complain to
-     * make sure we keep the right order of things.
-     *
+     * Attaches a customer account to our session/context.
+     * 
+     * If there is already an account attached, it will fail.
+     * 
      * @return customer account
-     * @throws AssertionError
-     *             when an account was already attached
+     * @throws AssertionError When an account was already attached
      */
     public Optional<Account> attachAccountFromFile(boolean exclusive)
     {
@@ -106,7 +88,7 @@ public class TestData
         }
         else
         {
-            // an account was already attached before
+            // An account was already attached before
             Assert.fail("An account was already attached");
         }
 
@@ -116,9 +98,7 @@ public class TestData
     /**
      * Sets the account to use for this test.
      *
-     * @param account
-     *            the account to use. If set to <code>null</code> a newly generated account will
-     *            assigned.
+     * @param account The account to use. If set to <code>null</code> a newly generated account will assigned.
      */
     public void setAccount(final Optional<Account> account)
     {
@@ -128,6 +108,7 @@ public class TestData
 
     /**
      * Releases the used account and put it back to the pool for re-usage if possible.
+     * 
      * @throws Exception 
      */
     public void releaseAccount() throws Exception
@@ -139,7 +120,7 @@ public class TestData
         // account will be simply dropped.
         if (account.isPresent())
         {
-            // put account into value log
+            // Put account into value log
             final String siteId = Context.getSite().getId();
 
             final Map<String, Object> log = Session.getCurrent().getValueLog();
@@ -159,11 +140,10 @@ public class TestData
     }
 
     /**
-     * Set the site we are moving it
+     * Sets the site.
      *
-     * @param newSite
-     *            the new site
-     * @return the old site if set, otherwise null
+     * @param newSite The new site
+     * @return The old site if set, otherwise null.
      */
     public Site setSite(final Site newSite)
     {
@@ -174,9 +154,9 @@ public class TestData
     }
 
     /**
-     * Return the current site
+     * Returns the current site.
      *
-     * @return the current site
+     * @return The current site.
      */
     public Site getSite()
     {

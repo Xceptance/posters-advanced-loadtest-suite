@@ -1,17 +1,11 @@
 package com.xceptance.loadtest.api.actions;
 
 import java.io.IOException;
-import java.net.SocketTimeoutException;
 import java.net.URL;
-import java.text.MessageFormat;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.xceptance.loadtest.api.events.EventLogger;
 import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.Log;
@@ -19,10 +13,7 @@ import com.xceptance.loadtest.api.util.PageViewCounter;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.api.validators.Validator.StatusCodeValidator;
 import com.xceptance.xlt.api.actions.RunMethodStateException;
-import com.xceptance.xlt.api.engine.CustomValue;
-import com.xceptance.xlt.api.engine.Session;
 import com.xceptance.xlt.api.util.HtmlPageUtils;
-import com.xceptance.xlt.api.util.ResponseProcessor;
 import com.xceptance.xlt.api.util.XltLogger;
 
 /**
@@ -32,11 +23,6 @@ import com.xceptance.xlt.api.util.XltLogger;
  */
 public abstract class PageAction<T> extends com.xceptance.xlt.api.actions.AbstractHtmlPageAction
 {
-    /**
-     * Is the debug mode on and shall we prevent certain calls
-     */
-    private boolean debugCallWasAlreadyMade = false;
-
     private boolean precheckExecuted = false;
     private boolean precheckFailed = false;
 
@@ -60,24 +46,6 @@ public abstract class PageAction<T> extends com.xceptance.xlt.api.actions.Abstra
     {
         super(lastAction, null);
 
-        /*
-         * Sometimes the received response needs to be modified. This can be done easily by response processors. Find
-         * here some examples that
-         */
-
-        // Drop 'iframe' sections.
-        // addResponseProcessor(new ResponseContentProcessor("<noscript\\s*>.*?</noscript>", ""));
-
-        // Drop 'noscript' sections.
-        // addResponseProcessor(new ResponseContentProcessor("<iframe[^>]+>", "<iframe>"));
-
-        // Drop ISML tags (Use this workaround for script DEVELOPMENT only)
-        // addResponseProcessor(new ResponseContentProcessor("<is.*?>", ""));
-        // addResponseProcessor(new ResponseContentProcessor("</is.*?>", ""));
-
-        // addResponseProcessor(new ResponseContentProcessor("selected=\"\"",
-        // "selected"));
-
         // Adjust action name
         final StringBuilder newTimerName = new StringBuilder();
         newTimerName.append(getTimerName());
@@ -100,20 +68,6 @@ public abstract class PageAction<T> extends com.xceptance.xlt.api.actions.Abstra
         setTimerName(Context.get().debugData.adjustTimerName(() -> newTimerName.toString()));
     }
 
-    @Override
-    public void addResponseProcessor(final ResponseProcessor processor)
-    {
-        if (Session.getCurrent().isLoadTest())
-        {
-            throw new IllegalStateException("It's strongly recommended to avoid ReponseProcessors in load test mode.");
-        }
-        else
-        {
-            EventLogger.DEFAULT.warn("ResponseProcessor", "It's strongly recommended to avoid ReponseProcessors in load test mode.");
-            super.addResponseProcessor(processor);
-        }
-    }
-
     /**
      * {@inheritDoc}
      *
@@ -130,18 +84,8 @@ public abstract class PageAction<T> extends com.xceptance.xlt.api.actions.Abstra
             // Set the Basic Authentication header if necessary.
             Context.setBasicAuthenticationHeader();
 
-            // If a retry on timeout is configured execute the action in a more
-            // relaxed way.
-            final int retryCount = Context.configuration().onTimeoutRetryCount;
-            if (retryCount > 0)
-            {
-                doExecuteTolerateTimeout(retryCount);
-            }
-            else
-            {
-                // Otherwise just execute it and break if a timeout is detected.
-                doExecute();
-            }
+            // Otherwise just execute it and break if a timeout is detected.
+            doExecute();
         }
         finally
         {
@@ -162,157 +106,16 @@ public abstract class PageAction<T> extends com.xceptance.xlt.api.actions.Abstra
     }
 
     /**
-     * Execute the commands. If a timeout is detected the commands will be repeated. If the repetitions have reached the
-     * given maximum the method just returns. A SocketTimeoutException will never be thrown.
-     *
-     * @param retryCount How many repetitions are allowed at maximum.
-     * @throws Exception In case of an error but a SocketTimeoutException
-     */
-    private void doExecuteTolerateTimeout(final int retryCount) throws Exception
-    {
-        // Repeat if necessary
-        for (int i = 0; i < retryCount; i++)
-        {
-            try
-            {
-                // Execute the action.
-                doExecute();
-
-                // No timeout, no retry. We are done.
-                break;
-            }
-            catch (final SocketTimeoutException e)
-            {
-                // Nothing to do. Catch it and continue. Action will be executed again if possible.
-            }
-            catch (final RuntimeException rte)
-            {
-                // Check for the wrapped exception. Do not throw a SocketTimeoutException.
-                final Throwable cause = rte.getCause();
-                if (cause == null || cause.getClass() != SocketTimeoutException.class)
-                {
-                    // Propagate it.
-                    throw rte;
-                }
-            }
-
-            // If we reach that, we've caught the exception and will try again. Log it.
-            EventLogger.DEFAULT.debug("TimeoutRetry",
-                             MessageFormat.format("{0} - Try: {1} failed.", this.getTimerName(), (i + 1)));
-        }
-    }
-
-    /**
-     * Helper for debugging scripts more easily with fixed urls Only work when
-     * turned on and in development mode
-     *
-     * @param url Relative or absolute debug url
-     * @return this instance
-     */
-    public PageAction<T> loadDebugUrlOrElse(final String url) throws Exception
-    {
-        if (Context.isLoadTest)
-        {
-            return this; // nothing to do
-        }
-
-        if (Context.configuration().useDebugUrls == false)
-        {
-            return this;
-        }
-
-        // ok, let's load our debug url
-        final HtmlPage currentPage = Context.getPage();
-
-        // our future url
-        URL absoluteUrl;
-
-        if (currentPage != null)
-        {
-            absoluteUrl = currentPage.getFullyQualifiedUrl(url);
-        }
-        else
-        {
-            absoluteUrl = new URL(url);
-        }
-
-        loadPage(absoluteUrl); // load our debug url
-        debugCallWasAlreadyMade = true; // prevent further loading
-
-        return this;
-    }
-
-    /**
-     * Executes Commands which needs to be done after the main execution (like
+     * Executes commands which needs to be done after the main execution (like
      * the analytics call).
      *
      * @throws Exception
      */
     protected void postExecute() throws Exception
     {
-        handleLongRunningRequests();
+    	// Currently empty, override in sub class if required
     }
-
-    protected void handleLongRunningRequests()
-    {
-        // just for efficiency, so we only have to get this once
-        List<Long> loadTimes = null;
-
-        // if the session is known as long-runner-session already we can skip
-        if (Context.get().data.isSessionWithLongRunningRequest == false)
-        {
-            // do we want to mark sessions with long runners at all?
-            final int threshold = Context.configuration().longRunningRequestThresholdForSessionMarking;
-            if (threshold > 0)
-            {
-                loadTimes = getRequestRuntimes();
-
-                // do we find a long runner finally?
-                if (loadTimes.stream().anyMatch(loadTime -> loadTime > threshold))
-                {
-                    // log a custom value and flag the session
-                    final Session session = Session.getCurrent();
-
-                    final CustomValue customValue = new CustomValue("LongRunnerCount - " + session.getUserName());
-                    final CustomValue customValueAll = new CustomValue("LongRunnerCount - ALL");
-
-                    customValue.setValue(1);
-                    customValueAll.setValue(1);
-
-                    session.getDataManager().logDataRecord(customValue);
-                    session.getDataManager().logDataRecord(customValueAll);
-
-                    Context.get().data.isSessionWithLongRunningRequest = true;
-                }
-            }
-        }
-
-        // do we want to dump on long runners?
-        final int dumpResponseTimesWhenLargeThreshold = Context.configuration().dumpResponseTimesWhenLargerThan;
-        if (dumpResponseTimesWhenLargeThreshold > 0)
-        {
-            // skip newly initialization of load times list if possible
-            loadTimes = loadTimes == null ? getRequestRuntimes() : loadTimes;
-
-            // do we find a long runner that's worth to get dumped?
-            if (loadTimes.stream().anyMatch(loadTime -> loadTime > dumpResponseTimesWhenLargeThreshold))
-            {
-                throw new RuntimeException("Response time higher than " + (dumpResponseTimesWhenLargeThreshold / 1000) + " sec");
-            }
-        }
-    }
-
-    private List<Long> getRequestRuntimes()
-    {
-        // extract load times
-        final List<Long> loadTimes = Session.getCurrent().getNetworkDataManager().getData()
-                        .stream()
-                        .map(request -> request.getResponse().getLoadTime())
-                        .collect(Collectors.toList());
-
-        return loadTimes;
-    }
-
+    
     /**
      * Executes the action's main part. What is done here is determined by the sub classes.
      *
@@ -482,11 +285,8 @@ public abstract class PageAction<T> extends com.xceptance.xlt.api.actions.Abstra
     @Override
     public void loadPage(final String urlAsString) throws Exception
     {
-        if (!debugCallWasAlreadyMade)
-        {
-            super.loadPage(urlAsString);
-            validateResponseQuickly();
-        }
+        super.loadPage(urlAsString);
+        validateResponseQuickly();
     }
 
     /**
@@ -495,11 +295,8 @@ public abstract class PageAction<T> extends com.xceptance.xlt.api.actions.Abstra
     @Override
     public void loadPage(final URL url) throws Exception
     {
-        if (!debugCallWasAlreadyMade)
-        {
-            super.loadPage(url);
-            validateResponseQuickly();
-        }
+        super.loadPage(url);
+        validateResponseQuickly();
     }
 
     /**
@@ -508,11 +305,8 @@ public abstract class PageAction<T> extends com.xceptance.xlt.api.actions.Abstra
     @Override
     public void loadPageByClick(final HtmlElement element) throws Exception
     {
-        if (!debugCallWasAlreadyMade)
-        {
-            super.loadPageByClick(element);
-            validateResponseQuickly();
-        }
+        super.loadPageByClick(element);
+        validateResponseQuickly();
     }
 
     /**
@@ -521,11 +315,8 @@ public abstract class PageAction<T> extends com.xceptance.xlt.api.actions.Abstra
     @Override
     public void loadPageByFormSubmit(final HtmlForm form) throws Exception
     {
-        if (!debugCallWasAlreadyMade)
-        {
-            super.loadPageByFormSubmit(form);
-            validateResponseQuickly();
-        }
+        super.loadPageByFormSubmit(form);
+        validateResponseQuickly();
     }
 
     /**

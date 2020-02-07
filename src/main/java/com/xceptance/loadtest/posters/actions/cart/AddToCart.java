@@ -7,7 +7,6 @@ import com.gargoylesoftware.htmlunit.WebResponse;
 import com.xceptance.loadtest.api.actions.AjaxAction;
 import com.xceptance.loadtest.api.util.AjaxUtils;
 import com.xceptance.loadtest.api.util.Context;
-import com.xceptance.loadtest.api.util.Format;
 import com.xceptance.loadtest.api.util.HttpRequest;
 import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
@@ -26,20 +25,6 @@ public class AddToCart extends AjaxAction<AddToCart>
     private String size;
     
     private String finish;
-
-    /**
-     * Constructor
-     */
-    public AddToCart()
-    {
-        super();
-        
-        // If enabled, modifies the timer name to include the increased cart count (even though the action might fail)
-        if (Context.configuration().reportCartBySize)
-        {
-            setTimerName(Format.timerName(getTimerName(), Integer.valueOf(Context.get().data.totalAddToCartCount + 1)));
-        }
-    }
 
     @Override
     public void precheck()

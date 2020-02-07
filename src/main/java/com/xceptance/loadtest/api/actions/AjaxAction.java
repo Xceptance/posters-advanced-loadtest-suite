@@ -30,7 +30,5 @@ public abstract class AjaxAction<T> extends PageAction<T>
             // reset state
             ((XltWebClient) getWebClient()).getOptions().setJavaScriptEnabled(state);
         }
-
-        super.handleLongRunningRequests();
     }
 }

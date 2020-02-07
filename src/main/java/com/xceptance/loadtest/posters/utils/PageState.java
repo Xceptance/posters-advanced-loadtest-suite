@@ -93,6 +93,8 @@ public class PageState
 //		return Page.find().byId(id).exists() && Page.find().byId(id).asserted("Expected single embedded state element").single().getTextContent().isBlank();
 //	}
 
+	/// Data specific access
+	
 	public static void embedProducts(String productsJsonString)
 	{
 		embed(EMBEDDED_PRODUCTS_ID, productsJsonString);

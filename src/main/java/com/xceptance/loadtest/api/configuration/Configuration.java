@@ -44,18 +44,6 @@ public class Configuration
     @Property(key = "com.xceptance.xlt.http.filter.include", required = false, fallback = "")
     public ConfigList includeUrlPatterns;
 
-    // Whether or not to make the analytics calls
-    @Property(key = "general.load.analytics", fallback = "true")
-    public boolean loadAnalytics;
-
-    // Whether or not to make the Resources-Load calls
-    @Property(key = "general.load.appresources", fallback = "false")
-    public boolean loadAppResources;
-
-    // Whether or not to make the ltk tracking calls
-    @Property(key = "general.load.ltkTracking", fallback = "false")
-    public boolean loadLtkTracking;
-
     // URL: To start with the direct order scenario
     @Property(key = "general.direct.order.url")
     public String directOrderUrl;
@@ -77,25 +65,9 @@ public class Configuration
     @Property(key = "com.xceptance.xlt.http.gzip")
     public boolean applyHeaderGzip;
 
-    // Dump long running request sessions
-    @Property(key = "com.xceptance.xlt.output2disk.onResponseTime.largerThan", required = false, fallback = "0")
-    public int dumpResponseTimesWhenLargerThan;
-
-    // Long running request sessions threshold in milliseconds 
-    @Property(key = "general.request.longrunning.sessionFlag.threshold", required = false, fallback = "0")
-    public int longRunningRequestThresholdForSessionMarking;
-
-    // Optional additional debug UUID in user agent
-    @Property(key = "general.execute.ontimeout.retry.max")
-    public int onTimeoutRetryCount;
-    
     // Puts additional actions into the result browser
     @Property(key = "general.debug.actions")
     public boolean useDebugActions;
-
-    // Allow the use of debug urls while developing
-    @Property(key = "general.debug.urls")
-    public boolean useDebugUrls;
 
     // Generate totally random emails by using the UUID generator or use the XltRandom generator to create a reproducible stream of emails
     @Property(key = "general.email.stronglyRandom")
@@ -152,7 +124,7 @@ public class Configuration
     @Property(key = "browsing.flow.categories.flow")
     public ConfigRange browseCategoriesFlow;
 
-    // HHow often do we refine within the larger browse flow per round
+    // How often do we refine within the larger browse flow per round
     @Property(key = "browsing.flow.refine.flow")
     public ConfigRange browseRefineFlow;
 
@@ -183,10 +155,9 @@ public class Configuration
     @Property(key = "cart.view", immutable = false)
     public ConfigProbability viewCartProbability;
 
-    // Do we need a counter for add2cart and view cart, mainly for performance
-    // debugging
-    @Property(key = "cart.report.bySize")
-    public boolean reportCartBySize;
+    // Do we need a counter for add2cart and view cart, mainly for performance debugging
+    //@Property(key = "cart.report.bySize")
+    //public boolean reportCartBySize;
 
     // how many product do we want per add to cart?
     @Property(key = "cart.product.quantity", immutable = false)
