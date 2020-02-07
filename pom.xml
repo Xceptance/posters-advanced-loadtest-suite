@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.xceptance</groupId>
 	<artifactId>test-suite-posters</artifactId>
-	<name>Load Test Suite for Posters Demo Store</name>
+	<name>XLT Load Test Suite for Posters Demo Store</name>
 	<packaging>jar</packaging>
 	<version>0.1</version>
 
