@@ -256,17 +256,3 @@ For instance you will find the `Site` located here, because this is a per user/s
 If you need something only during development time, make sure you add this to `debugData` and not `data`.
 
 `DebugData` features an internal implementation that carries data, called  `DevelopmentDebugData` where you should put all your data in. DebugData always returns something non-sense or static, while DevelopmentDebugData does the right thing. This automatically handles the `isLoadTest` check for you. See the current implementation for more details.
-
-
-## JSON-Schema (deprecated!)
-The test suite has the ability to create class files POJO style from JSON-schema files. If you use Maven, this will be done as part of the generate-sources phase when you run compile or package. If you need that upfront, use `mvn generate-sources`. The resulting files will end up in `target/generated-sources/jsonschema2pojo`. The data is read from `src/main/resources/schema`.
-
-Please be advised, this generator does not use auto-merging aka anyOf, oneOf and more are not directly supported. To limit the amount of created classes and also explicitly control what version is in place, we are not going to copy the existing generated classes from the other project. Instead we modify the JSON schema to allow a unified aka merged version. Typically these are just a few line to be removed. In either way, none of these version is correct at all and does not guarantee consistent API usage. Only a verification against the schema first and a dynamic runtime selection would be covering this.
-
-In addition, this suite uses the JSON schema from the public documentation and not any internal provided state. This enables us to identify issue due to a second way of usage and generation.
-
-As additional point, where we don't need any schema or large object, we are not going to use one and rather run the "keep it simple" game. Load testing is not about extensive validation, it is about performance and overall state and stability.
-
-*Important*: We are going to ignore auto-code-generation and go with a manual approach. That is faster and less confusing. It also helps to discover inconsitencies quicker and enables us to make the programming interface nicer.
-
-The examples code generator stays in the code base, just in case.
