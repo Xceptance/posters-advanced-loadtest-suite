@@ -9,7 +9,7 @@ The performance test suite is the foundation for load tests and it is based on [
 * Internal handling of configuration via YAML files including regions, locales, and sites.
 * Handling of test scaling, results collection and report building.
 * Fits into CICD including comparison against previous runs.
-* * Replayable randomness
+* Replayable randomness
 * It is Java and the JVM, hence nearly everything can be done, as long as the measurement infrastructure is not circumvented, threads are used or expensive operations are run that influence the measurement
 
 ## XLT Documentation
