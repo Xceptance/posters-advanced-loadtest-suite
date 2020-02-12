@@ -1,7 +1,6 @@
 # Performance Test Suite for Posters Demo Shop
 
-## Introduction
-The test suite is the foundation for load tests with [Xceptance LoadTest](https://www.xceptance.com/xlt/). Several features this load test suite demonstrates:
+This test suite is an example for load tests with [Xceptance LoadTest](https://www.xceptance.com/xlt/). Features the test suite demonstrates:
 
 * Every test case is a JUnit test. Use Eclipse or any other IDE to compile, run (as single test user), and debug.
 * The tests can run as a normal integration test or as part of a classic build process.
