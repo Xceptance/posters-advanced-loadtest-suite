@@ -10,7 +10,7 @@ The performance test suite is the foundation for load tests and it is based on [
 * Handling of test scaling, results collection and report building.
 * Fits into CICD including comparison against previous runs.
 * Replayable randomness
-* It is Java and the JVM, hence nearly everything can be done, as long as the measurement infrastructure is not circumvented, threads are used or expensive operations are run that influence the measurement
+* It is Java and the JVM, hence nearly everything can be done, as long as the measurement infrastructure is not circumvented, threads are used or expensive operations are run that influence the measurement.
 
 ## XLT Documentation
 XLT is a load testing tool build by Xceptance on the JVM using Java also as the scripting language. Here are some documentation links:
