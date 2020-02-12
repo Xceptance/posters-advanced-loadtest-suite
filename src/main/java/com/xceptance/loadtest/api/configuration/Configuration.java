@@ -185,16 +185,15 @@ public class Configuration
     // Account Pool
 
     // Whether or not to separate account pools
-    @Property(key = "account.pool.separator")
+    @Property(key = "account.pool.separator", required = false, fallback = "default")
     public String accountPoolSiteSeparator;
 
     // Pools size
-    @Property(key = "account.pool.size")
+    @Property(key = "account.pool.size", required = false, fallback = "500")
     public int accountPoolSize;
 
     // Probability to reuse an account
-    // (aka, everything else does not make it to the pool)
-    @Property(key = "account.pool.reuse")
+    @Property(key = "account.pool.reuse", required = false, fallback = "0")
     public ConfigProbability accountPoolReuseProbability;
 
     // ===========================================================
