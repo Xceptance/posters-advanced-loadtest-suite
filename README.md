@@ -13,13 +13,13 @@ This test suite is an example for load testing a website with [Xceptance LoadTes
 * The test suite comes ready to execute against Xceptance' demo webshop 'Posters'.
 
 ## XLT Documentation
-XLT is a load testing tool build by Xceptance on the JVM using Java also as the scripting language. Here are some documentation links:
+[XLT](https://www.xceptance.com/xlt) is a load testing tool build by [Xceptance](https://www.xceptance.com) on the JVM using Java also as the scripting language. Here are some documentation links:
 
-* [Release Notes](https://lab.xceptance.de/releases/xlt/latest/release-notes/index.html)
-* [User Manual](https://lab.xceptance.de/releases/xlt/latest/user-manual/index.html)
-* [User Forum](https://ask.xceptance.de/)
+* [XLT Release Notes](https://lab.xceptance.de/releases/xlt/latest/release-notes/index.html)
+* [XLT User Manual](https://lab.xceptance.de/releases/xlt/latest/user-manual/index.html)
 * [XLT Introduction](https://training.xceptance.com/xlt/05-what-is-xlt.html#/)
-* [Some Other Training Material](https://training.xceptance.com/xlt/#/)
+* [Further XLT Training](https://training.xceptance.com/xlt/#/)
+* [User Forum](https://ask.xceptance.de/)
 
 ## Test Suite Overview
 
