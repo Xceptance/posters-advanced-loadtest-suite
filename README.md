@@ -1,16 +1,17 @@
 # Performance Test Suite for Posters Demo Shop
 
 ## Introduction
-The performance test suite is the foundation for load tests and it is based on [Xceptance LoadTest](https://www.xceptance.com/xlt/). Several features this test suite demonstrates:
+The test suite is the foundation for load tests with [Xceptance LoadTest](https://www.xceptance.com/xlt/). Several features this load test suite demonstrates:
 
-* Every test cases is a JUnit tests from the technical point of view. Hence you can use Eclipse or any other IDE to compile, run, and debug.
+* Every test case is a JUnit test. Use Eclipse or any other IDE to compile, run (as single test user), and debug.
 * The tests can run as a normal integration test or as part of a classic build process.
 * XLT measures, scales, and paces the testing.
 * Internal handling of configuration via YAML files including regions, locales, and sites.
-* Handling of test scaling, results collection and report building.
-* Fits into CICD including comparison against previous runs.
-* Replayable randomness
-* It is Java and the JVM, hence nearly everything can be done, as long as the measurement infrastructure is not circumvented, threads are used or expensive operations are run that influence the measurement.
+* Handling of test scaling, results collection and report building by XLT.
+* Fits your CI/CD pipeline, including comparison against previous runs.
+* Replayable randomness of the test scenarios.
+* It is Java and the JVM. Nearly everything can be done, as long as the measurement infrastructure is not circumvented, threads are used or expensive operations are run that influence the measurement.
+* The test suite is ready to execute against Xceptance' demo webshop 'Posters'.
 
 ## XLT Documentation
 XLT is a load testing tool build by Xceptance on the JVM using Java also as the scripting language. Here are some documentation links:
