@@ -11,7 +11,7 @@ The test suite is the foundation for load tests with [Xceptance LoadTest](https:
 * Fits your CI/CD pipeline, including comparison against previous runs.
 * Replayable randomness of the test scenarios.
 * It is Java and the JVM. Nearly everything can be done, as long as the measurement infrastructure is not circumvented, threads are used or expensive operations are run that influence the measurement.
-* The test suite is ready to execute against Xceptance' demo webshop 'Posters'.
+* The test suite comes ready to execute against Xceptance' demo webshop 'Posters'.
 
 ## XLT Documentation
 XLT is a load testing tool build by Xceptance on the JVM using Java also as the scripting language. Here are some documentation links:
