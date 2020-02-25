@@ -1,6 +1,6 @@
 # Performance Test Suite for Posters Demo Shop
 
-This test suite is an example for load testing a website with [Xceptance LoadTest](https://www.xceptance.com/xlt/). Features the test suite demonstrates:
+This repository is an example test suite for load testing a website with [Xceptance LoadTest](https://www.xceptance.com/xlt/). Features the test suite demonstrates:
 
 * Every test case is a JUnit test. Use Eclipse or any other IDE to compile, run (as single test user), and debug.
 * The tests can run as a normal integration test or as part of a classic build process.
@@ -10,9 +10,10 @@ This test suite is an example for load testing a website with [Xceptance LoadTes
 * Fits your CI/CD pipeline, including comparison against previous runs.
 * Replayable randomness of the test scenarios.
 * It is Java and the JVM. Nearly everything can be done, as long as the measurement infrastructure is not circumvented, threads are used or expensive operations are run that influence the measurement.
-* The test suite comes ready to execute against Xceptance' demo webshop 'Posters'.
+* The test suite comes ready to execute against Xceptance' demo webshop [Posters](https://35.184.136.113:8443/posters/).
 
 ## XLT Documentation
+
 [XLT](https://www.xceptance.com/xlt) is a load testing tool build by [Xceptance](https://www.xceptance.com) on the JVM using Java also as the scripting language. Here are some documentation links:
 
 * [XLT Release Notes](https://lab.xceptance.de/releases/xlt/latest/release-notes/index.html)
@@ -21,15 +22,72 @@ This test suite is an example for load testing a website with [Xceptance LoadTes
 * [Further XLT Training](https://training.xceptance.com/xlt/#/)
 * [User Forum](https://ask.xceptance.de/)
 
-## Test Suite Overview
+## Test Suite Organization
 
-...TODO...
+The following sections describes the organisation of the test suite. Major code interfaces are mentioned as a starting point to dive into the source code of the available test scenarios.
 
-## Sites, Regions, and Locale
+### General Structure
 
-Nowadays a lot of sites come in several languages and often target different regions or markets. Data will be different for some sites (e.g. addresses) and others might share certain information, e.g. search phrases.
-The test suite is multi-site by design even so it is only working on one demo shop. Data can be site, language or region specific and the test scripts will have a way to determine which site they are working on.
-If you want to do things during runtime based on the site and its properties, you can access the current site context and ask:
+Main parts of the test suite are the test scenarios source code, test configuration and test data as well as (automatically generated) test results.
+
+General organization of the test suite's source code is described in the following section. The test suite comes as a maven project. Use your preferred IDE to import the project and run the test suite without further modification.
+
+Test case and suite configuration is available in directory `/config`. Likewise test data and further configuration is available in directory `/config/data`. Configuration and data of the test suite adheres to some concepts described in later sections of this document.
+
+Test results in form of XLTs result browser output - which is generated with each single mode test execution - is located in directory `/results.` You can find a short blog article on [how to use the result browser](https://blog.xceptance.com/2018/02/22/how-to-use-the-xlt-result-browser/) on our website.
+
+### Source Code Organization
+
+Everything source code related can be found under `/src/main/java`. The main package of the test suite is `com.xceptance.loadtest`. The test suite is separated in a API and a site specific layer. The API layer provides the fundamental building blocks employed in modelling the site and creating the test scenarios.
+
+### Test Suite API
+
+The test suite contains an API layer offering building blocks in form of various interfaces and base classes as well as a number of utilities and data containers, which can and should be employed when creating the project specific test scenarios. The API layer is not site specific and could be shared among different projects. The package containing the API layer can be found at `com.xceptance.loadtest.api`.
+
+Please refer to later sections of this document for brief discussions of API layer specific components, like the `Context`, test data and general data objects, Site specific loading, and Page Lookup.
+
+### Project/Site Specific Code
+
+The project (site) specific code of the test suite can be found at `com.xceptance.loadtest.posters`. In general, this package contains a representation of the site under test and all its interactions, required to implement the individual test scenarios. The package further divides into the following, briefly reviewed sub-packages.
+
+`models` - Contains all site specific models. Separated into `models.pages` and `models.components`. The pages package contains all page objects which represent a single page or page impression, like the cart page. Each page object will typically utilise a number of reusable page components, like the mini cart. Components and page objects are stateless by design.
+
+`actions` - An action will contain the interaction with a page, or more specifically the components of a page object. For example adding a product to the cart will be contained in an action called `AddToCart`, which in turn interacts with a product detail page of the Posters demo shop and it's components like the add to cart button.
+
+`flows` - A flow describes a number of interactions (actions) with the site. A chain of actions represented as a flow provides the advantage of reuse in different test scenarios, e.g. a user login flow.
+
+`tests` - The actual test cases (test scenarios) modelling the complete test that is being executed on the site. Each test scenario is represented by a distinct test case.
+
+### API Layer Interfaces and Base Classes
+
+Page objects and components employ the `PageInterface`, abstract `Page` class and `Component` interface. Actions will be typically based on `PageAction` or `AjaxAction` or a derivative. Tests will extend class `LoadTestCase` which in turn utilises `AbstractTestCase`, which is provided by XLT. All of these interfaces and base classes can be found in the sub-packages of `com.xceptance.loadtest.api`.
+
+## Configuration and Test Data
+
+Project configuration, project data and general load test execution configuration is described and implemented via Java and YAML roperties. All configuration and data files are located in directory `/config` and subsequently `config/data`. The following files are available with their general intent and contents briefly described:
+
+`default.properties` - General XLT and suite configuration, like proxy settings, XLT timeout settings, http filter, Javascript settings, test data management settings, result and reporting settings. This file specifies the general set of properties and other property files will typically override these settings in a more specific way.
+
+`dev-log4j.properties` - Logging properties for development mode.
+
+`log4j.properties` - Logging properties employed during load test execution.
+
+`project.properties` - Project specific properties referencing further configuration files, specifying settings related to test cases or simply overriding existing properties with site specific details.
+
+`dev.properties` - Properties overriding other properties (typically default.properties or project.properties) during development and single user mode execution of a test case.
+
+`sites.yaml` - Site specific configuration like languages/locale, resource paths or access information and test data.
+
+`private-data.yaml` - Information on how to access the site under test, i.e. host details and credentials. Isolated in this file to be possibly excluded from version control, where required.
+
+`test.properties` - Test run specific settings, e.g. executed test cases, test run configuration like number of users or test duration.
+
+Further details about properties required during test case execution, especially in load test mode, are described in the [XLT documentation](TODO).
+
+### Sites, Regions, and Locale
+
+Nowadays, a lot of sites come in several languages and often target different regions or markets. Data will be different for some sites (e.g. addresses) and others might share certain information (e.g. search phrases).
+The test suite is multi-site by design even so it is only working on one demo shop. Data and configuration can be site, language or region specific and the test scripts will have a built-in way to determine which site they are working on, thereby automatically retrieving correct set of data. If you want to access information during runtime based on the current site and its properties, you can access the Context and ask:
 
 ```java
 Context.get().data.site.id
@@ -38,14 +96,15 @@ Context.get().data.site.locale
 Context.get().data.site.language()
 ```
 
-In case this is too ambiguous, you can easily extend the `Site` class to directly answer your questions, such as isAPAC() for instance. 
+In case this is too ambiguous, you can easily extend the `Site` class to directly answer your questions, such as `isAPAC()` for instance. 
 
 The language is automatically derived from the locale. For instance `en_CA` is `en` aka English and `fr_CA` is `fr` aka French both for Canada.
 
-So the idea is to allow reuse based on region and locale/language, while you separate everything else that is site specific.
+The idea is to allow reuse based on region and locale/language, while you separate everything else that is site specific.
 
-### File System
-You will find a hierarchy under `data` where the suite is looking for information in order of the fallback (see later). This can look something like the following hierarchy:
+#### File System
+
+You will find a directory hierarchy under `/config/data` where the test suite is looking up information. During the data and configuration look up a fallback scheme is applied (discussed later on). This can look something like the following hierarchy:
 
 ```
 config/data/
@@ -97,19 +156,19 @@ config/data/
         └── flash.yaml
 ```
 
-There are regions, locales and languages as well as sites. Everything except default is free to be defined as needed. This hierarchy comes from information set in `data/sites/sites.yaml`. Consider it the start point of the site definitions. This file is referenced in the `project.properties` via `general.properties.yaml.global.files` and basically gets the YAML loading started.
+There are regions, locales and languages as well as sites. Everything except default is free to be defined as needed. This hierarchy comes from information set in `/config/data/sites/sites.yaml`. Consider it the start point of the site definitions. This file is referenced in the `project.properties` via property `general.properties.yaml.global.files` and basically gets the YAML loading process started.
 
 You can specify more files there which are loaded as initial defaults before the fallback based handling starts.
 
-But it is important that one file of this contains the site list to use (example below), otherwise the site concept is broken. 
+But it is important that one file of this contains the site list to use (see next example), otherwise the site concept will be broken.
 
 ```yaml
- # make all sites known upfront       
+# Make all sites known upfront       
 sites:
     -   id: US
-        active: true # in case you want to exclude it from a run 
-        locale: en_US # this is the language to be used
-        region: NorthAmerica # this is something like country or market
+        active: true  # In case you want to exclude it from a run 
+        locale: en_US  # This is the language to be used
+        region: NorthAmerica  # This is something like country or market
         marketshare: 10
     -   id: UK
         active: false
@@ -118,25 +177,19 @@ sites:
         marketshare: 10
 ```
 
-## Properties
-The test suite deals with different configurations (properties) and test data. These are explained in the following sections.
+### Properties
 
-### General
-The suite uses in part known properties but tries to replace most of it by introducing a flexible and easy to read and configure YAML based property extension.
+The test suite deals with different configuration settings (properties) and test data. The suite commonly uses a set of Java properties for configuration purposes but can replace most of them by also offering a flexible, easy to read and configure YAML based property extension. This concept was introduced to avoid boiler plate property configuration and support UTF-8. Furthermore it permits the means to simply overwrite by site, market or region.
 
-This concept has been setup for two reasons:
-* Avoid boilerplate and support UTF-8
-* Permit simple overwrite by site, market, or region
+#### YAML Properties
 
-### YAML
-The YAML property files are an extension of the existing XLT property concept but are not delivered by XLT but the test suite.
+The YAML property files are an extension of the existing XLT property collection. The YAML properties extension is not delivered by XLT but the test suite.
 
 *Important:* YAML does not like `TAB` at all. Make sure you modify your editor settings to correctly turn a TAB into spaces. YAML requires indentions to structure the document.
 
 More about YAML and some easy rules can be found in the [Wikipedia](https://en.wikipedia.org/wiki/YAML).
 
-### Properties Format in YAML
-The test suite transforms the YAML properties into regular properties which XLT and the suite can handle, so only the definition is in YAML but not the runtime behavior.
+The test suite transforms the YAML properties into regular properties which XLT and the suite can interpret. That means only the definition is in YAML but the runtime system will work on actual Java properties.
 
 An example:
 
@@ -158,14 +211,17 @@ general.credentials.username = storefront
 general.credentials.password = foobar
 ```
 
-### Private Data
-There is a `sites/private-data.yaml` which defines access and credentials for the site under test. If required, this file could be excluded from your repository (via .gitignore).
-The Posters test suite contains a readily setup `private-data.yaml` file with access details for Xceptance's demo store site 'Posters'.
+#### Private Site Configuration
 
-## Data
-Data has been setup in a similar way to properties to permit easy reuse as well as well targeted setup per region, site, or locale/language. Good examples are search phrases for English sites.
+There is a `sites/private-data.yaml` which defines access and credentials for the site under test. If required, this file can be excluded from your repository (via .gitignore).
+The Posters test suite contains a readily setup `private-data.yaml` file with access details for Xceptance's demo web shop [Posters](https://35.184.136.113:8443/posters/).
 
-## Fallback
+### Test Suite Data
+
+Test data has been setup in a similar way as the previously discussed configuration. This permits easy reuse and targeted setup per region, site, or locale/language. File system and site considerations discussed above also apply to the test data. Furthermore, the suite tries to employ a strict concept of data separation and data maintenance.
+
+#### Fallback on Data and Property Lookup
+
 Data and property look up use the same fallback logic. The look up follows below steps until the property is found. If not the test suite will complain with an error.
 
 1. Look for item in site first (e.g. US).
@@ -177,20 +233,55 @@ Data and property look up use the same fallback logic. The look up follows below
 7. Look in default language.
 8. If not found, the look up fails.
 
-Empty file are permitted in case you specified something that does not have data in that case.
+Empty files are permitted in case you specified something that does not have data for that specific case.
 
-## Data Concept
-The suite tries to employ a strict concept of data separation and data maintenance.
+#### Site Specific Data Loading
 
-### Loading
-The class `DataFileProvider.java` has the responsibility to load files based on earlier described fallback pattern and the site context. 
+The class `DataFileProvider.java` has the responsibility to load files following above described fallback pattern and the site context.
 
 ```java
-public static Optional<File> dataFileBySite(final Site site, final String fileName);
+public static Optional<File> dataFileBySite(final Site site, final String fileName)
 ```
 
-### Access and Storage per User
-The test suite contains the `Context` object which holds (among others) test suite/scenario configuration and data as well as runtime data of the test scenario.
-`Context.data` is an instance of `TestData.java`. This instance is exclusive per running scenario.
-Most data is made public for easier access and less boilerplate. If you need logic to hand out data, you have to add a methods for fetching the data.
-One example contained in the `TestData` (`Context.data`) is the `Site` object.
+#### Context and Test Data
+
+The test suite contains the `Context`, a singleton, which holds (among others) test suite and scenario specific configuration settings and data, as well as runtime data of a test scenario. You can access the `Context` via `Context.get()`.
+`Context.data` is an instance of class `TestData`. This instance is exclusive per running scenario (running user) and typically used to store all scenario and user specific data. Most data is made public for easier access and less boilerplate. If you need logic to hand out data, you have to add a methods for fetching the data. One important object contained in the `TestData` (`Context.data`) is the previously discussed `Site`.
+
+## Test Execution and Test Results
+
+The following section provides a brief overview on test suite execution and the resulting artefacts. For a detailed discussion of these topics please refer to the official [XLT documentation](TODO).
+
+### Test Execution (Single User Mode)
+
+All test cases contained in the suite are JUnit 4 tests. You can simply execute a test case from within your preferred IDE by using the built-in JUnit runner. Running a test case in this way will execute in single user mode and is typically employed during test case development or smoke testing a number of test scenarios. Executing the test case package will execute the whole suite in a sequential and again single user mode fashion.
+
+### Test Output
+
+Console output will inform about the executed test steps (actions), requests being fired and the test results (e.g. failed validation). At the end of a test case execution, the console output will provide a link to an XLT generated result browser. A result browser contains information collected during the execution of a test case. Test case, flow and action data as well as individual request and response data is contained. A result browser is a very useful tool in writing and modifying test cases. All result browsers created can be found in directory `/results` of the test suite. (The last generated result browser will be linked but result browser of previous scenario executions are also available in this directory. Clear the directory if you test suite takes up too much space.)
+
+### Random Initial Value
+
+Load test cases typically contain a good amount of randomness in their flows and actions. To be able to replay a test case exactly as executed previously, XLT test cases have the possibility to set a random seed, the so called random initial value. The initial value can be found at the end of the test case's console output or in the result browser (when clicking the test case title). Setting this initial value via property `com.xceptance.xlt.random.initValue` in one of the property files (typically `config/dev.properties`) will initialise XLTs random generator (class `XltRandom`) in a way that the exact same sequence of random values are provided, thus making test case execution repeatable.
+
+### Test Execution and Reporting in Load Test Mode
+
+For detailed information on how to execute the test scenarios and suite in an actual load test setup as well as creating and interpreting XLT load test reports, please refer to the comprehensive [XLT documentation](TODO).
+
+## Miscellaneous
+
+In this section various concepts central to the test suite or load testing with XLT in general are reviewed. Please follow the pointers to the official XLT documentation for an in depth discussion of the topic.
+
+### Page Lookup
+
+...TODO...
+
+### Actions and Timers
+
+A manual (functional) test is typically separated into individual test steps. From the perspective of a load test case a similar concept is employed. Each interaction with a page or page impression is a single step of a test case and called an action. An action might result in a page load or not. The latter taking place when e.g. simply filling a form or interacting with the site in a way that an Ajax request is triggered. Page validations are not represented as individual actions. (Generally, validations are kept to a minimum during load testing, as the purpose is not functional testing.)
+
+Actions are used to structure the interactions with the site. XLT uses the action concept further to set and manage timing markers (timers). An action automatically creates a new timer, which will terminate once the action is finished. The action information is maintained by XLT and will be used to structure the test outputs and timing information. The action markers and derived timings can be found in the result browser and the report. One or more requests can be associated with an action.
+
+For a full explanation of actions and timers, please refer to the [XLT documentation](TODO).
+
+### ...MORE... ?
