@@ -191,9 +191,7 @@ More about YAML and some easy rules can be found in the [Wikipedia](https://en.w
 
 The test suite transforms the YAML properties into regular properties which XLT and the suite can interpret. That means only the definition is in YAML but the runtime system will work on actual Java properties.
 
-An example:
-
-**Plain**
+**Plain:**
 ```yaml
 general:
     host: host.com
