@@ -84,7 +84,7 @@ Project configuration, project data and general load test execution configuratio
 
 Further details about properties required during test case execution, especially in load test mode, are described in the [XLT documentation](TODO).
 
-### Sites, Regions, and Locale
+### Sites, Regions and Locale
 
 Nowadays, a lot of sites come in several languages and often target different regions or markets. Data will be different for some sites (e.g. addresses) and others might share certain information (e.g. search phrases).
 The test suite is multi-site by design even so it is only working on one demo shop. Data and configuration can be site, language or region specific and the test scripts will have a built-in way to determine which site they are working on, thereby automatically retrieving correct set of data. If you want to access information during runtime based on the current site and its properties, you can access the Context and ask:
