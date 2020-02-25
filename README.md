@@ -202,8 +202,8 @@ general:
         username: storefront # Comment there
         password: foobar
 ```
-Which translates into:
 
+**Which translates into:**
 ```
 general.host = host.com
 general.host.baseUrl = host.com/my-site
