@@ -64,7 +64,7 @@ Page objects and components employ the `PageInterface`, abstract `Page` class an
 
 ## Configuration and Test Data
 
-Project configuration, project data and general load test execution configuration is described and implemented via Java and YAML roperties. All configuration and data files are located in directory `/config` and subsequently `config/data`. The following files are available with their general intent and contents briefly described:
+Project configuration, project data and general load test execution configuration is described and implemented via Java and YAML roperties. All configuration and data files are located in directory `/config` and subsequently `/config/data`. The following files are available with their general intent and contents briefly described:
 
 `default.properties` - General XLT and suite configuration, like proxy settings, XLT timeout settings, http filter, Javascript settings, test data management settings, result and reporting settings. This file specifies the general set of properties and other property files will typically override these settings in a more specific way.
 
@@ -107,7 +107,7 @@ The idea is to allow reuse based on region and locale/language, while you separa
 You will find a directory hierarchy under `/config/data` where the test suite is looking up information. During the data and configuration look up a fallback scheme is applied (discussed later on). This can look something like the following hierarchy:
 
 ```
-config/data/
+posters/config/data/
 ├── languages
 │   ├── default
 │   │   ├── firstnames.txt
@@ -262,7 +262,7 @@ Console output will inform about the executed test steps (actions), requests bei
 
 ### Random Initial Value
 
-Load test cases typically contain a good amount of randomness in their flows and actions. To be able to replay a test case exactly as executed previously, XLT test cases have the possibility to set a random seed, the so called random initial value. The initial value can be found at the end of the test case's console output or in the result browser (when clicking the test case title). Setting this initial value via property `com.xceptance.xlt.random.initValue` in one of the property files (typically `config/dev.properties`) will initialise XLTs random generator (class `XltRandom`) in a way that the exact same sequence of random values are provided, thus making test case execution repeatable.
+Load test cases typically contain a good amount of randomness in their flows and actions. To be able to replay a test case exactly as executed previously, XLT test cases have the possibility to set a random seed, the so called random initial value. The initial value can be found at the end of the test case's console output or in the result browser (when clicking the test case title). Setting this initial value via property `com.xceptance.xlt.random.initValue` in one of the property files (typically `/config/dev.properties`) will initialise XLTs random generator (class `XltRandom`) in a way that the exact same sequence of random values are provided, thus making test case execution repeatable.
 
 ### Test Execution and Reporting in Load Test Mode
 
