@@ -304,4 +304,8 @@ Actions are used to structure the interactions with the site. XLT uses the actio
 
 For a full explanation of actions and timers, please refer to the [XLT documentation](TODO).
 
+### Data Objects
+
+The package `com.xceptance.loadtest.api.data` contains several helpers to represent common webshop data like `Account`, `Address`, `CreditCard` or `Email`. Some of these data objects are associated with managing or supplying objects, like the `AccountManager` or the `SearchTermSupplier`. Some of the mentioned data items are referenced in the previously discussed `TestData` (`Context.data`).
+
 ### ...MORE... ?
