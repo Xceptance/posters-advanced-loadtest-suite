@@ -34,7 +34,7 @@ General organization of the test suite's source code is described in the followi
 
 Test case and suite configuration is available in directory `/config`. Likewise test data and further configuration is available in directory `/config/data`. Configuration and data of the test suite adheres to some concepts described in later sections of this document.
 
-Test results in form of XLTs result browser output - which is generated with each single mode test execution - is located in directory `/results.` You can find a short blog article on [how to use the result browser](https://blog.xceptance.com/2018/02/22/how-to-use-the-xlt-result-browser/) on our website.
+Test results in form of XLTs result browser output - which is generated with each single mode test execution - is located in directory `/results`. You can find a short blog article on [how to use the result browser](https://blog.xceptance.com/2018/02/22/how-to-use-the-xlt-result-browser/) on our website.
 
 ### Source Code Organization
 
