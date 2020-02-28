@@ -268,11 +268,34 @@ For detailed information on how to execute the test scenarios and suite in an ac
 
 ## Miscellaneous
 
-In this section various concepts central to the test suite or load testing with XLT in general are reviewed. Please follow the pointers to the official XLT documentation for an in depth discussion of the topic.
+In this section various concepts central to the test suite or test design with XLT in general are reviewed. Please follow the pointers to the official XLT documentation for an in depth discussion of the topic.
 
 ### Page Lookup
 
-...TODO...
+While interacting with the site it will be necessary to look up elements in the DOM. Typically the look up and manipulation of DOM elements is located in the components, actions and to some extent the pages. The test suite API provides a unified way to access page elements via CSS, ID or XPATH:
+
+```
+// Resolve input element via CSS locator
+LookUpResult result = Page.find().byCss("div.searchBar > input.searchField");
+HtmlElement searchField = result.single();
+```
+
+In addition to the simple example above, the `LookUpResult` acts as a result set proxy, which can be used in a number of different ways. Among others the look up can be chained, validation can be executed or result sets can be manipulated before accessing the actual element(s).
+
+```
+Page.find().byId("header")
+	.byCss("ul.navigationItems > li")
+	.asserted("Expected at least one navigation element")
+	.filter(e -> e.getAttribute("data-name")
+	.equals("sale item"))
+	.count()
+```
+
+The `find()` method of the `Page` object is just a convenience wrapper to `HPU.find().in(..page..)` for the current page. It gives access to the different look up strategies described above and provides a `LookUpResult`. (`HPU` being an abbreviation for Html Page Utils.)
+
+The `Page` object can be found in package `com.xceptance.loadtest.api.models.pages`. The `LookUpResult` and the `HPU` utility can be found in package `com.xceptance.loadtest.api.hpu`.
+
+Additionally, helpers to maninpulate HTML forms in a more convenient and direct way can be found in `com.xceptance.loadtest.api.util.FormUtils`.
 
 ### Actions and Timers
 
