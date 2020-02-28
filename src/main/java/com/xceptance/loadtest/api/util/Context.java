@@ -303,16 +303,6 @@ public class Context
             XltLogger.runTimeLogger.error("Error during release of account", e);
         }
 
-        // log the information about sessions with long running requests
-        try
-        {
-            PageViewCounter.publishAndDestroy();
-        }
-        catch (final Throwable e)
-        {
-            XltLogger.runTimeLogger.error("Error while trying to publishAndDestroy the pageviewcounter", e);
-        }
-
         // remove the context finally
         CONTEXTS.remove(Thread.currentThread().getThreadGroup());
     }

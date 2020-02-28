@@ -9,7 +9,6 @@ import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.Log;
-import com.xceptance.loadtest.api.util.PageViewCounter;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.api.validators.Validator.StatusCodeValidator;
 import com.xceptance.xlt.api.actions.RunMethodStateException;
@@ -98,7 +97,6 @@ public abstract class PageAction<T> extends com.xceptance.xlt.api.actions.Abstra
                     setHtmlPage(previousAction.getHtmlPage());
                 }
             }
-            PageViewCounter.count(this);
         }
 
         // Do the post execution steps.
