@@ -274,7 +274,7 @@ In this section various concepts central to the test suite or test design with X
 
 While interacting with the site it will be necessary to look up elements in the DOM. Typically the look up and manipulation of DOM elements is located in the components, actions and to some extent the pages. The test suite API provides a unified way to access page elements via CSS, ID or XPATH:
 
-```
+```java
 // Resolve input element via CSS locator
 LookUpResult result = Page.find().byCss("div.searchBar > input.searchField");
 HtmlElement searchField = result.single();
@@ -282,7 +282,7 @@ HtmlElement searchField = result.single();
 
 In addition to the simple example above, the `LookUpResult` acts as a result set proxy, which can be used in a number of different ways. Among others the look up can be chained, validation can be executed or result sets can be manipulated before accessing the actual element(s).
 
-```
+```java
 Page.find().byId("header")
 	.byCss("ul.navigationItems > li")
 	.asserted("Expected at least one navigation element")
