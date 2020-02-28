@@ -286,8 +286,7 @@ In addition to the simple example above, the `LookUpResult` acts as a result set
 Page.find().byId("header")
 	.byCss("ul.navigationItems > li")
 	.asserted("Expected at least one navigation element")
-	.filter(e -> e.getAttribute("data-name")
-	.equals("sale item"))
+	.filter(e -> e.getAttribute("data-name").equals("sale item"))
 	.count()
 ```
 
