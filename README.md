@@ -270,7 +270,7 @@ For detailed information on how to execute the test scenarios and suite in an ac
 
 In this section various concepts central to the test suite or test design with XLT in general are reviewed. Please follow the pointers to the official XLT documentation for an in depth discussion of the topic.
 
-### Page Lookup
+### Element Lookup
 
 While interacting with the site it will be necessary to look up elements in the DOM. Typically the look up and manipulation of DOM elements is located in the components, actions and to some extent the pages. The test suite API provides a unified way to access page elements via CSS, ID or XPATH:
 
