@@ -94,7 +94,7 @@ The following files are available with their general intent and contents briefly
 
 `test.properties` - Test run specific settings, e.g. executed test cases, test run configuration like number of users or test duration.
 
-Further details about properties required during test case execution, especially in load test mode, are described in the [XLT documentation](TODO).
+Further details about properties required during test case execution, especially in load test mode, are described in the [XLT documentation](https://lab.xceptance.de/releases/xlt/latest/user-manual/05-framework-config.html).
 
 ### Sites, Regions and Locale
 
@@ -260,7 +260,7 @@ The test suite contains the `Context`, a singleton, which holds (among others) t
 
 ## Test Execution and Test Results
 
-The following section provides a brief overview on test suite execution and the resulting artefacts. For a detailed discussion of these topics please refer to the official [XLT documentation](TODO).
+The following section provides a brief overview on test suite execution and the resulting artefacts. For a detailed discussion of these topics please refer to the official [XLT documentation](https://lab.xceptance.de/releases/xlt/latest/getting-started/02-performance-testing.html#toc-import-test-suite-into-eclipse).
 
 ### Test Execution (Single User Mode)
 
@@ -276,7 +276,7 @@ Load test cases typically contain a good amount of randomness in their flows and
 
 ### Test Execution and Reporting in Load Test Mode
 
-For detailed information on how to execute the test scenarios and suite in an actual load test setup as well as creating and interpreting XLT load test reports, please refer to the comprehensive [XLT documentation](TODO).
+The XLT documentation contains detailed information on how to execute the test scenarios and test suite in an actual [load test setup](https://lab.xceptance.de/releases/xlt/latest/user-manual/08-loadtest.html) as well as [creating and interpreting XLT load test reports](https://lab.xceptance.de/releases/xlt/latest/user-manual/09-reports.html).
 
 ## Miscellaneous
 
@@ -314,10 +314,8 @@ A manual (functional) test is typically separated into individual test steps. Fr
 
 Actions are used to structure the interactions with the site. XLT uses the action concept further to set and manage timing markers (timers). An action automatically creates a new timer, which will terminate once the action is finished. The action information is maintained by XLT and will be used to structure the test outputs and timing information. The action markers and derived timings can be found in the result browser and the report. One or more requests can be associated with an action.
 
-For a full explanation of actions and timers, please refer to the [XLT documentation](TODO).
+For a full explanation of actions and timers, please refer to the [XLT documentation](https://lab.xceptance.de/releases/xlt/latest/user-manual/04-framework.html#toc-xlt-action-api).
 
 ### Data Objects
 
 The package `com.xceptance.loadtest.api.data` contains several helpers to represent common webshop data like `Account`, `Address`, `CreditCard` or `Email`. Some of these data objects are associated with managing or supplying objects, like the `AccountManager` or the `SearchTermSupplier`. Some of the mentioned data items are referenced in the previously discussed `TestData` (`Context.data`).
-
-### ...MORE... ?
