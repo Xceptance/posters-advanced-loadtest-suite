@@ -9,15 +9,17 @@ This repository is an example of an advanced test suite for load testing a websi
 * XLT measures, scales, and paces the testing
 * Handling of test scaling, results collection and report building by XLT
 * Fits your CI/CD pipeline, including comparison against previous runs
+* Test design adhering to page object model
+* Comfortable Maven setup
 
 **Enhanced and New Features**
-* Handling of configuration via YAML files including regions, locales, and sites
-* Centralized configuration and mapping to objects to support data types
-* Central context for test execution data for easier programming
-* Replayable randomness of the test scenarios
-* Maven setup
+* Configuration via YAML files supporting a region, locale, and site arrangement
+* Centralized configuration and mapping of objects to support data types
+* Central context for test execution data enabling easier programming
+* Component based modelling of the site under test
+* Replayable randomness among test scenario executions
 
-The test suite is ready to be executed against the Posters demo store [Posters](https://35.184.136.113:8443/posters/). Please note, this setup is for testing purposes only and does not handling a lot of load. Please setup your own copy of the Posters demo store if you want to learn excecuting higher load factors and more complex suite configurations.
+The test suite is ready to be executed against the Posters demo store [Posters](https://35.184.136.113:8443/posters/). Please note, this setup is for testing purposes only and does not handle a lot of load. Please setup your [own copy of the Posters demo store](https://github.com/Xceptance/posters-demo-store) if you want to experiment with executions of higher load factors and more complex test configurations.
 
 ## XLT Documentation
 
