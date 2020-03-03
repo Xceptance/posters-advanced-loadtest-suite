@@ -1,32 +1,42 @@
-# Performance Test Suite for Posters Demo Shop
+# Advanced Performance Test Suite for Posters
 
-This repository is an example test suite for load testing a website with [Xceptance LoadTest](https://www.xceptance.com/xlt/). Features the test suite demonstrates:
+This repository is an example of an advanced test suite for load testing a website with [XLT](https://www.xceptance.com/xlt/). This test suite goes the extra mile and implements universal concepts for easier handling of data, configuration, and composing tests. It shows what is possible thanks to Java as scripting language on top of the XLT base feature set. The suite demostrates the following features and functionalities.
 
-* Every test case is a JUnit test. Use Eclipse or any other IDE to compile, run (as single test user), and debug.
-* The tests can run as a normal integration test or as part of a classic build process.
-* XLT measures, scales, and paces the testing.
-* Internal handling of configuration via YAML files including regions, locales, and sites.
-* Handling of test scaling, results collection and report building by XLT.
-* Fits your CI/CD pipeline, including comparison against previous runs.
-* Replayable randomness of the test scenarios.
-* It is Java and the JVM. Nearly everything can be done, as long as the measurement infrastructure is not circumvented, threads are used or expensive operations are run that influence the measurement.
-* The test suite comes ready to execute against Xceptance' demo webshop [Posters](https://35.184.136.113:8443/posters/).
+**Base XLT Features**
+* Every test case is a JUnit test
+* Use Eclipse or any other IDE to compile, run (as single test user), and debug
+* The tests can run as a normal integration test or as part of a classic build process
+* XLT measures, scales, and paces the testing
+* Handling of test scaling, results collection and report building by XLT
+* Fits your CI/CD pipeline, including comparison against previous runs
+
+**Enhanced and New Features**
+* Handling of configuration via YAML files including regions, locales, and sites
+* Centralized configuration and mapping to objects to support data types
+* Central context for test execution data for easier programming
+* Replayable randomness of the test scenarios
+* Maven setup
+
+The test suite is ready to be executed against the Posters demo store [Posters](https://35.184.136.113:8443/posters/). Please note, this setup is for testing purposes only and does not handling a lot of load. Please setup your own copy of the Posters demo store if you want to learn excecuting higher load factors and more complex suite configurations.
 
 ## XLT Documentation
 
-[XLT](https://www.xceptance.com/xlt) is a load testing tool build by [Xceptance](https://www.xceptance.com) on the JVM using Java also as the scripting language. Here are some documentation links:
+[XLT](https://www.xceptance.com/xlt) is a load testing tool build by [Xceptance](https://www.xceptance.com) using Java as the scripting language and the JVM as the execution environment. XLT is open source software under Apache License 2.0.
+
+Here are some documentation links:
 
 * [XLT Release Notes](https://lab.xceptance.de/releases/xlt/latest/release-notes/index.html)
 * [XLT User Manual](https://lab.xceptance.de/releases/xlt/latest/user-manual/index.html)
 * [XLT Introduction](https://training.xceptance.com/xlt/05-what-is-xlt.html#/)
 * [Further XLT Training](https://training.xceptance.com/xlt/#/)
 * [User Forum](https://ask.xceptance.de/)
+* [GitHub Repository](https://github.com/Xceptance/XLT)
 
-## Test Suite Organization
+## Test Suite Structure
 
 The following sections describes the organisation of the test suite. Major code interfaces are mentioned as a starting point to dive into the source code of the available test scenarios.
 
-### General Structure
+### General
 
 Main parts of the test suite are the test scenarios source code, test configuration and test data as well as (automatically generated) test results.
 
@@ -36,27 +46,27 @@ Test case and suite configuration is available in directory `/config`. Likewise 
 
 Test results in form of XLTs result browser output - which is generated with each single mode test execution - is located in directory `/results`. You can find a short blog article on [how to use the result browser](https://blog.xceptance.com/2018/02/22/how-to-use-the-xlt-result-browser/) on our website.
 
-### Source Code Organization
+### Source Code
 
 Everything source code related can be found under `/src/main/java`. The main package of the test suite is `com.xceptance.loadtest`. The test suite is separated in a API and a site specific layer. The API layer provides the fundamental building blocks employed in modelling the site and creating the test scenarios.
 
-### Test Suite API
+### API
 
 The test suite contains an API layer offering building blocks in form of various interfaces and base classes as well as a number of utilities and data containers, which can and should be employed when creating the project specific test scenarios. The API layer is not site specific and could be shared among different projects. The package containing the API layer can be found at `com.xceptance.loadtest.api`.
 
 Please refer to later sections of this document for brief discussions of API layer specific components, like the `Context`, test data and general data objects, Site specific loading, and Page Lookup.
 
-### Project/Site Specific Code
+### Project Source Code
 
-The project (site) specific code of the test suite can be found at `com.xceptance.loadtest.posters`. In general, this package contains a representation of the site under test and all its interactions, required to implement the individual test scenarios. The package further divides into the following, briefly reviewed sub-packages.
+The project source code of the test suite can be found at `com.xceptance.loadtest.posters`. In general, this package contains a representation of the website under test and all its interactions, required to implement the individual test scenarios. The package further divides into the following, briefly reviewed sub-packages.
 
-`models` - Contains all site specific models. Separated into `models.pages` and `models.components`. The pages package contains all page objects which represent a single page or page impression, like the cart page. Each page object will typically utilise a number of reusable page components, like the mini cart. Components and page objects are stateless by design.
+`models` - Contains all website specific structures. Separated into `models.pages` and `models.components`. The pages package contains all page objects which represent a single page or page impression, like the cart page. Each page object will typically utilise a number of reusable page components, like the mini cart. Components and page objects are **stateless** by design.
 
 `actions` - An action will contain the interaction with a page, or more specifically the components of a page object. For example adding a product to the cart will be contained in an action called `AddToCart`, which in turn interacts with a product detail page of the Posters demo shop and it's components like the add to cart button.
 
-`flows` - A flow describes a number of interactions (actions) with the site. A chain of actions represented as a flow provides the advantage of reuse in different test scenarios, e.g. a user login flow.
+`flows` - A flow describes a number of interactions (actions) with the website. A chain of actions represented as a flow provides the advantage of reuse in different test scenarios, e.g. a user login flow.
 
-`tests` - The actual test cases (test scenarios) modelling the complete test that is being executed on the site. Each test scenario is represented by a distinct test case.
+`tests` - The actual test cases (test scenarios) modelling the complete test that is being executed against the website. Each test scenario is represented by a distinct test case.
 
 ### API Layer Interfaces and Base Classes
 
@@ -64,7 +74,9 @@ Page objects and components employ the `PageInterface`, abstract `Page` class an
 
 ## Configuration and Test Data
 
-Project configuration, project data and general load test execution configuration is described and implemented via Java and YAML roperties. All configuration and data files are located in directory `/config` and subsequently `/config/data`. The following files are available with their general intent and contents briefly described:
+Project configuration, project data and general load test execution configuration is described and implemented via Java and YAML properties. All configuration and data files are located in directory `/config` and subsequently `/config/data`. XLT requires this structure to allow correct upload of test data to the executing agents of the test when distrbuting the test across several machines. 
+
+The following files are available with their general intent and contents briefly described:
 
 `default.properties` - General XLT and suite configuration, like proxy settings, XLT timeout settings, http filter, Javascript settings, test data management settings, result and reporting settings. This file specifies the general set of properties and other property files will typically override these settings in a more specific way.
 
