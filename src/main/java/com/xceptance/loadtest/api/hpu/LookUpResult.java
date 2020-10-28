@@ -25,8 +25,6 @@ import com.xceptance.xlt.api.util.XltRandom;
  */
 public class LookUpResult
 {
-    public static LookUpResult DOESNOTEXIST = new LookUpResult(new EmptyLookupStrategy());
-
     /**
      * Cache for keeping the matching state of string and regexp to lower the resource consumption,
      * we do the same stuff over and over again all the time, so it matches once, it matches later
@@ -70,6 +68,17 @@ public class LookUpResult
         this.strategy = strategy;
     }
 
+    /**
+     * Returns an empty result to avoid null handling later.
+     * It is important that we don't share it and always get a fresh one
+     * 
+     * @return an empty result
+     */
+    public static LookUpResult DOESNOTEXIST()
+    {
+    	return new LookUpResult(new EmptyLookupStrategy());
+    }
+    
     /**
      * Get the lookup strategy.
      *
