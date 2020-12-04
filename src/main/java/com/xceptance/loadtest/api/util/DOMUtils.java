@@ -10,8 +10,8 @@ import org.xml.sax.SAXException;
 
 import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.DomNode;
-import com.gargoylesoftware.htmlunit.html.HTMLParser;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
+import com.gargoylesoftware.htmlunit.html.parser.neko.HtmlUnitNekoHtmlParser;
 import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.xlt.api.util.HtmlPageUtils;
 
@@ -34,7 +34,7 @@ public class DOMUtils
     {
         try
         {
-            HTMLParser.parseFragment(container, content);
+            new HtmlUnitNekoHtmlParser().parseFragment(container, content);
         }
         catch (SAXException | IOException e)
         {
@@ -76,7 +76,7 @@ public class DOMUtils
         {
             // create a temporary container to parse the new content into
             final HtmlElement tmp = HtmlPageUtils.createHtmlElement("div", Page.getBody());
-            HTMLParser.parseFragment(tmp, content);
+            new HtmlUnitNekoHtmlParser().parseFragment(tmp, content);
 
             // ok, if we have more than on child in our tmp node, we cannot simply replace
             // the container, because that is not possible, hence we complain
