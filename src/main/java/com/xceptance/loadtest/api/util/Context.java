@@ -122,6 +122,9 @@ public class Context
                 }
             }
 
+            // Ensure that system always goes last, again!
+            totalProperties.addProperties(Optional.of(System.getProperties()));
+            
             // dump all for debugging
             Log.debugWhenDev("{0}", totalProperties);
 
