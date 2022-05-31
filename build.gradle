@@ -37,7 +37,7 @@ dependencies {
 
 group = 'com.xceptance'
 version = '0.1'
-description = 'XLT Load Test Suite for Posters Demo Store'
+description = 'XLT Advanced Load Test Suite Demo'
 
 publishing {
     publications {
