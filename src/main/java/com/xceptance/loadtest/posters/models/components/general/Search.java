@@ -15,7 +15,7 @@ public class Search implements Component
     @Override
     public LookUpResult locate()
     {
-        return Header.instance.locate().byCss("#header-menu-search");
+        return Header.instance.locate().byCss("#search-form");
     }
 
     @Override
@@ -26,7 +26,7 @@ public class Search implements Component
     
     public LookUpResult getSearchForm()
     {
-    	return locate().byCss("#searchForm");
+    	return locate().byCss("#search-form");
     }
 
     public LookUpResult getSearchField()
