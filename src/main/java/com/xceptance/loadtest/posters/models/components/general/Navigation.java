@@ -28,12 +28,12 @@ public class Navigation implements Component
 
     public LookUpResult getTopCategories()
     {
-        return filterinvalidLinks(locate().byCss(".header-menu-item a.topCategoryMenuItem"));
+        return filterinvalidLinks(locate().byCss(".has-dropdown a.topCategoryMenuItem"));
     }
 
     public LookUpResult getCategories()
     {
-        return filterinvalidLinks(locate().byCss(".header-menu-item a:not(.topCategoryMenuItem)"));
+        return filterinvalidLinks(locate().byCss(".has-dropdown a:not(.topCategoryMenuItem)"));
     }
 
     private LookUpResult filterinvalidLinks(final LookUpResult links)

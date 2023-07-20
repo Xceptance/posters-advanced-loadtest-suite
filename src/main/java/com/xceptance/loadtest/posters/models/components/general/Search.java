@@ -26,7 +26,7 @@ public class Search implements Component
     
     public LookUpResult getSearchForm()
     {
-    	return locate().byCss("#search-form");
+    	return locate();
     }
 
     public LookUpResult getSearchField()

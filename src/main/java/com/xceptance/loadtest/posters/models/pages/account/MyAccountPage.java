@@ -51,6 +51,6 @@ public class MyAccountPage extends GeneralPages
 
     public LookUpResult getPersonalDataLink()
     {
-    	return Page.find().byId("linkPersonalData");
+    	return Page.find().byId("linkSettingOverview");
     }
 }
