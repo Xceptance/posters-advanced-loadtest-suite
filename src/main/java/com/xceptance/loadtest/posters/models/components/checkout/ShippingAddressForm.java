@@ -1,7 +1,7 @@
 package com.xceptance.loadtest.posters.models.components.checkout;
 
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
-import com.gargoylesoftware.htmlunit.html.HtmlForm;
+import org.htmlunit.html.HtmlElement;
+import org.htmlunit.html.HtmlForm;
 import com.xceptance.loadtest.api.data.Account;
 import com.xceptance.loadtest.api.hpu.HPU;
 import com.xceptance.loadtest.api.hpu.LookUpResult;

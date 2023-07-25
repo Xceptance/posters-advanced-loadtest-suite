@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 
 import org.junit.Assert;
 
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
+import org.htmlunit.html.HtmlElement;
 import com.xceptance.common.util.ParameterCheckUtils;
 import com.xceptance.common.util.RegExUtils;
 import com.xceptance.loadtest.api.hpu.strategy.CssContainsStrategy;

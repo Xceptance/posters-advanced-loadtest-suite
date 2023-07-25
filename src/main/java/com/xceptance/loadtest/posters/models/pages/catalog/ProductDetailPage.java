@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
+import org.htmlunit.html.HtmlElement;
 import com.xceptance.common.util.RegExUtils;
 import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;

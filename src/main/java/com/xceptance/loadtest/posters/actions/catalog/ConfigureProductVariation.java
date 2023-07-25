@@ -7,10 +7,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 import org.junit.Assert;
 
-import com.gargoylesoftware.htmlunit.WebResponse;
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
-import com.gargoylesoftware.htmlunit.html.HtmlOption;
-import com.gargoylesoftware.htmlunit.html.HtmlRadioButtonInput;
+import org.htmlunit.WebResponse;
+import org.htmlunit.html.HtmlElement;
+import org.htmlunit.html.HtmlOption;
+import org.htmlunit.html.HtmlRadioButtonInput;
 import com.xceptance.common.util.RegExUtils;
 import com.xceptance.loadtest.api.actions.AjaxAction;
 import com.xceptance.loadtest.api.hpu.HPU;

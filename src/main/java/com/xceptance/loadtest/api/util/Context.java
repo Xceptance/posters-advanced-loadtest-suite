@@ -9,7 +9,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import org.htmlunit.html.HtmlPage;
 import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.configuration.Configuration;
 import com.xceptance.loadtest.api.configuration.ConfigurationBuilder;

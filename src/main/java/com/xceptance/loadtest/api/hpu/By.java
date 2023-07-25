@@ -2,9 +2,9 @@ package com.xceptance.loadtest.api.hpu;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.gargoylesoftware.htmlunit.html.DomNode;
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import org.htmlunit.html.DomNode;
+import org.htmlunit.html.HtmlElement;
+import org.htmlunit.html.HtmlPage;
 import com.xceptance.common.util.ParameterCheckUtils;
 import com.xceptance.common.util.RegExUtils;
 import com.xceptance.loadtest.api.hpu.strategy.CssLookupStrategy;

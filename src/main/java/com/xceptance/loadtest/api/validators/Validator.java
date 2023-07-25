@@ -10,8 +10,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 
-import com.gargoylesoftware.htmlunit.WebResponse;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import org.htmlunit.WebResponse;
+import org.htmlunit.html.HtmlPage;
 import com.xceptance.common.util.RegExUtils;
 import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.util.Context;
@@ -82,7 +82,7 @@ public class Validator
             final SessionImpl session = (SessionImpl) Session.getCurrent();
 
             // dump directory
-            final File resultsDirectory = new File(session.getResultsDirectory(), XltConstants.DUMP_OUTPUT_DIR);
+            final File resultsDirectory = new File(session.getResultsDirectory().toFile(), XltConstants.DUMP_OUTPUT_DIR);
             final File dumpDirectory = new File(resultsDirectory, session.getID());
             final File responseDirectory = new File(dumpDirectory, XltConstants.DUMP_RESPONSES_DIR);
             responseDirectory.mkdirs();

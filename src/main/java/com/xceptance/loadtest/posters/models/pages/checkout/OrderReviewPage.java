@@ -2,7 +2,7 @@ package com.xceptance.loadtest.posters.models.pages.checkout;
 
 import org.junit.Assert;
 
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
+import org.htmlunit.html.HtmlElement;
 import com.xceptance.loadtest.api.models.pages.Page;
 
 /**

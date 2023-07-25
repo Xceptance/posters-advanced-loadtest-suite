@@ -2,7 +2,7 @@ package com.xceptance.loadtest.api.hpu.strategy;
 
 import java.util.List;
 
-import com.gargoylesoftware.htmlunit.html.DomNode;
+import org.htmlunit.html.DomNode;
 import com.xceptance.loadtest.api.hpu.Strategy;
 
 /**
