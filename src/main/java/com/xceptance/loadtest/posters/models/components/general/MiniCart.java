@@ -1,6 +1,6 @@
 package com.xceptance.loadtest.posters.models.components.general;
 
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
+import org.htmlunit.html.HtmlElement;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.util.Context;
@@ -44,7 +44,7 @@ public class MiniCart implements Component
 
     public int getQuantity()
     {
-        return DataUtils.toInt(getQuantityElement().asserted().first().asText());
+        return DataUtils.toInt(getQuantityElement().asserted().first().getTextContent());
     }
 
     public void updateQuantity(final int newCartQuantity)

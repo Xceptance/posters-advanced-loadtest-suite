@@ -3,7 +3,7 @@ package com.xceptance.loadtest.posters.actions.cart;
 import org.json.JSONObject;
 import org.junit.Assert;
 
-import com.gargoylesoftware.htmlunit.WebResponse;
+import org.htmlunit.WebResponse;
 import com.xceptance.loadtest.api.actions.AjaxAction;
 import com.xceptance.loadtest.api.util.AjaxUtils;
 import com.xceptance.loadtest.api.util.Context;

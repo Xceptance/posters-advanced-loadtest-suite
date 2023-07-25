@@ -3,7 +3,7 @@ package com.xceptance.loadtest.posters.utils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
+import org.htmlunit.html.HtmlElement;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.AjaxUtils;

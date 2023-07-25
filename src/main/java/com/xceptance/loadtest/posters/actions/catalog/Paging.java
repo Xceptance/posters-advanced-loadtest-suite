@@ -2,7 +2,7 @@ package com.xceptance.loadtest.posters.actions.catalog;
 
 import org.junit.Assert;
 
-import com.gargoylesoftware.htmlunit.WebResponse;
+import org.htmlunit.WebResponse;
 import com.xceptance.loadtest.api.actions.AjaxAction;
 import com.xceptance.loadtest.api.util.HttpRequest;
 import com.xceptance.loadtest.posters.models.pages.catalog.ProductListingPage;

@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
-import com.gargoylesoftware.htmlunit.html.HtmlForm;
+import org.htmlunit.html.HtmlElement;
+import org.htmlunit.html.HtmlForm;
 import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.Log;

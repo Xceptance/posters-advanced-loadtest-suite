@@ -8,10 +8,10 @@ import java.util.Set;
 import org.junit.Assert;
 import org.xml.sax.SAXException;
 
-import com.gargoylesoftware.htmlunit.html.DomElement;
-import com.gargoylesoftware.htmlunit.html.DomNode;
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
-import com.gargoylesoftware.htmlunit.html.parser.neko.HtmlUnitNekoHtmlParser;
+import org.htmlunit.html.DomElement;
+import org.htmlunit.html.DomNode;
+import org.htmlunit.html.HtmlElement;
+import org.htmlunit.html.parser.neko.HtmlUnitNekoHtmlParser;
 import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.xlt.api.util.HtmlPageUtils;
 

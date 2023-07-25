@@ -25,15 +25,15 @@ import org.json.JSONObject;
 import org.junit.Assert;
 import org.xml.sax.SAXException;
 
-import com.gargoylesoftware.htmlunit.DefaultPageCreator;
-import com.gargoylesoftware.htmlunit.DefaultPageCreator.PageType;
-import com.gargoylesoftware.htmlunit.HttpMethod;
-import com.gargoylesoftware.htmlunit.WebRequest;
-import com.gargoylesoftware.htmlunit.WebResponse;
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
-import com.gargoylesoftware.htmlunit.html.HtmlForm;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.util.NameValuePair;
+import org.htmlunit.DefaultPageCreator;
+import org.htmlunit.DefaultPageCreator.PageType;
+import org.htmlunit.HttpMethod;
+import org.htmlunit.WebRequest;
+import org.htmlunit.WebResponse;
+import org.htmlunit.html.HtmlElement;
+import org.htmlunit.html.HtmlForm;
+import org.htmlunit.html.HtmlPage;
+import org.htmlunit.util.NameValuePair;
 import com.xceptance.common.util.RegExUtils;
 import com.xceptance.loadtest.api.events.EventLogger;
 import com.xceptance.loadtest.api.validators.Validator;
@@ -186,7 +186,7 @@ public class HttpRequest
     public HttpRequest url(final String url, final HtmlPage page) throws URISyntaxException, MalformedURLException
     {
         Args.notBlank(url, "url");
-        return url(new URIBuilder(com.gargoylesoftware.htmlunit.util.UrlUtils.encodeUrl(page.getFullyQualifiedUrl(url), false, StandardCharsets.UTF_8).toURI()));
+        return url(new URIBuilder(org.htmlunit.util.UrlUtils.encodeUrl(page.getFullyQualifiedUrl(url), false, StandardCharsets.UTF_8).toURI()));
     }
 
     /**

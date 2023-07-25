@@ -2,7 +2,7 @@ package com.xceptance.loadtest.posters.actions.catalog;
 
 import org.junit.Assert;
 
-import com.gargoylesoftware.htmlunit.html.HtmlForm;
+import org.htmlunit.html.HtmlForm;
 import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.data.CustomDataLogger;
 import com.xceptance.loadtest.api.data.SearchOption;
