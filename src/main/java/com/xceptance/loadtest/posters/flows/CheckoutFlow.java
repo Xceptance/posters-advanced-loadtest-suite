@@ -42,9 +42,6 @@ public class CheckoutFlow extends Flow
     		new CheckoutPlaceOrder().run();
     	}
     	
-    	//Return to the Home Page from the Order Confirmation page
-    	new OrderConfirmationpage().run();
-    	
         return true;
     }
 }
