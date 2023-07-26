@@ -47,7 +47,7 @@ public class ProductDetailPage extends GeneralPages
     public List<HtmlElement> getVariationAttributes()
     {
     	// Returns all configurable variation attributes
-    	return Page.find().byId("main").byXPath(".//div[contains(@class, 'form-group') and contains(@class, 'row') and not(./p[@id='prodDescriptionDetail'])]").all();
+    	return Page.find().byId("main").byXPath(".//div[contains(@class, 'size-wrap') and not(./p[@id='prodDescriptionDetail'])]").all();
     }
     
     public HtmlElement getAddToCartButton()

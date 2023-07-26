@@ -1,6 +1,7 @@
 package com.xceptance.loadtest.posters.flows;
 
 import com.xceptance.loadtest.api.flows.Flow;
+import com.xceptance.loadtest.posters.actions.OrderConfirmationpage;
 import com.xceptance.loadtest.posters.actions.checkout.Checkout;
 import com.xceptance.loadtest.posters.actions.checkout.CheckoutPayment;
 import com.xceptance.loadtest.posters.actions.checkout.CheckoutPlaceOrder;
@@ -35,12 +36,15 @@ public class CheckoutFlow extends Flow
     	// Provide payment details
     	new CheckoutPayment().run();
     	
-    	// Place the order
+    	// Place the order and proceed to the Order Confirmation Page
     	if(placeOrder)
     	{
     		new CheckoutPlaceOrder().run();
     	}
-
+    	
+    	//Return to the Home Page from the Order Confirmation page
+    	new OrderConfirmationpage().run();
+    	
         return true;
     }
 }
