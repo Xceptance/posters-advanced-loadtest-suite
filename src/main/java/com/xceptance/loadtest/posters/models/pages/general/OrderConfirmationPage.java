@@ -9,8 +9,9 @@ import com.xceptance.loadtest.posters.models.components.confirmationpage.Confirm
  */
 public class OrderConfirmationPage extends GeneralPages
 {
+    public static final OrderConfirmationPage instance = new OrderConfirmationPage();
+
     public final ConfirmationRow confirmationRow = ConfirmationRow.instance;
-    
 
     @Override
     public void validate()
@@ -25,6 +26,4 @@ public class OrderConfirmationPage extends GeneralPages
     {
         return super.is() && matches(has(confirmationRow));
     }
-    
-   
 }

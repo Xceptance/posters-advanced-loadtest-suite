@@ -2,7 +2,7 @@ package com.xceptance.loadtest.posters.tests;
 
 import com.xceptance.loadtest.api.tests.LoadTestCase;
 import com.xceptance.loadtest.api.util.Context;
-import com.xceptance.loadtest.posters.actions.OrderConfirmationpage;
+import com.xceptance.loadtest.posters.actions.ContinueShoppingPage;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
 import com.xceptance.loadtest.posters.flows.AddToCartFlow;
 import com.xceptance.loadtest.posters.flows.CheckoutFlow;
@@ -44,7 +44,7 @@ public class TGuestOrder extends LoadTestCase
         // Follow checkout steps
         new CheckoutFlow(true).run();
         
-        //Return to the Home Page from the Order Confirmation page
-        new OrderConfirmationpage().run();
+        //Return to the Home Page from the Continue Shopping Page page
+        new ContinueShoppingPage().run();
     }
 }

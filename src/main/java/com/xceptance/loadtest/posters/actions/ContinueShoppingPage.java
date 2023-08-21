@@ -9,17 +9,15 @@ import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 import com.xceptance.loadtest.posters.models.pages.general.HomePage;
 import com.xceptance.loadtest.posters.models.pages.general.OrderConfirmationPage;
 
-public class OrderConfirmationpage extends PageAction<OrderConfirmationpage>
+public class ContinueShoppingPage extends PageAction<ContinueShoppingPage>
 {
-
     @Override
     public void precheck()
     {
         super.precheck();
-
-        Assert.assertTrue("Expected order Confirmation page", OrderConfirmationPage.instance.is());     
+        Assert.assertTrue("Expected order Confirmation page", OrderConfirmationPage.instance.is());
     }
-    
+
     @Override
     protected void doExecute() throws Exception
     {
@@ -31,14 +29,9 @@ public class OrderConfirmationpage extends PageAction<OrderConfirmationpage>
     protected void postValidate() throws Exception
     {
         Validator.validatePageSource();
-
         // Validate that we are at the home page
         HomePage.instance.validate();
-        
         // Validate that the cart is empty
         Assert.assertTrue("Expected empty cart at homepage after successful order placement", GeneralPages.instance.miniCart.isEmpty());
     }
-    
-    
-    
 }

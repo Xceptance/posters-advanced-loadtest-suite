@@ -2,7 +2,7 @@ package com.xceptance.loadtest.posters.tests;
 
 import com.xceptance.loadtest.api.tests.LoadTestCase;
 import com.xceptance.loadtest.api.util.Context;
-import com.xceptance.loadtest.posters.actions.OrderConfirmationpage;
+import com.xceptance.loadtest.posters.actions.ContinueShoppingPage;
 import com.xceptance.loadtest.posters.actions.account.Login;
 import com.xceptance.loadtest.posters.actions.account.Logout;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
@@ -57,8 +57,8 @@ public class TRegisteredOrder extends LoadTestCase
         // Follow checkout steps
         new CheckoutFlow(true).run();
         
-        //Return to the Home Page from the Order Confirmation page
-        new OrderConfirmationpage().run();
+        //Return to the Home Page from the Continue Shopping page
+        new ContinueShoppingPage().run();
         
         // Logout from freshly created account, but login later during checkout again
         new Logout().run();

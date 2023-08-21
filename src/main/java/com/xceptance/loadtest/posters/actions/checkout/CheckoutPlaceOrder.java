@@ -1,6 +1,7 @@
 package com.xceptance.loadtest.posters.actions.checkout;
 
 import org.junit.Assert;
+import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.checkout.OrderReviewPage;
@@ -33,10 +34,10 @@ public class CheckoutPlaceOrder extends PageAction<CheckoutPlaceOrder>
 	{
         Validator.validatePageSource();
 
-        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage();
-        
         // Validate that we are at the order confirmation page
-        orderConfirmationPage.validate();
-        
+		OrderConfirmationPage.instance.validate();
+
+		// Validate that the cart is empty
+		Assert.assertTrue("Expected empty cart at Order Confirmation Page after successful order placement", GeneralPages.instance.miniCart.isEmpty());
 	}
 }

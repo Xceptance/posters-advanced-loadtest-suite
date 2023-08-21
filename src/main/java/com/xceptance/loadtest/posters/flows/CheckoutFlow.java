@@ -1,7 +1,6 @@
 package com.xceptance.loadtest.posters.flows;
 
 import com.xceptance.loadtest.api.flows.Flow;
-import com.xceptance.loadtest.posters.actions.OrderConfirmationpage;
 import com.xceptance.loadtest.posters.actions.checkout.Checkout;
 import com.xceptance.loadtest.posters.actions.checkout.CheckoutPayment;
 import com.xceptance.loadtest.posters.actions.checkout.CheckoutPlaceOrder;
@@ -41,7 +40,6 @@ public class CheckoutFlow extends Flow
     	{
     		new CheckoutPlaceOrder().run();
     	}
-    	
         return true;
     }
 }
