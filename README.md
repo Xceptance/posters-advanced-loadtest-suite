@@ -19,7 +19,10 @@ This repository is an example of an advanced test suite for load testing a websi
 * Component based modelling of the site under test
 * Replayable randomness among test scenario executions
 
-The test suite is ready to be executed against the Posters demo store [Posters](https://35.184.136.113:8443/posters/). Please note, this setup is for testing purposes only and does not handle a lot of load. Please setup your [own copy of the Posters demo store](https://github.com/Xceptance/posters-demo-store) if you want to experiment with executions of higher load factors and more complex test configurations.
+The test suite is ready to be executed against the Posters demo store [Posters](https://posters.xceptance.io:8443/posters/). Please note, this setup is for testing purposes only and does not handle a lot of load. Please setup your [own copy of the Posters demo store](https://github.com/Xceptance/posters-demo-store) if you want to experiment with executions of higher load factors and more complex test configurations.
+
+## Demo Store
+This test suite is built against version 1 of the [Posters Demo Store](https://github.com/Xceptance/posters-demo-store). You can easily see that, because that is the more grayish storefront. Version 2 has a restyled more modern one, mostly featuring a redish color scheme. Make sure you use the right version when testing.
 
 ## XLT Documentation
 
