@@ -35,12 +35,11 @@ public class CheckoutFlow extends Flow
     	// Provide payment details
     	new CheckoutPayment().run();
     	
-    	// Place the order
+    	// Place the order and proceed to the Order Confirmation Page
     	if(placeOrder)
     	{
     		new CheckoutPlaceOrder().run();
     	}
-
         return true;
     }
 }

@@ -26,7 +26,7 @@ public class UserMenu implements Component
 
     public LookUpResult getLoginLink()
     {
-        return locate().byCss("a.goToLogin");
+        return locate().byCss(".goToLogin");
     }
     
     public LookUpResult getCreateAccountLink()
