@@ -7,7 +7,7 @@ import com.xceptance.loadtest.api.models.pages.Page;
 
 /**
  * Indicator component for checkout progress (a bread crumb).
- *  
+ * 
  * @author Xceptance Software Technologies
  */
 public class CheckoutProgressIndicator implements Component
@@ -17,7 +17,7 @@ public class CheckoutProgressIndicator implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byId("breadcrumbCheckout");
+        return Page.find().byCss("progress-indicator");
     }
 
     @Override
@@ -25,9 +25,9 @@ public class CheckoutProgressIndicator implements Component
     {
         return locate().exists();
     }
-    
+
     public boolean isStepAvailable(String stepText)
     {
-    	return HPU.find().in(locate().single()).byXPath("./ul/li/a[contains(text(), '" + stepText + "')]").exists();
+        return HPU.find().in(locate().single()).byXPath("./ul/li/a[contains(text(), '" + stepText + "')]").exists();
     }
 }

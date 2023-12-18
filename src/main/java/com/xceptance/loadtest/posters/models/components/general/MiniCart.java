@@ -1,6 +1,7 @@
 package com.xceptance.loadtest.posters.models.components.general;
 
 import org.htmlunit.html.HtmlElement;
+
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.util.Context;
@@ -13,12 +14,12 @@ import com.xceptance.loadtest.api.util.DataUtils;
  */
 public class MiniCart implements Component
 {
-	public static final MiniCart instance = new MiniCart();
+    public static final MiniCart instance = new MiniCart();
 
     @Override
     public LookUpResult locate()
     {
-        return Header.instance.locate().byCss("#miniCartMenu");
+        return Header.instance.locate().byCss("#mini-cart-menu");
     }
 
     @Override

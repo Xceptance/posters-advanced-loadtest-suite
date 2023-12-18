@@ -10,12 +10,12 @@ import com.xceptance.loadtest.api.models.components.Component;
  */
 public class UserMenu implements Component
 {
-	public static final UserMenu instance = new UserMenu();
+    public static final UserMenu instance = new UserMenu();
 
     @Override
     public LookUpResult locate()
     {
-        return Header.instance.locate().byCss("#userMenu");
+        return Header.instance.locate().byCss("#user-menu");
     }
 
     @Override
@@ -26,24 +26,24 @@ public class UserMenu implements Component
 
     public LookUpResult getLoginLink()
     {
-        return locate().byCss(".goToLogin");
+        return locate().byCss("#go-to-login");
     }
-    
+
     public LookUpResult getCreateAccountLink()
     {
-    	return locate().byCss("a.goToRegistration");
+        return locate().byCss("#go-to-registration");
     }
 
     public LookUpResult getMyAccountLink()
     {
-        return locate().byCss("a.goToAccountOverview");
+        return locate().byCss("#go-to-account-overview");
     }
 
     public LookUpResult getLogoutLink()
     {
-        return locate().byCss("a.goToLogout");
+        return locate().byCss("#go-to-logout");
     }
-    
+
     public boolean isLoggedIn()
     {
         return getLogoutLink().exists();

@@ -10,12 +10,12 @@ import com.xceptance.loadtest.api.models.components.Component;
  */
 public class Search implements Component
 {
-	public static final Search instance = new Search();
+    public static final Search instance = new Search();
 
     @Override
     public LookUpResult locate()
     {
-        return Header.instance.locate().byCss("#search-form");
+        return Header.instance.locate().byCss("#header-search-form");
     }
 
     @Override
@@ -23,19 +23,19 @@ public class Search implements Component
     {
         return locate().exists();
     }
-    
+
     public LookUpResult getSearchForm()
     {
-    	return locate();
+        return locate();
     }
 
     public LookUpResult getSearchField()
     {
         return getSearchForm().byCss("input#s");
     }
-    
+
     public LookUpResult getSearchButton()
     {
-        return getSearchForm().byCss("#btnSearch");
+        return getSearchForm().byCss("#header-search-button");
     }
 }
