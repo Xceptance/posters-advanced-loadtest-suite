@@ -17,7 +17,7 @@ public class Navigation implements Component
     @Override
     public LookUpResult locate()
     {
-        return Header.instance.locate().byCss("#categoryMenu");
+        return Header.instance.locate().byCss("#header-categories");
     }
 
     @Override
@@ -28,12 +28,12 @@ public class Navigation implements Component
 
     public LookUpResult getTopCategories()
     {
-        return filterinvalidLinks(locate().byCss(".has-dropdown a.topCategoryMenuItem"));
+        return filterinvalidLinks(locate().byCss(".dropdown-toggle"));
     }
 
     public LookUpResult getCategories()
     {
-        return filterinvalidLinks(locate().byCss(".has-dropdown a:not(.topCategoryMenuItem)"));
+        return filterinvalidLinks(locate().byCss(".dropdown-menu a.dropdown-item"));
     }
 
     private LookUpResult filterinvalidLinks(final LookUpResult links)
