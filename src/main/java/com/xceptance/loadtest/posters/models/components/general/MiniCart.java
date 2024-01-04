@@ -18,7 +18,7 @@ public class MiniCart implements Component
     @Override
     public LookUpResult locate()
     {
-        return Header.instance.locate().byCss("#miniCartMenu");
+        return Header.instance.locate().byCss("#mini-cart-menu");
     }
 
     @Override
