@@ -19,7 +19,7 @@ public class OrderReviewPage extends CheckoutPage
     {
     	super.validate();
     	
-    	Assert.assertTrue("Expected order review step", checkoutProgressIndicator.isStepAvailable("Place Order"));
+    	Assert.assertTrue("Expected order review step", checkoutProgressIndicator.isStepAvailable("Summary"));
     }
 
     @Override
