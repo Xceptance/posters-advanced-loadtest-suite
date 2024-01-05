@@ -22,12 +22,12 @@ public class ShippingAddressPage extends CheckoutPage
     	
     	validate(has(shippingAddressForm));
            	
-    	Assert.assertTrue("Expected shipping address step", checkoutProgressIndicator.isStepAvailable("Shipping Address"));
+    	Assert.assertTrue("Expected shipping address step", checkoutProgressIndicator.isStepAvailable("Shipping"));
     }
 
     @Override
     public boolean is()
     {
-        return super.is() && matches(has(shippingAddressForm)) && checkoutProgressIndicator.isStepAvailable("Shipping Address");
+        return super.is() && matches(has(shippingAddressForm)) && checkoutProgressIndicator.isStepAvailable("Shipping");
     }
 }
