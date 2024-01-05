@@ -32,8 +32,8 @@ public class ProductDetailPage extends GeneralPages
     public boolean is()
     {
     	return super.is() &&
-    			Page.find().byId("addToCartForm").exists() &&
-    			Page.find().byId("titleProductName").exists(); 
+    			Page.find().byId("add-to-cart-form").exists() &&
+    			Page.find().byId("product-detail-form-name").exists(); 
     }
     
     public boolean isProductAvailable()
@@ -58,8 +58,7 @@ public class ProductDetailPage extends GeneralPages
     
     public String getProductId()
     {
-        String productId = Page.find().byId("btnAddToCart").asserted("Expected add to cart button").single().getAttribute("onclick");
-        productId = RegExUtils.getFirstMatch(productId, "addToCart\\((\\d+)\\,", 1);
+        String productId = Page.find().byId("product-detail-form-product-id").asserted("Expected product ID attribute").single().getAttribute("text");
         
         Assert.assertTrue("Expected valid productId", !StringUtils.isBlank(productId));
         
@@ -68,7 +67,7 @@ public class ProductDetailPage extends GeneralPages
     
     public String getSelectedSize()
     {
-        String selectedSize = Page.find().byId("selectSize").asserted("Expected size attribute").single().getAttribute("value");
+        String selectedSize = Page.find().byId("product-detail-form-size-selection").asserted("Expected size attribute").single().getAttribute("text");
         
         Assert.assertTrue("Expected valid size attribute that is selected", !StringUtils.isBlank(selectedSize));
         
@@ -77,7 +76,7 @@ public class ProductDetailPage extends GeneralPages
     
     public String getSelectedFinish()
     {
-    	String selectedFinish = Page.find().byCss("#addToCartForm input[name=finish]:checked").asserted("Expected selected finish attribute").single().getAttribute("value");
+    	String selectedFinish = Page.find().byCss("#product-detail-form-style-selection input[name=finish]:checked").asserted("Expected selected finish attribute").single().getAttribute("value");
     	
     	Assert.assertTrue("Expected valid finish attribute that is selected", !StringUtils.isBlank(selectedFinish));
     	
