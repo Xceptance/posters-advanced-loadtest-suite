@@ -26,22 +26,22 @@ public class UserMenu implements Component
 
     public LookUpResult getLoginLink()
     {
-        return locate().byCss(".go-to-login");
+        return locate().byCss("a#go-to-login");
     }
     
     public LookUpResult getCreateAccountLink()
     {
-    	return locate().byCss("a.go-to-registration");
+    	return locate().byCss("a#go-to-registration");
     }
 
     public LookUpResult getMyAccountLink()
     {
-        return locate().byCss("a.go-to-account-overview");
+        return locate().byCss("a#go-to-account-overview");
     }
 
     public LookUpResult getLogoutLink()
     {
-        return locate().byCss("a.go-to-logout");
+        return locate().byCss("a#go-to-logout");
     }
     
     public boolean isLoggedIn()
