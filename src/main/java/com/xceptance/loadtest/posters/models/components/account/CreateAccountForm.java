@@ -21,7 +21,7 @@ public class CreateAccountForm implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byId("formRegister");
+        return Page.find().byId("form-register");
     }
 
     @Override
@@ -32,7 +32,7 @@ public class CreateAccountForm implements Component
     
     public HtmlElement getCreateAccountButton()
     {
-    	return locate().byCss("#go-to-registration").asserted().single();
+    	return locate().byCss("#btn-register").asserted().single();
     }
 
     public void fillCreateAccountForm(final Account account)
