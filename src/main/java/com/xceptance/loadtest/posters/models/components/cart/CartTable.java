@@ -16,7 +16,7 @@ public class CartTable implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byId("cart-overview-table");
+        return Page.find().byCss(".table");
     }
 
     @Override
