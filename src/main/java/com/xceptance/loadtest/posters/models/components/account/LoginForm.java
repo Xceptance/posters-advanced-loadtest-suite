@@ -32,7 +32,7 @@ public class LoginForm implements Component
     
     public HtmlElement getSignInButton()
     {
-    	return locate().byCss("#go-to-login").asserted().single();
+    	return locate().byCss("#btnSignIn").asserted().single();
     }
 
     public HtmlForm fillLoginForm(final Account account)
