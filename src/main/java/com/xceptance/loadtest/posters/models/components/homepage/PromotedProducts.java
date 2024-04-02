@@ -16,7 +16,7 @@ public class PromotedProducts implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byCss("#productList");
+        return Page.find().byCss(".product-display-heading");
     }
 
     @Override

@@ -31,7 +31,7 @@ public class ProductGrid implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byId("productOverview");
+        return Page.find().byId("product-overview");
     }
 
     @Override
