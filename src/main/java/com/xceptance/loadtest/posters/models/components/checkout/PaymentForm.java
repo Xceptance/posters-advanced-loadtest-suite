@@ -22,7 +22,7 @@ public class PaymentForm implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byId("formAddPayment");
+        return Page.find().byId("form-add-payment");
     }
 
     @Override
@@ -35,14 +35,14 @@ public class PaymentForm implements Component
     {
         final HtmlForm form = locate().asserted("Expected single payment form").single();
 
-        FormUtils.setInputValue(HPU.find().in(form).byCss("#creditCardNumber"), creditCard.number);
+        FormUtils.setInputValue(HPU.find().in(form).byCss("#creditcard-number"), creditCard.number);
         FormUtils.setInputValue(HPU.find().in(form).byCss("#name"), account.getFullName());
-        FormUtils.select(HPU.find().in(form).byCss("#expirationDateMonth"), creditCard.expirationMonth);
-        FormUtils.select(HPU.find().in(form).byCss("#expirationDateYear"), creditCard.expirationYear);
+        FormUtils.select(HPU.find().in(form).byCss("#expiration-date-month"), creditCard.expirationMonth);
+        FormUtils.select(HPU.find().in(form).byCss("#expiration-date-year"), creditCard.expirationYear);
     }
     
     public HtmlElement getContinueButton()
     {
-    	return HPU.find().in(locate().asserted("Expected single payment form").single()).byId("btnAddPayment").asserted("Expected single continue button").single();
+    	return HPU.find().in(locate().asserted("Expected single payment form").single()).byId("btn-add-payment").asserted("Expected single continue button").single();
     }
 }

@@ -107,8 +107,10 @@ public class ConfigureProductVariation extends AjaxAction<ConfigureProductVariat
     {
     	String onChange = ((HtmlElement)optionElement.getParentNode()).getAttribute("onchange");
     	
-    	// Extract PID from 'onchange' attribute
-    	String pid = RegExUtils.getFirstMatch(onChange, "updatePrice\\(this,\\s*(\\d+)\\)", 1);
+    	// read product ID
+    	String pid = Page.find().byId("product-detail-form-product-id").asserted().single().getTextContent();
+		// Extract PID from 'onchange' attribute
+		//RegExUtils.getFirstMatch(onChange, "updatePrice\\(this,\\s*(\\d+)\\)", 1);
     	Assert.assertTrue("Expected PID to be contained in onchange attribute", !StringUtils.isBlank(pid));
     	
     	// Get size of selected option
@@ -129,7 +131,7 @@ public class ConfigureProductVariation extends AjaxAction<ConfigureProductVariat
     							.fire();
     	
     	// Update returned price information in page
-    	Page.find().byId("prodPrice").asserted().single().setTextContent(new JSONObject(response.getContentAsString()).getString("newPrice"));
+    	Page.find().byId("product-detail-form-price").asserted().single().setTextContent(new JSONObject(response.getContentAsString()).getString("newPrice"));
     }
 
     private void configureInputVariationAttributes()

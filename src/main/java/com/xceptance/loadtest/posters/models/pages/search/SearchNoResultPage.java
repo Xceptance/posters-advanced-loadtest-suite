@@ -1,6 +1,7 @@
 package com.xceptance.loadtest.posters.models.pages.search;
 
 import com.xceptance.loadtest.posters.models.components.general.ErrorMessage;
+import com.xceptance.loadtest.posters.models.components.homepage.PromotedProducts;
 import com.xceptance.loadtest.posters.models.components.plp.ProductGrid;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
@@ -18,12 +19,12 @@ public class SearchNoResultPage extends GeneralPages
     {
         super.validate();
 
-        validate(hasAnyOf(has(ErrorMessage.instance), hasNot(ProductGrid.instance)));
+        validate(hasAnyOf(has(ErrorMessage.instance), has(PromotedProducts.instance)));
     }
 
     @Override
     public boolean is()
     {
-        return super.is() && matches(has(ErrorMessage.instance), hasNot(ProductGrid.instance));
+        return super.is() && matches(has(ErrorMessage.instance), has(PromotedProducts.instance));
     }
 }

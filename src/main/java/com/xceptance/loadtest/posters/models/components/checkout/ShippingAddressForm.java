@@ -21,7 +21,7 @@ public class ShippingAddressForm implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byId("formAddDelAddr");
+        return Page.find().byId("form-add-del-addr");
     }
 
     @Override
@@ -34,17 +34,19 @@ public class ShippingAddressForm implements Component
     {
         final HtmlForm form = locate().asserted("Expected single shipping address form").single();
 
-        FormUtils.setInputValue(HPU.find().in(form).byCss("#fullName"), account.getFullName());
-        FormUtils.setInputValue(HPU.find().in(form).byCss("#addressLine"), account.shippingAddress.addressLine1);
-        FormUtils.setInputValue(HPU.find().in(form).byCss("#city"), account.shippingAddress.city);
-        FormUtils.setInputValue(HPU.find().in(form).byCss("#state"), account.shippingAddress.state);
-        FormUtils.setInputValue(HPU.find().in(form).byCss("#zip"), account.shippingAddress.zip);
-        FormUtils.select(HPU.find().in(form).byCss("#country"), account.shippingAddress.country);
-        FormUtils.checkRadioButton(HPU.find().in(form).byCss("#billEqualShipp-Yes"));
+        FormUtils.setInputValue(HPU.find().in(form).byCss("#address-last-name"), account.firstname);
+        FormUtils.setInputValue(HPU.find().in(form).byCss("#address-first-name"), account.lastname);
+        FormUtils.setInputValue(HPU.find().in(form).byCss("#address-company"), "");
+        FormUtils.setInputValue(HPU.find().in(form).byCss("#address-address-line"), account.shippingAddress.addressLine1);
+        FormUtils.setInputValue(HPU.find().in(form).byCss("#address-city"), account.shippingAddress.city);
+        FormUtils.setInputValue(HPU.find().in(form).byCss("#address-state"), account.shippingAddress.state);
+        FormUtils.setInputValue(HPU.find().in(form).byCss("#address-zip"), account.shippingAddress.zip);
+        FormUtils.select(HPU.find().in(form).byCss("#address-country"), account.shippingAddress.country);
+        FormUtils.checkRadioButton(HPU.find().in(form).byCss("#bill-equal-shipp"));
     }
     
     public HtmlElement getContinueButton()
     {
-    	return HPU.find().in(locate().asserted("Expected single shipping address form").single()).byId("btnAddDelAddr").asserted("Expected single continue button").single();
+    	return HPU.find().in(locate().asserted("Expected single shipping address form").single()).byId("button-add-shipping-address").asserted("Expected single continue button").single();
     }
 }

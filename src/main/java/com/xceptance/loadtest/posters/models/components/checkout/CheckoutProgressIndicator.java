@@ -1,5 +1,7 @@
 package com.xceptance.loadtest.posters.models.components.checkout;
 
+import org.htmlunit.javascript.host.html.HTMLElement;
+
 import com.xceptance.loadtest.api.hpu.HPU;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
@@ -17,7 +19,7 @@ public class CheckoutProgressIndicator implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byId("breadcrumbCheckout");
+        return Page.find().byCss(".progress-indicator");
     }
 
     @Override
@@ -28,6 +30,20 @@ public class CheckoutProgressIndicator implements Component
     
     public boolean isStepAvailable(String stepText)
     {
-    	return HPU.find().in(locate().single()).byXPath("./ul/li/a[contains(text(), '" + stepText + "')]").exists();
+        // try to find matching progress-bubble-caption with StepText
+        HTMLElement caption = locate().single().getFirstByXPath(".//"+stepText);
+        // find nearest progress-bubble text and read it as an int
+        int StepNumber = Integer.parseInt(caption.getParentHTMLElement().querySelector(".progress-bubble").getTextContent());
+        // check whether progress-indicator has matching progress-[the number found as the bubbles text] class
+        return isStepAvailable(StepNumber);
+    	// return HPU.find().in(locate().single()).byXPath("./ul/li/a[contains(text(), '" + stepText + "')]").exists();
+    }
+
+    public boolean isStepAvailable(Integer StepNumber)
+    {
+        // try to find matching progress-bubble-caption text
+        // find nearest progress-bubble text
+        // check whether progress-indicator has matching progress-[the number found as the bubbles text] class
+    	return locate().single().matches(".progress-"+StepNumber);
     }
 }

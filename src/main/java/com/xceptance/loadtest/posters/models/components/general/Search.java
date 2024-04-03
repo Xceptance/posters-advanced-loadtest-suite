@@ -31,7 +31,7 @@ public class Search implements Component
 
     public LookUpResult getSearchField()
     {
-        return getSearchForm().byCss("input#s");
+        return getSearchForm().byCss("input#header-search-text");
     }
     
     public LookUpResult getSearchButton()

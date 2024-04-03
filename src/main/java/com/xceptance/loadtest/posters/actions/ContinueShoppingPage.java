@@ -22,7 +22,7 @@ public class ContinueShoppingPage extends PageAction<ContinueShoppingPage>
     protected void doExecute() throws Exception
     {
         // Click Continue Shopping button
-        loadPageByClick(Page.find().byId("goHome").asserted("Expected single Go to Home button").single());
+        loadPageByClick(Page.find().byId("go-home").asserted("Expected single Go to Home button").single());
     }
 
     @Override

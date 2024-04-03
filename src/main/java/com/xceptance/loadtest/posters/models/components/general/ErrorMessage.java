@@ -16,7 +16,7 @@ public class ErrorMessage implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byId("errorMessage");
+        return Page.find().byCss(".alert");
     }
 
     @Override
