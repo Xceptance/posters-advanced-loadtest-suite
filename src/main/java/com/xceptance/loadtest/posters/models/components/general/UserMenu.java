@@ -15,7 +15,7 @@ public class UserMenu implements Component
     @Override
     public LookUpResult locate()
     {
-        return Header.instance.locate().byCss("#header-customer-menus");
+        return Header.instance.locate().byCss("#show-user-menu");
     }
 
     @Override

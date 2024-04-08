@@ -9,6 +9,10 @@ import com.xceptance.loadtest.api.models.pages.Page;
  * 
  * @author Xceptance Software Technologies
  */
+/*
+ * NOTE: The Demo Store triggers Error Messages through JavaScript,
+ * thus this component will only be found with JS enabled (non-default)
+*/
 public class ErrorMessage implements Component
 {
 	public static final ErrorMessage instance = new ErrorMessage();
