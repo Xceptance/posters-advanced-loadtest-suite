@@ -47,7 +47,7 @@ public class ProductDetailPage extends GeneralPages
     public List<HtmlElement> getVariationAttributes()
     {
     	// Returns all configurable variation attributes
-    	return Page.find().byId("main").byXPath(".//div[contains(@class, 'product-detail-form-size-selection')/*").all();
+    	return Page.find().byCss("#product-detail-form-size-selection option").all();
     }
     
     public HtmlElement getAddToCartButton()

@@ -16,7 +16,7 @@ public class CartBanner implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byId("title-cart");
+        return Page.find().byId("cart-title");
     }
 
     @Override
