@@ -11,7 +11,7 @@ import com.xceptance.loadtest.api.models.pages.Page;
  */
 public class NotFoundMessage implements Component
 {
-	public static final SearchQuery instance = new SearchQuery();
+    public static final NotFoundMessage instance = new NotFoundMessage();
 
     @Override
     public LookUpResult locate()
