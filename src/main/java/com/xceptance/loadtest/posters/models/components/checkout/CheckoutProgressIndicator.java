@@ -28,6 +28,7 @@ public class CheckoutProgressIndicator implements Component
         return locate().exists();
     }
     
+    // WIP currently not working, adjust when required
     public boolean isStepAvailable(String stepText)
     {
         // try to find matching progress-bubble-caption with StepText
