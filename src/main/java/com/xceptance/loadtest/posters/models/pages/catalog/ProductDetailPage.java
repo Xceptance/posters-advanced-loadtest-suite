@@ -67,7 +67,7 @@ public class ProductDetailPage extends GeneralPages
     
     public String getSelectedSize()
     {
-        String selectedSize = Page.find().byCss("#product-detail-form-size-selection option:checked").asserted("Expected size attribute").single().getAttribute("value");
+        String selectedSize = Page.find().byId("product-detail-form-size-selection").byCss("option:checked").asserted("Expected size attribute").single().getAttribute("value");
         
         Assert.assertTrue("Expected valid size attribute that is selected", !StringUtils.isBlank(selectedSize));
         
@@ -76,7 +76,7 @@ public class ProductDetailPage extends GeneralPages
     
     public String getSelectedFinish()
     {
-    	String selectedFinish = Page.find().byCss("#product-detail-form-style-selection input[name=finish]:checked").asserted("Expected selected finish attribute").single().getAttribute("value");
+    	String selectedFinish = Page.find().byId("product-detail-form-style-selection").byCss("input[name=finish]:checked").asserted("Expected selected finish attribute").single().getAttribute("value");
     	
     	Assert.assertTrue("Expected valid finish attribute that is selected", !StringUtils.isBlank(selectedFinish));
     	

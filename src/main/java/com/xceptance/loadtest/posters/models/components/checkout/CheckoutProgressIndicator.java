@@ -19,25 +19,13 @@ public class CheckoutProgressIndicator implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byCss(".progress-indicator");
+        return Page.find().byId("checkout-progress-indicator").byCss(".progress-indicator");
     }
 
     @Override
     public boolean exists()
     {
         return locate().exists();
-    }
-    
-    // WIP currently not working, adjust when required
-    public boolean isStepAvailable(String stepText)
-    {
-        // try to find matching progress-bubble-caption with StepText
-        HTMLElement caption = locate().single().getFirstByXPath(".//"+stepText);
-        // find nearest progress-bubble text and read it as an int
-        int StepNumber = Integer.parseInt(caption.getParentHTMLElement().querySelector(".progress-bubble").getTextContent());
-        // check whether progress-indicator has matching progress-[the number found as the bubbles text] class
-        return isStepAvailable(StepNumber);
-    	// return HPU.find().in(locate().single()).byXPath("./ul/li/a[contains(text(), '" + stepText + "')]").exists();
     }
 
     public boolean isStepAvailable(Integer StepNumber)

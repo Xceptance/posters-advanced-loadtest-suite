@@ -104,13 +104,10 @@ public class ConfigureProductVariation extends AjaxAction<ConfigureProductVariat
     }
     
     private void executeProductPriceUpdate(HtmlElement optionElement) throws Exception
-    {
-    	String onChange = ((HtmlElement)optionElement.getParentNode()).getAttribute("onchange");
-    	
+    {	
     	// read product ID
     	String pid = Page.find().byId("product-detail-form-product-id").asserted().single().getTextContent();
-		// Extract PID from 'onchange' attribute
-		//RegExUtils.getFirstMatch(onChange, "updatePrice\\(this,\\s*(\\d+)\\)", 1);
+
     	Assert.assertTrue("Expected PID to be contained in onchange attribute", !StringUtils.isBlank(pid));
     	
     	// Get size of selected option
