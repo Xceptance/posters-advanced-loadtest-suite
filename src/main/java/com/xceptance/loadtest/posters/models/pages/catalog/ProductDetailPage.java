@@ -67,7 +67,7 @@ public class ProductDetailPage extends GeneralPages
     
     public String getSelectedSize()
     {
-        String selectedSize = Page.find().byId("product-detail-form-size-selection option:checked").asserted("Expected size attribute").single().getAttribute("value");
+        String selectedSize = Page.find().byCss("#product-detail-form-size-selection option:checked").asserted("Expected size attribute").single().getAttribute("value");
         
         Assert.assertTrue("Expected valid size attribute that is selected", !StringUtils.isBlank(selectedSize));
         
