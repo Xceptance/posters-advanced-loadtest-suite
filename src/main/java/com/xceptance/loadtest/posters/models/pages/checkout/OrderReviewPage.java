@@ -19,13 +19,13 @@ public class OrderReviewPage extends CheckoutPage
     {
     	super.validate();
     	
-    	Assert.assertTrue("Expected order review step", checkoutProgressIndicator.isStepAvailable("Summary"));
+    	Assert.assertTrue("Expected order review step", checkoutProgressIndicator.isStepAvailable(5));
     }
 
     @Override
     public boolean is()
     {
-        return checkoutProgressIndicator.isStepAvailable("Summary");
+        return checkoutProgressIndicator.isStepAvailable(5);
     }
     
     public HtmlElement getPlaceOrderButton()

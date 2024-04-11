@@ -22,12 +22,12 @@ public class PaymentPage extends CheckoutPage
     	
     	validate(has(paymentForm));
            	
-    	Assert.assertTrue("Expected payment step", checkoutProgressIndicator.isStepAvailable("Payment"));
+    	Assert.assertTrue("Expected payment step", checkoutProgressIndicator.isStepAvailable(4));
     }
 
     @Override
     public boolean is()
     {
-        return super.is() && matches(has(paymentForm)) && checkoutProgressIndicator.isStepAvailable("Payment");
+        return super.is() && matches(has(paymentForm)) && checkoutProgressIndicator.isStepAvailable(4);
     }
 }
