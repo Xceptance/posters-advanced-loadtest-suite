@@ -16,7 +16,7 @@ public class ContinueButton implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byId("btnAddDelAddr");
+        return Page.find().byId("btn-add-shipping-address");
     }
 
     @Override

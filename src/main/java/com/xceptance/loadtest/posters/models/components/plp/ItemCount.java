@@ -18,7 +18,7 @@ public class ItemCount implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byId("totalProductCount");
+        return Page.find().byId("total-product-count");
     }
 
     @Override

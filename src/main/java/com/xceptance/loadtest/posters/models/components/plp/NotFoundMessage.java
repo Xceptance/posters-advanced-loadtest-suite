@@ -1,22 +1,22 @@
-package com.xceptance.loadtest.posters.models.components.homepage;
+package com.xceptance.loadtest.posters.models.components.plp;
 
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.models.pages.Page;
 
 /**
- * Promoted products component.
+ * Search query component.
  * 
  * @author Xceptance Software Technologies
  */
-public class PromotedProducts implements Component
+public class NotFoundMessage implements Component
 {
-	public static final PromotedProducts instance = new PromotedProducts();
+    public static final NotFoundMessage instance = new NotFoundMessage();
 
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byCss(".product-display-heading");
+        return Page.find().byId("not-found-message");
     }
 
     @Override

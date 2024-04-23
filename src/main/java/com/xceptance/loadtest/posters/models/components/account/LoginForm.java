@@ -21,7 +21,7 @@ public class LoginForm implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byId("formLogin");
+        return Page.find().byId("form-login");
     }
 
     @Override
@@ -32,7 +32,7 @@ public class LoginForm implements Component
     
     public HtmlElement getSignInButton()
     {
-    	return locate().byCss("#btnSignIn").asserted().single();
+    	return locate().byCss("#btn-sign-in").asserted().single();
     }
 
     public HtmlForm fillLoginForm(final Account account)

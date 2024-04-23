@@ -18,7 +18,7 @@ public class MiniCart implements Component
     @Override
     public LookUpResult locate()
     {
-        return Header.instance.locate().byCss("#miniCartMenu");
+        return Header.instance.locate().byCss("#mini-cart-menu");
     }
 
     @Override
@@ -39,7 +39,7 @@ public class MiniCart implements Component
 
     public LookUpResult getQuantityElement()
     {
-        return locate().byCss(".cartMiniProductCounter > .value");
+        return locate().byCss(".cart-mini-product-counter > .value");
     }
 
     public int getQuantity()
@@ -57,6 +57,6 @@ public class MiniCart implements Component
 
     public LookUpResult getViewCartLink()
     {
-        return locate().byCss("a.goToCart");
+        return locate().byCss("a.go-to-cart");
     }
 }

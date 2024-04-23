@@ -16,7 +16,7 @@ public class ConfirmationRow implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byCss("#confirmationRow");
+        return Page.find().byCss("#confirmation-row");
     }
 
     @Override

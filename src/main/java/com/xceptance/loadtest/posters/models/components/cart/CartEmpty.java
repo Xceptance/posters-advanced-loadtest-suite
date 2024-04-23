@@ -16,7 +16,7 @@ public class CartEmpty implements Component
     @Override
     public LookUpResult locate()
     {
-    	return Page.find().byId("errorCartMessage");
+    	return Page.find().byId("error-cart-message");
     }
 
     @Override

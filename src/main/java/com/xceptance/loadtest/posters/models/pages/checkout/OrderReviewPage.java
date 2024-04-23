@@ -19,17 +19,17 @@ public class OrderReviewPage extends CheckoutPage
     {
     	super.validate();
     	
-    	Assert.assertTrue("Expected order review step", checkoutProgressIndicator.isStepAvailable("Place Order"));
+    	Assert.assertTrue("Expected order review step", checkoutProgressIndicator.isStepAvailable(5));
     }
 
     @Override
     public boolean is()
     {
-        return checkoutProgressIndicator.isStepAvailable("Place Order");
+        return checkoutProgressIndicator.isStepAvailable(5);
     }
     
     public HtmlElement getPlaceOrderButton()
     {
-    	return Page.find().byId("btnOrder").asserted("Expected single place order button").single();
+    	return Page.find().byId("btn-order").asserted("Expected single place order button").single();
     }
 }

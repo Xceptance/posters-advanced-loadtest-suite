@@ -31,7 +31,7 @@ public class ProductGrid implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byId("productOverview");
+        return Page.find().byId("product-overview");
     }
 
     @Override
@@ -98,8 +98,8 @@ public class ProductGrid implements Component
     
     private List<String> getProductUrlsFromExistingTilesAndApplyFilter(List<String> discardedUrls)
     {
-    	// Get all product tiles that contain a link
-    	List<HtmlElement> productElements = locate().byCss("div[id^='product'] > div.container-fluid > a[href]").all();
+    	// Get all links from product tiles
+    	List<HtmlElement> productElements = locate().byCss(".product-tile a[href]").all();
     	
     	// Retrieve all URLs and apply the URL filter
     	return productElements.stream().map(e -> e.getAttribute("href")).filter(url -> !discardedUrls.stream().anyMatch(filterUrl -> url.contains(filterUrl))).collect(Collectors.toList());

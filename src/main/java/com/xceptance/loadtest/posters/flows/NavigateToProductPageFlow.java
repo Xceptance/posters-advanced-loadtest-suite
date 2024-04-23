@@ -10,6 +10,7 @@ import com.xceptance.loadtest.posters.actions.catalog.ClickProductDetails;
 import com.xceptance.loadtest.posters.models.pages.catalog.LandingPage;
 import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
 import com.xceptance.loadtest.posters.models.pages.catalog.ProductListingPage;
+import com.xceptance.loadtest.posters.models.pages.general.HomePage;
 import com.xceptance.loadtest.posters.models.pages.search.SearchNoResultPage;
 
 /**
@@ -55,6 +56,10 @@ public class NavigateToProductPageFlow extends Flow
             {
             	// No result page because there was no product, nothing else to do here
             	break;
+            }
+            else if (HomePage.instance.is()) {
+                // Still on homepage, nothing else to do here
+                break;
             }
             else
             {

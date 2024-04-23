@@ -21,7 +21,7 @@ public class CreateAccountForm implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byId("formRegister");
+        return Page.find().byId("form-register");
     }
 
     @Override
@@ -32,19 +32,19 @@ public class CreateAccountForm implements Component
     
     public HtmlElement getCreateAccountButton()
     {
-    	return locate().byCss("#btnRegister").asserted().single();
+    	return locate().byCss("#btn-register").asserted().single();
     }
 
     public void fillCreateAccountForm(final Account account)
     {
         final HtmlForm form = locate().asserted().single();
 
-        FormUtils.setInputValue(HPU.find().in(form).byId("lastName"), account.lastname);
-        FormUtils.setInputValue(HPU.find().in(form).byId("firstName"), account.firstname);
+        FormUtils.setInputValue(HPU.find().in(form).byId("registration-form-last-name"), account.lastname);
+        FormUtils.setInputValue(HPU.find().in(form).byId("registration-form-first-name"), account.firstname);
         
-        FormUtils.setInputValue(HPU.find().in(form).byId("eMail"), account.email);
+        FormUtils.setInputValue(HPU.find().in(form).byId("registration-form-e-mail"), account.email);
 
-        FormUtils.setInputValue(HPU.find().in(form).byId("password"), account.password);
-        FormUtils.setInputValue(HPU.find().in(form).byId("passwordAgain"), account.password);
+        FormUtils.setInputValue(HPU.find().in(form).byId("registration-form-password"), account.password);
+        FormUtils.setInputValue(HPU.find().in(form).byId("registration-form-password-repeat"), account.password);
     }
 }

@@ -8,7 +8,10 @@ import com.xceptance.loadtest.api.models.pages.Page;
  * Error message component.
  * 
  * @author Xceptance Software Technologies
- */
+ * 
+ * NOTE: The Demo Store triggers Error Messages through JavaScript,
+ * thus this component will only be found with JS enabled (non-default)
+*/
 public class ErrorMessage implements Component
 {
 	public static final ErrorMessage instance = new ErrorMessage();
@@ -16,7 +19,7 @@ public class ErrorMessage implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byId("errorMessage");
+        return Page.find().byId("alert-placeholder").byCss(".alert");
     }
 
     @Override

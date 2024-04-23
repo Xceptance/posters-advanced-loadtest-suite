@@ -16,7 +16,7 @@ public class SearchQuery implements Component
     @Override
     public LookUpResult locate()
     {
-        return Page.find().byId("searchTextValue");
+        return Page.find().byId("search-text-value");
     }
 
     @Override
