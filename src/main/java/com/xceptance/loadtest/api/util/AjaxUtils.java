@@ -66,44 +66,14 @@ public final class AjaxUtils
     }
 
     /**
-     * Get the form's fields as list of name value pairs.
+     * Returns the form's fields as list of name value pairs.
      *
-     * @param form
-     *            the form to parse
+     * @param form the form to parse
      * @return the form's fields as list of name value pairs.
      */
     public static List<NameValuePair> serializeForm(final HtmlForm form)
     {
-        return serializeForm(form, true);
-    }
-
-    /**
-     * Get the form's fields as list of name value pairs.
-     *
-     * @param form
-     *            the form to parse
-     * @param includeLostChildren
-     *            whether or not to include the form's lost children
-     * @return the form's fields as list of name value pairs.
-     */
-    public static List<NameValuePair> serializeForm(final HtmlForm form, final boolean includeLostChildren)
-    {
-        final List<NameValuePair> children = new ArrayList<>();
-
-        for (final Object o : form.getByXPath(".//select|.//input|.//textarea"))
-        {
-            handleElement((HtmlElement) o, children);
-        }
-
-        if (includeLostChildren)
-        {
-            for (final HtmlElement e : form.getLostChildren())
-            {
-                handleElement(e, children);
-            }
-        }
-
-        return children;
+        return form.getParameterListForSubmit(null);
     }
 
     /**
