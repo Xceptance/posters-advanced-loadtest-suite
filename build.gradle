@@ -9,9 +9,6 @@ plugins {
 
 repositories {
     mavenLocal()
-    maven {
-        url = uri('https://lab.xceptance.de/nexus/content/groups/public')
-    }
 
     maven {
         url = uri('https://repo.maven.apache.org/maven2/')
@@ -31,7 +28,7 @@ sourceSets {
 }
 
 dependencies {
-    provided 'com.xceptance:xlt:6.2.0'
+    provided 'com.xceptance:xlt:8.2.0'
     implementation 'org.yaml:snakeyaml:1.26'
 }
 

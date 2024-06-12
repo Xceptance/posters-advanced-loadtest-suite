@@ -57,7 +57,7 @@
 		<dependency>
 			<groupId>com.xceptance</groupId>
 			<artifactId>xlt</artifactId>
-			<version>8.1.0</version>
+			<version>8.2.0</version>
             <exclusions>
                 <exclusion>
                   <groupId>xml-apis</groupId>
