@@ -4,13 +4,10 @@
 
 plugins {
     id 'java'
-    id 'maven-publish'
 }
 
 repositories {
-    mavenLocal()
-
-    maven {
+	maven {
         url = uri('https://repo.maven.apache.org/maven2/')
     }
 }
@@ -35,14 +32,6 @@ dependencies {
 group = 'com.xceptance'
 version = '0.1'
 description = 'XLT Advanced Load Test Suite Demo'
-
-publishing {
-    publications {
-        maven(MavenPublication) {
-            from(components.java)
-        }
-    }
-}
 
 tasks.register('copyDeps', Copy) {
   into layout.buildDirectory.dir('dependency')
