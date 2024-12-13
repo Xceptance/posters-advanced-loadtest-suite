@@ -21,7 +21,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.0</version>
 				<configuration>
-					<release>11</release>
+					<release>17</release>
 				</configuration>
 			</plugin>
 
@@ -48,7 +48,7 @@
                     </execution>
                 </executions>
             </plugin>
-            
+
 			<plugin>
 				<groupId>org.owasp</groupId>
 				<artifactId>dependency-check-maven</artifactId>
@@ -73,7 +73,7 @@
 		<dependency>
 			<groupId>com.xceptance</groupId>
 			<artifactId>xlt</artifactId>
-			<version>8.2.0</version>
+			<version>8.5.0</version>
 			<scope>provided</scope>
 		</dependency>
 
