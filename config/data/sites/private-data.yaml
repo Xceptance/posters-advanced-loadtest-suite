@@ -1,6 +1,6 @@
 # General information on how to access the site under test
 general:
-    host: 34.58.79.126:8443
+    host: 104.198.130.89:8443
     baseUrl: "https://${general.host}"
     credentials:
         username:
