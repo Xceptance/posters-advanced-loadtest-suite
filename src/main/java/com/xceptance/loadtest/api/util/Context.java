@@ -87,12 +87,19 @@ public class Context
         // where we get the props from later in this code
         final LTProperties totalProperties = new LTProperties(userName, fullTestClassName, site.id);
 
-        // xlt properties come first aka the last line of defense for the later look up
-        totalProperties.addProperties(Optional.of(xltProperties.getProperties()));
-
         // initialize the config and log the time needed
         final CustomDataLogger cdl = CustomDataLogger.start("config.build.testcase");
         {
+	        // xlt properties come first aka the last line of defense for the later look up
+	        // default, project, yaml, dev, secret, system
+	        // see https://xltdoc.xceptance.com/xlt/load-testing/manual/480-test-suite-configuration/
+	        totalProperties.addProperties(
+	        		Optional.ofNullable(
+	        				XltProperties.getInstance().getPropertyBuckets().get(XltProperties.DEFAULT_PROPERTIES)));
+	        totalProperties.addProperties(
+	        		Optional.ofNullable(
+	        				XltProperties.getInstance().getPropertyBuckets().get(XltProperties.PROJECT_PROPERTIES)));
+
             // ### Get us sites.yaml and other more global structured properties first
 
             // ok, we have custom properties in YAML, get them before we do the configuration magic
@@ -122,14 +129,31 @@ public class Context
                 }
             }
 
-            // Ensure that system always goes last, again!
-            totalProperties.addProperties(Optional.of(System.getProperties()));
-            
+            // test
+            totalProperties.addProperties(
+            		Optional.ofNullable(
+            				XltProperties.getInstance().getPropertyBuckets().get(XltProperties.TEST_PROPERTIES)));
+
+            // dev if needed
+            if (Session.getCurrent().isLoadTest())
+            {
+            	totalProperties.addProperties(
+            			Optional.ofNullable(
+            					XltProperties.getInstance().getPropertyBuckets().get(XltProperties.DEVELOPMENT_PROPERTIES)));
+            }
+
+            // secret
+        	totalProperties.addProperties(
+        			Optional.ofNullable(
+        					XltProperties.getInstance().getPropertyBuckets().get(XltProperties.SECRET_PROPERTIES)));
+
+            // system
+        	totalProperties.addProperties(
+        			Optional.ofNullable(
+        					XltProperties.getInstance().getPropertyBuckets().get(XltProperties.SYSTEM_PROPERTIES)));
+
             // dump all for debugging
             Log.debugWhenDev("{0}", totalProperties);
-
-            // get XLT all our look up data so it is also up to date
-            XltProperties.getInstance().setProperties(totalProperties.properties);
 
             // now, we can do what we always do, because all YAML stuff is available as regular
             // properties
@@ -423,10 +447,10 @@ public class Context
     // Load Default Configuration
     /////////////////////////////////////////////////////////////////
 
-    public static ThreadLocal<DefaultConfiguration> defaultConfiguration = new ThreadLocal<DefaultConfiguration>()    
+    public static ThreadLocal<DefaultConfiguration> defaultConfiguration = new ThreadLocal<DefaultConfiguration>()
     {
     	private DefaultConfiguration defaultConfiguration;
-    	
+
     	@Override
         public DefaultConfiguration get()
         {
@@ -454,7 +478,7 @@ public class Context
     {
     	// save random seed
         final long savedSeed = XltRandom.getSeed();
-    	
+
         // where we get the props from later in this code
         final LTProperties totalProperties = new LTProperties("", "", "");
 
@@ -488,9 +512,9 @@ public class Context
             // properties
             defaultConfiguaration = new ConfigurationBuilder(totalProperties).build(DefaultConfiguration.class);
         }
-        
+
         cdl.stopAndLog();
-        
+
         // restore seed for proper reproducibility
         XltRandom.setSeed(savedSeed);
 
