@@ -134,7 +134,7 @@ public class Context
             		Optional.ofNullable(
             				XltProperties.getInstance().getPropertyBuckets().get(XltProperties.TEST_PROPERTIES)));
 
-            // dev if needed
+            // dev if needed -> not in load test case
             if (!Session.getCurrent().isLoadTest())
             {
             	totalProperties.addProperties(
