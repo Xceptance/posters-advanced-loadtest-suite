@@ -135,7 +135,7 @@ public class Context
             				XltProperties.getInstance().getPropertyBuckets().get(XltProperties.TEST_PROPERTIES)));
 
             // dev if needed
-            if (Session.getCurrent().isLoadTest())
+            if (!Session.getCurrent().isLoadTest())
             {
             	totalProperties.addProperties(
             			Optional.ofNullable(
