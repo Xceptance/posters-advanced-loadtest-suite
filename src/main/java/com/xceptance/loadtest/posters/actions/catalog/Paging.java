@@ -55,7 +55,7 @@ public class Paging extends AjaxAction<Paging>
     	WebResponse response = new HttpRequest()
     		.XHR()
     		.POST()
-    		.url("/posters/" + resource)
+    		.url("/en-US/" + resource)
     		.param("categoryId", categoryId)
     		.param("page", String.format("%d", newPage))
     		.assertJSONObject("Expected current page and product information to be contained in paging response", true, json -> { return json.has("currentPage") && json.has("totalPages"); })
