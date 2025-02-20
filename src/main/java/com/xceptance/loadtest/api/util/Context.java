@@ -7,9 +7,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
+import org.htmlunit.html.HtmlPage;
 import org.junit.Assert;
 
-import org.htmlunit.html.HtmlPage;
 import com.xceptance.loadtest.api.actions.PageAction;
 import com.xceptance.loadtest.api.configuration.Configuration;
 import com.xceptance.loadtest.api.configuration.ConfigurationBuilder;
@@ -117,6 +117,10 @@ public class Context
                 }
             }
 
+            // Set global look-ups only, this will ensure we can use references from global yaml files to properties
+            XltProperties.getInstance().setProperties(totalProperties.properties);
+
+            
             // now, the real fun starts, we need the rest of the properties
             final String siteFileNames = xltProperties.getProperty("general.properties.yaml.site.files", "");
             for (final String fileName : siteFileNames.split("\\s|,|;"))
