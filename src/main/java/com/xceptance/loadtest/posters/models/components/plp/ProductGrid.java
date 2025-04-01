@@ -83,7 +83,7 @@ public class ProductGrid implements Component
     		// Create the URL from given details
     		try
     		{
-    			productLinks.add("/posters/productDetail/" + URLEncoder.encode(name, "UTF-8") + "?productId=" + id);
+    			productLinks.add("/en-US/productDetail/" + URLEncoder.encode(name, "UTF-8") + "?productId=" + id);
     		}
     		catch(UnsupportedEncodingException uee)
     		{

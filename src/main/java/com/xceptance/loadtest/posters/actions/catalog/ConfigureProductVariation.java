@@ -121,7 +121,7 @@ public class ConfigureProductVariation extends AjaxAction<ConfigureProductVariat
     	WebResponse response = new HttpRequest()
     							.XHR()
     							.POST()
-    							.url("/updatePrice")
+    							.url("/en-US/updatePrice")
     							.param("size", selectedSize)
     							.param("productId", pid)
     							.assertJSONObject("Expected price update in response'", true, json -> json.has("newPrice")) 

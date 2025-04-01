@@ -52,7 +52,7 @@ public class AddToCart extends AjaxAction<AddToCart>
     	WebResponse response = new HttpRequest()
     		.XHR()
     		.GET()
-    		.url("/addToCartSlider")
+    		.url("/en-US/addToCartSlider")
     		.param("productId", productId)
     		.param("finish", finish)
     		.param("size", size)
