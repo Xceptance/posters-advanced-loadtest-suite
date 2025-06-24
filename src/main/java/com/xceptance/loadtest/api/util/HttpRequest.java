@@ -186,7 +186,7 @@ public class HttpRequest
     public HttpRequest url(final String url, final HtmlPage page) throws URISyntaxException, MalformedURLException
     {
         Args.notBlank(url, "url");
-        return url(new URIBuilder(org.htmlunit.util.UrlUtils.encodeUrl(page.getFullyQualifiedUrl(url), false, StandardCharsets.UTF_8).toURI()));
+        return url(new URIBuilder(org.htmlunit.util.UrlUtils.encodeUrl(page.getFullyQualifiedUrl(url), StandardCharsets.UTF_8).toURI()));
     }
 
     /**
