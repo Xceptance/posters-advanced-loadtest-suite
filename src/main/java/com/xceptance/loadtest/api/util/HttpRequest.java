@@ -19,12 +19,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.Args;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.junit.Assert;
-import org.xml.sax.SAXException;
-
 import org.htmlunit.DefaultPageCreator;
 import org.htmlunit.DefaultPageCreator.PageType;
 import org.htmlunit.HttpMethod;
@@ -34,6 +28,12 @@ import org.htmlunit.html.HtmlElement;
 import org.htmlunit.html.HtmlForm;
 import org.htmlunit.html.HtmlPage;
 import org.htmlunit.util.NameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.junit.Assert;
+import org.xml.sax.SAXException;
+
 import com.xceptance.common.util.RegExUtils;
 import com.xceptance.loadtest.api.events.EventLogger;
 import com.xceptance.loadtest.api.validators.Validator;
@@ -1300,7 +1300,7 @@ public class HttpRequest
     private static Charset getContentCharset(final HtmlPage page)
     {
         final WebResponse r = page.getWebResponse();
-        Charset charset = r.getContentCharsetOrNull();
+        Charset charset = r.getContentCharset();
 
         // No content charset given explicitly? Decide based on content type.
         if (charset == null)
