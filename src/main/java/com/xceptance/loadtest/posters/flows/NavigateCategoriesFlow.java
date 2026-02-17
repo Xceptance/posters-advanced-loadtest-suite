@@ -1,7 +1,7 @@
 package com.xceptance.loadtest.posters.flows;
 
 import com.xceptance.loadtest.api.flows.Flow;
-import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.loadtest.posters.actions.catalog.ClickACategory;
 import com.xceptance.loadtest.posters.actions.catalog.ClickATopCategory;
 import com.xceptance.loadtest.posters.models.pages.catalog.ProductListingPage;
@@ -19,7 +19,7 @@ public class NavigateCategoriesFlow extends Flow
     @Override
     public boolean execute() throws Throwable
     {
-        if (Context.configuration().topCategoryBrowsing.random())
+        if (Context.get().configuration.topCategoryBrowsing.random())
         {
             new ClickATopCategory().run();
 

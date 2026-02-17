@@ -2,7 +2,7 @@ package com.xceptance.loadtest.posters.actions.account;
 
 import org.junit.Assert;
 
-import com.xceptance.loadtest.api.actions.PageAction;
+import com.xceptance.loadtest.api.actions.HtmlUnitPageAction;
 import com.xceptance.loadtest.api.data.Account;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.account.LoginPage;
@@ -13,7 +13,7 @@ import com.xceptance.loadtest.posters.models.pages.general.HomePage;
  * 
  * @author Xceptance Software Technologies
  */
-public class Login extends PageAction<Login>
+public class Login extends HtmlUnitPageAction<Login>
 {
     private final Account account;
 

@@ -1,7 +1,7 @@
 package com.xceptance.loadtest.posters.tests.helpers;
 
-import com.xceptance.loadtest.api.tests.LoadTestCase;
-import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.api.tests.HtmlUnitLoadTestCase;
+import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.loadtest.posters.actions.catalog.ProductDetailPageLanding;
 import com.xceptance.loadtest.posters.flows.SingleProductOrderFlow;
 
@@ -10,13 +10,13 @@ import com.xceptance.loadtest.posters.flows.SingleProductOrderFlow;
  * 
  * @author Xceptance Software Technologies
  */
-public class TDirectProductOrder extends LoadTestCase
+public class TDirectProductOrder extends HtmlUnitLoadTestCase
 {
     @Override
     public void test() throws Throwable
     {
         // Directly open the given product detail page
-        new ProductDetailPageLanding(Context.configuration().directOrderUrl).run();
+        new ProductDetailPageLanding(Context.get().configuration.directOrderUrl).run();
 
         // Configure, add to cart and order the product
         new SingleProductOrderFlow().run();

@@ -3,7 +3,7 @@ package com.xceptance.loadtest.posters.actions.catalog;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 
-import com.xceptance.loadtest.api.actions.PageAction;
+import com.xceptance.loadtest.api.actions.HtmlUnitPageAction;
 import com.xceptance.loadtest.api.util.RandomUtils;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
@@ -14,7 +14,7 @@ import com.xceptance.loadtest.posters.models.pages.catalog.ProductListingPage;
  * 
  * @author Xceptance Software Technologies
  */
-public class ClickProductDetails extends PageAction<ClickProductDetails>
+public class ClickProductDetails extends HtmlUnitPageAction<ClickProductDetails>
 {
     private String url;
 

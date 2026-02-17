@@ -1,7 +1,7 @@
 package com.xceptance.loadtest.posters.flows;
 
 import com.xceptance.loadtest.api.flows.Flow;
-import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.loadtest.posters.actions.account.CreateAccount;
 import com.xceptance.loadtest.posters.actions.account.GoToCreateAccount;
 
@@ -22,7 +22,7 @@ public class CreateAccountFlow extends Flow
         new GoToCreateAccount().run();
 
         // Fill form and submit new account
-        new CreateAccount(Context.get().data.getAccount().get()).run();
+        new CreateAccount(Context.get().testData.getAccount().get()).run();
 
         return true;
     }

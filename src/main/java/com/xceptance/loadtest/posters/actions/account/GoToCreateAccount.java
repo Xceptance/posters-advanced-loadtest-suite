@@ -1,6 +1,6 @@
 package com.xceptance.loadtest.posters.actions.account;
 
-import com.xceptance.loadtest.api.actions.PageAction;
+import com.xceptance.loadtest.api.actions.HtmlUnitPageAction;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.account.CreateAccountPage;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
@@ -10,7 +10,7 @@ import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
  * 
  * @author Xceptance Software Technologies
  */
-public class GoToCreateAccount extends PageAction<GoToCreateAccount>
+public class GoToCreateAccount extends HtmlUnitPageAction<GoToCreateAccount>
 {
     @Override
     protected void doExecute() throws Exception

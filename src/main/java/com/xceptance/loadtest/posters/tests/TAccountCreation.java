@@ -1,7 +1,7 @@
 package com.xceptance.loadtest.posters.tests;
 
-import com.xceptance.loadtest.api.tests.LoadTestCase;
-import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.api.tests.HtmlUnitLoadTestCase;
+import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.loadtest.posters.actions.account.GoToMyAccount;
 import com.xceptance.loadtest.posters.actions.account.Login;
 import com.xceptance.loadtest.posters.actions.account.Logout;
@@ -14,7 +14,7 @@ import com.xceptance.loadtest.posters.flows.VisitFlow;
  * 
  * @author Xceptance Software Technologies
  */
-public class TAccountCreation extends LoadTestCase
+public class TAccountCreation extends HtmlUnitLoadTestCase
 {
     /**
      * {@inheritDoc}
@@ -26,13 +26,13 @@ public class TAccountCreation extends LoadTestCase
         new VisitFlow().run();
 
         // Attach an account to the current context
-        Context.get().data.attachAccount();
+        Context.get().testData.attachAccount();
 
         // Register user
         new CreateAccountFlow().run();
         
         // Fill form and login
-        new Login(Context.get().data.getAccount().get()).run();
+        new Login(Context.get().testData.getAccount().get()).run();
         
         // Open account page
         new GoToMyAccount().run();        

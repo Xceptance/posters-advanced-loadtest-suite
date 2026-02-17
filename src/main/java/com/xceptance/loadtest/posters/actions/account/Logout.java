@@ -1,6 +1,6 @@
 package com.xceptance.loadtest.posters.actions.account;
 
-import com.xceptance.loadtest.api.actions.PageAction;
+import com.xceptance.loadtest.api.actions.HtmlUnitPageAction;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 import com.xceptance.loadtest.posters.models.pages.general.HomePage;
@@ -10,7 +10,7 @@ import com.xceptance.loadtest.posters.models.pages.general.HomePage;
  * 
  * @author Xceptance Software Technologies
  */
-public class Logout extends PageAction<Logout>
+public class Logout extends HtmlUnitPageAction<Logout>
 {
     @Override
     protected void doExecute() throws Exception

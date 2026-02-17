@@ -1,28 +1,28 @@
 package com.xceptance.loadtest.posters.actions.catalog;
 
-import org.junit.Assert;
-
-import org.htmlunit.html.HtmlForm;
-import com.xceptance.loadtest.api.actions.PageAction;
+import com.xceptance.loadtest.api.actions.HtmlUnitPageAction;
 import com.xceptance.loadtest.api.data.CustomDataLogger;
 import com.xceptance.loadtest.api.data.SearchOption;
 import com.xceptance.loadtest.api.events.EventLogger;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.FormUtils;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 import com.xceptance.loadtest.posters.models.pages.search.SearchNoResultPage;
 import com.xceptance.loadtest.posters.models.pages.search.SearchResultPage;
+import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.xlt.api.util.XltRandom;
+
+import org.htmlunit.html.HtmlForm;
+import org.junit.Assert;
 
 /**
  * Searches for a given search phrase and expects a given search result.
  *
  * @author Xceptance Software Technologies
  */
-public class Search extends PageAction<Search>
+public class Search extends HtmlUnitPageAction<Search>
 {
     /**
      * The fixed part of the cache buster which is added to a search phrase.
@@ -51,7 +51,7 @@ public class Search extends PageAction<Search>
         // Set timer name
         if (searchOption == SearchOption.MISS)
         {
-            this.setTimerName(this.getTimerName() + "NoHits");
+            setTimerName(getTimerName() + "NoHits");
         }
     }
 
@@ -62,9 +62,9 @@ public class Search extends PageAction<Search>
     protected void doExecute() throws Exception
     {
         final String cacheBuster;
-        if (Context.configuration().searchCacheBusting)
+        if (Context.get().configuration.searchCacheBusting)
         {
-            cacheBuster = CACHEBUSTERFIXEDPART + XltRandom.nextInt(Context.configuration().searchCacheBustingCount);
+            cacheBuster = CACHEBUSTERFIXEDPART + XltRandom.nextInt(Context.get().configuration.searchCacheBustingCount);
         }
         else
         {
@@ -98,7 +98,7 @@ public class Search extends PageAction<Search>
     @Override
     protected void postValidate() throws Exception
     {
-    	// Validate the page load
+        // Validate the page load
         Validator.validatePageSource();
 
         // Have we expected hits?
@@ -106,7 +106,7 @@ public class Search extends PageAction<Search>
 
         // The name to log
         String name = "Search - N/A";
-        
+
         // The status to log
         boolean failed = false;
 

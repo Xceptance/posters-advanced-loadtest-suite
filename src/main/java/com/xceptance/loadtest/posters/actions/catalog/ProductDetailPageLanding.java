@@ -1,7 +1,6 @@
 package com.xceptance.loadtest.posters.actions.catalog;
 
-import com.xceptance.loadtest.api.actions.PageAction;
-import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.api.actions.HtmlUnitPageAction;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
 
@@ -10,7 +9,7 @@ import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
  * 
  * @author Xceptance Software Technologies
  */
-public class ProductDetailPageLanding extends PageAction<ProductDetailPageLanding>
+public class ProductDetailPageLanding extends HtmlUnitPageAction<ProductDetailPageLanding>
 {
     protected final String urlString;
 
@@ -21,8 +20,6 @@ public class ProductDetailPageLanding extends PageAction<ProductDetailPageLandin
      */
     public ProductDetailPageLanding(final String urlString)
     {
-        super();
-        
         this.urlString = urlString;
     }
 
@@ -32,8 +29,6 @@ public class ProductDetailPageLanding extends PageAction<ProductDetailPageLandin
     @Override
     public void doExecute() throws Exception
     {
-        Context.setBasicAuthenticationHeader();
-
         loadPage(urlString);
     }
 
@@ -41,7 +36,7 @@ public class ProductDetailPageLanding extends PageAction<ProductDetailPageLandin
     protected void postValidate() throws Exception
     {
         Validator.validatePageSource();
-        
+
         ProductDetailPage.instance.validate();
     }
 }

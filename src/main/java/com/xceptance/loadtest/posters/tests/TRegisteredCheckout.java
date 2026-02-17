@@ -1,7 +1,7 @@
 package com.xceptance.loadtest.posters.tests;
 
-import com.xceptance.loadtest.api.tests.LoadTestCase;
-import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.api.tests.HtmlUnitLoadTestCase;
+import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.loadtest.posters.actions.account.Login;
 import com.xceptance.loadtest.posters.actions.account.Logout;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
@@ -17,7 +17,7 @@ import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
  * 
  * @author Xceptance Software Technologies
  */
-public class TRegisteredCheckout extends LoadTestCase
+public class TRegisteredCheckout extends HtmlUnitLoadTestCase
 {
     /**
      * {@inheritDoc}
@@ -32,17 +32,17 @@ public class TRegisteredCheckout extends LoadTestCase
         new VisitFlow().run();
 
         // Attach an account to the Context, so it can be used in the following actions
-        if (Context.get().data.attachAccount().get().isRegistered == false)
+        if (Context.get().testData.attachAccount().get().isRegistered == false)
         {
             // Register user
             new CreateAccountFlow().run();
 
             // Fill form and login
-            new Login(Context.get().data.getAccount().get()).run();
+            new Login(Context.get().testData.getAccount().get()).run();
         }
 
         // Add items to the cart via browsing and searching the catalog
-        new AddToCartFlow(Context.configuration().addToCartCount.value).run();
+        new AddToCartFlow(Context.get().configuration.addToCartCount.value).run();
 
         // View the cart if not just done
         if (!CartPage.instance.is())

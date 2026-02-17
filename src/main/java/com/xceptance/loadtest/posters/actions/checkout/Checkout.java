@@ -2,7 +2,7 @@ package com.xceptance.loadtest.posters.actions.checkout;
 
 import org.junit.Assert;
 
-import com.xceptance.loadtest.api.actions.PageAction;
+import com.xceptance.loadtest.api.actions.HtmlUnitPageAction;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
 import com.xceptance.loadtest.posters.models.pages.checkout.ShippingAddressPage;
@@ -12,7 +12,7 @@ import com.xceptance.loadtest.posters.models.pages.checkout.ShippingAddressPage;
  * 
  * @author Xceptance Software Technologies
  */
-public class Checkout extends PageAction<Checkout>
+public class Checkout extends HtmlUnitPageAction<Checkout>
 {
 	@Override
 	public void precheck()

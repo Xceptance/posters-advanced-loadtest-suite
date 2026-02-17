@@ -1,6 +1,6 @@
 package com.xceptance.loadtest.posters.actions.cart;
 
-import com.xceptance.loadtest.api.actions.PageAction;
+import com.xceptance.loadtest.api.actions.HtmlUnitPageAction;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
@@ -10,7 +10,7 @@ import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
  *
  * @author Xceptance Software Technologies
  */
-public class ViewCart extends PageAction<ViewCart>
+public class ViewCart extends HtmlUnitPageAction<ViewCart>
 {
     /**
      * {@inheritDoc}

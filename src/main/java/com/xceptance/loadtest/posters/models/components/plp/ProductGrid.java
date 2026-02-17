@@ -16,8 +16,8 @@ import com.xceptance.loadtest.api.events.EventLogger;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.models.pages.Page;
-import com.xceptance.loadtest.api.util.Context;
-import com.xceptance.loadtest.posters.utils.PageState;
+import com.xceptance.loadtest.posters.util.Context;
+import com.xceptance.loadtest.posters.util.PageState;
 
 /**
  * Product grid component.
@@ -43,7 +43,7 @@ public class ProductGrid implements Component
     public List<String> getFilteredProductUrls()
     {
     	// Prepare a list of all discarded URLs
-    	List<String> discardedUrls = Context.configuration().filterProductUrls.unweightedList().stream().filter(s -> StringUtils.isNotBlank(s)).collect(Collectors.toList());
+    	List<String> discardedUrls = Context.get().configuration.filterProductUrls.unweightedList().stream().filter(s -> StringUtils.isNotBlank(s)).collect(Collectors.toList());
 
     	// Use either the embedded product state (if available) or existing product tiles
     	if(PageState.hasProducts())

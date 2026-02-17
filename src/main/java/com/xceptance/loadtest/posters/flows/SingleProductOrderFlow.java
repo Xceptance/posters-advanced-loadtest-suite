@@ -1,7 +1,7 @@
 package com.xceptance.loadtest.posters.flows;
 
 import com.xceptance.loadtest.api.flows.Flow;
-import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.loadtest.posters.actions.cart.AddToCart;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
 import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
@@ -24,7 +24,7 @@ public class SingleProductOrderFlow extends Flow
         }
 
         // Add the product to the cart for the given number of times
-        final int addToCartCount = Context.configuration().cartProductQuantity.value;
+        final int addToCartCount = Context.get().configuration.cartProductQuantity.value;
         for (int i = 0; i < addToCartCount; i++)
         {
             new AddToCart().run();
@@ -37,7 +37,7 @@ public class SingleProductOrderFlow extends Flow
         CartPage.instance.validateIsNotEmpty();
 
         // Attach an account to the Context, so it can be used in the following actions
-        Context.get().data.attachAccount();
+        Context.get().testData.attachAccount();
 
         // Follow checkout steps
         new CheckoutFlow(true).run();        

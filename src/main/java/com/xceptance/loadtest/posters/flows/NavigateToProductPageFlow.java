@@ -1,10 +1,7 @@
 package com.xceptance.loadtest.posters.flows;
 
-import org.junit.Assert;
-
-import com.xceptance.loadtest.api.actions.PageAction;
+import com.xceptance.loadtest.api.actions.HtmlUnitPageAction;
 import com.xceptance.loadtest.api.flows.Flow;
-import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.SafetyBreak;
 import com.xceptance.loadtest.posters.actions.catalog.ClickProductDetails;
 import com.xceptance.loadtest.posters.models.pages.catalog.LandingPage;
@@ -12,6 +9,9 @@ import com.xceptance.loadtest.posters.models.pages.catalog.ProductDetailPage;
 import com.xceptance.loadtest.posters.models.pages.catalog.ProductListingPage;
 import com.xceptance.loadtest.posters.models.pages.general.HomePage;
 import com.xceptance.loadtest.posters.models.pages.search.SearchNoResultPage;
+import com.xceptance.loadtest.posters.util.Context;
+
+import org.junit.Assert;
 
 /**
  * Navigates product listing page(s) to arrive at a product page.
@@ -54,8 +54,8 @@ public class NavigateToProductPageFlow extends Flow
             }
             else if (SearchNoResultPage.instance.is())
             {
-            	// No result page because there was no product, nothing else to do here
-            	break;
+                // No result page because there was no product, nothing else to do here
+                break;
             }
             else if (HomePage.instance.is()) {
                 // Still on homepage, nothing else to do here
@@ -81,21 +81,21 @@ public class NavigateToProductPageFlow extends Flow
         final int itemCount = ProductListingPage.instance.itemCount.getItemCount();
 
         // We might view several products
-        int viewCount = Context.configuration().productViewCount.random();
+        int viewCount = Context.get().configuration.productViewCount.random();
         viewCount = viewCount > itemCount ? itemCount : viewCount;
 
         // Keep the context
-        final PageAction<?> currentAction = Context.getCurrentAction();
+        final HtmlUnitPageAction<?> currentAction = Context.getCurrentAction();
         for (int i = 0; i < viewCount; i++)
         {
             if (i != 0)
             {
                 // If we are not doing this for the first time, emulate a page back in the browser or opening of multiple tabs
-                Context.resetCurrentAction(currentAction);
+                Context.get().resetCurrentAction(currentAction);
             }
 
             // Try to open PDP if filter does not discard the product page
-            if (new ClickProductDetails().runIfPossible().isPresent() == false)
+            if (!new ClickProductDetails().runIfPossible().isPresent())
             {
                 break;
             }

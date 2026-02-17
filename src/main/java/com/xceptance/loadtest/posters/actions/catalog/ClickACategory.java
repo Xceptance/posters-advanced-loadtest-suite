@@ -1,7 +1,7 @@
 package com.xceptance.loadtest.posters.actions.catalog;
 
 import org.htmlunit.html.HtmlElement;
-import com.xceptance.loadtest.api.actions.PageAction;
+import com.xceptance.loadtest.api.actions.HtmlUnitPageAction;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
@@ -10,7 +10,7 @@ import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
  * 
  * @author Xceptance Software Technologies
  */
-public class ClickACategory extends PageAction<ClickACategory>
+public class ClickACategory extends HtmlUnitPageAction<ClickACategory>
 {
     private HtmlElement categoryLink;
 

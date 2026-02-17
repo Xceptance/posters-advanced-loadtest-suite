@@ -1,7 +1,7 @@
 package com.xceptance.loadtest.posters.flows;
 
 import com.xceptance.loadtest.api.flows.Flow;
-import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.loadtest.posters.actions.Homepage;
 
 /**
@@ -17,7 +17,7 @@ public class VisitFlow extends Flow
     @Override
     public boolean execute() throws Throwable
     {
-        new Homepage(Context.configuration().siteUrlHomepage).run();
+        new Homepage(Context.get().configuration.siteUrlHomepage).run();
 
         return true;
     }

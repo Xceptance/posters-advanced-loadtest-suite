@@ -1,15 +1,15 @@
 package com.xceptance.loadtest.posters.actions;
 
-import org.junit.Assert;
-
-import com.xceptance.loadtest.api.actions.PageAction;
-import com.xceptance.loadtest.api.models.pages.Page;
+import com.xceptance.loadtest.api.actions.HtmlUnitPageAction;
+import com.xceptance.loadtest.api.pages.Page;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 import com.xceptance.loadtest.posters.models.pages.general.HomePage;
 import com.xceptance.loadtest.posters.models.pages.general.OrderConfirmationPage;
 
-public class ContinueShoppingPage extends PageAction<ContinueShoppingPage>
+import org.junit.Assert;
+
+public class ContinueShoppingPage extends HtmlUnitPageAction<ContinueShoppingPage>
 {
     @Override
     public void precheck()

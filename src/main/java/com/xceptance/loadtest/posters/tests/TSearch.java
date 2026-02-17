@@ -1,7 +1,7 @@
 package com.xceptance.loadtest.posters.tests;
 
-import com.xceptance.loadtest.api.tests.LoadTestCase;
-import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.api.tests.HtmlUnitLoadTestCase;
+import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.loadtest.posters.flows.NavigateToProductPageFlow;
 import com.xceptance.loadtest.posters.flows.SearchFlow;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
@@ -12,7 +12,7 @@ import com.xceptance.loadtest.posters.flows.VisitFlow;
  * 
  * @author Xceptance Software Technologies
  */
-public class TSearch extends LoadTestCase
+public class TSearch extends HtmlUnitLoadTestCase
 {
     /**
      * {@inheritDoc}
@@ -24,13 +24,13 @@ public class TSearch extends LoadTestCase
         new VisitFlow().run();
 
         // Determine the number of times to execute a search operation
-        final int searches = Context.configuration().searchesCount.value;
+        final int searches = Context.get().configuration.searchesCount.value;
         for (int i = 0; i < searches; i++)
         {
             // Perform a search operation
             new SearchFlow().run();
             
-            final int productPageRounds = Context.configuration().browseRefineFlow.value;
+            final int productPageRounds = Context.get().configuration.browseRefineFlow.value;
             for (int j = 0; j < productPageRounds; j++)
             {
                 // Browse the resulting pages and open product detail pages

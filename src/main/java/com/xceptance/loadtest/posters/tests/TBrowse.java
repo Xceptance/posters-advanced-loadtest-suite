@@ -1,7 +1,7 @@
 package com.xceptance.loadtest.posters.tests;
 
-import com.xceptance.loadtest.api.tests.LoadTestCase;
-import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.api.tests.HtmlUnitLoadTestCase;
+import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.loadtest.posters.flows.NavigateCategoriesFlow;
 import com.xceptance.loadtest.posters.flows.NavigateToProductPageFlow;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
@@ -12,7 +12,7 @@ import com.xceptance.loadtest.posters.flows.VisitFlow;
  * 
  * @author Xceptance Software Technologies
  */
-public class TBrowse extends LoadTestCase
+public class TBrowse extends HtmlUnitLoadTestCase
 {
     /**
      * {@inheritDoc}
@@ -24,17 +24,17 @@ public class TBrowse extends LoadTestCase
         new VisitFlow().run();
 
         // Determine the number of times to descent from the top categories into the catalog
-        final int rounds = Context.configuration().fullBrowseFlow.value;
+        final int rounds = Context.get().configuration.fullBrowseFlow.value;
         for (int i = 0; i < rounds; i++)
         {
-            final int categoryRounds = Context.configuration().browseCategoriesFlow.value;
+            final int categoryRounds = Context.get().configuration.browseCategoriesFlow.value;
             for (int j = 0; j < categoryRounds; j++)
             {
                 // Browse available categories
                 new NavigateCategoriesFlow().run();
             }
 
-            final int productPageRounds = Context.configuration().browseRefineFlow.value;
+            final int productPageRounds = Context.get().configuration.browseRefineFlow.value;
             for (int j = 0; j < productPageRounds; j++)
             {
                 // Browse the resulting pages and open product detail pages

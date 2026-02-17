@@ -3,7 +3,7 @@ package com.xceptance.loadtest.posters.models.components.general;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
 import com.xceptance.loadtest.api.models.pages.Page;
-import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.posters.util.Context;
 
 /**
  * Navigation component.
@@ -39,7 +39,7 @@ public class Navigation implements Component
     private LookUpResult filterinvalidLinks(final LookUpResult links)
     {
         return links.filter(Page.VALIDLINKS)
-                        .discard(Context.configuration().filterCategoryUrls.unweightedList(),
+                        .discard(Context.get().configuration.filterCategoryUrls.unweightedList(),
                         e -> e.getAttribute("href"));
     }
 }

@@ -4,7 +4,7 @@ import java.net.URL;
 
 import org.junit.Assert;
 
-import com.xceptance.loadtest.api.actions.PageAction;
+import com.xceptance.loadtest.api.actions.HtmlUnitPageAction;
 import com.xceptance.loadtest.api.validators.Validator;
 import com.xceptance.loadtest.posters.models.pages.general.HomePage;
 
@@ -13,7 +13,7 @@ import com.xceptance.loadtest.posters.models.pages.general.HomePage;
  *
  * @author Xceptance Software Technologies
  */
-public class Homepage extends PageAction<Homepage>
+public class Homepage extends HtmlUnitPageAction<Homepage>
 {
     /**
      * Start page URL string.

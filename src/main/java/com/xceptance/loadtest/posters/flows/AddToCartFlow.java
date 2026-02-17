@@ -1,10 +1,10 @@
 package com.xceptance.loadtest.posters.flows;
 
 import com.xceptance.loadtest.api.flows.Flow;
-import com.xceptance.loadtest.api.util.Context;
 import com.xceptance.loadtest.api.util.SafetyBreak;
 import com.xceptance.loadtest.posters.actions.cart.AddToCart;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
+import com.xceptance.loadtest.posters.util.Context;
 
 /**
  * Add products to the cart via navigating the catalog by browsing or searching and
@@ -43,7 +43,7 @@ public class AddToCartFlow extends Flow
     public boolean execute() throws Throwable
     {
         // Add another item to cart if we are under target and if we have not tried twice the amount already
-        while (Context.get().data.cartLineItemCount < targetItemCount && Context.get().data.totalAddToCartCount < targetItemCount * 2)
+        while (Context.get().testData.cartLineItemCount < targetItemCount && Context.get().testData.totalAddToCartCount < targetItemCount * 2)
         {
             // Check if the maximum number of attempts is reached.Flow
             addToCartSafetyBreak.check("Unable to add the desired number of products to the cart.");
@@ -59,7 +59,7 @@ public class AddToCartFlow extends Flow
             }
 
             // View the cart if desired
-            if (Context.configuration().viewCartProbability.random())
+            if (Context.get().configuration.viewCartProbability.random())
             {
                 new ViewCart().runIfPossible();
             }
@@ -70,9 +70,9 @@ public class AddToCartFlow extends Flow
 
     private void searchOrBrowse() throws Throwable
     {
-        if (Context.configuration().searchOnAddToCartProbability.random())
+        if (Context.get().configuration.searchOnAddToCartProbability.random())
         {
-        	// Search
+            // Search
             new SearchFlow().run();
         }
         else
@@ -80,7 +80,7 @@ public class AddToCartFlow extends Flow
             // Navigate the categories
             new NavigateCategoriesFlow().run();
         }
-        
+
         // Handle resulting page, most likely product listing page
         new NavigateToProductPageFlow().run();
     }

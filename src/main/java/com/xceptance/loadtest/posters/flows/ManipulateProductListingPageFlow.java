@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.xceptance.loadtest.api.flows.Flow;
 import com.xceptance.loadtest.api.flows.FlowCode;
-import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.loadtest.posters.actions.catalog.Paging;
 
 /**
@@ -49,7 +49,7 @@ public class ManipulateProductListingPageFlow extends Flow
      */
     private static void page() throws Throwable
     {
-        if (Context.configuration().displayMoreProbability.random())
+        if (Context.get().configuration.displayMoreProbability.random())
         {
             if (!new Paging().runIfPossible().isPresent())
             {

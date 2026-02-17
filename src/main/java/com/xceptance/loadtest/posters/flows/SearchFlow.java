@@ -1,9 +1,9 @@
 package com.xceptance.loadtest.posters.flows;
 
 import com.xceptance.loadtest.api.data.SearchOption;
-import com.xceptance.loadtest.api.data.SearchTermSupplier;
-import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.api.data.supplier.SearchTermSupplier;
 import com.xceptance.loadtest.posters.actions.catalog.Search;
+import com.xceptance.loadtest.posters.util.Context;
 
 /**
  * Executes a search operation either creating a search hit or miss.
@@ -14,8 +14,8 @@ public class SearchFlow
 {
     public boolean run() throws Throwable
     {
-    	// The search option indicates if the search should result in a hit or miss
-        final SearchOption option = getSearchOption(Context.configuration().searchNoHitsProbability.random());
+        // The search option indicates if the search should result in a hit or miss
+        final SearchOption option = getSearchOption(Context.get().configuration.searchNoHitsProbability.random());
 
         // Get a search phrase
         final String searchPhrase = option == SearchOption.HITS ? SearchTermSupplier.getTermWithHit() : SearchTermSupplier.getTermWithoutHits();

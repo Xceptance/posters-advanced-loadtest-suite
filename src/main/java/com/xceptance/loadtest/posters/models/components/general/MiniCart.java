@@ -3,7 +3,7 @@ package com.xceptance.loadtest.posters.models.components.general;
 import org.htmlunit.html.HtmlElement;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
 import com.xceptance.loadtest.api.models.components.Component;
-import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.loadtest.api.util.DataUtils;
 
 /**
@@ -34,7 +34,7 @@ public class MiniCart implements Component
 
     public int getLineItemCount()
     {
-        return Context.get().data.cartLineItemCount;
+        return Context.get().testData.cartLineItemCount;
     }
 
     public LookUpResult getQuantityElement()
@@ -52,7 +52,7 @@ public class MiniCart implements Component
         final HtmlElement qty = getQuantityElement().first();
         qty.setTextContent(String.valueOf(newCartQuantity));
 
-        Context.get().data.cartQuantityCount = newCartQuantity;
+        Context.get().testData.cartQuantityCount = newCartQuantity;
     }
 
     public LookUpResult getViewCartLink()

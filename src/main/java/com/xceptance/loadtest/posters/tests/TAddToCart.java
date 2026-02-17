@@ -1,7 +1,7 @@
 package com.xceptance.loadtest.posters.tests;
 
-import com.xceptance.loadtest.api.tests.LoadTestCase;
-import com.xceptance.loadtest.api.util.Context;
+import com.xceptance.loadtest.api.tests.HtmlUnitLoadTestCase;
+import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
 import com.xceptance.loadtest.posters.flows.AddToCartFlow;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
@@ -13,7 +13,7 @@ import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
  * 
  * @author Xceptance Software Technologies
  */
-public class TAddToCart extends LoadTestCase
+public class TAddToCart extends HtmlUnitLoadTestCase
 {
     /**
      * {@inheritDoc}
@@ -25,7 +25,7 @@ public class TAddToCart extends LoadTestCase
         new VisitFlow().run();
 
         // Add items to the cart via browsing and searching the catalog
-        new AddToCartFlow(Context.configuration().addToCartCount.value).run();
+        new AddToCartFlow(Context.get().configuration.addToCartCount.value).run();
 
         // View the cart if not yet done
         if (!CartPage.instance.is())
