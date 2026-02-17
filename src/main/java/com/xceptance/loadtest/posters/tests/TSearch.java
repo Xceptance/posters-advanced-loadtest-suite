@@ -1,6 +1,6 @@
 package com.xceptance.loadtest.posters.tests;
 
-import com.xceptance.loadtest.api.tests.HtmlUnitLoadTestCase;
+import com.xceptance.loadtest.posters.util.LoadTestCase;
 import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.loadtest.posters.flows.NavigateToProductPageFlow;
 import com.xceptance.loadtest.posters.flows.SearchFlow;
@@ -12,7 +12,7 @@ import com.xceptance.loadtest.posters.flows.VisitFlow;
  * 
  * @author Xceptance Software Technologies
  */
-public class TSearch extends HtmlUnitLoadTestCase
+public class TSearch extends LoadTestCase
 {
     /**
      * {@inheritDoc}

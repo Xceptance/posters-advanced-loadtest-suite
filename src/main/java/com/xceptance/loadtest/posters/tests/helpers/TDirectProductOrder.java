@@ -1,6 +1,6 @@
 package com.xceptance.loadtest.posters.tests.helpers;
 
-import com.xceptance.loadtest.api.tests.HtmlUnitLoadTestCase;
+import com.xceptance.loadtest.posters.util.LoadTestCase;
 import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.loadtest.posters.actions.catalog.ProductDetailPageLanding;
 import com.xceptance.loadtest.posters.flows.SingleProductOrderFlow;
@@ -10,7 +10,7 @@ import com.xceptance.loadtest.posters.flows.SingleProductOrderFlow;
  * 
  * @author Xceptance Software Technologies
  */
-public class TDirectProductOrder extends HtmlUnitLoadTestCase
+public class TDirectProductOrder extends LoadTestCase
 {
     @Override
     public void test() throws Throwable

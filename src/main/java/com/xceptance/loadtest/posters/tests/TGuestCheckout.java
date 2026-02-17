@@ -1,6 +1,6 @@
 package com.xceptance.loadtest.posters.tests;
 
-import com.xceptance.loadtest.api.tests.HtmlUnitLoadTestCase;
+import com.xceptance.loadtest.posters.util.LoadTestCase;
 import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.loadtest.posters.actions.cart.ViewCart;
 import com.xceptance.loadtest.posters.flows.AddToCartFlow;
@@ -14,7 +14,7 @@ import com.xceptance.loadtest.posters.models.pages.cart.CartPage;
  * 
  * @author Xceptance Software Technologies
  */
-public class TGuestCheckout extends HtmlUnitLoadTestCase
+public class TGuestCheckout extends LoadTestCase
 {
     /**
      * {@inheritDoc}

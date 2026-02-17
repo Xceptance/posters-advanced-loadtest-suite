@@ -1,6 +1,6 @@
 package com.xceptance.loadtest.posters.tests;
 
-import com.xceptance.loadtest.api.tests.HtmlUnitLoadTestCase;
+import com.xceptance.loadtest.posters.util.LoadTestCase;
 import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.loadtest.posters.actions.account.GoToMyAccount;
 import com.xceptance.loadtest.posters.actions.account.Login;
@@ -14,7 +14,7 @@ import com.xceptance.loadtest.posters.flows.VisitFlow;
  * 
  * @author Xceptance Software Technologies
  */
-public class TAccountCreation extends HtmlUnitLoadTestCase
+public class TAccountCreation extends LoadTestCase
 {
     /**
      * {@inheritDoc}

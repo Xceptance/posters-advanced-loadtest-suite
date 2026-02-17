@@ -2,23 +2,20 @@
 localization:
     css:
         category: category
-    cart:
-      lineitem:
+    cartLineItem:
         availability:
-            instock:
-                message: In Stock
-            outofstock:
-                message: not available
+            inStock: In Stock
+            outOfStock: not available
                 
     account:
-        paymentcard:
-            link:
-                aria-label: Add New Payment
-        addressbookcard:
-            link:
-                aria-label: Add New Address
-        passwordcard:
-            link:
-                aria-label: Change Password
+        paymentCard:
+            addPayment: Add New Payment
+        addressbookCard:
+            addAddress: Add New Address
+        passwordCard:
+            changePassword: Change Password
+        activation:
+            subjectPattern: 
+            linkPattern:
                 
                 

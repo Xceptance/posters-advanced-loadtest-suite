@@ -1,6 +1,6 @@
 package com.xceptance.loadtest.posters.tests;
 
-import com.xceptance.loadtest.api.tests.HtmlUnitLoadTestCase;
+import com.xceptance.loadtest.posters.util.LoadTestCase;
 import com.xceptance.loadtest.posters.flows.VisitFlow;
 
 /**
@@ -8,7 +8,7 @@ import com.xceptance.loadtest.posters.flows.VisitFlow;
  * 
  * @author Xceptance Software Technologies
  */
-public class TVisit extends HtmlUnitLoadTestCase
+public class TVisit extends LoadTestCase
 {
     /**
      * {@inheritDoc}
