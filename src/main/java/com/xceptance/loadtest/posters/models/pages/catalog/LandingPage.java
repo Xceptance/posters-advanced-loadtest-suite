@@ -1,9 +1,9 @@
 package com.xceptance.loadtest.posters.models.pages.catalog;
 
-import org.junit.Assert;
-
-import com.xceptance.loadtest.api.models.pages.Page;
+import com.xceptance.loadtest.api.pages.Page;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
+
+import org.junit.Assert;
 
 /**
  * Represents a landing page.

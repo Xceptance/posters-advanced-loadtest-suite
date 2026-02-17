@@ -2,6 +2,7 @@ package com.xceptance.loadtest.posters.util;
 
 import com.xceptance.loadtest.api.data.Site;
 import com.xceptance.loadtest.api.util.context.CoreContext;
+import com.xceptance.loadtest.api.util.context.HtmlUnitContext;
 import com.xceptance.loadtest.posters.configuration.Configuration;
 import com.xceptance.loadtest.posters.configuration.TestData;
 import com.xceptance.xlt.api.engine.Session;
@@ -9,7 +10,7 @@ import com.xceptance.xlt.api.engine.Session;
 /**
  * Site specific version of the context, parametrized by the employed Configuration and TestData variants.
  */
-public class Context extends CoreContext<Configuration, TestData>
+public class Context extends HtmlUnitContext<Configuration, TestData>
 {
     /**
      * Creates an instance of the context.

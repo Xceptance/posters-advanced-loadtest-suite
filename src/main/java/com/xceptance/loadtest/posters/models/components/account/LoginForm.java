@@ -1,22 +1,23 @@
 package com.xceptance.loadtest.posters.models.components.account;
 
-import org.htmlunit.html.HtmlElement;
-import org.htmlunit.html.HtmlForm;
 import com.xceptance.loadtest.api.data.Account;
 import com.xceptance.loadtest.api.hpu.HPU;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.models.components.Component;
-import com.xceptance.loadtest.api.models.pages.Page;
+import com.xceptance.loadtest.api.pages.Page;
+import com.xceptance.loadtest.api.pages.components.HtmlComponent;
 import com.xceptance.loadtest.api.util.FormUtils;
+
+import org.htmlunit.html.HtmlElement;
+import org.htmlunit.html.HtmlForm;
 
 /**
  * LoginForm component.
  * 
  * @author Xceptance Software Technologies
  */
-public class LoginForm implements Component
+public class LoginForm implements HtmlComponent
 {
-	public static final LoginForm instance = new LoginForm();
+    public static final LoginForm instance = new LoginForm();
 
     @Override
     public LookUpResult locate()
@@ -29,10 +30,10 @@ public class LoginForm implements Component
     {
         return locate().exists();
     }
-    
+
     public HtmlElement getSignInButton()
     {
-    	return locate().byCss("#btn-sign-in").asserted().single();
+        return locate().byCss("#btn-sign-in").asserted().single();
     }
 
     public HtmlForm fillLoginForm(final Account account)

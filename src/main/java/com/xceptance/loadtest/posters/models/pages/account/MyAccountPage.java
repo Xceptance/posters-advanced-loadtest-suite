@@ -3,7 +3,7 @@ package com.xceptance.loadtest.posters.models.pages.account;
 import org.junit.Assert;
 
 import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.models.pages.Page;
+import com.xceptance.loadtest.api.pages.Page;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
 /**

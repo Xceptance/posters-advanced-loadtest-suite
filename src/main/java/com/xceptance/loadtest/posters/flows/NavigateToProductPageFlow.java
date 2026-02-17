@@ -85,7 +85,7 @@ public class NavigateToProductPageFlow extends Flow
         viewCount = viewCount > itemCount ? itemCount : viewCount;
 
         // Keep the context
-        final HtmlUnitPageAction<?> currentAction = Context.getCurrentAction();
+        final HtmlUnitPageAction<?> currentAction = (HtmlUnitPageAction<?>) Context.get().getCurrentAction();
         for (int i = 0; i < viewCount; i++)
         {
             if (i != 0)

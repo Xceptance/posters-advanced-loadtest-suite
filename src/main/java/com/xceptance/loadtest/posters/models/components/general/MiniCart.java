@@ -2,7 +2,7 @@ package com.xceptance.loadtest.posters.models.components.general;
 
 import org.htmlunit.html.HtmlElement;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.models.components.Component;
+import com.xceptance.loadtest.api.pages.components.HtmlComponent;
 import com.xceptance.loadtest.posters.util.Context;
 import com.xceptance.loadtest.api.util.DataUtils;
 
@@ -11,7 +11,7 @@ import com.xceptance.loadtest.api.util.DataUtils;
  * 
  * @author Xceptance Software Technologies
  */
-public class MiniCart implements Component
+public class MiniCart implements HtmlComponent
 {
 	public static final MiniCart instance = new MiniCart();
 

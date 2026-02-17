@@ -1,15 +1,15 @@
 package com.xceptance.loadtest.posters.models.components.cart;
 
 import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.models.components.Component;
-import com.xceptance.loadtest.api.models.pages.Page;
+import com.xceptance.loadtest.api.pages.components.HtmlComponent;
+import com.xceptance.loadtest.api.pages.Page;
 
 /**
  * Cart table component.
  * 
  * @author Xceptance Software Technologies
  */
-public class CartTable implements Component
+public class CartTable implements HtmlComponent
 {
 	public static final CartTable instance = new CartTable();
 

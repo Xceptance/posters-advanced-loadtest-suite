@@ -1,15 +1,15 @@
 package com.xceptance.loadtest.posters.models.components.homepage;
 
 import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.models.components.Component;
-import com.xceptance.loadtest.api.models.pages.Page;
+import com.xceptance.loadtest.api.pages.components.HtmlComponent;
+import com.xceptance.loadtest.api.pages.Page;
 
 /**
  * Promoted products component.
  * 
  * @author Xceptance Software Technologies
  */
-public class PromotedProducts implements Component
+public class PromotedProducts implements HtmlComponent
 {
 	public static final PromotedProducts instance = new PromotedProducts();
 

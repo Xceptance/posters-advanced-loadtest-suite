@@ -3,7 +3,7 @@ package com.xceptance.loadtest.posters.models.pages.checkout;
 import org.junit.Assert;
 
 import org.htmlunit.html.HtmlElement;
-import com.xceptance.loadtest.api.models.pages.Page;
+import com.xceptance.loadtest.api.pages.Page;
 
 /**
  * Represents the order review page.

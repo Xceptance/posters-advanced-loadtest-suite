@@ -4,15 +4,15 @@ import org.htmlunit.javascript.host.html.HTMLElement;
 
 import com.xceptance.loadtest.api.hpu.HPU;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.models.components.Component;
-import com.xceptance.loadtest.api.models.pages.Page;
+import com.xceptance.loadtest.api.pages.components.HtmlComponent;
+import com.xceptance.loadtest.api.pages.Page;
 
 /**
  * Indicator component for checkout progress (a bread crumb).
  *  
  * @author Xceptance Software Technologies
  */
-public class CheckoutProgressIndicator implements Component
+public class CheckoutProgressIndicator implements HtmlComponent
 {
     public final static CheckoutProgressIndicator instance = new CheckoutProgressIndicator();
 

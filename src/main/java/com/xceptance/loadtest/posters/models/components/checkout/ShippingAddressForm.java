@@ -1,12 +1,12 @@
 package com.xceptance.loadtest.posters.models.components.checkout;
 
+import com.xceptance.loadtest.api.hpu.LookUpResult;
+import com.xceptance.loadtest.api.pages.components.HtmlComponent;
+import com.xceptance.loadtest.api.pages.Page;
 import org.htmlunit.html.HtmlElement;
 import org.htmlunit.html.HtmlForm;
 import com.xceptance.loadtest.api.data.Account;
 import com.xceptance.loadtest.api.hpu.HPU;
-import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.models.components.Component;
-import com.xceptance.loadtest.api.models.pages.Page;
 import com.xceptance.loadtest.api.util.FormUtils;
 
 /**
@@ -14,7 +14,7 @@ import com.xceptance.loadtest.api.util.FormUtils;
  *  
  * @author Xceptance Software Technologies
  */
-public class ShippingAddressForm implements Component
+public class ShippingAddressForm implements HtmlComponent
 {
     public final static ShippingAddressForm instance = new ShippingAddressForm();
     

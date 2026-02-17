@@ -1,14 +1,15 @@
 package com.xceptance.loadtest.posters.models.components.general;
 
 import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.models.components.Component;
+import com.xceptance.loadtest.api.pages.components.HtmlComponent;
+import com.xceptance.loadtest.api.pages.Page;
 
 /**
  * User menu component.
  * 
  * @author Xceptance Software Technologies
  */
-public class UserMenu implements Component
+public class UserMenu implements HtmlComponent
 {
 	public static final UserMenu instance = new UserMenu();
 

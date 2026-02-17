@@ -1,8 +1,8 @@
 package com.xceptance.loadtest.posters.models.components.general;
 
 import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.models.components.Component;
-import com.xceptance.loadtest.api.models.pages.Page;
+import com.xceptance.loadtest.api.pages.components.HtmlComponent;
+import com.xceptance.loadtest.api.pages.Page;
 import com.xceptance.loadtest.posters.util.Context;
 
 /**
@@ -10,7 +10,7 @@ import com.xceptance.loadtest.posters.util.Context;
  * 
  * @author Xceptance Software Technologies
  */
-public class Navigation implements Component
+public class Navigation implements HtmlComponent
 {
 	public static final Navigation instance = new Navigation();
 

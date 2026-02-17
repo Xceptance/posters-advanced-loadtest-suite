@@ -6,8 +6,8 @@ import org.junit.Assert;
 
 import com.xceptance.common.util.RegExUtils;
 import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.models.components.Component;
-import com.xceptance.loadtest.api.models.pages.Page;
+import com.xceptance.loadtest.api.pages.components.HtmlComponent;
+import com.xceptance.loadtest.api.pages.Page;
 import com.xceptance.loadtest.api.util.AjaxUtils;
 import com.xceptance.loadtest.posters.util.PageState;
 import com.xceptance.xlt.api.util.XltRandom;
@@ -17,7 +17,7 @@ import com.xceptance.xlt.api.util.XltRandom;
  * 
  * @author Xceptance Software Technologies
  */
-public class Pagination implements Component
+public class Pagination implements HtmlComponent
 {
 	public static final Pagination instance = new Pagination();
 

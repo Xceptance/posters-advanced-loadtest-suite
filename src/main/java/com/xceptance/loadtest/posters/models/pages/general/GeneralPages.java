@@ -1,6 +1,6 @@
 package com.xceptance.loadtest.posters.models.pages.general;
 
-import com.xceptance.loadtest.api.models.pages.Page;
+import com.xceptance.loadtest.api.pages.Page;
 import com.xceptance.loadtest.posters.models.components.general.Footer;
 import com.xceptance.loadtest.posters.models.components.general.Header;
 import com.xceptance.loadtest.posters.models.components.general.MiniCart;

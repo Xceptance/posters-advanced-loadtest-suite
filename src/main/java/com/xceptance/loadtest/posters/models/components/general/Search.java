@@ -1,14 +1,15 @@
 package com.xceptance.loadtest.posters.models.components.general;
 
 import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.models.components.Component;
+import com.xceptance.loadtest.api.pages.components.HtmlComponent;
+import com.xceptance.loadtest.api.pages.Page;
 
 /**
  * Search component.
  * 
  * @author Xceptance Software Technologies
  */
-public class Search implements Component
+public class Search implements HtmlComponent
 {
 	public static final Search instance = new Search();
 

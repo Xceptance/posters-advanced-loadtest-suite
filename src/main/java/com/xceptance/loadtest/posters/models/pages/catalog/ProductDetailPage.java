@@ -7,7 +7,7 @@ import org.junit.Assert;
 
 import org.htmlunit.html.HtmlElement;
 import com.xceptance.common.util.RegExUtils;
-import com.xceptance.loadtest.api.models.pages.Page;
+import com.xceptance.loadtest.api.pages.Page;
 import com.xceptance.loadtest.posters.models.pages.general.GeneralPages;
 
 /**

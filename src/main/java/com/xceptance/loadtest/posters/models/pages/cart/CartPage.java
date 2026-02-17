@@ -16,34 +16,34 @@ public class CartPage extends GeneralPages
     public static final CartPage instance = new CartPage();
 
     public final CartBanner cartBanner = CartBanner.instance;
-    
+
     public final CartEmpty cartEmpty = CartEmpty.instance;
-    
+
     public final CartTable cartTable = CartTable.instance;
-    
+
     public final CheckoutButton checkoutButton = CheckoutButton.instance;
-    
+
     @Override
     public void validate()
     {
         super.validate();
 
-        validate(has(cartBanner), hasOneOf(cartEmpty, cartTable));
+        validate(has(cartBanner), hasExactlyOneOf(cartEmpty, cartTable));
     }
 
     @Override
     public boolean is()
     {
-        return super.is() && matches(has(cartBanner), hasOneOf(cartEmpty, cartTable));
+        return super.is() && matches(has(cartBanner), hasExactlyOneOf(cartEmpty, cartTable));
     }
-    
+
     public void validateIsNotEmpty()
     {
-    	validate(hasNot(cartEmpty));
+        validate(hasNot(cartEmpty));
     }
 
     public void validateIsEmpty()
     {
-    	validate(has(cartEmpty));
+        validate(has(cartEmpty));
     }
 }

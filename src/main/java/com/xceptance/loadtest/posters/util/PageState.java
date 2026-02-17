@@ -1,12 +1,11 @@
 package com.xceptance.loadtest.posters.util;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.xceptance.loadtest.api.hpu.LookUpResult;
+import com.xceptance.loadtest.api.pages.Page;
 
 import org.htmlunit.html.HtmlElement;
-import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.models.pages.Page;
-import com.xceptance.loadtest.api.util.AjaxUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * Page state helper.
@@ -21,108 +20,108 @@ import com.xceptance.loadtest.api.util.AjaxUtils;
  */
 public class PageState
 {
-	private static String EMBEDDED_PRODUCTS_ID = "embedded-product-listing-page-state";
-	
-	private static void embed(String id, String jsonString)
-	{
-		embed(id, AjaxUtils.convertToJson(jsonString));
-	}
+    private static String EMBEDDED_PRODUCTS_ID = "embedded-product-listing-page-state";
 
-	/**
-	 * Embeds JSON data in the current page at the given identifier.
-	 * 
-	 * @param id The identifier where the data will be embedded.
-	 * @param json The JSON data to embed.
-	 */
-	private static void embed(String id, JSONObject json)
-	{
-		HtmlElement embeddedStateElement = Page.getOrCreateByID(id, Page.find().byCss("body").asserted("Expected body element in page").single());
-		embeddedStateElement.setTextContent(json.toString(4));
-	}
+    private static void embed(final String id, final String jsonString)
+    {
+        embed(id, new JSONObject(jsonString));
+    }
 
-	/**
-	 * Retrieves the JSON data embedded at the given identifier.
-	 * 
-	 * @param id The identifier where the embedded JSON data is retrieved.
-	 * @return The retrieved JSON data.
-	 */
-	private static JSONObject retrieve(String id)
-	{
-		LookUpResult embeddedStateElement = Page.find().byId(id);
-		if(embeddedStateElement.exists())
-		{
-			return AjaxUtils.convertToJson(embeddedStateElement.single().getTextContent());
-		}
-		
-		return null;
-	}
-	
-	/**
-	 * Removes the element and its embedded data.
-	 * 
-	 * @param id The identifier of the embedded data element.
-	 */
-//	private static void remove(String id)
-//	{
-//		LookUpResult embeddedStateElement = Page.find().byId(id);
-//		if(embeddedStateElement.exists())
-//		{
-//			embeddedStateElement.asserted("Expected single embedded state element").single().remove();
-//		}
-//	}
-	
-	/**
-	 * Checks if a certain identifier is contained in the page (and supposedly contains embedded state data).
-	 * 
-	 * @param id The identifier to check.
-	 * @return true if the identifier exists, false otherwise.
-	 */
-	private static boolean has(String id)
-	{
-		return Page.find().byId(id).exists();
-	}
+    /**
+     * Embeds JSON data in the current page at the given identifier.
+     * 
+     * @param id The identifier where the data will be embedded.
+     * @param json The JSON data to embed.
+     */
+    private static void embed(final String id, final JSONObject json)
+    {
+        final HtmlElement embeddedStateElement = Page.getOrCreateByID(id, Page.find().byCss("body").asserted("Expected body element in page").single());
+        embeddedStateElement.setTextContent(json.toString(4));
+    }
 
-	/**
-	 * Checks if a certain identifier is contained in the page and if it has data embedded.
-	 * 
-	 * @param id The identifier to check.
-	 * @return true if the identifier exists and data is embedded, false otherwise.
-	 */
-//	private static boolean hasData(String id)
-//	{
-//		return Page.find().byId(id).exists() && Page.find().byId(id).asserted("Expected single embedded state element").single().getTextContent().isBlank();
-//	}
+    /**
+     * Retrieves the JSON data embedded at the given identifier.
+     * 
+     * @param id The identifier where the embedded JSON data is retrieved.
+     * @return The retrieved JSON data.
+     */
+    private static JSONObject retrieve(final String id)
+    {
+        final LookUpResult embeddedStateElement = Page.find().byId(id);
+        if(embeddedStateElement.exists())
+        {
+            return new JSONObject(embeddedStateElement.single().getTextContent());
+        }
 
-	/// Data specific access
-	
-	public static void embedProducts(String productsJsonString)
-	{
-		embed(EMBEDDED_PRODUCTS_ID, productsJsonString);
-	}
+        return null;
+    }
 
-	public static void embedProducts(JSONObject productsJson)
-	{
-		embed(EMBEDDED_PRODUCTS_ID, productsJson);
-	}
-	
-	public static JSONObject retrieveProducts()
-	{
-		return retrieve(EMBEDDED_PRODUCTS_ID);
-	}
-	
-	public static Integer getProductCount()
-	{
-		JSONArray products = retrieveProducts().optJSONArray("products");
-		if(products != null)
-		{
-			return products.length();
-		}
-		
-		return 0;
-	}
-	
-	public static boolean hasProducts()
-	{
-		return has(EMBEDDED_PRODUCTS_ID);
-	}
+    /**
+     * Removes the element and its embedded data.
+     * 
+     * @param id The identifier of the embedded data element.
+     */
+    //	private static void remove(String id)
+    //	{
+    //		LookUpResult embeddedStateElement = Page.find().byId(id);
+    //		if(embeddedStateElement.exists())
+    //		{
+    //			embeddedStateElement.asserted("Expected single embedded state element").single().remove();
+    //		}
+    //	}
+
+    /**
+     * Checks if a certain identifier is contained in the page (and supposedly contains embedded state data).
+     * 
+     * @param id The identifier to check.
+     * @return true if the identifier exists, false otherwise.
+     */
+    private static boolean has(final String id)
+    {
+        return Page.find().byId(id).exists();
+    }
+
+    /**
+     * Checks if a certain identifier is contained in the page and if it has data embedded.
+     * 
+     * @param id The identifier to check.
+     * @return true if the identifier exists and data is embedded, false otherwise.
+     */
+    //	private static boolean hasData(String id)
+    //	{
+    //		return Page.find().byId(id).exists() && Page.find().byId(id).asserted("Expected single embedded state element").single().getTextContent().isBlank();
+    //	}
+
+    /// Data specific access
+
+    public static void embedProducts(final String productsJsonString)
+    {
+        embed(EMBEDDED_PRODUCTS_ID, productsJsonString);
+    }
+
+    public static void embedProducts(final JSONObject productsJson)
+    {
+        embed(EMBEDDED_PRODUCTS_ID, productsJson);
+    }
+
+    public static JSONObject retrieveProducts()
+    {
+        return retrieve(EMBEDDED_PRODUCTS_ID);
+    }
+
+    public static Integer getProductCount()
+    {
+        final JSONArray products = retrieveProducts().optJSONArray("products");
+        if(products != null)
+        {
+            return products.length();
+        }
+
+        return 0;
+    }
+
+    public static boolean hasProducts()
+    {
+        return has(EMBEDDED_PRODUCTS_ID);
+    }
 }

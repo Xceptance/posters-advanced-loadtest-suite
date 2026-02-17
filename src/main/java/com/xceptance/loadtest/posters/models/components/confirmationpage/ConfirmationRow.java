@@ -1,15 +1,15 @@
 package com.xceptance.loadtest.posters.models.components.confirmationpage;
 
 import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.models.components.Component;
-import com.xceptance.loadtest.api.models.pages.Page;
+import com.xceptance.loadtest.api.pages.components.HtmlComponent;
+import com.xceptance.loadtest.api.pages.Page;
 
 /**
  * Confirmation row component.
  * 
  * @author Xceptance Software Technologies
  */
-public class ConfirmationRow implements Component 
+public class ConfirmationRow implements HtmlComponent 
 {
     public static final ConfirmationRow instance = new ConfirmationRow();
 

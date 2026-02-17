@@ -1,15 +1,15 @@
 package com.xceptance.loadtest.posters.models.components.cart;
 
 import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.models.components.Component;
-import com.xceptance.loadtest.api.models.pages.Page;
+import com.xceptance.loadtest.api.pages.components.HtmlComponent;
+import com.xceptance.loadtest.api.pages.Page;
 
 /**
  * Checkout button component.
  * 
  * @author Xceptance Software Technologies
  */
-public class CheckoutButton implements Component
+public class CheckoutButton implements HtmlComponent
 {
     public final static CheckoutButton instance = new CheckoutButton();
 

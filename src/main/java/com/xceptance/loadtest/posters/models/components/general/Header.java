@@ -1,15 +1,15 @@
 package com.xceptance.loadtest.posters.models.components.general;
 
 import com.xceptance.loadtest.api.hpu.LookUpResult;
-import com.xceptance.loadtest.api.models.components.Component;
-import com.xceptance.loadtest.api.models.pages.Page;
+import com.xceptance.loadtest.api.pages.components.HtmlComponent;
+import com.xceptance.loadtest.api.pages.Page;
 
 /**
  * Header component
  * 
  * @author Xceptance Software Technologies
  */
-public class Header implements Component
+public class Header implements HtmlComponent
 {
 	public static final Header instance = new Header();
 
